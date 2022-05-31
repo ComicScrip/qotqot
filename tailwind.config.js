@@ -4,7 +4,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "hero-sm": "url('/../public/assets/qotqot-bg.png')",
+      },
+    },
   },
   plugins: [],
 };

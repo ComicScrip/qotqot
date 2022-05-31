@@ -1,0 +1,21 @@
+.header {
+  margin: auto 0;
+  height: 35px;
+}
+
+.divTitle {
+  margin-top: 60px;
+  margin-left: 5%;
+}
+
+.title {
+  font-size: 22px;
+  font-style: var(--var-main-font-style1);
+  margin-bottom: -10px;
+}
+
+.date {
+  font-size: 16px;
+  font-size: var(--var-main-font-style1);
+  font-weight: 400;
+}

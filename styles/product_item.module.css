@@ -1,6 +1,6 @@
 .item_wrapper {
   border: solid 1px black;
-  padding: 0.25rem;
+  padding: 0.4rem;
   height: 6rem;
   width: 90vw;
   display: flex;
@@ -80,7 +80,7 @@
 .out_of_stock {
   background-color: #e41b1b33;
   color: #e41b1b;
-  padding: 0.55rem;
+  padding: 0.3rem;
   border-radius: 4px;
 }
 

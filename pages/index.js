@@ -13,10 +13,6 @@ export default function Home(initialProducts) {
       </Head>
 
       {initialProducts.initialProducts.map((prod) => (
-        // <p key={prod.id}>
-        //   {prod.name}, {prod.weight}, {prod.price}€, {prod.pricePerKg}€,{" "}
-        //   {prod.stock}
-        // </p>
         <ProductItem
           key={prod.id}
           name={prod.name}

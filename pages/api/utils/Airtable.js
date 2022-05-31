@@ -12,7 +12,12 @@ const minifyRecords = (records) => {
 const getMinifiedRecord = (record) => {
   return {
     id: record.id,
+    // info: record.fields,
     name: record.fields.Produit,
+    weight: record.fields.Conditionnement,
+    price: record.fields["Prix d'achat unitaire €HT"],
+    pricePerKg: record.fields["Prix d'achat kg/g/L €HT"],
+    stock: record.fields.Dispo,
   };
 };
 

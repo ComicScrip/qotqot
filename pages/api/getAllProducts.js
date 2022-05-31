@@ -13,7 +13,7 @@ export default async (req, res) => {
   }
 };
 
-// --------------------------------- Each Page attempt -------------------------------------//
+// --------------------------------- Every Page attempt -------------------------------------//
 
 // const base = new Airtable({ apiKey: "keyH3Q5oGVJYOHLMj" }).base(
 //   "app5Yy06J0dhcG7Xb"

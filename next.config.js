@@ -4,3 +4,10 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+// module.exports = {
+//   images: {
+//     loader: "airtable",
+//     path: '"dl.airtable.com"',
+//   },
+// };

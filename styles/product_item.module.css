@@ -1,49 +1,64 @@
 .item_wrapper {
   border: solid 1px black;
-  padding: 1rem;
-  height: 10rem;
+  padding: 0.25rem;
+  height: 6rem;
   width: 90vw;
-  margin: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
+  margin: 0.5rem 1rem;
 }
 .item_picture {
-  border: 1px solid red;
-  height: 8rem;
-  width: 8rem;
+  height: 3rem;
+  width: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .item_detail {
-  border: solid 1px green;
-  height: 8rem;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+}
+.item_title {
+  overflow: scroll;
+  max-height: 2rem;
+  max-width: 8rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.item_weight {
+  font-size: 0.9rem;
+  font-weight: 300;
 }
 .price {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
+
 .itemPrice {
-  background-color: lightgrey;
-  border-radius: 10px;
-  height: 4rem;
-  width: 6rem;
+  background-color: #f2f2f2;
+  font-weight: 600;
+  padding: 0.2rem;
+  border-radius: 4px;
+  height: 2.5rem;
+  width: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .itemPricePerKg {
-  height: 4rem;
-  width: 5rem;
+  height: 2.5rem;
+  max-width: 4rem;
+  font-size: 0.8rem;
+  overflow-x: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,11 +68,24 @@
   display: flex;
   flex-direction: column;
 }
+.stock_display_instock {
+  display: flex;
+  padding: 0.55rem;
+  border-radius: 4px;
+  background-color: #33996633;
+  color: #339966;
+}
+.out_of_stock {
+  background-color: #e41b1b33;
+  color: #e41b1b;
+  padding: 0.55rem;
+  border-radius: 4px;
+}
 
 .counter {
-  border: solid 1px yellow;
   background-color: lightgray;
   opacity: 50%;
   display: flex;
   justify-content: space-around;
+  margin-top: 2rem;
 }

@@ -3,7 +3,8 @@ import Image from "next/image";
 
 const login = () => {
   return (
-    <div id="login" className="w-full h-full m-auto bg-hero-sm ">
+    <div id="login" className="w-full h-full m-auto ">
+      {/* bg-hero-sm */}
       <div className="m-auto mt-16 flex flex-col justify-center items-center ">
         <div>
           <Image

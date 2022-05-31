@@ -30,11 +30,13 @@
   padding: 0.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .item_weight {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 300;
+  opacity: 60%;
 }
 .price {
   display: flex;

@@ -18,3 +18,17 @@ export default function Home() {
     </>
   );
 }
+
+/*
+
+export async function getStaticProps() {
+  const orders = await handler;
+  return {
+    props: {
+      orders,
+    },
+    revalidate: 5,
+  };
+}
+
+*/

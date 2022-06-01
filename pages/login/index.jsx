@@ -1,10 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function Login({ csrfToken }) {
-  // const { currentUserProfile } = useContext(CurrentUserContext);
+  const { name } = useContext(CurrentUserContext);
   const { query } = useRouter();
+  console.log(name);
 
   return (
     <>
@@ -68,6 +71,7 @@ export default function Login({ csrfToken }) {
         </div>
         <div className="flex justify-center">
           <button
+            data-cy="loginBtn"
             className=" border-2 rounded-md px-32 py-5 uppercase text-sm text-white bg-[#339966] font-medium"
             type="submit"
           >

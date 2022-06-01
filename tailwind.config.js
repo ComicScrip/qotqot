@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "hero-sm": "url('/../public/assets/qotqot-bg.png')",
+        "hero-sm": "src('/../public/assets/qotqot-bg.png')",
       },
     },
   },

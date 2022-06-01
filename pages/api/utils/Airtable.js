@@ -18,7 +18,7 @@ const getMinifiedRecord = (record) => {
     price: record.fields["Prix d'achat unitaire €HT"].toFixed(2),
     pricePerKg: record.fields["Prix d'achat kg/g/L €HT"].toFixed(2),
     stock: record.fields.Dispo,
-    picture: record.fields["Photos Producteurs (from FOURNISSEUR)"][0].url,
+    picture: record.fields["Image produits sans fond"][0].url,
   };
 };
 

@@ -1,5 +1,6 @@
 import { table, minifyRecords } from "../api/utils/Airtable";
 import ProductItem from "../../components/ProductItem";
+import notAvailable from "../../public/images/notAvailable.png";
 
 function NouvelleCommande(initialProducts) {
   console.log(initialProducts);
@@ -13,7 +14,7 @@ function NouvelleCommande(initialProducts) {
           price={prod.price}
           pricePerKg={prod.pricePerKg}
           stock={prod.stock}
-          picture={prod.picture}
+          picture={prod.picture === "true" ? prod.picture : { notAvailable }}
         />
       ))}
       <style jsx>{`

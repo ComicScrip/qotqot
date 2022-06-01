@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import style from "../styles/product_item.module.css";
-import notAvailable from "../public/images/notAvailable.png";
+//import notAvailable from "../public/images/notAvailable.png";
 
 function ProductItem(props) {
-  console.log(props.picture);
   return (
     <div className={style.item_wrapper}>
       <div className={style.item_picture}>
-        <img
+        {/* <img
           src={props.picture ? props.picture : { notAvailable }}
           alt={props.name}
-        />
+        /> */}
+        <p>{props.picture}</p>
       </div>
       <div className={style.item_detail}>
         <div className={style.item_title}>{props.name}</div>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import style from "../styles/product_item.module.css";
 import notAvailable from "../public/images/notAvailable.png";
 
@@ -7,12 +7,9 @@ function ProductItem(props) {
   return (
     <div className={style.item_wrapper}>
       <div className={style.item_picture}>
-        <Image
-          src={notAvailable}
-          alt="nothing here"
-          height={60}
-          width={60}
-          layout="fixed"
+        <img
+          src={props.picture ? props.picture : { notAvailable }}
+          alt={props.name}
         />
       </div>
       <div className={style.item_detail}>
@@ -26,9 +23,11 @@ function ProductItem(props) {
       <div className={style.item_stock}>
         <div
           className={
-            props.stock === "En rupture"
-              ? style.out_of_stock
-              : style.stock_display_instock
+            props.stock === "En stock"
+              ? style.stock_display_instock
+              : props.stock === "Nous consulter"
+              ? style.low_on_stock
+              : style.out_of_stock
           }
         >
           {props.stock}

@@ -1,9 +1,9 @@
 import Airtable from "airtable";
-const base = new Airtable({ apiKey: "keyH3Q5oGVJYOHLMj" }).base(
-  "app5Yy06J0dhcG7Xb"
+const base = new Airtable({ apiKey: process.env.AIR_TABLE_API_KEY }).base(
+  process.env.AIR_TABLE_BASE_ID
 );
 
-const table = base("tblUHOyO8G8P0yOQ6");
+const table = base(process.env.AIR_TABLE_TABLE_NAME);
 
 const minifyRecords = (records) => {
   return records.map((record) => getMinifiedRecord(record));

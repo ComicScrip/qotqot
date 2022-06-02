@@ -11,8 +11,9 @@
   font-family: "Raleway", sans-serif;
 }
 .item_picture {
-  height: 5rem;
-  width: 5rem;
+  height: 44px;
+  width: 44px;
+  margin-right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,13 +28,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
 .item_title {
   overflow: scroll;
+
   height: 2rem;
-  max-width: 8rem;
-  font-weight: 700;
+  width: 108px;
+  font-weight: bolder;
   font-size: 12px;
   line-height: 18px;
   margin-bottom: 1rem;
@@ -44,11 +45,11 @@
 }
 
 .item_weight {
-  font-size: 0.8rem;
-  font-weight: 100;
+  font-size: 10px;
+  font-weight: 300;
   opacity: 60%;
   display: flex;
-  justify-content: center;
+  margin-top: 0.5rem;
 }
 .price {
   display: flex;
@@ -60,21 +61,22 @@
 .itemPrice {
   background-color: #f2f2f2;
   font-weight: 600;
+  font-size: 12px;
   padding: 0.2rem;
   border-radius: 4px;
-  height: 2rem;
-  width: 5rem;
+  height: 27px;
+  width: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0.3rem;
   margin-bottom: 1rem;
 }
 .itemPricePerKg {
   height: 1.5rem;
   width: 5rem;
-  font-size: 0.5rem;
-  font-weight: 100;
-  opacity: 50%;
+  font-size: 10px;
+  font-weight: 300;
   overflow-x: auto;
   display: flex;
   justify-content: center;
@@ -82,8 +84,11 @@
 }
 
 .item_stock {
-  font-size: 0.5rem;
-  margin-left: 1rem;
+  font-size: 9px;
+  font-weight: 400;
+  margin-left: 0.5rem;
+  width: 4rem;
+  text-align: center;
 }
 .stock_display_instock {
   padding: 0.2rem;

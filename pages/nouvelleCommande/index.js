@@ -1,12 +1,20 @@
-import { table, minifyRecords } from "../api/utils/Airtable";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 import ProductItem from "../../components/ProductItem";
-import notAvailable from "../../public/images/notAvailable.png";
 
-function NouvelleCommande(initialProducts) {
-  console.log(initialProducts);
+export default function NouvelleCommande() {
+  const [productList, setProductList] = useState([]);
+  useEffect(() => {
+    axios
+      .get("/api/products")
+      .then((res) => res.data)
+      .then((data) => setProductList(data));
+  }, []);
+
   return (
     <div className="main_container">
-      {initialProducts.initialProducts.map((prod) => (
+      {productList.map((prod) => (
         <ProductItem
           key={prod.id}
           name={prod.name}
@@ -14,34 +22,13 @@ function NouvelleCommande(initialProducts) {
           price={prod.price}
           pricePerKg={prod.pricePerKg}
           stock={prod.stock}
-          picture={prod.picture === "true" ? prod.picture : { notAvailable }}
+          picture={prod.picture ? prod.picture : ""}
         />
       ))}
       <style jsx>{`
         * {
-            background-color: whitesmoke;
+            background-color: #E5E5E5;
         `}</style>
     </div>
   );
-}
-
-export default NouvelleCommande;
-
-export async function getServerSideProps() {
-  try {
-    const products = await table.select().firstPage();
-
-    return {
-      props: {
-        initialProducts: minifyRecords(products),
-      },
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      props: {
-        err: "Something went bad",
-      },
-    };
-  }
 }

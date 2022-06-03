@@ -71,9 +71,9 @@ export default function Login({ csrfToken }) {
         </div>
         <div className="flex justify-center">
           <button
-            data-cy="loginBtn"
-            className=" border-2 rounded-md px-32 py-5 uppercase text-sm text-white bg-[#339966] font-medium"
+            data-cy="credentials-login-btn"
             type="submit"
+            className=" border-2 rounded-md px-32 py-5 uppercase text-sm text-white bg-[#339966] font-medium"
           >
             Se connecter
           </button>

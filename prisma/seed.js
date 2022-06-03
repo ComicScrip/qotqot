@@ -1,8 +1,10 @@
-const db = require("../db");
+const { createUser } = require("../models/user");
 
 async function seed() {
-  await db.thing.deleteMany();
-  await db.thing.create({ data: { name: "something" } });
+  await createUser({
+    email: "dave.lopper@gmail.com",
+    password: "superpassword",
+  });
 }
 
 seed();

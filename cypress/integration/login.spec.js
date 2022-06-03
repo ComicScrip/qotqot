@@ -4,10 +4,9 @@ describe("login", () => {
   });
 
   describe("without session", () => {
-    beforeEach(() => {
-      cy.signup({ password: "verysecure" });
-      cy.visit("/login");
-    });
+    // beforeEach(() => {
+    //   cy.visit("/login");
+    // });
 
     it("can login with correct credentials", function () {
       cy.get('[data-cy="email"]').type(this.userInDb.email);

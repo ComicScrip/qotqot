@@ -12,9 +12,6 @@ export default async function getAllProducts(req, res) {
       })
       .then((response) => {
         res.send(minifyRecords(response.data.records));
-        console.log(
-          response.data.records[0].fields["Image produits sans fond"][0].url
-        );
       });
   } catch (error) {
     res.statusCode = 500;

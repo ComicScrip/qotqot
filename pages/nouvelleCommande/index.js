@@ -2,17 +2,20 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import ProductItem from "../../components/ProductItem";
+import s from "../../styles/nouvelleCommande.module.css";
 
 export default function NouvelleCommande() {
   const [productList, setProductList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get("/api/products")
       .then((res) => res.data)
       .then((data) => setProductList(data));
+    setIsLoading(false);
   }, []);
-
-  return (
+  const renderProducts = (
     <div className="main_container">
       {productList.map((prod) => (
         <ProductItem
@@ -26,9 +29,18 @@ export default function NouvelleCommande() {
         />
       ))}
       <style jsx>{`
-        * {
-            background-color: #E5E5E5;
-        `}</style>
+  * {
+      background-color: #E5E5E5;
+  `}</style>
     </div>
+  );
+  return (
+    <>
+      {isLoading ? (
+        <p className={s.spinner}> Waiting on server ...</p>
+      ) : (
+        renderProducts
+      )}
+    </>
   );
 }

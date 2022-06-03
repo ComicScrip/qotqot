@@ -91,10 +91,11 @@
   text-align: center;
 }
 .stock_display_instock {
-  padding: 0.2rem;
+  display: none;
+  /* padding: 0.2rem;
   border-radius: 4px;
   background-color: #33996633;
-  color: #339966;
+  color: #339966; */
 }
 .out_of_stock {
   background-color: #e41b1b33;

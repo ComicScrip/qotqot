@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import ProductItem from "../../components/ProductItem";
-import s from "../../styles/nouvelleCommande.module.css";
+// import s from "../../styles/nouvelleCommande.module.css";
 
 export default function NouvelleCommande() {
   const [productList, setProductList] = useState([]);
@@ -37,7 +38,7 @@ export default function NouvelleCommande() {
   return (
     <>
       {isLoading ? (
-        <p className={s.spinner}> Waiting on server ...</p>
+        <img src="/images/Loading_icon.gif" alt="spin to win" />
       ) : (
         renderProducts
       )}

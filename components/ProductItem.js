@@ -23,7 +23,7 @@ function ProductItem(props) {
           className={
             props.stock === "En stock"
               ? style.stock_display_instock
-              : props.stock === "Nous consulter"
+              : props.stock === "Stock faible"
               ? style.low_on_stock
               : style.out_of_stock
           }

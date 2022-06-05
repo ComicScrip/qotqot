@@ -1,35 +1,46 @@
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-// import { getToken } from "next-auth/jwt";
 import axios from "axios";
-// import {
-//   findUserByEmail,
-//   getSafeAttributes,
-//   verifyPassword,
-// } from "../../../models/user";
+import { verifyPassword } from "../../../models/user";
 
 export default NextAuth({
+  // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
       name: "Credentials",
-      credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials) {
-        const url = "https://mocki.io/v1/d9f98981-6f08-4bc3-adcd-ed80bdb10dc3";
-        const res = await axios.post(url, credentials);
-        const user = await res.json();
-        if (res && user) {
-          console.log(res.data);
-          return res.data;
-        } else {
-          return console.log("test");
+      async authorize({ email, password }) {
+        try {
+          const {
+            data: {
+              records: [user],
+            },
+          } = await axios.get(
+            `${
+              process.env.AIRTABLE_API
+            }/users?filterByFormula=%7BEmail%7D%3D%22${encodeURIComponent(
+              email
+            )}%22`,
+            {
+              headers: {
+                Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+              },
+            }
+          );
+          if (user && (await verifyPassword(password, user.hashedPassword))) {
+            return user;
+          } else {
+            console.log("error");
+            return null;
+          }
+        } catch (err) {
+          console.log("error", err.response);
+          return null;
         }
       },
     }),
+    // ...add more providers here
   ],
-  // pages: {
-  //   signIn: "/login",
-  // },
+  pages: {
+    signIn: "/login",
+  },
 });

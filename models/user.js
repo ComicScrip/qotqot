@@ -1,6 +1,17 @@
-// const db = require("../db");
 // const argon2 = require("argon2");
 // const Joi = require("joi");
+
+module.exports.verifyPassword = (plainPassword, hashedPassword) => {
+  console.log(plainPassword, hashedPassword);
+  return true;
+};
+
+module.exports.findUserByEmail = (email) => {
+  console.log(email);
+  return null;
+};
+
+module.exports.getSafeAttributes = (user) => user;
 
 // const hashingOptions = {
 //   memoryCost: 2 ** 16,

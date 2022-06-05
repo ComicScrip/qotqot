@@ -4,9 +4,10 @@ describe("login", () => {
   });
 
   describe("without session", () => {
-    // beforeEach(() => {
-    //   cy.visit("/login");
-    // });
+    beforeEach(() => {
+      // cy.signup({ password: "verysecure" });
+      cy.visit("/login");
+    });
 
     it("can login with correct credentials", function () {
       cy.get('[data-cy="email"]').type(this.userInDb.email);

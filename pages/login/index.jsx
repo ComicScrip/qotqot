@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
+// import { signIn, signOut } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 
@@ -16,7 +17,7 @@ export default function Login({ csrfToken }) {
         <div className="m-auto mt-16 flex flex-col justify-center items-center ">
           <div>
             <Image
-              src="/../public/assets/Logo-QotQot-Sans-fond-carré_44rzy5xn.png"
+              src="/assets/logoqotqot.png"
               alt="logo_qotqot"
               width={200}
               height={200}
@@ -26,8 +27,8 @@ export default function Login({ csrfToken }) {
         </div>
 
         <form
-          action="/send-data-here"
           method="post"
+          action="/api/auth/callback/credentials"
           className="flex flex-col px-3 py-4 "
         >
           <input
@@ -62,34 +63,35 @@ export default function Login({ csrfToken }) {
               placeholder="votre mot de passe"
             />
           </div>
+          <div className="m-auto py-2 px-3">
+            <label className="text-[#7a7a7a]">
+              <input type="checkbox" className="mr-3 ml-1 border-gray-200" />
+              Se souvenir de moi
+            </label>
+          </div>
+          <div className="flex justify-center">
+            <button
+              data-cy="loginBtn"
+              className=" border-2 rounded-md px-32 py-5 uppercase text-sm text-white bg-[#339966] font-medium"
+              type="submit"
+            >
+              Se connecter
+            </button>
+            {query.error === "CredentialsSignin" && (
+              <p>Identifiants incorrects, veuillez recommencer.</p>
+            )}
+          </div>
+          <div className="flex justify-center px-3">
+            <p className=" text-[#339966] underline underline-offset-1 py-2">
+              Mot de passe oublié ?
+            </p>
+          </div>
         </form>
-        <div className="m-auto py-2 px-3">
-          <label className="text-[#7a7a7a]">
-            <input type="checkbox" className="mr-3 ml-1 border-gray-200" />
-            Se souvenir de moi
-          </label>
-        </div>
-        <div className="flex justify-center">
-          <button
-            data-cy="credentials-login-btn"
-            type="submit"
-            className=" border-2 rounded-md px-32 py-5 uppercase text-sm text-white bg-[#339966] font-medium"
-          >
-            Se connecter
-          </button>
-          {query.error === "CredentialsSignin" && (
-            <p>Identifiants incorrects, veuillez recommencer.</p>
-          )}
-        </div>
-        <div className="flex justify-center px-3">
-          <p className=" text-[#339966] underline underline-offset-1 py-2">
-            Mot de passe oublié ?
-          </p>
-        </div>
       </div>
     </>
   );
 }
+
 const getCsrfTokenAndSetCookies = async ({ res, query }) => {
   // to make it work on Vercel
   let baseUrl = process.env.NEXTAUTH_URL || `https://${process.env.VERCEL_URL}`;

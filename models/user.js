@@ -14,7 +14,7 @@ module.exports.findUserByEmail = (email) => {
       }/users?filterByFormula=%7BEmail%7D%3D%22${encodeURIComponent(email)}%22`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
         },
       }
     )

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Raleway&family=Updock&display=swap");
 html,
 body {
   padding: 0;
@@ -14,4 +15,5 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
 }

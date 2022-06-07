@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 
 export default function NewOrder() {
@@ -47,11 +48,7 @@ export default function NewOrder() {
           Could not get data from the server, please try again
         </p>
       )}
-      {isLoading ? (
-        <img src="/images/Loading_icon.gif" alt="spin to win" />
-      ) : (
-        renderProducts
-      )}
+      {isLoading ? <LoadingSpin /> : renderProducts}
     </>
   );
 }

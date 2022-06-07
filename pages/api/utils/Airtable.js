@@ -1,8 +1,8 @@
-const minifyRecords = (records) => {
-  return records.map((record) => getMinifiedRecord(record));
+const minifyProducts = (records) => {
+  return records.map((record) => getMinifiedProduct(record));
 };
 
-const getMinifiedRecord = (record) => {
+const getMinifiedProduct = (record) => {
   return {
     id: record.id,
     info: record.fields,
@@ -15,4 +15,4 @@ const getMinifiedRecord = (record) => {
   };
 };
 
-export { minifyRecords, getMinifiedRecord };
+export { minifyProducts, getMinifiedProduct };

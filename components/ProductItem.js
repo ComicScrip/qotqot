@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import style from "../styles/product_item.module.css";
 
 function ProductItem(props) {

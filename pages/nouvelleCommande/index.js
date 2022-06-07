@@ -1,11 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import ProductItem from "../../components/ProductItem";
-// import s from "../../styles/nouvelleCommande.module.css";
 
-export default function NouvelleCommande() {
+export default function NewOrder() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -19,9 +17,10 @@ export default function NouvelleCommande() {
       .then((data) => setProductList(data))
       .catch(() =>
         setError("Could not get data from the server, please try again")
-      );
-    setIsLoading(false);
+      )
+      .finally(() => setIsLoading(false));
   }, []);
+
   const renderProducts = (
     <div className="main_container">
       {productList.map((prod) => (

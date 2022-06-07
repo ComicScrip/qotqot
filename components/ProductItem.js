@@ -1,6 +1,15 @@
 import style from "../styles/product_item.module.css";
-
+import { useState } from "react";
 function ProductItem(props) {
+  const [count, setCount] = useState(0);
+
+  const handleSubtractOne = () => {
+    setCount(count - 1);
+  };
+  const handleAddOne = () => {
+    setCount(count + 1);
+  };
+
   return (
     <div className={style.item_wrapper}>
       <div className={style.item_picture}>
@@ -31,11 +40,24 @@ function ProductItem(props) {
         </div>
 
         <div className={style.counter}>
-          <div>-</div>
-          <div>Qt</div>
-          <div>+</div>
+          <button
+            className={style.countBtn}
+            onClick={
+              count > 0 && props.stock === "En stock" ? handleSubtractOne : null
+            }
+          >
+            -
+          </button>
+          <div className={style.count_total}>{count}</div>
+          <button
+            className={style.countBtn}
+            onClick={props.stock === "En stock" ? handleAddOne : null}
+          >
+            +
+          </button>
         </div>
       </div>
+      <div className={count > 0 ? style.is_selected : ""}></div>
     </div>
   );
 }

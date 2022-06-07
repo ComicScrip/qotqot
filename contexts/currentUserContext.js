@@ -9,7 +9,6 @@ export default function CurrentUserContextProvider({ children }) {
   const { data, status } = useSession();
   console.log(data, status);
 
-  // eslint-disable-next-line no-unused-vars
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
 
   const getProfile = useCallback(() => {
@@ -33,7 +32,7 @@ export default function CurrentUserContextProvider({ children }) {
   }, [status, getProfile]);
 
   return (
-    <CurrentUserContext.Provider value={{ name: "gui" }}>
+    <CurrentUserContext.Provider value={{ currentUserProfile }}>
       {children}
     </CurrentUserContext.Provider>
   );

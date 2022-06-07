@@ -8,12 +8,18 @@ import ProductItem from "../../components/ProductItem";
 export default function NouvelleCommande() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    setError("");
+
     axios
       .get("/api/products")
       .then((res) => res.data)
-      .then((data) => setProductList(data));
+      .then((data) => setProductList(data))
+      .catch(() =>
+        setError("Could not get data from the server, please try again")
+      );
     setIsLoading(false);
   }, []);
   const renderProducts = (
@@ -37,6 +43,11 @@ export default function NouvelleCommande() {
   );
   return (
     <>
+      {error && (
+        <p className="error">
+          Could not get data from the server, please try again
+        </p>
+      )}
       {isLoading ? (
         <img src="/images/Loading_icon.gif" alt="spin to win" />
       ) : (

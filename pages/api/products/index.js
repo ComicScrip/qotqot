@@ -15,6 +15,6 @@ export default async function getAllProducts(req, res) {
       });
   } catch (error) {
     res.statusCode = 500;
-    res.json({ msg: "Something went very wrong :( " });
+    res.json({ msg: "Something went very wrong" });
   }
 }

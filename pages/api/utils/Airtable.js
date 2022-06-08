@@ -5,6 +5,7 @@ const minifyProducts = (records) => {
 const getMinifiedProduct = (record) => {
   return {
     id: record.id,
+    codeProduit: record.fields["Code Produit QotQot"],
     info: record.fields,
     name: record.fields.Produit,
     weight: record.fields.Conditionnement,

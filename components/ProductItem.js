@@ -1,12 +1,29 @@
 import style from "../styles/product_item.module.css";
 import { useState } from "react";
-function ProductItem(props) {
-  const [count, setCount] = useState(0);
+import axios from "axios";
 
-  const handleSubtractOne = () => {
+function ProductItem(props) {
+  const codeQotQot = props.codeProduit;
+
+  const addToCart = () => {
+    console.log(codeQotQot);
+    const data = {
+      records: [
+        {
+          fields: {
+            Name: codeQotQot,
+          },
+        },
+      ],
+    };
+    axios.post("/api/addToCart", data);
+  };
+  const [count, setCount] = useState(0);
+  const handleSubtractOneFromCart = () => {
     setCount(count - 1);
   };
-  const handleAddOne = () => {
+  const handleAddOneToCart = () => {
+    addToCart();
     setCount(count + 1);
   };
 
@@ -43,7 +60,9 @@ function ProductItem(props) {
           <button
             className={style.countBtn}
             onClick={
-              count > 0 && props.stock === "En stock" ? handleSubtractOne : null
+              count > 0 && props.stock === "En stock"
+                ? handleSubtractOneFromCart
+                : null
             }
           >
             -
@@ -51,7 +70,7 @@ function ProductItem(props) {
           <div className={style.count_total}>{count}</div>
           <button
             className={style.countBtn}
-            onClick={props.stock === "En stock" ? handleAddOne : null}
+            onClick={props.stock === "En stock" ? handleAddOneToCart : null}
           >
             +
           </button>

@@ -13,7 +13,7 @@ export default function NewOrder() {
     setError("");
 
     axios
-      .get("/api/products")
+      .get("/api/getProducts")
       .then((res) => res.data)
       .then((data) => setProductList(data))
       .catch(() =>
@@ -27,6 +27,7 @@ export default function NewOrder() {
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}
+          codeProduit={prod.codeProduit}
           name={prod.name}
           weight={prod.weight}
           price={prod.price}

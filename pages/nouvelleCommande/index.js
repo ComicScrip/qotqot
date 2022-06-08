@@ -27,6 +27,7 @@ export default function NewOrder() {
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}
+          id={prod.id}
           codeProduit={prod.codeProduit}
           name={prod.name}
           weight={prod.weight}
@@ -36,6 +37,7 @@ export default function NewOrder() {
           picture={prod.picture ? prod.picture : ""}
         />
       ))}
+
       <style jsx>{`
   * {
       background-color: #E5E5E5;

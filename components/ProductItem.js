@@ -3,10 +3,13 @@ import { useState } from "react";
 import axios from "axios";
 
 function ProductItem(props) {
-  const codeQotQot = props.codeProduit;
+  // --- props renaming --- //
 
-  const addToCart = () => {
-    console.log(codeQotQot);
+  const codeQotQot = props.codeProduit;
+  const productId = props.id;
+  // --- Call to API POST route --- //
+
+  const sendItemToCart = () => {
     const data = {
       records: [
         {
@@ -18,12 +21,29 @@ function ProductItem(props) {
     };
     axios.post("/api/addToCart", data);
   };
+
+  const removeItemFromCart = () => {
+    const data = {
+      records: [
+        {
+          fields: {
+            id: productId,
+            deleted: true,
+          },
+        },
+      ],
+    };
+    axios.delete("/api/addToCart", data);
+  };
+  // --- Counter functions --- //
+
   const [count, setCount] = useState(0);
   const handleSubtractOneFromCart = () => {
+    removeItemFromCart();
     setCount(count - 1);
   };
   const handleAddOneToCart = () => {
-    addToCart();
+    sendItemToCart();
     setCount(count + 1);
   };
 

@@ -1,9 +1,10 @@
 import axios from "axios";
 
 export default async function addToCart(req, res) {
-  const data = req.body;
+  const Name = req.body;
+
   await axios
-    .post("https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Panier ", data, {
+    .delete("https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Panier ", Name, {
       headers: {
         Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
       },

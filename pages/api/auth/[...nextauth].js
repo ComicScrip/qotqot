@@ -21,6 +21,7 @@ export default NextAuth({
       },
     }),
     // ...add more providers here
+    // voir doc next auth callbacks redirect call back
   ],
   pages: {
     signIn: "/",

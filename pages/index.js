@@ -61,6 +61,7 @@ export default function Login({ csrfToken }) {
                   minLength="8"
                   maxLength="50"
                   placeholder="jean.dupont@mail.com"
+                  data-cy="email"
                 />
               </div>
               <div className="text-[#7F7F7F] border-2 border-gray-300 my-3 h-14 px-4 flex flex-col rounded-lg">
@@ -74,6 +75,7 @@ export default function Login({ csrfToken }) {
                   minLength="8"
                   maxLength="15"
                   placeholder="votre mot de passe"
+                  data-cy="password"
                 />
               </div>
               <div className="m-auto py-2 px-3">
@@ -93,18 +95,19 @@ export default function Login({ csrfToken }) {
                 >
                   Se connecter
                 </button>
-                {query.error === "CredentialsSignin" && (
-                  <p className="text-[red] text-center py-4">
-                    ❌ Identifiants incorrects, veuillez recommencer.
-                  </p>
-                )}
-              </div>
-              <div className="flex justify-center px-3">
-                <p className=" text-gray-400 underline underline-offset-1 py-2">
-                  Mot de passe oublié ?
-                </p>
               </div>
             </form>
+            {query.error === "CredentialsSignin" && (
+              <p className="text-[red] text-center py-4">
+                ❌ Identifiants incorrects, veuillez recommencer.
+              </p>
+            )}
+
+            <div className="flex justify-center px-3">
+              <p className=" text-gray-400 underline underline-offset-1 py-2">
+                Mot de passe oublié ?
+              </p>
+            </div>
           </div>
         </>
       )}

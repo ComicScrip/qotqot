@@ -17,6 +17,7 @@ export default function CurrentUserContextProvider({ children }) {
   );
 
   const getProfile = useCallback(() => {
+    console.log("get profile");
     axios
       .get("/api/profile")
       .then(({ data }) => {
@@ -28,9 +29,12 @@ export default function CurrentUserContextProvider({ children }) {
       });
   }, []);
 
-  console.log(currentUserProfile);
+  console.log("st", status);
+  console.log("profile", currentUserProfile);
 
   useEffect(() => {
+    console.log("hello");
+
     if (status === "authenticated") {
       getProfile();
     } else if (status === "unauthenticated") {

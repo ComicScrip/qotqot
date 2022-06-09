@@ -14,7 +14,7 @@ module.exports.findUserByEmail = (email) => {
       }
     )
     .then(({ data }) => {
-      return data;
+      return data?.records?.[0];
     });
 };
 

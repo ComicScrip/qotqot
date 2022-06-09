@@ -9,9 +9,7 @@ export default NextAuth({
       name: "Credentials",
       async authorize({ email, password }) {
         try {
-          const {
-            records: [user],
-          } = await findUserByEmail(email);
+          const user = await findUserByEmail(email);
           if (user && (await verifyPassword(password, user.fields.MDP))) {
             console.log(user);
             return { email: user.fields.Email };

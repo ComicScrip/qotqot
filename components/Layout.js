@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useContext } from "react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 
 export default function Layout({ children, pageTitle }) {
@@ -36,12 +36,16 @@ export default function Layout({ children, pageTitle }) {
       ) : (
         <>
           <p className="flex flex-col justify-center items-center bg-[red] text-white h-full text-xl text-center">
-            Merci de bien vouloir vous connecter pour accéder à l'appli qotqot.{" "}
+            de bien vouloir vous connecter pour accéder à l'appli qotqot.{" "}
           </p>
-          {/* 
-          <button className="mt-6" onClick={() => signIn()}>
+
+          <button
+            type="button"
+            className="mt-6 text-gray-500 bg-[green] p-4"
+            onClick={() => signIn()}
+          >
             Se connecter
-          </button> */}
+          </button>
         </>
       )}
     </div>

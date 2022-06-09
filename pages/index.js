@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 import { signOut } from "next-auth/react";
 import { useContext } from "react";
@@ -66,7 +67,7 @@ export default function Login({ csrfToken }) {
               <div className="text-[#7F7F7F] border-2 border-gray-300 my-3 h-14 px-4 flex flex-col rounded-lg">
                 <label className="text-[#7F7F7F] ">Mot de passe :</label>
                 <input
-                  type="password"
+                  type="text"
                   id="password"
                   name="password"
                   className="text-[#7F7F7F]"
@@ -121,13 +122,16 @@ const getCsrfTokenAndSetCookies = async ({ res, query }) => {
     callbackUrlIsPresent && query?.callbackUrl.startsWith(baseUrl);
   const host = callbackUrlIsValid ? query?.callbackUrl : baseUrl;
   const redirectURL = encodeURIComponent(host);
+  console.log(redirectURL);
   // getting both the csrf form token and (next-auth.csrf-token cookie + next-auth.callback-url cookie)
   const csrfUrl = `${baseUrl}/api/auth/csrf?callbackUrl=${redirectURL}`;
-  const csrfResponse = await fetch(csrfUrl);
-  const { csrfToken } = await csrfResponse.json();
+  const csrfResponse = await axios.get(csrfUrl);
+  const {
+    data: { csrfToken },
+  } = await csrfResponse;
   const { headers } = csrfResponse;
   // placing the cookies
-  const [csrfCookie, redirectCookie] = headers.get("set-cookie").split(",");
+  const [csrfCookie, redirectCookie] = headers["set-cookie"];
   res.setHeader("set-cookie", [csrfCookie, redirectCookie]);
   // placing form csrf token
   return csrfToken;

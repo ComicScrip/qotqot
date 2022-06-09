@@ -1,11 +1,6 @@
 const argon2 = require("argon2");
 const { default: axios } = require("axios");
 
-module.exports.verifyPassword = (plainPassword, hashedPassword) => {
-  console.log(plainPassword, hashedPassword);
-  return true;
-};
-
 module.exports.findUserByEmail = (email) => {
   return axios
     .get(
@@ -31,11 +26,12 @@ const hashingOptions = {
   type: argon2.argon2id,
 };
 
+module.exports.verifyPassword = (plainPassword, hashedPassword) => {
+  return argon2.verify(hashedPassword, plainPassword, hashingOptions);
+};
+
 const hashPassword = (plainPassword) =>
   argon2.hash(plainPassword, hashingOptions);
-
-// module.exports.findUserByEmail = (email) =>
-//   db.user.findUnique({ where: { email } }).catch(() => false);
 
 // // module.exports.deleteAllUsers = db.user.deleteMany;
 
@@ -43,9 +39,6 @@ const hashPassword = (plainPassword) =>
 // //   db.user.delete({ where: { email } }).catch(() => false);
 
 module.exports.hashPassword = hashPassword;
-
-// module.exports.verifyPassword = (hash, plain) =>
-//   argon2.verify(hash, plain, hashingOptions);
 
 // module.exports.getSafeAttributes = (user) => ({
 //   ...user,

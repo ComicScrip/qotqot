@@ -12,8 +12,9 @@ export default NextAuth({
           const {
             records: [user],
           } = await findUserByEmail(email);
-          if (user && (await verifyPassword(password, user.hashedPassword))) {
-            return user;
+          if (user && (await verifyPassword(password, user.fields.MDP))) {
+            console.log(user);
+            return { email: user.fields.Email };
           } else {
             console.log("error");
             return null;
@@ -27,6 +28,6 @@ export default NextAuth({
     // ...add more providers here
   ],
   pages: {
-    signIn: "/login",
+    signIn: "/",
   },
 });

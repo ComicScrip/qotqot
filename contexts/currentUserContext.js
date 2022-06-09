@@ -1,5 +1,5 @@
 import { signOut, useSession } from "next-auth/react";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useCallback } from "react";
 
@@ -10,6 +10,11 @@ export default function CurrentUserContextProvider({ children }) {
   console.log(data, status);
 
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
+
+  const currentUserLogged = useMemo(
+    () => currentUserProfile,
+    [currentUserProfile]
+  );
 
   const getProfile = useCallback(() => {
     axios
@@ -23,6 +28,8 @@ export default function CurrentUserContextProvider({ children }) {
       });
   }, []);
 
+  console.log(currentUserProfile);
+
   useEffect(() => {
     if (status === "authenticated") {
       getProfile();
@@ -32,7 +39,15 @@ export default function CurrentUserContextProvider({ children }) {
   }, [status, getProfile]);
 
   return (
-    <CurrentUserContext.Provider value={{ currentUserProfile }}>
+    <CurrentUserContext.Provider
+      value={{
+        currentUserProfile,
+        currentUserLogged,
+        setCurrentUserProfile,
+        getProfile,
+        status,
+      }}
+    >
       {children}
     </CurrentUserContext.Provider>
   );

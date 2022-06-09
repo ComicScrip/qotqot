@@ -26,17 +26,10 @@ function ProductItem(props) {
   };
 
   const removeItemFromCart = () => {
-    const data = {
-      records: [
-        {
-          fields: {
-            id: productId,
-          },
-        },
-      ],
-    };
-    console.log(data.records[0].fields.id);
-    axios.delete("/api/addToCart", data);
+    const id = productId;
+
+    console.log(productId);
+    axios.delete("/api/deleteFromCart/", id);
   };
   // --- Counter functions --- //
 

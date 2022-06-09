@@ -26,12 +26,15 @@
   font-size: 14px;
   font-family: var(--var-main-font-style1);
   color: white;
-  background-color: #339966;
+  background-color: #06968a;
   cursor: pointer;
 }
 
 .displayCommande {
-  display: inline;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }
 
 .title {
@@ -41,8 +44,8 @@
 }
 
 .commande {
-  width: 100px;
-  height: 100px;
+  width: 98px;
+  height: 98px;
   background-color: white;
   border-radius: 4px;
 }
@@ -54,7 +57,9 @@
   border-radius: 4px;
   text-align: center;
   margin: 10px auto;
-  color: #ffb923;
+  color: #06968a;
+  font-size: 13px;
+  padding: auto;
 }
 
 .date {
@@ -63,18 +68,26 @@
   text-align: center;
 }
 
-.state2 {
+.state1 {
   width: 88px;
   height: 17px;
   background-color: rgba(51, 153, 102, 0.2);
   border-radius: 4px;
   text-align: center;
   margin: 10px auto;
-  color: #339966;
+  padding: auto;
+  color: #06968a;
+  font-size: 13px;
 }
 
-.date2 {
-  font-weight: 700;
-  font-size: 20px;
+.state2 {
+  width: 88px;
+  height: 17px;
+  background-color: rgba(228, 27, 27, 0.2);
+  border-radius: 4px;
   text-align: center;
+  margin: 10px auto;
+  padding: auto;
+  color: #e41b1b;
+  font-size: 13px;
 }

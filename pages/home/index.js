@@ -13,19 +13,26 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("/api/orders")
+      .get("/api/orders?status=pending")
       .then((res) => res.data)
-      .then((data) => data.records)
-      .then((data) => setOrdersList(data));
+      .then((data) => data)
+      .then((data) => setOrdersList(data))
+      .catch(() =>
+        alert("Could not get data from the server, please try again")
+      );
   }, []);
 
   useEffect(() => {
     axios
-      .get("/api/ordersPassed")
+      .get("/api/orders?status=passed")
       .then((res) => res.data)
-      .then((data) => data.records)
-      .then((data) => setOrdersListPassed(data));
+      .then((data) => data)
+      .then((data) => setOrdersListPassed(data))
+      .catch(() =>
+        alert("Could not get data from the server, please try again")
+      );
   }, []);
+  console.log(ordersList);
 
   return (
     <>
@@ -37,22 +44,25 @@ export default function Home() {
             </button>
             <h2 className={styles.title}>Commandes à venir</h2>
             {ordersList.map((order) => (
-              <div className="displayCommande">
+              <div className={styles.displayCommande}>
                 <OrderInProgress
-                  key={order.fields.id}
-                  DateLivraison={order.fields.DateLivraison}
+                  key={order.id}
+                  statut={order.statut}
+                  dateLivraison={order.dateLivraison}
                 />
               </div>
             ))}
+
             <h2 className={styles.title}>Commandes passées</h2>
-            {ordersListPassed.map((order) => (
-              <div className="displayCommande">
+            <div className={styles.displayCommande}>
+              {ordersListPassed.map((order) => (
                 <OrderPassed
-                  key={order.fields.id}
-                  DateLivraison={order.fields.DateLivraison}
+                  key={order.id}
+                  statut={order.statut}
+                  dateLivraison={order.dateLivraison}
                 />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </Layout>

@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
-import { signOut } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 
@@ -41,7 +41,14 @@ export default function Login({ csrfToken }) {
 
             <form
               method="post"
-              action="/api/auth/callback/credentials"
+              onSubmit={(e) => {
+                e.preventDefault();
+                signIn("credentials", {
+                  email: e.target.elements.email.value,
+                  password: e.target.elements.password.value,
+                  callbackUrl: `${window.location.origin}/commandes`,
+                });
+              }}
               className="flex flex-col px-3 py-4 "
             >
               <input

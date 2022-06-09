@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Header from "../components/Header";
 import { useContext } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
@@ -21,6 +22,7 @@ export default function Layout({ children, pageTitle }) {
             rel="stylesheet"
           />
         </Head>
+        <Header></Header>
         {children}
       </>
     );

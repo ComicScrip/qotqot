@@ -91,3 +91,28 @@
   color: #e41b1b;
   font-size: 13px;
 }
+
+@media screen and (min-width: 700px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .displayCommande {
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(120px, auto);
+  }
+
+  .nouvelleCommandeBtn {
+    font-size: 18px;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+} ;

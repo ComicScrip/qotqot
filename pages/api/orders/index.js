@@ -2,7 +2,6 @@ import { minifyOrders } from "../utils/Airtable";
 import axios from "axios";
 
 export default async function getAllProducts(req, res) {
-  console.log(req.query);
   axios
     .get(
       `https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Commandes%20Pro?filterByFormula=${

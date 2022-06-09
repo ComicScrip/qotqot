@@ -19,3 +19,23 @@
   font-size: var(--var-main-font-style1);
   font-weight: 400;
 }
+
+@media screen and (min-width: 700px) {
+  .header {
+    margin: auto 0;
+    height: 35px;
+  }
+
+  .divTitle {
+    margin-left: 25%;
+    margin-left: 25%;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .date {
+    font-size: 19px;
+  }
+} ;

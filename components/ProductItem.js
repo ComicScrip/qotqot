@@ -31,11 +31,11 @@ function ProductItem(props) {
         {
           fields: {
             id: productId,
-            deleted: true,
           },
         },
       ],
     };
+    console.log(data.records[0].fields.id);
     axios.delete("/api/addToCart", data);
   };
   // --- Counter functions --- //

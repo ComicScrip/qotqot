@@ -10,11 +10,14 @@ function ProductItem(props) {
   // --- Call to API POST route --- //
 
   const sendItemToCart = () => {
+    console.log(productId);
+    console.log(codeQotQot);
     const data = {
       records: [
         {
           fields: {
-            Name: codeQotQot,
+            CodeQotQot: codeQotQot,
+            id: productId,
           },
         },
       ],

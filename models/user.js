@@ -33,14 +33,4 @@ module.exports.verifyPassword = (plainPassword, hashedPassword) => {
 const hashPassword = (plainPassword) =>
   argon2.hash(plainPassword, hashingOptions);
 
-// // module.exports.deleteAllUsers = db.user.deleteMany;
-
-// // module.exports.deleteUserByEmail = (email) =>
-// //   db.user.delete({ where: { email } }).catch(() => false);
-
 module.exports.hashPassword = hashPassword;
-
-// module.exports.getSafeAttributes = (user) => ({
-//   ...user,
-//   hashedPassword: undefined,
-// });

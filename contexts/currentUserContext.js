@@ -6,8 +6,7 @@ import { useCallback } from "react";
 export const CurrentUserContext = createContext({});
 
 export default function CurrentUserContextProvider({ children }) {
-  const { data, status } = useSession();
-  console.log(data, status);
+  const { status } = useSession();
 
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
 
@@ -17,7 +16,6 @@ export default function CurrentUserContextProvider({ children }) {
   );
 
   const getProfile = useCallback(() => {
-    console.log("get profile");
     axios
       .get("/api/profile")
       .then(({ data }) => {
@@ -29,12 +27,7 @@ export default function CurrentUserContextProvider({ children }) {
       });
   }, []);
 
-  console.log("st", status);
-  console.log("profile", currentUserProfile);
-
   useEffect(() => {
-    console.log("hello");
-
     if (status === "authenticated") {
       getProfile();
     } else if (status === "unauthenticated") {

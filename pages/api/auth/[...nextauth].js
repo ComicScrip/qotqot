@@ -11,14 +11,11 @@ export default NextAuth({
         try {
           const user = await findUserByEmail(email);
           if (user && (await verifyPassword(password, user.fields.MDP))) {
-            console.log(user);
             return { email: user.fields.Email };
           } else {
-            console.log("error");
             return null;
           }
         } catch (err) {
-          console.log("error", err.response);
           return null;
         }
       },

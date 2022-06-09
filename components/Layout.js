@@ -25,7 +25,6 @@ export default function Layout({ children, pageTitle }) {
       </>
     );
   }
-  console.log(status);
 
   return (
     <div>
@@ -36,16 +35,17 @@ export default function Layout({ children, pageTitle }) {
       ) : (
         <>
           <p className="flex flex-col justify-center items-center bg-[red] text-white h-full text-xl text-center">
-            de bien vouloir vous connecter pour accéder à l'appli qotqot.{" "}
+            Merci de bien vouloir vous connecter pour accéder à l'appli qotqot.{" "}
           </p>
-
-          <button
-            type="button"
-            className="mt-6 text-gray-500 bg-[green] p-4"
-            onClick={() => signIn()}
-          >
-            Se connecter
-          </button>
+          <div className="flex justify-center ">
+            <button
+              type="button"
+              className="mt-6 text-white uppercase bg-[green] p-4"
+              onClick={() => signIn()}
+            >
+              Se connecter
+            </button>
+          </div>
         </>
       )}
     </div>

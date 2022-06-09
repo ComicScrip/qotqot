@@ -32,7 +32,6 @@ export default function Home() {
         alert("Could not get data from the server, please try again")
       );
   }, []);
-  console.log(ordersList);
 
   return (
     <>

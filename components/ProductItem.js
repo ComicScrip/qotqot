@@ -22,6 +22,7 @@ function ProductItem(props) {
         },
       ],
     };
+    // --- le client active la route/API qui lui contactera le back-end --- //
     axios.post("/api/addToCart", data);
   };
 

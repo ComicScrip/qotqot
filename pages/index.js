@@ -1,73 +1,158 @@
-/* eslint-disable react/jsx-key */
-import Link from "next/link";
-import Layout from "../components/Layout";
-import OrderInProgress from "../components/OrderInProgress";
-import OrderPassed from "../components/OrderPassed";
-import styles from "../styles/home.module.css";
+import React from "react";
+import Image from "next/image";
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useRouter } from "next/dist/client/router";
+import { signIn, signOut } from "next-auth/react";
+import { useContext } from "react";
+import { CurrentUserContext } from "../contexts/currentUserContext";
 
-export default function Home() {
-  const [ordersList, setOrdersList] = useState([]);
-  const [ordersListPassed, setOrdersListPassed] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/api/orders?status=pending")
-      .then((res) => res.data)
-      .then((data) => data)
-      .then((data) => setOrdersList(data))
-      .catch(() =>
-        alert("Could not get data from the server, please try again")
-      );
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("/api/orders?status=passed")
-      .then((res) => res.data)
-      .then((data) => data)
-      .then((data) => setOrdersListPassed(data))
-      .catch(() =>
-        alert("Could not get data from the server, please try again")
-      );
-  }, []);
+export default function Login({ csrfToken }) {
+  const { currentUserProfile } = useContext(CurrentUserContext);
+  const { query } = useRouter();
 
   return (
     <>
-      <Layout>
-        <div className={styles.homeBody}>
-          <div className={styles.home}>
-            <Link href="/nouvelleCommande">
-              <button className={styles.nouvelleCommandeBtn}>
-                NOUVELLE COMMANDE
-              </button>
-            </Link>
-            <h2 className={styles.title}>Commandes à venir</h2>
-            {ordersList.map((order) => (
-              <div className={styles.displayCommande}>
-                <OrderInProgress
-                  key={order.id}
-                  statut={order.statut}
-                  dateLivraison={order.dateLivraison}
+      {currentUserProfile ? (
+        <>
+          Connecté en tant que {currentUserProfile.fields.Email} <br />
+          <button
+            className="border-2 rounded-md p-4 uppercase text-sm text-white bg-[red] font-medium"
+            type="submit"
+            data-cy="disconnectBtn"
+            onClick={() => signOut()}
+          >
+            Se déconnecter
+          </button>
+        </>
+      ) : (
+        <>
+          <div id="login" className="w-full h-full m-auto ">
+            <div className=" m-auto mt-16 flex flex-col justify-center items-center ">
+              <div>
+                <Image
+                  src="/assets/logo-qot-qot.png"
+                  alt="logo_qotqot"
+                  width={148}
+                  height={164}
                 />
               </div>
-            ))}
-
-            <h2 className={styles.title}>Commandes passées</h2>
-            <div className={styles.displayCommande}>
-              {ordersListPassed.map((order) => (
-                <OrderPassed
-                  key={order.id}
-                  statut={order.statut}
-                  dateLivraison={order.dateLivraison}
-                />
-              ))}
+              <h1 className="my-8 tracking-2">Espace Professionnel</h1>
             </div>
+
+            <form
+              method="post"
+              onSubmit={(e) => {
+                e.preventDefault();
+                signIn("credentials", {
+                  email: e.target.elements.email.value,
+                  password: e.target.elements.password.value,
+                  callbackUrl: `${window.location.origin}/commandes`,
+                });
+              }}
+              className="flex flex-col px-3 py-4 "
+              data-cy="loginForm"
+            >
+              <input
+                id="csrfToken"
+                name="csrfToken"
+                type="hidden"
+                defaultValue={csrfToken}
+              />
+              <div className="text-[#7F7F7F] border-2 border-gray-200 h-14 px-4 flex flex-col rounded-lg">
+                <label className="text-[#7F7F7F]">Email</label>
+                <input
+                  data-cy="email"
+                  type="text"
+                  id="email"
+                  name="email"
+                  className="text-[#7F7F7F]"
+                  required
+                  minLength="8"
+                  maxLength="50"
+                  placeholder="jean.dupont@mail.com"
+                />
+              </div>
+              <div className="text-[#7F7F7F] border-2 border-gray-200 my-3 h-14 px-4 flex flex-col rounded-lg">
+                <label className="text-[#7F7F7F] ">Mot de passe :</label>
+                <input
+                  data-cy="password"
+                  type="text"
+                  id="password"
+                  name="password"
+                  className="text-[#7F7F7F]"
+                  required
+                  minLength="8"
+                  maxLength="15"
+                  placeholder="votre mot de passe"
+                />
+              </div>
+              <div className="m-auto py-2 px-3">
+                <label className="text-[#7a7a7a]">
+                  <input
+                    type="checkbox"
+                    className="mr-3 ml-1 border-gray-200"
+                    data-cy="rememberBox"
+                  />
+                  Se souvenir de moi
+                </label>
+              </div>
+              <div className="flex justify-center flex-col">
+                <button
+                  data-cy="loginBtn"
+                  className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
+                  type="submit"
+                >
+                  Se connecter
+                </button>
+                {query.error === "CredentialsSignin" && (
+                  <p className="text-[red] text-center py-4">
+                    ❌ Identifiants incorrects, veuillez recommencer.
+                  </p>
+                )}
+              </div>
+              <div className="flex justify-center px-3">
+                <p
+                  className=" text-gray-400 underline underline-offset-1 py-2"
+                  data-cy="lostPassword"
+                >
+                  Mot de passe oublié ?
+                </p>
+              </div>
+            </form>
           </div>
-        </div>
-      </Layout>
+        </>
+      )}
     </>
   );
+}
+
+const getCsrfTokenAndSetCookies = async ({ res, query }) => {
+  // to make it work on Vercel
+  let baseUrl = process.env.NEXTAUTH_URL || `https://${process.env.VERCEL_URL}`;
+  // capturing the callback url if any, which should include the current domain for security ?
+  const callbackUrlIsPresent = typeof query?.callbackUrl === "string";
+  const callbackUrlIsValid =
+    callbackUrlIsPresent && query?.callbackUrl.startsWith(baseUrl);
+  const host = callbackUrlIsValid ? query?.callbackUrl : baseUrl;
+  const redirectURL = encodeURIComponent(host);
+  // getting both the csrf form token and (next-auth.csrf-token cookie + next-auth.callback-url cookie)
+  const csrfUrl = `${baseUrl}/api/auth/csrf?callbackUrl=${redirectURL}`;
+  const csrfResponse = await axios.get(csrfUrl);
+  const {
+    data: { csrfToken },
+  } = await csrfResponse;
+  const { headers } = csrfResponse;
+  // placing the cookies
+  const [csrfCookie, redirectCookie] = headers["set-cookie"];
+  res.setHeader("set-cookie", [csrfCookie, redirectCookie]);
+  // placing form csrf token
+  return csrfToken;
+};
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      csrfToken: await getCsrfTokenAndSetCookies(context),
+    },
+  };
 }

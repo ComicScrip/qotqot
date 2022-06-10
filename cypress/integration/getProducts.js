@@ -1,6 +1,7 @@
 describe("getProducts", () => {
   beforeEach(() => {
     cy.viewport("iphone-6");
+    cy.login({ email: "user@gmail.com" });
   });
 
   it("should display a list of products when the api responds", () => {
@@ -19,6 +20,7 @@ describe("getProducts", () => {
   });
   it("should display an error when the api is down", () => {
     cy.intercept("**/products", { statusCode: 500 });
+    cy.login({ email: "user@gmail.com" });
     cy.visit("/nouvelleCommande");
     cy.contains("Could not get data from the server, please try again");
   });

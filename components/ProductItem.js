@@ -1,46 +1,25 @@
 import style from "../styles/product_item.module.css";
 import { useState } from "react";
-import axios from "axios";
+import { useCart } from "react-use-cart";
 
 function ProductItem(props) {
-  // --- props renaming --- //
-
-  const codeQotQot = props.codeProduit;
-  const productId = props.id;
-  // --- Call to API POST route --- //
-
-  const sendItemToCart = () => {
-    console.log(productId);
-    console.log(codeQotQot);
-    const data = {
-      records: [
-        {
-          fields: {
-            CodeQotQot: codeQotQot,
-            id: productId,
-          },
-        },
-      ],
-    };
-    // --- le client active la route/API qui lui contactera le back-end --- //
-    axios.post("/api/addToCart", data);
-  };
-
-  const removeItemFromCart = () => {
-    const id = productId;
-
-    console.log(productId);
-    axios.delete("/api/deleteFromCart/", id);
-  };
-  // --- Counter functions --- //
-
   const [count, setCount] = useState(0);
-  const handleSubtractOneFromCart = () => {
-    removeItemFromCart();
-    setCount(count - 1);
+  const { addItem, updateItemQuantity } = useCart();
+
+  const handleSubtractFromCart = () => {
+    updateItemQuantity(props.id, 0);
+    setCount(0);
   };
   const handleAddOneToCart = () => {
-    sendItemToCart();
+    addItem({
+      id: props.id,
+      name: props.name,
+      picture: props.picture,
+      weight: props.weight,
+      pricePerKg: props.pricePerKg,
+      price: props.price,
+      quantity: props.quantity,
+    });
     setCount(count + 1);
   };
 
@@ -78,7 +57,7 @@ function ProductItem(props) {
             className={style.countBtn}
             onClick={
               count > 0 && props.stock === "En stock"
-                ? handleSubtractOneFromCart
+                ? handleSubtractFromCart
                 : null
             }
           >

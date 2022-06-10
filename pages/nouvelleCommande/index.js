@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 
@@ -46,6 +46,7 @@ export default function NewOrder() {
   );
   return (
     <>
+      <Link href="/essaipanier">Mon Panier</Link>
       {error && (
         <p className="error">
           Could not get data from the server, please try again

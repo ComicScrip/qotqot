@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import LoadingSpin from "../components/LoadingSpin";
 import { useContext } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
@@ -31,9 +32,7 @@ export default function Layout({ children, pageTitle }) {
   return (
     <div>
       {status === "loading" || status === "authenticated" ? (
-        <p className="flex flex-col justify-center items-center bg-[green] text-white h-full text-xl text-center">
-          Chargement des données en cours...
-        </p>
+        <LoadingSpin></LoadingSpin>
       ) : (
         <>
           <p className="flex flex-col justify-center items-center bg-[red] text-white h-full text-xl text-center">

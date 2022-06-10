@@ -27,13 +27,13 @@ export default function Login({ csrfToken }) {
       ) : (
         <>
           <div id="login" className="w-full h-full m-auto ">
-            <div className="m-auto mt-16 flex flex-col justify-center items-center ">
+            <div className=" m-auto mt-16 flex flex-col justify-center items-center ">
               <div>
                 <Image
-                  src="/assets/logoqotqot.png"
+                  src="/assets/logo-qot-qot.png"
                   alt="logo_qotqot"
-                  width={200}
-                  height={200}
+                  width={148}
+                  height={164}
                 />
               </div>
               <h1 className="my-8 tracking-2">Espace Professionnel</h1>
@@ -60,6 +60,7 @@ export default function Login({ csrfToken }) {
               <div className="text-[#7F7F7F] border-2 border-gray-300 h-14 px-4 flex flex-col rounded-lg">
                 <label className="text-[#7F7F7F]">Email</label>
                 <input
+                  data-cy="email"
                   type="text"
                   id="email"
                   name="email"
@@ -73,6 +74,7 @@ export default function Login({ csrfToken }) {
               <div className="text-[#7F7F7F] border-2 border-gray-300 my-3 h-14 px-4 flex flex-col rounded-lg">
                 <label className="text-[#7F7F7F] ">Mot de passe :</label>
                 <input
+                  data-cy="password"
                   type="text"
                   id="password"
                   name="password"
@@ -95,7 +97,7 @@ export default function Login({ csrfToken }) {
               <div className="flex justify-center flex-col">
                 <button
                   data-cy="loginBtn"
-                  className=" border-2 rounded-md px-32 py-5 uppercase text-sm text-white bg-[#339966] font-medium"
+                  className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
                   type="submit"
                 >
                   Se connecter

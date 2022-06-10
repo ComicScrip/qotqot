@@ -50,6 +50,7 @@ export default function Login({ csrfToken }) {
                 });
               }}
               className="flex flex-col px-3 py-4 "
+              data-cy="loginForm"
             >
               <input
                 id="csrfToken"
@@ -57,7 +58,7 @@ export default function Login({ csrfToken }) {
                 type="hidden"
                 defaultValue={csrfToken}
               />
-              <div className="text-[#7F7F7F] border-2 border-gray-300 h-14 px-4 flex flex-col rounded-lg">
+              <div className="text-[#7F7F7F] border-2 border-gray-200 h-14 px-4 flex flex-col rounded-lg">
                 <label className="text-[#7F7F7F]">Email</label>
                 <input
                   data-cy="email"
@@ -71,7 +72,7 @@ export default function Login({ csrfToken }) {
                   placeholder="jean.dupont@mail.com"
                 />
               </div>
-              <div className="text-[#7F7F7F] border-2 border-gray-300 my-3 h-14 px-4 flex flex-col rounded-lg">
+              <div className="text-[#7F7F7F] border-2 border-gray-200 my-3 h-14 px-4 flex flex-col rounded-lg">
                 <label className="text-[#7F7F7F] ">Mot de passe :</label>
                 <input
                   data-cy="password"
@@ -90,6 +91,7 @@ export default function Login({ csrfToken }) {
                   <input
                     type="checkbox"
                     className="mr-3 ml-1 border-gray-200"
+                    data-cy="rememberBox"
                   />
                   Se souvenir de moi
                 </label>
@@ -109,7 +111,10 @@ export default function Login({ csrfToken }) {
                 )}
               </div>
               <div className="flex justify-center px-3">
-                <p className=" text-gray-400 underline underline-offset-1 py-2">
+                <p
+                  className=" text-gray-400 underline underline-offset-1 py-2"
+                  data-cy="lostPassword"
+                >
                   Mot de passe oublié ?
                 </p>
               </div>

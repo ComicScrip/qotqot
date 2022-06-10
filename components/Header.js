@@ -27,6 +27,7 @@ export default function Header() {
         <button
           className={styles.menu}
           onClick={() => setDisplayMenu(!displayMenu)}
+          data-cy="menu"
         >
           ...
         </button>
@@ -34,6 +35,7 @@ export default function Header() {
           <button
             onClick={() => signOut({ callbackUrl: window.location.origin })}
             className={styles.logout}
+            data-cy="disconnectBtn"
           >
             Déconnexion
           </button>

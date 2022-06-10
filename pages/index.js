@@ -79,7 +79,7 @@ export default function Login({ csrfToken }) {
                 />
               </div>
               <div className="m-auto py-2 px-3">
-                <label className="text-[#7a7a7a]">
+                <label className="text-gray-300">
                   <input
                     type="checkbox"
                     className="mr-3 ml-1 border-gray-200"
@@ -90,7 +90,7 @@ export default function Login({ csrfToken }) {
               <div className="flex justify-center flex-col">
                 <button
                   data-cy="loginBtn"
-                  className=" border-2 rounded-md px-32 py-5 uppercase text-sm text-white bg-[#339966] font-medium"
+                  className=" border-2 rounded-md px-24 py-4 uppercase text-sm text-white bg-[#06968A] font-medium"
                   type="submit"
                 >
                   Se connecter
@@ -104,7 +104,7 @@ export default function Login({ csrfToken }) {
             )}
 
             <div className="flex justify-center px-3">
-              <p className=" text-gray-400 underline underline-offset-1 py-2">
+              <p className=" text-gray-300 underline underline-offset-1 py-2">
                 Mot de passe oublié ?
               </p>
             </div>

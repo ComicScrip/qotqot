@@ -4,7 +4,7 @@ describe("login", () => {
   });
 });
 
-//   describe("without session", () => {
+//   describe("sign in without session", () => {
 //     it("can login with correct credentials", function () {
 //       cy.visit("/");
 //       cy.get('[data-cy="email"]').type("user@gmail.com");

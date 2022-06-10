@@ -11,15 +11,17 @@ import { useEffect } from "react";
 export default function Home() {
   const [ordersList, setOrdersList] = useState([]);
   const [ordersListPassed, setOrdersListPassed] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    setError("");
     axios
       .get("/api/orders?status=pending")
       .then((res) => res.data)
       .then((data) => data)
       .then((data) => setOrdersList(data))
       .catch(() =>
-        alert("Could not get data from the server, please try again")
+        setError("Could not get data from the server, please try again")
       );
   }, []);
 
@@ -37,6 +39,11 @@ export default function Home() {
   return (
     <>
       <Layout>
+        {error && (
+          <p className="error">
+            Could not get data from the server, please try again
+          </p>
+        )}
         <div className={styles.homeBody}>
           <div className={styles.home}>
             <Link href="/nouvelleCommande">

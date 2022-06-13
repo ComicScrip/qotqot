@@ -1,4 +1,4 @@
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { createContext, useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useCallback } from "react";
@@ -25,7 +25,7 @@ export default function CurrentUserContextProvider({ children }) {
       })
       .catch(() => {
         // when we have a stale cookie, disconnect
-        signOut();
+        // signOut();
       });
   }, []);
 

@@ -2,6 +2,8 @@ import { findUserByEmail } from "../models/user";
 import { getSession } from "next-auth/react";
 
 const reqCurrentUser = async (req, res, next) => {
+  console.log("reqcurrentuser");
+
   const session = await getSession({ req });
   console.log(session);
   req.currentUser = await findUserByEmail(session?.user?.email);

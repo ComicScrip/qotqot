@@ -32,8 +32,8 @@ export default function Login({ csrfToken }) {
                 <Image
                   src="/assets/logoqotqot.png"
                   alt="logo_qotqot"
-                  width={200}
-                  height={200}
+                  width={148}
+                  height={164}
                 />
               </div>
               <h1 className="my-8 tracking-2">Espace Professionnel</h1>

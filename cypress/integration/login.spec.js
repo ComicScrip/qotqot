@@ -2,28 +2,25 @@ describe("login", () => {
   beforeEach(() => {
     cy.viewport("iphone-6");
   });
+
+  describe("sign in without session", () => {
+    it("can login with correct credentials", function () {
+      cy.visit("/");
+      cy.get('[data-cy="email"]').type("user@gmail.com");
+      cy.get('[data-cy="password"]').type("qotqot3000");
+      cy.get('[data-cy="loginBtn"]').click();
+      cy.url().should("equal", "http://localhost:3000/commandes");
+    });
+  });
+
+  it("should login with the right credentials and redirect to the right page when callbackUrl is present in the url", function () {
+    cy.visit("/");
+    cy.get('[data-cy="email"]').type("user@gmail.com");
+    cy.get('[data-cy="password"]').type("qotqot3000");
+    cy.get('[data-cy="loginBtn"]').click();
+    cy.url().should("equal", "http://localhost:3000/commandes");
+  });
 });
-
-//   describe("sign in without session", () => {
-//     it("can login with correct credentials", function () {
-//       cy.visit("/");
-//       cy.get('[data-cy="email"]').type("user@gmail.com");
-//       cy.get('[data-cy="password"]').type("wildwidewest");
-//       cy.get('[data-cy="loginBtn"]').click();
-//       // cy.url().should("equal", "http://localhost:3000/nouvelleCommande");
-//     });
-//   });
-// });
-
-//     it("should redirect to previously visited page when callbackUrl is present in the url", function () {
-//       cy.visit("/login?callbackUrl=http://localhost:3000/projects");
-//       cy.get('[data-cy="currentUserMenu"]').should("not.exist");
-//       cy.get("#username").type(this.userInDb.email);
-//       cy.get("#password").type("verysecure");
-//       cy.get("form").submit();
-//       cy.get('[data-cy="currentUserMenu"]').should("be.visible");
-//       cy.url().should("equal", "http://localhost:3000/projects");
-//     });
 
 //     it("cannot login with incorrect email", () => {
 //       cy.get('[data-cy="currentUserMenu"]').should("not.exist");

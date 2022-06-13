@@ -16,6 +16,12 @@ async function getCartItem({ product_id, customer_id }) {
     .then((res) => res.data?.records?.[0]);
 }
 
+async function getCustomerCartItems({ customer_id }) {
+  return instance
+    .get(`/cart_items?filterByFormula=%7Bcustomer_id%7D%3D%22${customer_id}%22`)
+    .then((res) => res.data?.records);
+}
+
 async function setCartQuantity({ product_id, customer_id, quantity }) {
   const cartItem = await getCartItem({ product_id, customer_id });
 
@@ -78,6 +84,11 @@ async function main() {
       records: [product],
     },
   } = await addProduct({ name: "test", price: 22 });
+  const {
+    data: {
+      records: [product2],
+    },
+  } = await addProduct({ name: "test2", price: 42 });
 
   const {
     data: {
@@ -114,6 +125,13 @@ async function main() {
     product_id: product.fields.id,
     quantity: 3,
   });
+  await setCartQuantity({
+    customer_id: customer.fields.id,
+    product_id: product2.fields.id,
+    quantity: 5,
+  });
+
+  console.log(await getCustomerCartItems({ customer_id: customer.fields.id }));
 }
 
 main();

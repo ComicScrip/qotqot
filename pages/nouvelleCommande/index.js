@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
+import Layout from "../../components/Layout";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -44,14 +45,17 @@ export default function NewOrder() {
   `}</style>
     </div>
   );
+
   return (
-    <>
-      {error && (
-        <p className="error">
-          Could not get data from the server, please try again
-        </p>
-      )}
-      {isLoading ? <LoadingSpin /> : renderProducts}
-    </>
+    <Layout pageTitle="nouvelle-commande">
+      <>
+        {error && (
+          <p className="error">
+            Could not get data from the server, please try again
+          </p>
+        )}
+        {isLoading ? <LoadingSpin /> : renderProducts}
+      </>
+    </Layout>
   );
 }

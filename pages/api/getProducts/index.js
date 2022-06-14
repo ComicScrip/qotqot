@@ -1,7 +1,9 @@
 import { minifyProducts } from "../utils/Airtable";
 import axios from "axios";
+import base from "../../../middlewares/common";
+import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 
-export default async function getAllProducts(req, res) {
+export async function getAllProducts(req, res) {
   axios
     .get("https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Produits%20Actifs", {
       headers: {
@@ -13,3 +15,5 @@ export default async function getAllProducts(req, res) {
     })
     .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }
+
+export default base().use(reqCurrentUser).get(getAllProducts);

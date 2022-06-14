@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Raleway&family=Updock&display=swap");
 html,
 body {
@@ -13,6 +17,30 @@ a {
   text-decoration: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+@layer base {
+  body {
+    @apply bg-[#ffffff] text-black;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold;
+  }
+  h1 {
+    @apply text-2xl sm:text-4xl md:text-5xl;
+  }
+  li {
+    @apply cursor-pointer;
+  }
+  button {
+    @apply cursor-pointer border-solid;
+  }
+}
 * {
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;

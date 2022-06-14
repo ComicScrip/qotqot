@@ -23,6 +23,7 @@ export default function Home() {
       .catch(() =>
         setError("Could not get data from the server, please try again")
       );
+    console.log(ordersList);
   }, []);
 
   useEffect(() => {

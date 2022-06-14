@@ -5,6 +5,7 @@ import { useRouter } from "next/dist/client/router";
 import { signIn, signOut } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import Link from "next/link";
 
 export default function Login({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
@@ -111,12 +112,14 @@ export default function Login({ csrfToken }) {
                 )}
               </div>
               <div className="flex justify-center px-3">
-                <p
-                  className=" text-gray-400 underline underline-offset-1 py-2"
-                  data-cy="lostPassword"
-                >
-                  Mot de passe oublié ?
-                </p>
+                <Link href="/mot-de-passe-oublie">
+                  <a
+                    className=" text-gray-400 underline underline-offset-1 py-2"
+                    data-cy="lostPassword"
+                  >
+                    Mot de passe oublié ?
+                  </a>
+                </Link>
               </div>
             </form>
           </div>

@@ -3,6 +3,7 @@ const axios = require("axios");
 const { hashPassword } = require("./models/user");
 
 (async function main() {
+  console.log(`${process.env.AIRTABLE_API}/users`);
   axios.post(
     `${process.env.AIRTABLE_API}/users`,
     {
@@ -10,7 +11,7 @@ const { hashPassword } = require("./models/user");
         {
           fields: {
             Email: "user@gmail.com",
-            MDP: await hashPassword("wildwidewest"),
+            MDP: await hashPassword("qotqot3000"),
           },
         },
       ],

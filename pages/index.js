@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
-import { signOut } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 
@@ -27,10 +27,10 @@ export default function Login({ csrfToken }) {
       ) : (
         <>
           <div id="login" className="w-full h-full m-auto ">
-            <div className="m-auto mt-16 flex flex-col justify-center items-center ">
+            <div className=" m-auto mt-16 flex flex-col justify-center items-center ">
               <div>
                 <Image
-                  src="/assets/logoqotqot.png"
+                  src="/assets/logo-qot-qot.png"
                   alt="logo_qotqot"
                   width={148}
                   height={164}
@@ -41,8 +41,16 @@ export default function Login({ csrfToken }) {
 
             <form
               method="post"
-              action="/api/auth/callback/credentials"
+              onSubmit={(e) => {
+                e.preventDefault();
+                signIn("credentials", {
+                  email: e.target.elements.email.value,
+                  password: e.target.elements.password.value,
+                  callbackUrl: `${window.location.origin}/commandes`,
+                });
+              }}
               className="flex flex-col px-3 py-4 "
+              data-cy="loginForm"
             >
               <input
                 id="csrfToken"
@@ -50,9 +58,10 @@ export default function Login({ csrfToken }) {
                 type="hidden"
                 defaultValue={csrfToken}
               />
-              <div className="text-[#7F7F7F] border-2 border-gray-300 h-14 px-4 flex flex-col rounded-lg">
+              <div className="text-[#7F7F7F] border-2 border-gray-200 h-14 px-4 flex flex-col rounded-lg">
                 <label className="text-[#7F7F7F]">Email</label>
                 <input
+                  data-cy="email"
                   type="text"
                   id="email"
                   name="email"
@@ -61,12 +70,12 @@ export default function Login({ csrfToken }) {
                   minLength="8"
                   maxLength="50"
                   placeholder="jean.dupont@mail.com"
-                  data-cy="email"
                 />
               </div>
-              <div className="text-[#7F7F7F] border-2 border-gray-300 my-3 h-14 px-4 flex flex-col rounded-lg">
+              <div className="text-[#7F7F7F] border-2 border-gray-200 my-3 h-14 px-4 flex flex-col rounded-lg">
                 <label className="text-[#7F7F7F] ">Mot de passe :</label>
                 <input
+                  data-cy="password"
                   type="text"
                   id="password"
                   name="password"
@@ -75,7 +84,6 @@ export default function Login({ csrfToken }) {
                   minLength="8"
                   maxLength="15"
                   placeholder="votre mot de passe"
-                  data-cy="password"
                 />
               </div>
               <div className="m-auto py-2 px-3">
@@ -83,6 +91,7 @@ export default function Login({ csrfToken }) {
                   <input
                     type="checkbox"
                     className="mr-3 ml-1 border-gray-200"
+                    data-cy="rememberBox"
                   />
                   Se souvenir de moi
                 </label>
@@ -90,18 +99,26 @@ export default function Login({ csrfToken }) {
               <div className="flex justify-center flex-col">
                 <button
                   data-cy="loginBtn"
-                  className=" border-2 rounded-md px-24 py-4 uppercase text-sm text-white bg-[#06968A] font-medium"
+                  className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
                   type="submit"
                 >
                   Se connecter
                 </button>
+                {query.error === "CredentialsSignin" && (
+                  <p className="text-[red] text-center py-4">
+                    ❌ Identifiants incorrects, veuillez recommencer.
+                  </p>
+                )}
+              </div>
+              <div className="flex justify-center px-3">
+                <p
+                  className=" text-gray-400 underline underline-offset-1 py-2"
+                  data-cy="lostPassword"
+                >
+                  Mot de passe oublié ?
+                </p>
               </div>
             </form>
-            {query.error === "CredentialsSignin" && (
-              <p className="text-[red] text-center py-4">
-                ❌ Identifiants incorrects, veuillez recommencer.
-              </p>
-            )}
 
             <div className="flex justify-center px-3">
               <p className=" text-gray-300 underline underline-offset-1 py-2">

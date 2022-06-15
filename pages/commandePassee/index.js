@@ -6,6 +6,7 @@ import OrderProductItem from "../../components/OrderProductItem";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import LayoutCommandePassee from "../../components/LayoutCommandePassee";
+import style from "../../styles/orderedProductItem.module.css";
 
 export default function NewOrder() {
   const { orderNumberState } = useContext(CurrentUserContext);
@@ -27,13 +28,13 @@ export default function NewOrder() {
   }, []);
 
   const renderProducts = (
-    <div className="main_container">
+    <div className={style.homeBody}>
       {productList
         .filter((order) => orderNumberState === order.orderNumber)
         .map((prod) => (
           <OrderProductItem
             key={prod.id}
-            orderNumber={prod.orderNumber}
+            date={prod.date}
             name={prod.name}
             weight={prod.weight}
             quantity={prod.quantity}

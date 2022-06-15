@@ -4,12 +4,13 @@ import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
 
 export default function OrderPassed(props) {
-  const { setOrderNumberState, orderNumberState } =
+  const { setOrderNumberState, setOrderStatut, setOrderDate } =
     useContext(CurrentUserContext);
 
   function handleClick() {
     setOrderNumberState(`${props.orderNumber}`);
-    console.log(orderNumberState);
+    setOrderStatut(`${props.statut}`);
+    setOrderDate(`${props.dateLivraison}`);
   }
   return (
     <Link href="/commandePassee">

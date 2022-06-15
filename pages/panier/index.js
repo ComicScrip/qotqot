@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ProductItem from "../../components/ProductItem";
+import Cart from "../../components/Cart";
 
 export default function Panier() {
   const [cartItemsList, setCartItemsList] = useState([]);
@@ -18,9 +18,10 @@ export default function Panier() {
   return (
     <>
       <div>Ceci est mon panier</div>
+
       {console.log(cartItemsList)}
       {cartItemsList.map((item) => (
-        <ProductItem
+        <Cart
           key={item.id}
           id={item.id}
           codeProduit={item.codeProduit}
@@ -28,7 +29,7 @@ export default function Panier() {
           weight={item.weight}
           price={item.price}
           pricePerKg={item.pricePerKg}
-          stock={item.stock}
+          quantité={item.quantité}
           picture={item.picture ? item.picture : ""}
         />
       ))}

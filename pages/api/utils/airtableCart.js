@@ -134,3 +134,5 @@ async function main() {
 }
 
 main();
+
+export { getCartItem, getCustomerCartItems };

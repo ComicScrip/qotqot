@@ -1,29 +1,23 @@
 import style from "../styles/product_item.module.css";
 import { useState } from "react";
+import { useContext } from "react";
+import { CurrentUserContext } from "../contexts/currentUserContext";
 
 function ProductItem(props) {
   const [count, setCount] = useState(0);
 
+  // ---------- User Context ----------------- //
+  const { currentUserProfile } = useContext(CurrentUserContext);
+  const customer_id = currentUserProfile.fields.code_client;
+
+  // ------------- Visual Counter -------------- //
   const handleSubtractOneFromCart = () => {
     setCount(count - 1);
   };
   const handleAddOneToCart = () => {
+    console.log(customer_id);
     setCount(count + 1);
   };
-  // --- Call to API POST route --- //
-  // const sendItemToCart = () => {
-  //   const data = {
-  //     records: [
-  //       {
-  //         fields: {
-  //           CodeQotQot: codeQotQot,
-  //           id: productId,
-  //         },
-  //       },
-  //     ],
-  //   };
-  //   axios.post("/api/addToCart", data);
-  // };
 
   return (
     <>

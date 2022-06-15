@@ -13,11 +13,17 @@ export default function RestPasswordPage({ csrfToken }) {
 
   const sendResetPasswordEmail = (e) => {
     e.preventDefault();
-    axios.post("/api/users/reset-password-email", { email }).then(() => {
-      setResetEmailSent(true);
-    });
+    axios
+      .post("/api/users/reset-password-email", { email })
+      .then(() => {
+        setResetEmailSent(true);
+      })
+      .catch(console.error("email introuvable"));
   };
-  const resetPassword = {};
+  const resetPassword = (e) => {
+    e.preventDefault();
+    axios.post("/api/users/reset-password-email");
+  };
 
   return (
     <>

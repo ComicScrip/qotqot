@@ -12,7 +12,7 @@ export default function OrderInProgress(props) {
     console.log(orderNumberState);
   }
   return (
-    <Link href="/detailCommande">
+    <Link href="/commandePassee">
       <div className={styles.commande} onClick={handleClick}>
         <div className={styles.state}>{props.statut}</div>
         <div className={styles.date}>{props.dateLivraison}</div>

@@ -12,7 +12,7 @@ export default function OrderPassed(props) {
     console.log(orderNumberState);
   }
   return (
-    <Link href="/detailCommande">
+    <Link href="/commandePassee">
       <div className={styles.commande} onClick={handleClick}>
         {props.statut === "Annulée" ? (
           <div className={styles.state2}>{props.statut}</div>

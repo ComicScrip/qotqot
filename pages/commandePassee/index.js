@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import OrderProductItem from "../../components/OrderProductItem";
-import Layout from "../../components/Layout";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
+import LayoutCommandePassee from "../../components/LayoutCommandePassee";
 
 export default function NewOrder() {
   const { orderNumberState } = useContext(CurrentUserContext);
@@ -50,7 +50,7 @@ export default function NewOrder() {
   );
 
   return (
-    <Layout pageTitle="detail-commande">
+    <LayoutCommandePassee pageTitle="detail-commande">
       <>
         {error && (
           <p className="error">
@@ -59,6 +59,6 @@ export default function NewOrder() {
         )}
         {isLoading ? <LoadingSpin /> : renderProducts}
       </>
-    </Layout>
+    </LayoutCommandePassee>
   );
 }

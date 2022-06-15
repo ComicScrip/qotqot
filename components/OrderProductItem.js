@@ -1,6 +1,7 @@
 import style from "../styles/orderedProductItem.module.css";
 
 function ProductItem(props) {
+  let result = `${props.weight}` * `${props.quantity}`;
   return (
     <div className={style.item_wrapper}>
       <div className={style.item_picture}>
@@ -11,11 +12,11 @@ function ProductItem(props) {
       </div>
       <div className={style.item_detail}>
         <div className={style.item_title}>{props.name}</div>
-        <div className={style.item_weight}>{props.weight}</div>
+        <div className={style.item_weight}>{`${props.weight}g`}</div>
       </div>
       <div className={style.quantity}>
         <div className={style.itemQuantity}>{props.quantity}</div>
-        <div className={style.totalWeight}>1000g</div>
+        <div className={style.totalWeight}>{`${result}g`}</div>
       </div>
       <div className={style.price}>
         <div className={style.itemPrice}>{props.price}€ HT</div>

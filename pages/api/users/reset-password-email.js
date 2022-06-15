@@ -1,4 +1,7 @@
 /* eslint-disable no-undef */
+import crypto from "crypto";
+import mailer from "../../../mailer";
+
 async function handlePost(req, res) {
   const { email } = req.body;
   const user = await findByEmail(email);

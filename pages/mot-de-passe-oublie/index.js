@@ -1,10 +1,22 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import Image from "next/image";
-// import axios from "axios";
-// import { useRouter } from "next/dist/client/router";
+import axios from "axios";
+import { useRouter } from "next/dist/client/router";
 
-export default function Login({ csrfToken }) {
-  //   const { query } = useRouter();
+export default function RestPasswordPage({ csrfToken }) {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [newPasswordConfirmation, setNewPasswordConfirmation] = useState("");
+  const [resetEmailSent, setResetEmailSent] = useState(false);
+
+  const sendResetPasswordEmail = (e) => {
+    e.preventDefault();
+    axios.post("/api/users/reset-password-email", { email }).then(() => {
+      setResetEmailSent(true);
+    });
+  };
   const resetPassword = {};
 
   return (

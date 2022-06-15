@@ -39,7 +39,6 @@ export default function Login({ csrfToken }) {
               </div>
               <h1 className="my-8 tracking-2">Espace Professionnel</h1>
             </div>
-
             <form
               method="post"
               onSubmit={(e) => {
@@ -111,17 +110,17 @@ export default function Login({ csrfToken }) {
                   </p>
                 )}
               </div>
-              <div className="flex justify-center px-3">
-                <Link href="/mot-de-passe-oublie">
-                  <a
-                    className=" text-gray-400 underline underline-offset-1 py-2"
-                    data-cy="lostPassword"
-                  >
-                    Mot de passe oublié ?
-                  </a>
-                </Link>
-              </div>
-            </form>
+            </form>{" "}
+            <div className="flex justify-center px-3">
+              <Link href="/mot-de-passe-oublie">
+                <a
+                  className=" text-gray-400 underline underline-offset-1 py-2"
+                  data-cy="lostPassword"
+                >
+                  Mot de passe oublié ?
+                </a>
+              </Link>
+            </div>
           </div>
         </>
       )}

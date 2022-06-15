@@ -28,7 +28,6 @@ export default function NewOrder() {
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}
-          orderNumber={prod.orderNumber}
           name={prod.name}
           weight={prod.weight}
           price={prod.price}

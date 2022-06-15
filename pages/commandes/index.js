@@ -58,6 +58,7 @@ export default function Home() {
                   key={order.id}
                   statut={order.statut}
                   dateLivraison={order.dateLivraison}
+                  orderNumber={order.orderNumber}
                 />
               ))}
             </div>
@@ -69,6 +70,7 @@ export default function Home() {
                   key={order.id}
                   statut={order.statut}
                   dateLivraison={order.dateLivraison}
+                  orderNumber={order.orderNumber}
                 />
               ))}
             </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import logoImg from "../public/assets/logo-qot-qot.png";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 import { signIn, signOut } from "next-auth/react";
@@ -26,11 +27,14 @@ export default function Login({ csrfToken }) {
         </>
       ) : (
         <>
-          <div id="login" className="w-full h-full m-auto ">
+          <div
+            id="login"
+            className="w-full h-full m-auto sm:w-[60%] lg:w-[50%]"
+          >
             <div className=" m-auto mt-16 flex flex-col justify-center items-center ">
               <div>
                 <Image
-                  src="/assets/logo-qot-qot.png"
+                  src={logoImg}
                   alt="logo_qotqot"
                   width={148}
                   height={164}

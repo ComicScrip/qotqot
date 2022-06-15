@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
+import Link from "next/link";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -25,6 +26,7 @@ export default function NewOrder() {
 
   const renderProducts = (
     <div className="main_container">
+      <Link href="/pages/panier">Panier</Link>
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}

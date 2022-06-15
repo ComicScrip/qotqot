@@ -2,13 +2,6 @@ import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 
-// const instance = axios.create({
-//   baseURL: process.env.AIRTABLE_API,
-//   headers: {
-//     Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
-//   },
-// });
-
 export async function getCustomerCartItems(req, res) {
   axios
     .get(

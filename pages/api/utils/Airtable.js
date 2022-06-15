@@ -28,6 +28,7 @@ const minifyOrders = (records) => {
 const getMinifiedOrder = (record) => {
   return {
     id: record.id,
+    orderNumber: record.fields["Numéro de commande"],
     dateLivraison: dayjs(
       record.fields["Date de Livraison (import)"],
       "DD/MM/YYYY"
@@ -38,4 +39,27 @@ const getMinifiedOrder = (record) => {
   };
 };
 
-export { minifyProducts, getMinifiedProduct, minifyOrders, getMinifiedOrder };
+const minifyOrderProducts = (records) => {
+  return records.map((record) => getMinifiedOrderProduct(record));
+};
+
+const getMinifiedOrderProduct = (record) => {
+  return {
+    id: record.id,
+    orderNumber: record.fields["Numéro de commande"],
+    name: record.fields.Produit,
+    quantity: record.fields.Quantite,
+    price: record.fields["Tarif Pro (HT)"],
+    pricePerKg: record.fields["Tarif Pro (HT) au Kg/L"],
+    picture: record.fields["Image produits sans fond"]?.[0].url,
+  };
+};
+
+export {
+  minifyProducts,
+  getMinifiedProduct,
+  minifyOrders,
+  getMinifiedOrder,
+  minifyOrderProducts,
+  getMinifiedOrderProduct,
+};

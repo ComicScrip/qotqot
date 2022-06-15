@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
-import ProductItem from "../../components/ProductItem";
+import OrderProductItem from "../../components/OrderProductItem";
 import Layout from "../../components/Layout";
 
 export default function NewOrder() {
@@ -14,7 +14,7 @@ export default function NewOrder() {
     setError("");
 
     axios
-      .get("/api/products")
+      .get("/api/commandePassee")
       .then((res) => res.data)
       .then((data) => setProductList(data))
       .catch(() =>
@@ -26,14 +26,14 @@ export default function NewOrder() {
   const renderProducts = (
     <div className="main_container">
       {productList.map((prod) => (
-        <ProductItem
+        <OrderProductItem
           key={prod.id}
           orderNumber={prod.orderNumber}
           name={prod.name}
           weight={prod.weight}
+          quantity={prod.quantity}
           price={prod.price}
           pricePerKg={prod.pricePerKg}
-          stock={prod.stock}
           picture={prod.picture ? prod.picture : ""}
         />
       ))}
@@ -45,7 +45,7 @@ export default function NewOrder() {
   );
 
   return (
-    <Layout pageTitle="nouvelle-commande">
+    <Layout pageTitle="detail-commande">
       <>
         {error && (
           <p className="error">

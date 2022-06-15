@@ -52,15 +52,15 @@ export default function Home() {
               </button>
             </Link>
             <h2 className={styles.title}>Commandes à venir</h2>
-            {ordersList.map((order) => (
-              <div className={styles.displayCommande}>
+            <div className={styles.displayCommande}>
+              {ordersList.map((order) => (
                 <OrderInProgress
                   key={order.id}
                   statut={order.statut}
                   dateLivraison={order.dateLivraison}
                 />
-              </div>
-            ))}
+              ))}
+            </div>
 
             <h2 className={styles.title}>Commandes passées</h2>
             <div className={styles.displayCommande}>

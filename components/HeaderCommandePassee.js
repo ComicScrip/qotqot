@@ -7,7 +7,8 @@ import { CurrentUserContext } from "../contexts/currentUserContext";
 
 export default function HeaderCommandePassee() {
   const [displayMenu, setDisplayMenu] = useState(false);
-  const { orderStatut, orderDate } = useContext(CurrentUserContext);
+  const { orderStatut, orderDate, orderNumberState, orderAmount } =
+    useContext(CurrentUserContext);
   const today = new Date();
   const options = {
     weekday: "long",
@@ -20,11 +21,11 @@ export default function HeaderCommandePassee() {
       <div className={styles.divTitle}>
         <div className={styles.arrow}>
           <Link href="/commandes">
-            <img src="/images/arrow.png" alt="arrow" width={30} height={30} />
+            <img src="/images/arrow.png" alt="arrow" width={40} height={40} />
           </Link>
         </div>
         <div className={styles.order}>
-          <h1 className={styles.title}>Commande n°XXXX</h1>
+          <h1 className={styles.title}>Commande n° {orderNumberState}</h1>
           <p className={styles.date}>
             {today
               .toLocaleDateString("fr-FR", options)
@@ -51,7 +52,7 @@ export default function HeaderCommandePassee() {
         )}
       </div>
       <div className={styles.commandeDetails}>
-        <button className={styles.commandePrice}>50,40€ HT</button>
+        <button className={styles.commandePrice}>{`${orderAmount}€ HT`}</button>
         {orderStatut === "Livrée" ? (
           <button
             className={styles.livraison1}

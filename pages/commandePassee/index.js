@@ -32,24 +32,21 @@ export default function NewOrder() {
       {productList
         .filter((order) => orderNumberState === order.orderNumber)
         .map((prod) => (
-          <OrderProductItem
-            key={prod.id}
-            date={prod.date}
-            name={prod.name}
-            weight={prod.weight}
-            quantity={prod.quantity}
-            price={prod.price}
-            pricePerKg={prod.pricePerKg}
-            picture={prod.picture ? prod.picture : ""}
-          />
+          <div className={style.product} key={prod.id}>
+            <OrderProductItem
+              key={prod.id}
+              date={prod.date}
+              name={prod.name}
+              weight={prod.weight}
+              quantity={prod.quantity}
+              price={prod.price}
+              pricePerKg={prod.pricePerKg}
+              picture={prod.picture ? prod.picture : ""}
+            />
+          </div>
         ))}
-      <style jsx>{`
-  * {
-      background-color: #E5E5E5;
-  `}</style>
     </div>
   );
-
   return (
     <LayoutCommandePassee pageTitle="detail-commande">
       <>
@@ -63,3 +60,10 @@ export default function NewOrder() {
     </LayoutCommandePassee>
   );
 }
+
+/*
+.forEach((prod) => {
+  totalAmount += prod.price * prod.quantity;
+  setOrderAmount(totalAmount);
+})
+*/

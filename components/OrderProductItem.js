@@ -1,7 +1,15 @@
 import style from "../styles/orderedProductItem.module.css";
+import { useContext } from "react";
+import { CurrentUserContext } from "../contexts/currentUserContext";
 
-function ProductItem(props) {
-  let result = `${props.weight}` * `${props.quantity}`;
+function OrderProductItem(props) {
+  const { setOrderAmount } = useContext(CurrentUserContext);
+
+  const calculateWeight = `${props.weight}` * `${props.quantity}`;
+  const calculateTotalPrice = `${props.price}` * `${props.quantity}`;
+
+  setOrderAmount(calculateTotalPrice);
+
   return (
     <div className={style.item_wrapper}>
       <div className={style.item_picture}>
@@ -16,7 +24,7 @@ function ProductItem(props) {
       </div>
       <div className={style.quantity}>
         <div className={style.itemQuantity}>{props.quantity}</div>
-        <div className={style.totalWeight}>{`${result}g`}</div>
+        <div className={style.totalWeight}>{`${calculateWeight}g`}</div>
       </div>
       <div className={style.price}>
         <div className={style.itemPrice}>{props.price}€ HT</div>
@@ -26,4 +34,4 @@ function ProductItem(props) {
   );
 }
 
-export default ProductItem;
+export default OrderProductItem;

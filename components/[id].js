@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 
-export const getStaticPaths = async () => {
-  const res = await axios.get("api/products");
-  const data = await res.data;
-  const paths = data.records.map((product) => {
+export const getStaticPaths = () => {
+  const data = axios.get("api/products").then((res) => res.data?.records[0]);
+
+  const paths = data.map((product) => {
     return {
       params: { id: product.id.toString() },
     };

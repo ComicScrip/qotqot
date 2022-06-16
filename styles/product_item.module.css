@@ -90,16 +90,7 @@
   width: 4rem;
   text-align: center;
 }
-.stock_display_instock {
-  display: none;
-  /* 
-  --- To be confirmed with client, commented for now ---
-  padding: 0.2rem;
-  border-radius: 4px;
-  background-color: #33996633;
-  color: #339966; 
-  ------------------------------  */
-}
+
 .out_of_stock {
   background-color: #e41b1b33;
   color: #e41b1b;
@@ -118,4 +109,37 @@
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
+}
+
+/* ---- POP UP ----- */
+
+.popup_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 90vw;
+  height: 100vh;
+  background: grey;
+  border-radius: 15px;
+}
+
+.popup_top {
+  margin-top: 6rem;
+  display: flex;
+  padding: 3px;
+}
+.popup_l1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+}
+.popup_r1 {
+  flex: 2;
+}
+
+.popup_picture {
+  height: 5rem;
+  width: 8rem;
+  border-radius: 10px;
 }

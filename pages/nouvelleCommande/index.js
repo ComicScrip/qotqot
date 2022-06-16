@@ -35,6 +35,11 @@ export default function NewOrder() {
           stock={prod.stock}
           picture={prod.picture ? prod.picture : ""}
           id={prod.id}
+          makerPicture={prod.makerPicture}
+          makerName={prod.makerName}
+          makerAdress={prod.makerAdress}
+          productDesc={prod.productDesc}
+          makerDesc={prod.makerDesc}
         />
       ))}
       <style jsx>{`

@@ -1,17 +1,47 @@
 import style from "../styles/product_item.module.css";
-import Link from "next/link";
+// import Link from "next/link";
+import Popup from "reactjs-popup";
 
 function ProductItem(props) {
-  const id = props.id;
+  // const id = props.id;
   return (
     <div className={style.item_wrapper}>
       <div className={style.item_picture}>
-        <Link href={`/detailProduit/${id}`}>
-          <img
-            src={props.picture ? props.picture : "/images/notAvailable.png"}
-            alt={props.name}
-          />
-        </Link>
+        {/* <Link href={`/detailProduit/${id}`}> */}
+
+        <Popup
+          trigger={
+            <img
+              src={props.picture ? props.picture : "/images/notAvailable.png"}
+              alt={props.name}
+            />
+          }
+          position="right center"
+        >
+          <div className={style.popup_wrapper}>
+            <h2>{props.name}</h2>
+            <div className={style.popup_top}>
+              <div className={style.popup_l1}>
+                <div className={style.popup_picture}>
+                  <img
+                    src={
+                      props.picture ? props.picture : "/images/notAvailable.png"
+                    }
+                    alt={props.name}
+                  />
+                </div>
+                <p>Conditionnement</p>
+                {props.weight}
+                <p>Prix</p>
+                {props.price}€ ( {props.pricePerKg}€/Kg)
+              </div>
+              <div className={style.popup_r1}>
+                <p>{props.makerDesc} </p>
+              </div>
+            </div>
+          </div>
+        </Popup>
+        {/* </Link> */}
       </div>
       <div className={style.item_detail}>
         <div className={style.item_title}>{props.name}</div>

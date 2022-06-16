@@ -1,13 +1,17 @@
 import style from "../styles/product_item.module.css";
+import Link from "next/link";
 
 function ProductItem(props) {
+  const id = props.id;
   return (
     <div className={style.item_wrapper}>
       <div className={style.item_picture}>
-        <img
-          src={props.picture ? props.picture : "/images/notAvailable.png"}
-          alt={props.name}
-        />
+        <Link href={`/detailProduit/${id}`}>
+          <img
+            src={props.picture ? props.picture : "/images/notAvailable.png"}
+            alt={props.name}
+          />
+        </Link>
       </div>
       <div className={style.item_detail}>
         <div className={style.item_title}>{props.name}</div>

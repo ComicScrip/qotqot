@@ -2,19 +2,19 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 
 export default function ConfirmationModal() {
-  const [congrats, setCongrats] = useState(false);
-
-  const showCongrats = () => {
-    setCongrats(!congrats);
-  };
+  const [showModal, setShowModal] = useState(false);
+  const [validation, setValidation] = useState(false);
 
   return (
     <>
-      <div className="w-full h-[50%] flex flex-col px4 py-2 rounded-xl">
-        <div className="absolute right-0 px-2">
+      <div className="fixed h-[50%] w-full flex flex-col px4 mt-24 rounded-xl z-10 bg-white">
+        <div
+          onClick={() => setShowModal(!showModal)}
+          className="absolute right-0 p-4"
+        >
           <AiOutlineClose />
         </div>
-        <h1 className="text-md bold text-center py-4">
+        <h1 className="text-md bold text-center py-4 mt-5">
           Confirmation de commande
         </h1>
         <form>
@@ -37,7 +37,7 @@ export default function ConfirmationModal() {
             <textarea
               type="textarea"
               className="text-sm  bg-[#F2F2F2]"
-              rows="4"
+              rows="3"
               name="message"
               onChange={(e) => e.target.value}
               placeholder="Mon message..."
@@ -46,8 +46,8 @@ export default function ConfirmationModal() {
           <div className="flex justify-center items-center text-center m-auto my-3">
             <button
               type="button"
-              className=" bg-[#06968A] w-[90%] cursor-pointer rounded-md p-4 uppercase text-sm h-12 mt-4 text-center text-white font-bold"
-              onClick={showCongrats}
+              className=" bg-[#06968A] w-[90%] cursor-pointer rounded-md p-3 uppercase text-sm h-12 mt-2 text-center text-white font-bold"
+              onClick={() => setValidation(!validation)}
             >
               Confirmer la commande
             </button>

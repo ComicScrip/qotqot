@@ -11,13 +11,13 @@ export default function NewOrder() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  // const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     setError("");
 
     axios
-      .get("/api/products")
+      .get("/api/getProducts")
       .then((res) => res.data)
       .then((data) => setProductList(data))
       .catch(() =>
@@ -54,12 +54,17 @@ export default function NewOrder() {
           <button
             type="button"
             className=" bg-[#06968A] w-[90%] cursor-pointer rounded-md p-4 uppercase text-sm h-12 text-center text-white font-bold"
-            onClick=""
+            onClick={() => setModal(!modal)}
           >
             Confirmer la commande
           </button>
         </div>
-        <ConfirmationModal />
+
+        {modal && (
+          <div className="fixed w-full h-screen bg-black/50">
+            <ConfirmationModal />
+          </div>
+        )}
         {error && (
           <p className="error">
             Could not get data from the server, please try again

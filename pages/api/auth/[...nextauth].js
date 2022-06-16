@@ -1,0 +1,30 @@
+import NextAuth from "next-auth/next";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { verifyPassword, findUserByEmail } from "../../../models/user";
+
+export default NextAuth({
+  // Configure one or more authentication providers
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      async authorize({ email, password }) {
+        try {
+          console.log("auth");
+          const user = await findUserByEmail(email);
+          console.log(user);
+          if (user && (await verifyPassword(password, user.fields.MDP))) {
+            return { email: user.fields.Email };
+          } else {
+            return null;
+          }
+        } catch (err) {
+          return null;
+        }
+      },
+    }),
+    // ...add more providers here
+  ],
+  pages: {
+    signIn: "/",
+  },
+});

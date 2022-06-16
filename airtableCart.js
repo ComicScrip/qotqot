@@ -82,7 +82,7 @@ async function main() {
         records: [
           {
             fields: {
-              Code_Produit: ["FR03001500403"],
+              Code_Produit: ["recZuWavculxmmAqR"],
               Code_Client: ["recMbBWB0hKk7OOOG"],
               quantité: 1,
             },
@@ -91,13 +91,12 @@ async function main() {
       })
       .catch((err) => console.log(err.response))
   );
-  /*
+
   console.log(
     await getCustomerCartItems({
       customer_id: "recMbBWB0hKk7OOOG",
     })
   );
-  */
 }
 
 main();

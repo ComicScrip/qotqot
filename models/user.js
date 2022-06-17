@@ -18,6 +18,21 @@ module.exports.findUserByEmail = (email) => {
     });
 };
 
+module.exports.findCartByUserId = (id) => {
+  return axios
+    .get(
+      `${process.env.AIRTABLE_API}/Panier?filterByFormula=%7BCode_Client%7D%3D%22${id}%22`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
+        },
+      }
+    )
+    .then(({ data }) => {
+      return data?.records?.[0];
+    });
+};
+
 module.exports.getSafeAttributes = (user) => user;
 
 const hashingOptions = {

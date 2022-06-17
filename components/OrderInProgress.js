@@ -13,7 +13,7 @@ export default function OrderInProgress(props) {
     setOrderDate(`${props.dateLivraison}`);
   }
   return (
-    <Link href="/commandePassee">
+    <Link href={`/commandes/` + `${props.orderNumber}`.slice(0, 10)}>
       <div className={styles.commande} onClick={handleClick}>
         <div className={styles.state}>{props.statut}</div>
         <div className={styles.date}>{props.dateLivraison}</div>

@@ -42,6 +42,7 @@ export default function NewOrder() {
               price={prod.price}
               pricePerKg={prod.pricePerKg}
               picture={prod.picture ? prod.picture : ""}
+              totalAmount={prod.totalAmount}
             />
           </div>
         ))}

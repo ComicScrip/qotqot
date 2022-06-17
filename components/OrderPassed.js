@@ -13,7 +13,7 @@ export default function OrderPassed(props) {
     setOrderDate(`${props.dateLivraison}`);
   }
   return (
-    <Link href="/commandePassee">
+    <Link href={`/commandes/` + `${props.orderNumber}`.slice(0, 10)}>
       <div className={styles.commande} onClick={handleClick}>
         {props.statut === "Annulée" ? (
           <div className={styles.state2}>{props.statut}</div>

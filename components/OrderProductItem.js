@@ -6,9 +6,8 @@ function OrderProductItem(props) {
   const { setOrderAmount } = useContext(CurrentUserContext);
 
   const calculateWeight = `${props.weight}` * `${props.quantity}`;
-  const calculateTotalPrice = `${props.price}` * `${props.quantity}`;
 
-  setOrderAmount(calculateTotalPrice);
+  setOrderAmount(`${props.totalAmount}`);
 
   return (
     <div className={style.item_wrapper}>

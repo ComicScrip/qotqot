@@ -1,0 +1,83 @@
+/* ------------------- TOP SECTION ---------------- */
+.detail_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.detail_title {
+  line-height: 60px;
+  margin-bottom: 1.5rem;
+}
+.top_container {
+  display: flex;
+  height: 50%;
+}
+/* --------------- TOP LEFT ------------------ */
+.top_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1;
+  margin: 0 1rem;
+}
+.product_pic {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 4px;
+}
+
+.top_left h3 {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.top_left p {
+  font-style: italic;
+  opacity: 80%;
+  font-size: 0.9rem;
+}
+
+/*-----------------------TOP RIGHT ----------------*/
+.top_right {
+  flex: 2;
+  overflow: scroll;
+}
+.product_desc {
+  text-align: justify;
+  padding: 0 16px;
+}
+
+/* ------------- BOTTOM SECTION ------------ */
+.bot_container {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid lightgray;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  height: 50%;
+}
+.bot_top {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.bot_top_desc {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.bot_top_desc p {
+  opacity: 80%;
+  font-size: 0.9rem;
+}
+.bot_bot {
+  height: 30vh;
+  overflow: scroll;
+}
+.maker_pic {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 4px;
+}

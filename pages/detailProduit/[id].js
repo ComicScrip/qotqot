@@ -2,46 +2,68 @@
 import axios from "axios";
 import s from "../../styles/ProductDetail.module.css";
 import { minifyProducts, getMinifiedProduct } from "../api/utils/Airtable";
+import Link from "next/link";
 
 const DetailProduit = ({ product }) => {
   return (
-    <div className={s.detail_wrapper}>
-      <h1>{product.name}</h1>
-      <div className={s.top_container}>
-        <div className={s.top_left}>
-          <img
-            src={product.picture ? product.picture : "/images/notAvailable.png"}
-            alt={product.name}
-          />
-          <p>Conditionnement</p>
-          {product.weight}
-          <p>Prix</p>
-          {product.price}€ ( {product.pricePerKg}€/Kg)
-        </div>
-        <div className={s.top_right}>
-          <p className={s.product_desc}>{product.descriptionProduit}</p>
-        </div>
-      </div>
-      <div className={s.bot_container}>
-        <div className={s.bot_top}>
-          <img
-            src={
-              product.makerPicture
-                ? product.makerPicture
-                : "/images/notAvailable.png"
-            }
-            alt={product.makerName}
-          />
-          <div className={s.bot_top_desc}>
-            {product.makerName}
-            {product.makerAdress}
+    <>
+      <div className={s.detail_wrapper}>
+        <Link className={s.backHome} href="/nouvelleCommande">
+          <button>X</button>
+        </Link>
+        <h1 className={s.detail_title}>{product.name}</h1>
+        <div className={s.top_container}>
+          <div className={s.top_left}>
+            <img
+              className={s.product_pic}
+              src={
+                product.picture ? product.picture : "/images/notAvailable.png"
+              }
+              alt={product.name}
+            />
+            <div className={s.product_detail}>
+              <h3>Conditionnement</h3>
+              <p>{product.weight}</p>
+              <h3>Prix</h3>
+              <p>
+                {product.price}€ ( {product.pricePerKg}€/Kg)
+              </p>
+            </div>
+          </div>
+          <div className={s.top_right}>
+            <p className={s.product_desc}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laboriosam accusamus repudiandae non quae hic quibusdam eum
+              expedita distinctio odit ex adipisci molestiae, pariatur inventore
+              dolores magni dicta dolore ut saepe ipsam error esse eveniet quod.
+              Recusandae expedita officiis delectus quam odio temporibus earum
+              dicta, dolorem beatae quos, qui possimus obcaecati.
+            </p>
           </div>
         </div>
-        <div className={s.bot_bot}>
-          <p>{product.descriptionProducteur}</p>
+        <div className={s.bot_container}>
+          <div className={s.bot_top}>
+            <img
+              className={s.maker_pic}
+              src={
+                product.makerPicture
+                  ? product.makerPicture
+                  : "/images/notAvailable.png"
+              }
+              alt={product.makerName}
+            />
+            <div className={s.bot_top_desc}>
+              <h3>{product.makerName}</h3>
+
+              <p>{product.makerAdress}</p>
+            </div>
+          </div>
+          <div className={s.bot_bot}>
+            <p>{product.descriptionProducteur}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default DetailProduit;
@@ -64,7 +86,7 @@ export const getStaticPaths = async () => {
   });
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 

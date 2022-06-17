@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
+import base from "../../../middlewares/common";
 import crypto from "crypto";
+import { findByEmail, hashPassword, updateUser } from "../../../models/user";
 import mailer from "../../../mailer";
 
 async function handlePost(req, res) {

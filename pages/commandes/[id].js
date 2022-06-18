@@ -30,7 +30,13 @@ export default function NewOrder() {
   const renderProducts = (
     <div className={style.homeBody}>
       {productList
-        .filter((order) => orderNumberState === order.orderNumber)
+        .filter(
+          (order) =>
+            orderNumberState === order.orderNumber ||
+            window.location
+              .toString()
+              .includes(`${order.orderNumber}`.slice(0, 10))
+        )
         .map((prod) => (
           <div className={style.product} key={prod.id}>
             <OrderProductItem
@@ -61,10 +67,3 @@ export default function NewOrder() {
     </LayoutCommandePassee>
   );
 }
-
-/*
-.forEach((prod) => {
-  totalAmount += prod.price * prod.quantity;
-  setOrderAmount(totalAmount);
-})
-*/

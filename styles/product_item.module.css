@@ -41,7 +41,6 @@
 }
 .item_title {
   overflow: scroll;
-
   height: 2rem;
   width: 108px;
   font-weight: bolder;
@@ -145,4 +144,23 @@
 .count_total {
   font-weight: 700;
   font-size: 12px;
+}
+
+/* 
+CART */
+.item_quantity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quantity {
+  width: 20px;
+  height: 3px;
+  background-color: #f2f2f2;
+}
+
+.poids {
+  font-size: 8px;
+  padding: 10px;
 }

@@ -13,8 +13,14 @@ function Cart(props) {
         <div className={style.item_title}>{props.name}</div>
         <div className={style.item_weight}>{props.weight}</div>
       </div>
+      <div className={style.item_quantity}>
+        <div className={style.quantity}>{props.Quantity}</div>
+        <div className={style.poids}>
+          {props.typeUVC} {props.poidsUVC} {props.uniteUVC}
+        </div>
+      </div>
       <div className={style.price}>
-        <div className={style.itemPrice}>{props.price}€ HT</div>
+        <div className={style.itemPrice}>{props.totalPrice}€ HT</div>
         <div className={style.itemPricePerKg}>{props.pricePerKg}€ HT /Kg</div>
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function NewOrder() {
 
   const renderProducts = (
     <div className="main_container">
-      <Link href="/pages/panier">Panier</Link>
+      <Link href="/panier">Panier</Link>
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}

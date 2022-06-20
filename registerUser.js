@@ -10,8 +10,8 @@ const { hashPassword } = require("./models/user");
       records: [
         {
           fields: {
-            Email: "user@gmail.com",
-            MDP: await hashPassword("qotqot3000"),
+            Email: "test@gmail.com",
+            MDP: await hashPassword("qotqot1000"),
           },
         },
       ],

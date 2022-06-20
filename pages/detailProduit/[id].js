@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import s from "../../styles/ProductDetail.module.css";
-import { minifyProducts, getMinifiedProduct } from "../api/utils/Airtable";
+import { getMinifiedProduct } from "../api/utils/Airtable";
 import Link from "next/link";
 
 const DetailProduit = ({ product }) => {
@@ -28,17 +28,15 @@ const DetailProduit = ({ product }) => {
               <p>
                 {product.price}€ ( {product.pricePerKg}€/Kg)
               </p>
+              <img
+                className={s.product_logo}
+                src={product.logo}
+                alt="label producteur"
+              />
             </div>
           </div>
           <div className={s.top_right}>
-            <p className={s.product_desc}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laboriosam accusamus repudiandae non quae hic quibusdam eum
-              expedita distinctio odit ex adipisci molestiae, pariatur inventore
-              dolores magni dicta dolore ut saepe ipsam error esse eveniet quod.
-              Recusandae expedita officiis delectus quam odio temporibus earum
-              dicta, dolorem beatae quos, qui possimus obcaecati.
-            </p>
+            <p className={s.product_desc}>{product.descriptionProduit}</p>
           </div>
         </div>
         <div className={s.bot_container}>
@@ -101,7 +99,6 @@ export const getStaticProps = async (context) => {
     }
   );
   const data = await getMinifiedProduct(res.data);
-  console.log(data);
   return {
     props: { product: data },
   };

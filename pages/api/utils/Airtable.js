@@ -25,6 +25,7 @@ const getMinifiedProduct = (record) => {
     descriptionProduit: record.fields["Descriptif Produit"],
     descriptionProducteur:
       record.fields["Descriptif Producteur (from FOURNISSEUR)"],
+    logo: record.fields["LABEL LOGO (from FOURNISSEUR)"]?.[0].url,
   };
 };
 

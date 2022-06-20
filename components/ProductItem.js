@@ -12,38 +12,6 @@ function ProductItem(props) {
             src={props.picture ? props.picture : "/images/notAvailable.png"}
             alt={props.name}
           />
-          {/* <Popup
-            trigger={
-              <img
-                src={props.picture ? props.picture : "/images/notAvailable.png"}
-                alt={props.name}
-              />
-            }
-            position="right center"
-          >
-          <div className={style.popup_wrapper}>
-            <h2>{props.name}</h2>
-            <div className={style.popup_top}>
-              <div className={style.popup_l1}>
-                <div className={style.popup_picture}>
-                  <img
-                    src={
-                      props.picture ? props.picture : "/images/notAvailable.png"
-                    }
-                    alt={props.name}
-                  />
-                </div>
-                <p>Conditionnement</p>
-                {props.weight}
-                <p>Prix</p>
-                {props.price}€ ( {props.pricePerKg}€/Kg)
-              </div>
-              <div className={style.popup_r1}>
-                <p>{props.makerDesc} </p>
-              </div>
-            </div>
-          </div>
-          </Popup> */}
         </Link>
       </div>
       <div className={style.item_detail}>

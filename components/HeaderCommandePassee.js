@@ -54,7 +54,15 @@ export default function HeaderCommandePassee() {
         )}
       </div>
       <div className={styles.commandeDetails}>
-        <button className={styles.commandePrice}>{`${orderAmount}€ HT`}</button>
+        {orderStatut === "Livrée" ||
+        orderStatut === "En-cours" ||
+        orderStatut === "Annulée" ? (
+          <button
+            className={styles.commandePrice}
+          >{`${orderAmount}€ HT`}</button>
+        ) : (
+          ""
+        )}
         {orderStatut === "Livrée" ? (
           <button
             className={styles.livraison1}

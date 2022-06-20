@@ -59,6 +59,8 @@ export default function Home() {
                   statut={order.statut}
                   dateLivraison={order.dateLivraison}
                   orderNumber={order.orderNumber}
+                  dateLivraison2={order.dateLivraison2}
+                  totalAmount={order.totalAmount}
                 />
               ))}
             </div>
@@ -71,6 +73,8 @@ export default function Home() {
                   statut={order.statut}
                   dateLivraison={order.dateLivraison}
                   orderNumber={order.orderNumber}
+                  dateLivraison2={order.dateLivraison2}
+                  totalAmount={order.totalAmount}
                 />
               ))}
             </div>

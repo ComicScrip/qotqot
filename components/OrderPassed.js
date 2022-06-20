@@ -4,14 +4,16 @@ import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
 
 export default function OrderPassed(props) {
-  const { setOrderNumberState, setOrderStatut, setOrderDate } =
+  const { setOrderNumberState, setOrderStatut, setOrderDate, setOrderAmount } =
     useContext(CurrentUserContext);
 
   function handleClick() {
     setOrderNumberState(`${props.orderNumber}`);
     setOrderStatut(`${props.statut}`);
-    setOrderDate(`${props.dateLivraison}`);
+    setOrderDate(`${props.dateLivraison2}`);
+    setOrderAmount(`${props.totalAmount}`);
   }
+
   return (
     <Link href={`/commandes/` + `${props.orderNumber}`.slice(0, 10)}>
       <div className={styles.commande} onClick={handleClick}>

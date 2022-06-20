@@ -42,6 +42,7 @@ export default function NewOrder() {
             <OrderProductItem
               key={prod.id}
               date={prod.date}
+              orderNumber={prod.orderNumber}
               name={prod.name}
               weight={prod.weight}
               quantity={prod.quantity}
@@ -49,11 +50,14 @@ export default function NewOrder() {
               pricePerKg={prod.pricePerKg}
               picture={prod.picture ? prod.picture : ""}
               totalAmount={prod.totalAmount}
+              dateLivraison={prod.dateLivraison}
+              statut={prod.statut}
             />
           </div>
         ))}
     </div>
   );
+
   return (
     <LayoutCommandePassee pageTitle="detail-commande">
       <>

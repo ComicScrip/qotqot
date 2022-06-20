@@ -3,11 +3,15 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 
 function OrderProductItem(props) {
-  const { setOrderAmount } = useContext(CurrentUserContext);
+  const { setOrderAmount, setOrderNumberState, setOrderStatut, setOrderDate } =
+    useContext(CurrentUserContext);
 
   const calculateWeight = `${props.weight}` * `${props.quantity}`;
 
   setOrderAmount(`${props.totalAmount}`);
+  setOrderNumberState(`${props.orderNumber}`);
+  setOrderStatut(`${props.statut}`);
+  setOrderDate(`${props.dateLivraison}`);
 
   return (
     <div className={style.item_wrapper}>

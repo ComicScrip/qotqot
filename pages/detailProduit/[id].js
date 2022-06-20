@@ -2,7 +2,6 @@
 import axios from "axios";
 import s from "../../styles/ProductDetail.module.css";
 import { getMinifiedProduct } from "../api/utils/Airtable";
-import Link from "next/link";
 
 const DetailProduit = ({ product }) => {
   return (

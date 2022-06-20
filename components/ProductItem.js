@@ -8,10 +8,12 @@ function ProductItem(props) {
     <div className={style.item_wrapper}>
       <div className={style.item_picture}>
         <Link href={`/detailProduit/${id}`}>
-          <img
-            src={props.picture ? props.picture : "/images/notAvailable.png"}
-            alt={props.name}
-          />
+          <a target={"_blank"}>
+            <img
+              src={props.picture ? props.picture : "/images/notAvailable.png"}
+              alt={props.name}
+            />
+          </a>
         </Link>
       </div>
       <div className={style.item_detail}>

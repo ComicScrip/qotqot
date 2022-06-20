@@ -8,9 +8,6 @@ const DetailProduit = ({ product }) => {
   return (
     <>
       <div className={s.detail_wrapper}>
-        <Link className={s.backHome} href="/nouvelleCommande">
-          <button>X</button>
-        </Link>
         <h1 className={s.detail_title}>{product.name}</h1>
         <div className={s.top_container}>
           <div className={s.top_left}>

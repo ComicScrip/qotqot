@@ -2,6 +2,7 @@ describe("commandePassee", () => {
   beforeEach(() => {
     cy.viewport("iphone-6");
     cy.login({ email: "user@gmail.com" });
+    cy.intercept("**/commandePassee", { fixture: "commandePassee.json" });
   });
 
   it("should access a detailed page of pending order when clicking on a pending order", () => {
@@ -9,6 +10,7 @@ describe("commandePassee", () => {
     cy.contains("12 mai").click();
     cy.url().should("eq", "http://localhost:3000/commandes/ENT69-0013");
     cy.contains("Prévue pour le 12/05/2022");
+    cy.contains("Provençale de légumes");
   });
 
   it("should access a detailed page of a passed order when clicking on a passed order", () => {
@@ -16,6 +18,7 @@ describe("commandePassee", () => {
     cy.contains("17 mai").click();
     cy.url().should("eq", "http://localhost:3000/commandes/PRO69-0007");
     cy.contains("Livrée le 17/05/2022");
+    cy.contains("Liqueur de Verveine");
   });
 
   it("should access a detailed page of cancelled order when clicking on a cancelled order", () => {

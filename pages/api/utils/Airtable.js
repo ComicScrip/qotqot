@@ -11,12 +11,11 @@ const minifyProducts = (records) => {
 const getMinifiedProduct = (record) => {
   return {
     id: record.id,
-    codeProduit: record.fields["Code Produit QotQot"],
-    info: record.fields,
+    codeProduit: record.fields["Code Produit Qot Qot"][0],
     name: record.fields.Produit,
     weight: record.fields.Conditionnement,
-    price: record.fields["Prix d'achat unitaire €HT"].toFixed(2),
-    pricePerKg: record.fields["Prix d'achat kg/g/L €HT"].toFixed(2),
+    price: record.fields["Prix d'achat unitaire €HT"],
+    pricePerKg: record.fields["Prix d'achat kg/g/L €HT"],
     stock: record.fields.Dispo,
     picture: record.fields["Image produits sans fond"]?.[0].url,
   };
@@ -52,8 +51,8 @@ const getMinifiedCartItems = (record) => {
     ClientId: record.fields["Code_Client"],
     name: record.fields.Produit,
     weight: record.fields.Conditionnement,
-    price: record.fields["Prix d'achat unitaire €HT"].toFixed(2),
-    pricePerKg: record.fields["Prix d'achat kg/g/L €HT"].toFixed(2),
+    price: record.fields["Prix d'achat unitaire €HT"],
+    pricePerKg: record.fields["Prix d'achat kg/g/L €HT"],
     totalPrice: record.fields["Montant HT"].toFixed(2),
     stock: record.fields.Dispo,
     picture: record.fields["Image produits sans fond"]?.[0].url,

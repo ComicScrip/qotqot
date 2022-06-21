@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 require("dotenv").config();
 const { default: axios } = require("axios");
 
@@ -17,36 +16,17 @@ async function getCartItem({ product_id, customer_id }) {
     .then((res) => res.data?.records?.[0]);
 }
 
-async function getCustomerCartItems({ customer_id }) {
-  return instance
-    .get(`/Panier?filterByFormula=%7BCode_Client%7D%3D%22${customer_id}%22`)
-    .then((res) => res.data?.records);
-}
+// async function getCustomerCartItems({ customer_id }) {
+//   return instance
+//     .get(`/Panier?filterByFormula=%7BCode_Client%7D%3D%22${customer_id}%22`)
+//     .then((res) => res.data?.records);
+// }
 
-async function setCartQuantity({ product_id, customer_id, quantity }) {
+async function setCartQuantity({ product_id, customer_id, Quantity }) {
   const cartItem = await getCartItem({ product_id, customer_id });
 
-  console.log(
-    JSON.stringify(
-      {
-        records: [
-          {
-            id: cartItem.fields.id,
-            fields: {
-              Code_Produit: [product_id],
-              Code_Client: [customer_id],
-              quantité: quantity,
-            },
-          },
-        ],
-      },
-      null,
-      2
-    )
-  );
-
   if (cartItem) {
-    if (quantity !== 0)
+    if (Quantity !== 0)
       return instance.patch("/Panier", {
         records: [
           {
@@ -54,20 +34,20 @@ async function setCartQuantity({ product_id, customer_id, quantity }) {
             fields: {
               Code_Produit: [product_id],
               Code_Client: [customer_id],
-              quantité: quantity,
+              quantité: Quantity,
             },
           },
         ],
       });
     else return instance.delete(`/Panier/${cartItem.fields.id}`);
-  } else if (quantity !== 0) {
+  } else if (Quantity !== 0) {
     return instance.post("/Panier", {
       records: [
         {
           fields: {
             Code_Produit: [product_id],
             Code_Client: [customer_id],
-            quantité: quantity,
+            quantité: Quantity,
           },
         },
       ],
@@ -75,28 +55,30 @@ async function setCartQuantity({ product_id, customer_id, quantity }) {
   }
 }
 
-async function main() {
-  console.log(
-    await instance
-      .post("/Panier", {
-        records: [
-          {
-            fields: {
-              Code_Produit: ["recZuWavculxmmAqR"],
-              Code_Client: ["recMbBWB0hKk7OOOG"],
-              quantité: 1,
-            },
-          },
-        ],
-      })
-      .catch((err) => console.log(err.response))
-  );
+// async function main() {
+//   console.log(
+//     await instance
+//       .post("/Panier", {
+//         records: [
+//           {
+//             fields: {
+//               Code_Produit: ["recZuWavculxmmAqR"],
+//               Code_Client: ["recMbBWB0hKk7OOOG"],
+//               quantité: 1,
+//             },
+//           },
+//         ],
+//       })
+//       .catch((err) => console.log(err.response))
+//   );
 
-  console.log(
-    await getCustomerCartItems({
-      customer_id: "recMbBWB0hKk7OOOG",
-    })
-  );
-}
+//   console.log(
+//     await getCustomerCartItems({
+//       customer_id: "recMbBWB0hKk7OOOG",
+//     })
+//   );
+// }
 
-main();
+// main();
+
+export { setCartQuantity };

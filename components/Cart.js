@@ -16,7 +16,8 @@ function Cart(props) {
       <div className={style.item_quantity}>
         <div className={style.quantity}>{props.Quantity}</div>
         <div className={style.poids}>
-          {props.typeUVC} {props.poidsUVC} {props.uniteUVC}
+          {props.poidsUVC * props.Quantity}
+          {props.uniteUVC}
         </div>
       </div>
       <div className={style.price}>

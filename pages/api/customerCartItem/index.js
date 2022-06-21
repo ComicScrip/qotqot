@@ -3,6 +3,7 @@ import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 import { minifyCartItems } from "../utils/Airtable";
+import { setCartQuantity } from "../../../airtableCart";
 
 export async function getCartItems(req, res) {
   axios
@@ -20,4 +21,15 @@ export async function getCartItems(req, res) {
     .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }
 
-export default base().use(reqCurrentUser).get(getCartItems);
+export async function handlePostCartItems(req, res) {
+  setCartQuantity({
+    product_id: req.body.ProductId,
+    customer_id: req.currentUser.id,
+    Quantity: req.body.Quantity,
+  });
+}
+
+export default base()
+  .use(reqCurrentUser)
+  .get(getCartItems)
+  .post(handlePostCartItems);

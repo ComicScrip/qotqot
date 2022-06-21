@@ -2,7 +2,7 @@ describe("commandePassee", () => {
   beforeEach(() => {
     cy.viewport("iphone-6");
     cy.login({ email: "user@gmail.com" });
-    cy.intercept("**/orders", { fixture: "orders.json" });
+    cy.intercept("**/commandes", { fixture: "orders.json" });
     cy.intercept("**/commandePassee", { fixture: "commandePassee.json" });
   });
 

@@ -113,5 +113,17 @@
   .detail_wrapper {
     max-width: 50%;
     margin: 0 auto;
+    overflow: hidden;
+  }
+  .detail_title {
+    line-height: 2.5rem;
+    margin: 3rem auto 1.5rem;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  .top_container {
+    display: flex;
+    height: 50%;
+    margin-bottom: 5rem;
   }
 } ;

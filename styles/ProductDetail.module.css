@@ -59,6 +59,8 @@
 .product_desc {
   padding: 0 16px;
   opacity: 70%;
+  font-size: 12px;
+  font-weight: 300;
   text-align: justify;
 }
 
@@ -97,6 +99,8 @@
 }
 .bot_bot p {
   opacity: 70%;
+  font-size: 12px;
+  font-weight: 300;
   text-align: justify;
 }
 .maker_pic {
@@ -104,3 +108,10 @@
   width: 8rem;
   border-radius: 4px;
 }
+
+@media screen and (min-width: 700px) {
+  .detail_wrapper {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+} ;

@@ -10,6 +10,10 @@ export default function CurrentUserContextProvider({ children }) {
 
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
 
+  const [modal, setModal] = useState(false);
+  const [modalCongrats, setModalCongrats] = useState(false);
+  const [modalFranco, setModalFranco] = useState(false);
+
   const currentUserLogged = useMemo(
     () => currentUserProfile,
     [currentUserProfile]
@@ -43,6 +47,12 @@ export default function CurrentUserContextProvider({ children }) {
         setCurrentUserProfile,
         getProfile,
         status,
+        modal,
+        setModal,
+        modalCongrats,
+        setModalCongrats,
+        modalFranco,
+        setModalFranco,
       }}
     >
       {children}

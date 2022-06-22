@@ -12,7 +12,7 @@ export default function Panier() {
       .get("/api/getCartItems")
       .then((res) => res.data)
       .then((data) => setCartItemsList(data))
-      .catch(() => setError("Couldnt get data from cart"));
+      .catch(() => setError("Could'nt get data from cart"));
   }, []);
   return (
     <>

@@ -1,6 +1,5 @@
 import style from "../styles/product_item.module.css";
 import Link from "next/link";
-//import Popup from "reactjs-popup";
 
 function ProductItem(props) {
   const id = props.id;

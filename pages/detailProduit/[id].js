@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import Layout from "../../components/Layout";
 import s from "../../styles/ProductDetail.module.css";

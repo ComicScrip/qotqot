@@ -5,8 +5,8 @@ describe("commandePassee", () => {
   });
 
   it("should access a detailed page of pending order when clicking on a pending order", () => {
+    cy.intercept("**/api/commandes", { fixture: "orders.json" });
     cy.visit("/commandes");
-    cy.intercept("**/commandes", { fixture: "orders.json" });
     cy.contains("12 mai").click();
     cy.intercept("**/commandePassee", { fixture: "commandePassee.json" });
     cy.url().should("include", "/commandes/ENT69-0013");
@@ -15,8 +15,8 @@ describe("commandePassee", () => {
   });
 
   it("should access a detailed page of a passed order when clicking on a passed order", () => {
+    cy.intercept("**/api/commandes", { fixture: "orders.json" });
     cy.visit("/commandes");
-    cy.intercept("**/commandes", { fixture: "orders.json" });
     cy.contains("17 mai").click();
     cy.intercept("**/commandePassee", { fixture: "commandePassee.json" });
     cy.url().should("include", "/commandes/PRO69-0007");
@@ -25,8 +25,8 @@ describe("commandePassee", () => {
   });
 
   it("should access a detailed page of cancelled order when clicking on a cancelled order", () => {
+    cy.intercept("**/api/commandes", { fixture: "orders.json" });
     cy.visit("/commandes");
-    cy.intercept("**/commandes", { fixture: "orders.json" });
     cy.contains("5 avr.").click();
     cy.intercept("**/commandePassee", { fixture: "commandePassee.json" });
     cy.url().should("include", "/commandes/PRO69-0006");

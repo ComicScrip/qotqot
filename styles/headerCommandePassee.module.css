@@ -137,4 +137,14 @@
   .date {
     font-size: 19px;
   }
+}
+
+@media screen and (min-width: 700px) {
+  .header {
+    height: 200px;
+  }
+
+  .arrow {
+    margin-left: -100px;
+  }
 } ;

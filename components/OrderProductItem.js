@@ -1,6 +1,8 @@
 import style from "../styles/orderedProductItem.module.css";
 import { useContext, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import "dayjs/locale/fr";
+const dayjs = require("dayjs");
 
 function OrderProductItem(props) {
   const { setOrderAmount, setOrderNumberState, setOrderStatut, setOrderDate } =
@@ -12,7 +14,9 @@ function OrderProductItem(props) {
     setOrderAmount(`${props.totalAmount}`);
     setOrderNumberState(`${props.orderNumber}`);
     setOrderStatut(`${props.statut}`);
-    setOrderDate(`${props.dateLivraison}`);
+    dayjs(setOrderDate(`${props.dateLivraison}`))
+      .locale("fr")
+      .format("DD/MM/YYYY");
   }, []);
 
   return (

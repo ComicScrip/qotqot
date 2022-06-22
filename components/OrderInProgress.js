@@ -2,6 +2,8 @@ import styles from "../styles/home.module.css";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
+import "dayjs/locale/fr";
+const dayjs = require("dayjs");
 
 export default function OrderInProgress(props) {
   const { setOrderNumberState, setOrderStatut, setOrderDate, setOrderAmount } =
@@ -10,7 +12,9 @@ export default function OrderInProgress(props) {
   function handleClick() {
     setOrderNumberState(`${props.orderNumber}`);
     setOrderStatut(`${props.statut}`);
-    setOrderDate(`${props.dateLivraison2}`);
+    dayjs(setOrderDate(`${props.dateLivraison}`))
+      .locale("fr")
+      .format("DD/MM/YYYY");
     setOrderAmount(`${props.totalAmount}`);
   }
   return (

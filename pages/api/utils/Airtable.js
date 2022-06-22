@@ -35,12 +35,6 @@ const getMinifiedOrder = (record) => {
     )
       .locale("fr")
       .format("D MMM YYYY"),
-    dateLivraison2: dayjs(
-      record.fields["Date de Livraison (import)"],
-      "DD/MM/YYYY"
-    )
-      .locale("fr")
-      .format("DD/MM/YYYY"),
     statut: record.fields.Status,
     totalAmount: record.fields["Total (HT) Rollup (from Commandes Pro)"],
   };

@@ -1,5 +1,5 @@
 import style from "../styles/orderedProductItem.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 
 function OrderProductItem(props) {
@@ -8,10 +8,12 @@ function OrderProductItem(props) {
 
   const calculateWeight = `${props.weight}` * `${props.quantity}`;
 
-  setOrderAmount(`${props.totalAmount}`);
-  setOrderNumberState(`${props.orderNumber}`);
-  setOrderStatut(`${props.statut}`);
-  setOrderDate(`${props.dateLivraison}`);
+  useEffect(() => {
+    setOrderAmount(`${props.totalAmount}`);
+    setOrderNumberState(`${props.orderNumber}`);
+    setOrderStatut(`${props.statut}`);
+    setOrderDate(`${props.dateLivraison}`);
+  }, []);
 
   return (
     <div className={style.item_wrapper}>

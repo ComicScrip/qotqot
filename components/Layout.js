@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import HeaderCommandePassee from "../components/HeaderCommandePassee";
 import LoadingSpin from "../components/LoadingSpin";
 import { useContext } from "react";
 import { signIn, useSession } from "next-auth/react";
@@ -23,7 +24,13 @@ export default function Layout({ children, pageTitle }) {
             rel="stylesheet"
           />
         </Head>
-        <Header></Header>
+        {pageTitle === "commandes" ? (
+          <Header></Header>
+        ) : pageTitle === "detail-commande" ? (
+          <HeaderCommandePassee></HeaderCommandePassee>
+        ) : (
+          <Header></Header>
+        )}
         {children}
       </>
     );

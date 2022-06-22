@@ -5,10 +5,10 @@ import LoadingSpin from "../../components/LoadingSpin";
 import OrderProductItem from "../../components/OrderProductItem";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
-import LayoutCommandePassee from "../../components/LayoutCommandePassee";
+import Layout from "../../components/Layout";
 import style from "../../styles/orderedProductItem.module.css";
 
-export default function NewOrder() {
+export default function OrderHistory() {
   const { orderNumberState } = useContext(CurrentUserContext);
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -59,7 +59,7 @@ export default function NewOrder() {
   );
 
   return (
-    <LayoutCommandePassee pageTitle="detail-commande">
+    <Layout pageTitle="detail-commande">
       <>
         {error && (
           <p className="error">
@@ -68,6 +68,6 @@ export default function NewOrder() {
         )}
         {isLoading ? <LoadingSpin /> : renderProducts}
       </>
-    </LayoutCommandePassee>
+    </Layout>
   );
 }

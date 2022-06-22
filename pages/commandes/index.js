@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <>
-      <Layout>
+      <Layout pageTitle="commandes">
         {error && (
           <p className="error">
             Could not get data from the server, please try again

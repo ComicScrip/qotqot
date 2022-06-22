@@ -1,5 +1,6 @@
 /* ------------------- TOP SECTION ---------------- */
 .detail_wrapper {
+  line-height: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +8,7 @@
 }
 .detail_title {
   line-height: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin: 2rem auto 1.5rem;
   text-align: center;
   padding: 0.5rem;
 }
@@ -26,7 +27,7 @@
   height: 8rem;
   width: 8rem;
   border-radius: 4px;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
 }
 
 .top_left h3 {
@@ -38,11 +39,14 @@
   opacity: 80%;
   font-size: 0.9rem;
   width: 8rem;
+  margin-bottom: 0.5rem;
 }
 .product_detail {
-  height: 3rem;
-  width: 3rem;
+  height: 4rem;
+  width: 4rem;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 /*-----------------------TOP RIGHT ----------------*/
@@ -53,8 +57,9 @@
   height: 100%;
 }
 .product_desc {
-  text-align: justify;
   padding: 0 16px;
+  opacity: 70%;
+  text-align: justify;
 }
 
 /* ------------- BOTTOM SECTION ------------ */
@@ -78,13 +83,21 @@
   padding: 0.5rem;
   font-size: 1rem;
 }
+.bot_top_desc h3 {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
 .bot_top_desc p {
-  opacity: 80%;
+  opacity: 70%;
   font-size: 0.9rem;
 }
 .bot_bot {
   height: 30vh;
   overflow: scroll;
+}
+.bot_bot p {
+  opacity: 70%;
+  text-align: justify;
 }
 .maker_pic {
   height: 8rem;

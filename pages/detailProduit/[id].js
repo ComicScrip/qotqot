@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
+import Layout from "../../components/Layout";
 import s from "../../styles/ProductDetail.module.css";
 import { getMinifiedProduct } from "../api/utils/Airtable";
 
 const DetailProduit = ({ product }) => {
   return (
-    <>
+    <Layout pageTitle={`${product.name}`}>
       <div className={s.detail_wrapper}>
         <h1 className={s.detail_title}>{product.name}</h1>
         <div className={s.top_container}>
@@ -32,7 +33,11 @@ const DetailProduit = ({ product }) => {
             </div>
           </div>
           <div className={s.top_right}>
-            <p className={s.product_desc}>{product.descriptionProduit}</p>
+            <p className={s.product_desc}>
+              {product.descriptionProduit !== "x" && "X"
+                ? product.descriptionProduit
+                : "Aucune desciption disponible, merci de nous contacter"}
+            </p>
           </div>
         </div>
         <div className={s.bot_container}>
@@ -57,7 +62,7 @@ const DetailProduit = ({ product }) => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 export default DetailProduit;

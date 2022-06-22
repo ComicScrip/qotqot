@@ -53,7 +53,7 @@
 .top_right {
   display: flex;
   flex: 2;
-  overflow: scroll;
+  overflow: auto;
   height: 100%;
 }
 .product_desc {
@@ -95,7 +95,7 @@
 }
 .bot_bot {
   height: 30vh;
-  overflow: scroll;
+  overflow: auto;
 }
 .bot_bot p {
   opacity: 70%;

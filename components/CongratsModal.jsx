@@ -1,26 +1,14 @@
 import Image from "next/image";
 import confettiImg from "../public/assets/confetti.png";
-import { useContext } from "react";
-import { CurrentUserContext } from "../contexts/currentUserContext";
 import { AiOutlineClose } from "react-icons/ai";
 
-const Congrats = () => {
-  const { modalCongrats, setModalCongrats } = useContext(CurrentUserContext);
-  const { modalFranco, setModalFranco } = useContext(CurrentUserContext);
-
-  const handleClose2 = () => {
-    setModalCongrats(!modalCongrats);
-  };
-
-  const showModalFranco = () => {
-    setModalFranco(true);
-    setModalCongrats(!modalCongrats);
-  };
-
-  const handleClose3 = () => {
-    setModalFranco(!modalFranco);
-  };
-
+const Congrats = ({
+  modalCongrats,
+  modalFranco,
+  showModalFranco,
+  handleClose2,
+  handleClose3,
+}) => {
   return (
     <>
       {modalCongrats && (

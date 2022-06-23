@@ -1,7 +1,4 @@
 import { AiOutlineClose } from "react-icons/ai";
-import { useState, useContext, useEffect } from "react";
-import axios from "axios";
-import { CurrentUserContext } from "../contexts/currentUserContext";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -10,27 +7,14 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import dayjs from "dayjs";
 import { fr } from "date-fns/locale";
 
-export default function ConfirmationModal({ handleValidate }) {
-  const [error, setError] = useState("");
-  const [date, setDate] = useState([]);
-  const { modal, setModal } = useContext(CurrentUserContext);
+export default function ConfirmationModal({
+  modal,
+  handleValidate,
+  handleClose,
+}) {
+  // const [error, setError] = useState(false);
 
   const setValue = new Date("2014-08-18T21:11:54");
-
-  useEffect(() => {
-    setError("");
-    axios
-      .get("/api/orders")
-      .then((res) => setDate(res.data))
-      .catch(() =>
-        setError("Could not get data from the server, please try again")
-      );
-  }, []);
-  console.log(date);
-
-  const handleClose = () => {
-    setModal(!modal);
-  };
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -111,12 +95,12 @@ export default function ConfirmationModal({ handleValidate }) {
                 </div>
               </form>
 
-              {error && (
+              {/* {error && (
                 <p className="error text-center text-sm text-[red]">
                   ⛔️ Nous ne pouvons charger les données du serveur, veuillez
                   réessayer svp.
                 </p>
-              )}
+              )} */}
             </div>
           </>
         )}

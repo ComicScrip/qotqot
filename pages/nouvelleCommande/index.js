@@ -1,21 +1,20 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
-import React from "react";
-import { useState, useContext } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
 import ConfirmationModal from "../../components/ConfirmationModal";
 import CongratsModal from "../../components/CongratsModal";
-import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const { modal, setModal } = useContext(CurrentUserContext);
-  const { modalCongrats, setModalCongrats } = useContext(CurrentUserContext);
-  const { modalFranco } = useContext(CurrentUserContext);
+
+  const [modal, setModal] = useState(false);
+  const [modalCongrats, setModalCongrats] = useState(false);
+  const [modalFranco, setModalFranco] = useState(false);
 
   useEffect(() => {
     setError("");
@@ -35,9 +34,22 @@ export default function NewOrder() {
     setModalCongrats(!modalCongrats);
   }
 
-  // const handleClose2 = () => {
-  //   setModalC(false);
-  // };
+  const showModalFranco = () => {
+    setModalCongrats(!modalCongrats);
+    setModalFranco(!modalFranco);
+  };
+
+  const handleClose = () => {
+    setModal(!modal);
+  };
+
+  const handleClose2 = () => {
+    setModalCongrats(!modalCongrats);
+  };
+
+  const handleClose3 = () => {
+    setModalFranco(!modalFranco);
+  };
 
   const renderProducts = (
     <div className="main_container">
@@ -52,11 +64,6 @@ export default function NewOrder() {
           picture={prod.picture ? prod.picture : ""}
         />
       ))}
-
-      {/* <style jsx>{`
-  * {
-      background-color: #E5E5E5;
-  `}</style> */}
     </div>
   );
 
@@ -78,7 +85,11 @@ export default function NewOrder() {
               modal ? "fixed bg-black/50 w-full h-full z-10 " : "bg-white"
             }
           >
-            <ConfirmationModal handleValidate={handleValidate} />
+            <ConfirmationModal
+              modal={modal}
+              handleValidate={handleValidate}
+              handleClose={handleClose}
+            />
           </div>
         )}
         {modalCongrats && (
@@ -89,7 +100,11 @@ export default function NewOrder() {
                 : "bg-white"
             }
           >
-            <CongratsModal />
+            <CongratsModal
+              modalCongrats={modalCongrats}
+              showModalFranco={showModalFranco}
+              handleClose2={handleClose2}
+            />
           </div>
         )}
         {modalFranco && (
@@ -98,9 +113,13 @@ export default function NewOrder() {
               modalFranco ? "fixed bg-black/50 w-full h-full z-10 " : "bg-white"
             }
           >
-            <CongratsModal />
+            <CongratsModal
+              modalFranco={modalFranco}
+              handleClose3={handleClose3}
+            />
           </div>
         )}
+
         {error && (
           <p className="error">
             Could not get data from the server, please try again

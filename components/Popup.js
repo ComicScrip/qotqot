@@ -1,12 +1,10 @@
-/* eslint-disable no-undef */
 import s from "../styles/ProductDetail.module.css";
 
-const ProductDetail = (product) => {
+const Popup = (product) => {
   return (
     <>
+      <span onClick={product.handleClose}>x</span>
       <div className={s.detail_wrapper}>
-        <button onClick={() => !setIsDetailed}>X</button>
-
         <h1 className={s.detail_title}>{product.name}</h1>
         <div className={s.top_container}>
           <div className={s.top_left}>
@@ -61,4 +59,4 @@ const ProductDetail = (product) => {
   );
 };
 
-export default ProductDetail;
+export default Popup;

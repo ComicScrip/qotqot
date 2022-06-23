@@ -1,15 +1,17 @@
 import style from "../styles/product_item.module.css";
-//import Link from "next/link";
 import { useState } from "react";
-import ProductDetail from "./ProductDetail";
+import Popup from "./Popup";
 
 function ProductItem(props) {
-  //const id = props.id;
   const [isDetailed, setIsDetailed] = useState(false);
+  const togglePopup = () => {
+    setIsDetailed(!isDetailed);
+  };
+
   return (
     <>
       {isDetailed ? (
-        <ProductDetail
+        <Popup
           name={props.name}
           weight={props.weight}
           price={props.price}
@@ -27,7 +29,7 @@ function ProductItem(props) {
         ""
       )}
       <div className={style.item_wrapper}>
-        <div className={style.item_picture} onClick={() => setIsDetailed(true)}>
+        <div className={style.item_picture} onClick={() => togglePopup}>
           <img
             src={props.picture ? props.picture : "/images/notAvailable.png"}
             alt={props.name}

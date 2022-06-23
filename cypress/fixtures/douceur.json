@@ -1,0 +1,348 @@
+{
+  "id": "rec0cguxNDu8gyr0d",
+  "fields": {
+    "Code Produit QotQot": "FR63.0222.01411",
+    "FOURNISSEUR": "CLAC!",
+    "Produit": "Douceur de quinoa coco carotte ",
+    "Catégorie": ["Épicerie salée"],
+    "Type": ["Plats cuisinés"],
+    "Spécificité": "Légumes",
+    "Statut": "Référencé",
+    "Dispo": "En stock",
+    "Prix d'achat unitaire €HT": 3.45,
+    "Descriptif Produit": "Cette recette à base de quinoa viendra égayer vos papilles grâce à la douceur de la crème de coco et la légèreté de la carotte. Idéale pour accompagner viandes et poissons.\n\nPriorité au circuit-court grâce au partenariat avec une douzaine de producteurs locaux auvergnats.\n\nSe consomme en tant qu'accompagnement, pour 1 ou 2 personnes. A réchauffer à feu doux.",
+    "Image produits sans fond": [
+      {
+        "id": "atthfyJqb8peSVVAS",
+        "width": 495,
+        "height": 504,
+        "url": "https://dl.airtable.com/.attachments/fc25f36f9061bd66259c9e0e43b9497e/8201146c/douceur-de-quinoa-coco-carotte-removebg-preview.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a0d24ecf4aa30b78",
+        "filename": "douceur-de-quinoa-coco-carotte-removebg-preview.png",
+        "size": 356408,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/5084ff03b0bf21498b791d42d7ee1dc3/0327806e?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=ef0ed531f58daa87",
+            "width": 35,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/cdaba358049a5095b3bbb403d36b9f58/a257e23b?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=9be99153c7e84f53",
+            "width": 495,
+            "height": 504
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/27b74c5407d1835846b3a34e9e227cad/f201c619?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=b4f38760c37dac8b",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "EAN 13": {
+      "text": "3770009413923"
+    },
+    "SIQO": ["BIO"],
+    "DDM (mois)": 24,
+    "UVC - Conditionnement": "bocal verre",
+    "UVC - Poids/vol": 400,
+    "UVC - Unité": "g",
+    "Prix d'achat kg/g/L €HT": 8.625,
+    "Unité d'achat(X*UV)": 6,
+    "Tx TVA": 0.055,
+    "Produit Particulier": true,
+    "Tarif Particulier TTC": 5.8236,
+    "numéro": 1411,
+    "Code Fournisseur (from Fournisseurs)": "FR63.0222",
+    "Département (from Coordonnées Sociétés)": ["PUY DE DÔME"],
+    "Franco €": "€300",
+    "DESIGNATION": "DOUCEUR DE QUINOA COCO CAROTTE  - BIO",
+    "Conditionnement": "bocal verre 400 g",
+    "Tarif Pro (HT)": 5.175000000000001,
+    "Tarif Pro (HT) au Kg/L": 12.937500000000002,
+    "Unité Vente": 1,
+    "Tarif Particulier TTC Arrondi": 5.9,
+    "LABEL": [
+      {
+        "id": "attdzLJnjcNd0rRmE",
+        "width": 1335,
+        "height": 606,
+        "url": "https://dl.airtable.com/.attachments/0e9e633af4f109241b1f6cc70f2cb0bc/fe8d7a9e/Capture-2.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=37f97cc72ed0c278",
+        "filename": "Capture-2.png",
+        "size": 105113,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/5e394e47a9ef364059f4dd554b2473c3/1cd419bf?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=e27c43263f84be0b",
+            "width": 79,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/e8ae48781a550c1899f42cc102006df4/47cf57c9?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a27d921d0fceaacc",
+            "width": 1128,
+            "height": 512
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/4b4f2305169a6254d9ae9f526c9dedef/b11e2141?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=07250fd8741d202e",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Image produits avec fond": [
+      {
+        "id": "atthfyJqb8peSVVAS",
+        "width": 495,
+        "height": 504,
+        "url": "https://dl.airtable.com/.attachments/fc25f36f9061bd66259c9e0e43b9497e/8201146c/douceur-de-quinoa-coco-carotte-removebg-preview.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a0d24ecf4aa30b78",
+        "filename": "douceur-de-quinoa-coco-carotte-removebg-preview.png",
+        "size": 356408,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/5084ff03b0bf21498b791d42d7ee1dc3/0327806e?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=ef0ed531f58daa87",
+            "width": 35,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/cdaba358049a5095b3bbb403d36b9f58/a257e23b?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=9be99153c7e84f53",
+            "width": 495,
+            "height": 504
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/27b74c5407d1835846b3a34e9e227cad/f201c619?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=b4f38760c37dac8b",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Nom complet Produit pour formulaire de Mouvement de Stock": "bocal verre 400 g-DOUCEUR DE QUINOA COCO CAROTTE  - BIO//CLAC!//FR63.0222.01411",
+    "Prix de vente typeform € TTC": 6.5,
+    "DESIGNATION TYPEFORM": "Douceur de quinoa coco carotte  - 400g - BIO // 6.50€",
+    "Hypothèse 15% marge px pro": 6.423088235294117,
+    "CATEGORIE/TYPE": "Épicerie salée>Plats cuisinés",
+    "Condi.": "bocal verre\n400 g",
+    "Disponibilité": "En stock",
+    "PRODUCTEUR": "CLAC!",
+    "Spécificités": "Légumes",
+    "Commande Fournisseurs": "FR63.0222-08/03/2022",
+    "Désignation Produit": "DOUCEUR DE QUINOA COCO CAROTTE  - BIO - bocal verre 400 g",
+    "Désignation Produit 1 ligne": "DOUCEUR DE QUINOA COCO CAROTTE  - BIO - bocal verre 400 g",
+    "Unité de vente détaillée": "1 X 400 g",
+    "Délais d'appro (jours) (from FOURNISSEUR)": "6",
+    "Nom de la Société (from FOURNISSEUR)": "CLAC!",
+    "Descriptif Producteur (from FOURNISSEUR)": "Fondée en juillet 2017, CLAC, la Conserverie Locale Artisanale & Créative, imagine et fabrique des tartinables apéritifs à partir d'ingrédients bio & locaux. Nous travaillons avec une quinzaine de producteurs d'Auvergne pour vous offrir des goûts originaux 100% naturels. CLAC, c'est également des légumes cuisinés, des sauces et des soupes fabriqués avec coeur et passion dans notre atelier de Cournon d'Auvergne",
+    "Photos Producteurs (from FOURNISSEUR)": [
+      {
+        "id": "att57lDlQ1Uf8uR6d",
+        "width": 480,
+        "height": 370,
+        "url": "https://dl.airtable.com/.attachments/65f6e5b664a80fc264a63f947393d989/5572920a/julien_Anglade_518eecd7-fccb-433a-b4a1-37db1dbbe0a5_large.PNG?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=90e99bdb1528f47e",
+        "filename": "julien_Anglade_518eecd7-fccb-433a-b4a1-37db1dbbe0a5_large.PNG",
+        "size": 277189,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/8622bbda081521db50632334635c4541/a78bc5c1?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=df8e048f15177261",
+            "width": 47,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/971526aafba7c228407ab0ec1523c864/0559e2c0?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=b8bdc7c2c8c03ec1",
+            "width": 480,
+            "height": 370
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/98ab59b9f44b1fcd993d894af39996b5/bbccdbb1?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=1e4f93f5b6f0c01b",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Label (from FOURNISSEUR)": ["AB"],
+    "LABEL LOGO (from FOURNISSEUR)": [
+      {
+        "id": "atthdViQyZ14LUu8l",
+        "width": 1335,
+        "height": 606,
+        "url": "https://dl.airtable.com/.attachments/0d38d4bd251d74a58a370972d36e2d16/bbd1e6dd/Capture-2.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=1519623abf5f4f63",
+        "filename": "Capture-2.png",
+        "size": 105113,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/d29e6895f30966e9dd650c26d42c694c/528b8acc?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=4431d73551d02e27",
+            "width": 79,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/43bc2d03176c12b59a06a15126d895c5/2d781fa8?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=c623dbb7cf6bb351",
+            "width": 1128,
+            "height": 512
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/c10f50df2e56d08c78870d0f258cabc7/c7210777?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=9ffe2036920f5142",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Département (from FOURNISSEUR)": ["PUY DE DÔME"],
+    "Code Postal (from FOURNISSEUR)": "63800",
+    "Ville (from FOURNISSEUR)": "COURNON D'AUVERGNE",
+    "STOCK DISPO (from Passerelle Stock vers BDD Produits/Producteurs)": "4",
+    "Import CSV Shopify": "FR63.0222.01411",
+    "Localisation (from FOURNISSEUR)": "63800 - COURNON D'AUVERGNE - PUY DE DÔME",
+    "Prix des Amis TTC": 5.5249999999999995,
+    "Marge QQ sur prix des amis": 1.7869668246445496,
+    "Marge % sur Prix des amis": 0.30657147814021574,
+    "GLOBAL STOCK(from Passerelle Stock vers BDD Produits/Producteurs) copy": "6",
+    "Produits": ["rec9IIZspLBRtRFKY"],
+    "Images Produits VP": [
+      {
+        "id": "atthfyJqb8peSVVAS",
+        "width": 495,
+        "height": 504,
+        "url": "https://dl.airtable.com/.attachments/fc25f36f9061bd66259c9e0e43b9497e/8201146c/douceur-de-quinoa-coco-carotte-removebg-preview.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a0d24ecf4aa30b78",
+        "filename": "douceur-de-quinoa-coco-carotte-removebg-preview.png",
+        "size": 356408,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/5084ff03b0bf21498b791d42d7ee1dc3/0327806e?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=ef0ed531f58daa87",
+            "width": 35,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/cdaba358049a5095b3bbb403d36b9f58/a257e23b?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=9be99153c7e84f53",
+            "width": 495,
+            "height": 504
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/27b74c5407d1835846b3a34e9e227cad/f201c619?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=b4f38760c37dac8b",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Nom du produit VP": "DOUCEUR DE QUINOA COCO CAROTTE  - BIO - bocal verre 400 g ",
+    "Passerelle Stock vers BDD Produits/Producteurs": "FR63.0222.01411",
+    "Quantité Disponible": "4",
+    "Quantités totales vendues (from Link to Produits Actif) (from Passerelle Stock vers BDD Produits/Producteurs)": "0",
+    "Very Up//STOCK (from Passerelle Stock vers BDD Produits/Producteurs)": "0",
+    "1K//STOCK (from Passerelle Stock vers BDD Produits/Producteurs)": "2",
+    "La Rosée//STOCK (from Passerelle Stock vers BDD Produits/Producteurs)": "0",
+    "Sidhuri Café//STOCK (from Passerelle Stock vers BDD Produits/Producteurs)": "0",
+    "Le Zanotti Gourmand//STOCK (from Passerelle Stock vers BDD Produits/Producteurs)": "0",
+    "UN AIR DE JANIS//STOCK (from Passerelle Stock vers BDD Produits/Producteurs)": "0",
+    "Prix de Vente TTC Clients Particuliers": 6.5,
+    "Tarif Caviste HT": 4.83,
+    "Marge Particulier": 2.7111374407582938,
+    "PVC HT": 6.161137440758294,
+    "Marge/PVC HT ": 0.44003846153846154,
+    "Adresse image avec fond": "douceur-de-quinoa-coco-carotte-removebg-preview.png (https://dl.airtable.com/.attachments/fc25f36f9061bd66259c9e0e43b9497e/8201146c/douceur-de-quinoa-coco-carotte-removebg-preview.png)",
+    "Adresse image sans fond": "douceur-de-quinoa-coco-carotte-removebg-preview.png (https://dl.airtable.com/.attachments/fc25f36f9061bd66259c9e0e43b9497e/8201146c/douceur-de-quinoa-coco-carotte-removebg-preview.png)",
+    "URL Image": "https://dl.airtable.com/.attachments/fc25f36f9061bd66259c9e0e43b9497e/8201146c/douceur-de-quinoa-coco-carotte-removebg-preview.png",
+    "Texte Alternatif Image": "bocal verre Douceur de quinoa coco carotte  de la marque CLAC!",
+    "Verif Texte Alternatif Image (125 Max)": "🟢Longueur Texte Alternatif Image OK",
+    "SEO Title": "Douceur de quinoa coco carotte  - Plats cuisinés - Auvergne - Rhône-Alpes",
+    "Verif Longueur SEO Title (70 Max)": "🔴Raccourcir SEO Title",
+    "REGION (from FOURNISSEUR)": ["Auvergne - Rhône-Alpes"],
+    "Calculation 2": "🔴Raccourcir Descriptif Produit",
+    "image compressée 1": [
+      {
+        "id": "att2oUFZnP6oISU5j",
+        "width": 495,
+        "height": 504,
+        "url": "https://dl.airtable.com/.attachments/6d5f64660a292a4c6d9159191a40c7b0/30ed9718/85w023g01zqggnggk5zwrk26zn7euumx?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=771655aac31a482b",
+        "filename": "85w023g01zqggnggk5zwrk26zn7euumx",
+        "size": 91495,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/12b99dc446e889bdca3834cd2a2fe256/d3f32bfe?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a54b427d65721475",
+            "width": 35,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/b0fe3eb0700b9f722ba8c07daa660ff9/a8c7344c?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=8ddecb81ddd49cdb",
+            "width": 495,
+            "height": 504
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/e3a873b5a54218dc26b9a89704e10420/9d956ac4?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=03d89aba9c3191d4",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Calculation 3": "dHObsQsBQuMh.png (https://dl.airtable.com/.attachments/94c667b9979e97ea76ce9df589925252/2f2e134a/dHObsQsBQuMh.png)",
+    "URL Image Compressée": "https://dl.airtable.com/.attachments/94c667b9979e97ea76ce9df589925252/2f2e134a/dHObsQsBQuMh.png",
+    "Last Modified": "2022-06-02T20:49:00.000Z",
+    "Collections": "CLAC!,Plats cuisinés,La sélection de Tug et Gus",
+    "Sélection de Tug et Gus": true,
+    "Image compréssée 2": [
+      {
+        "id": "attvdsn5i7Tda5BmB",
+        "width": 1024,
+        "height": 1024,
+        "url": "https://dl.airtable.com/.attachments/94c667b9979e97ea76ce9df589925252/2f2e134a/dHObsQsBQuMh.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a46efb5bbafc8d62",
+        "filename": "dHObsQsBQuMh.png",
+        "size": 1956774,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/ecd0061c7f5167a24d9613f49c097e26/97fd7356?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=86d43385486e1278",
+            "width": 36,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/902be96bda5ee0c63089d003e340df05/89a1c43b?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=7e2bbb87dd8e0864",
+            "width": 512,
+            "height": 512
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/20f6a46932678c550591a7065a0ebbae/799a8e8c?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=e79f3dad10a80bad",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Handle Shopify": "douceur-de-quinoa-coco-carotte--bio-bocal-verre-400-g",
+    "PVC TTC Reco Caviste": 7.2,
+    "Fournisseur Actif Rollup (from FOURNISSEUR)": "true",
+    "Delta PVC Caviste vs PVC QotQot": 0.10769230769230775,
+    "Marge Unitaire HT Caviste ": 1.9946445497630334,
+    "Coefficient Caviste": 1.4906832298136645,
+    "Quantité Disponible copy": "6",
+    "Remise Du coin des Fines Gueules": 0.15,
+    "Présent chez : (from Nom Produit TypeForm) (from Passerelle Stock vers BDD Produits/Producteurs)": [
+      "Very Up",
+      "La Rosée"
+    ],
+    "Verif Link \"Ressources\"": "🟢",
+    "Page Producteurs": "https://airtable.com/shrdYSO9bcUG94r6S",
+    "Format Prix Particulier TTC": 6.5,
+    "Prix des Fines Gueules TTC copy": 5.863423325734864,
+    "URL Images Produits VP": "https://dl.airtable.com/.attachments/fc25f36f9061bd66259c9e0e43b9497e/8201146c/douceur-de-quinoa-coco-carotte-removebg-preview.png"
+  },
+  "name": "Douceur de quinoa coco carotte ",
+  "weight": "bocal verre 400 g",
+  "price": "3.45",
+  "pricePerKg": "8.63",
+  "stock": "En stock",
+  "picture": "https://dl.airtable.com/.attachments/fc25f36f9061bd66259c9e0e43b9497e/8201146c/douceur-de-quinoa-coco-carotte-removebg-preview.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a0d24ecf4aa30b78",
+  "makerPicture": "https://dl.airtable.com/.attachments/65f6e5b664a80fc264a63f947393d989/5572920a/julien_Anglade_518eecd7-fccb-433a-b4a1-37db1dbbe0a5_large.PNG?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=90e99bdb1528f47e",
+  "makerName": "CLAC!",
+  "makerAdress": "63800 - COURNON D'AUVERGNE - PUY DE DÔME",
+  "descriptionProduit": "Cette recette à base de quinoa viendra égayer vos papilles grâce à la douceur de la crème de coco et la légèreté de la carotte. Idéale pour accompagner viandes et poissons.\n\nPriorité au circuit-court grâce au partenariat avec une douzaine de producteurs locaux auvergnats.\n\nSe consomme en tant qu'accompagnement, pour 1 ou 2 personnes. A réchauffer à feu doux.",
+  "descriptionProducteur": "Fondée en juillet 2017, CLAC, la Conserverie Locale Artisanale & Créative, imagine et fabrique des tartinables apéritifs à partir d'ingrédients bio & locaux. Nous travaillons avec une quinzaine de producteurs d'Auvergne pour vous offrir des goûts originaux 100% naturels. CLAC, c'est également des légumes cuisinés, des sauces et des soupes fabriqués avec coeur et passion dans notre atelier de Cournon d'Auvergne",
+  "logo": "https://dl.airtable.com/.attachments/0d38d4bd251d74a58a370972d36e2d16/bbd1e6dd/Capture-2.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=1519623abf5f4f63"
+}

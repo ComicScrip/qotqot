@@ -1,0 +1,180 @@
+{
+  "id": "rec0rp9lvCydHMM14",
+  "fields": {
+    "Code Produit QotQot": "FR03.0015.00400",
+    "FOURNISSEUR": "EARL Landrieaux",
+    "Produit": "Farine 5 Céréales",
+    "Catégorie": ["Céréales et produits de boulangerie"],
+    "Type": ["Céréales"],
+    "Spécificité": "Farine",
+    "Statut": "Référencé",
+    "Dispo": "En stock",
+    "Prix d'achat unitaire €HT": 3,
+    "Descriptif Produit": "x",
+    "Image produits sans fond": [
+      {
+        "id": "attQmM4ZQV1wKhI4D",
+        "width": 433,
+        "height": 577,
+        "url": "https://dl.airtable.com/.attachments/9a631dd8885c9243881a46730a77e0be/d6c38ca7/Farine_Blanche_5_Crales-removebg-preview1.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=4e5ab18f7bb75af0",
+        "filename": "Farine_Blanche_5_Céréales-removebg-preview (1).png",
+        "size": 152033,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/015484445e54bb0a19ce35b0df6fa91f/e2891709?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=bd07ee98bd425c40",
+            "width": 27,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/56641ecf29a17d504598b3cc9d0e410c/b8313191?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=2370cd8f302eb604",
+            "width": 433,
+            "height": 577
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/2a1051ce01bcb8152bff121cfe388dab/c1b30096?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=626479a29a1bcc2f",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "UVC - Conditionnement": "sachet",
+    "UVC - Poids/vol": 1,
+    "UVC - Unité": "kg",
+    "Prix d'achat kg/g/L €HT": 3,
+    "Unité d'achat(X*UV)": 1,
+    "Tx TVA": 0.055,
+    "Produit Pro": true,
+    "Produit Particulier": true,
+    "Tarif Particulier TTC": 5.064,
+    "numéro": 400,
+    "Code Fournisseur (from Fournisseurs)": "FR03.0015",
+    "Département (from Coordonnées Sociétés)": ["ALLIER"],
+    "DESIGNATION": "FARINE 5 CÉRÉALES",
+    "Conditionnement": "sachet 1 kg",
+    "Tarif Pro (HT)": 4.5,
+    "Tarif Pro (HT) au Kg/L": 4.5,
+    "Unité Vente": 1,
+    "Tarif Particulier TTC Arrondi": 5.1000000000000005,
+    "Image produits avec fond": [
+      {
+        "id": "attwCsEh67hp1s0OO",
+        "width": 4032,
+        "height": 3024,
+        "url": "https://dl.airtable.com/.attachments/24138ddb1e383a764119eec9fa32e2b6/eba7dbb1/FarineBlanche5Crales.jpg?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=ac80609e7fb2c164",
+        "filename": "Farine Blanche 5 Céréales.jpg",
+        "size": 2783280,
+        "type": "image/jpeg",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/a48ea040a09e6ab486e41385fcf93d37/850c25cf?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=41935feaa6eee0b4",
+            "width": 27,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/88ed16909f930649fbf76e82bcc860f3/9fbadefd?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=73cd3ca33521cb73",
+            "width": 512,
+            "height": 683
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/f49a2de30274e1cf6194e6ee02d348a5/eedf5a23?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=805f7658e869bb89",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Nom complet Produit pour formulaire de Mouvement de Stock": "sachet 1 kg-FARINE 5 CÉRÉALES//EARL Landrieaux//FR03.0015.00400",
+    "Prix de vente typeform € TTC": 5.6,
+    "DESIGNATION TYPEFORM": "Farine 5 Céréales - 1kg -  // 5.60€",
+    "Hypothèse 15% marge px pro": 5.5852941176470585,
+    "CATEGORIE/TYPE": "Céréales et produits de boulangerie>Céréales",
+    "Condi.": "sachet\n1 kg",
+    "Disponibilité": "En stock",
+    "PRODUCTEUR": "EARL LANDRIEAUX",
+    "Spécificités": "Farine",
+    "Désignation Produit": "FARINE 5 CÉRÉALES - sachet 1 kg",
+    "Désignation Produit 1 ligne": "FARINE 5 CÉRÉALES - sachet 1 kg",
+    "Unité de vente détaillée": "1 X 1 kg",
+    "Délais d'appro (jours) (from FOURNISSEUR)": "15",
+    "Nom de la Société (from FOURNISSEUR)": "EARL Landrieaux",
+    "Descriptif Producteur (from FOURNISSEUR)": "100 % céréales de la ferme écrasée à la meule de pierre pour une farine de qualité et un goût authentique Pâtes séchées très lentement (environ 20 heures) pour conserver les qualités gustatives et nutritionnelles",
+    "Photos Producteurs (from FOURNISSEUR)": [
+      {
+        "id": "attN0mQpwUbUrf5L6",
+        "width": 1200,
+        "height": 800,
+        "url": "https://dl.airtable.com/.attachments/e2576968b198c578aebfafe7935237ab/18e09d4d/la-vie-rurale-a-l-earl-landrieaux-a-louchy-montfand-ble-fari_4799520.jpeg?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=6d1f453b0092a5f5",
+        "filename": "la-vie-rurale-a-l-earl-landrieaux-a-louchy-montfand-ble-fari_4799520.jpeg",
+        "size": 158251,
+        "type": "image/jpeg",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/757ec0565b752c1c667d59ce30046de9/3ff4cd86?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=958fe3be45d6b30f",
+            "width": 54,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/94f450b1953d5e610e57a943dab6adcc/3aeda7f5?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=c943200392e07f00",
+            "width": 768,
+            "height": 512
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/9b69eeb700e46d1de69dbf528ba86da4/b991ebb5?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=4f28196e52b6081d",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Label (from FOURNISSEUR)": ["La région du goût"],
+    "LABEL LOGO (from FOURNISSEUR)": [
+      {
+        "id": "att00CpbJDmobHibi",
+        "width": 800,
+        "height": 800,
+        "url": "https://dl.airtable.com/.attachments/29b77a8bbbdea8886f6d92fe8acd2c45/079ba2af/logos_La_region_du_Gout-03.jpg?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=3611563cc17d4f55",
+        "filename": "logos_La_region_du_Gout-03.jpg",
+        "size": 70362,
+        "type": "image/jpeg",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/306061d7cc3ed7de82c1ca15d0df0789/62804379?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=beee6ead8234dca8",
+            "width": 36,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/d9105bb7f8fb22fce5080f55fd8ee3a0/327e9284?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=844e402e2c7909f0",
+            "width": 512,
+            "height": 512
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/762bbbcf574ed19ffc019a7d533f40f8/66b0d459?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=30fe73912f3a77a8",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Département (from FOURNISSEUR)": ["ALLIER"],
+    "Code Postal (from FOURNISSEUR)": "03500",
+    "Ville (from FOURNISSEUR)": " LOUCHY MONTFAND",
+    "STOCK DISPO (from Passerelle Stock vers BDD Produits/Producteurs)": "10",
+    "Import CSV Shopify": "FR03.0015.00400",
+    "Localisation (from FOURNISSEUR)": "03500 -  LOUCHY MONTFAND - ALLIER",
+    "Produits": ["recen33lGpmLvkG6p", "rec1VYEcPEyAsvOHT"]
+  },
+  "name": "Farine 5 Céréales",
+  "weight": "sachet 1 kg",
+  "price": "3.00",
+  "pricePerKg": "3.00",
+  "stock": "En stock",
+  "picture": "https://dl.airtable.com/.attachments/9a631dd8885c9243881a46730a77e0be/d6c38ca7/Farine_Blanche_5_Crales-removebg-preview1.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=4e5ab18f7bb75af0",
+  "makerPicture": "https://dl.airtable.com/.attachments/e2576968b198c578aebfafe7935237ab/18e09d4d/la-vie-rurale-a-l-earl-landrieaux-a-louchy-montfand-ble-fari_4799520.jpeg?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=6d1f453b0092a5f5",
+  "makerName": "EARL LANDRIEAUX",
+  "makerAdress": "03500 -  LOUCHY MONTFAND - ALLIER",
+  "descriptionProduit": "x",
+  "descriptionProducteur": "100 % céréales de la ferme écrasée à la meule de pierre pour une farine de qualité et un goût authentique Pâtes séchées très lentement (environ 20 heures) pour conserver les qualités gustatives et nutritionnelles",
+  "logo": "https://dl.airtable.com/.attachments/29b77a8bbbdea8886f6d92fe8acd2c45/079ba2af/logos_La_region_du_Gout-03.jpg?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=3611563cc17d4f55"
+}

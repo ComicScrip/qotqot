@@ -17,6 +17,7 @@ export async function getOneProduct(req, res) {
     .then((response) => {
       res.send(response.data);
     })
+
     .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }
 

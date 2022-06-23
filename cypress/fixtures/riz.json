@@ -1,0 +1,267 @@
+{
+  "id": "rec0nwwI1HxKvN2SO",
+  "fields": {
+    "Code Produit QotQot": "FR30.0012.00893",
+    "FOURNISSEUR": "Riz Canavere Camargue",
+    "Produit": "Riz de Camargue IGP rond blanc «special risotto» \"Canavere\"",
+    "Catégorie": ["Épicerie salée"],
+    "Type": ["Riz"],
+    "Spécificité": "Rond Spécial Risotto",
+    "Statut": "Référencé",
+    "Dispo": "En stock",
+    "Prix d'achat unitaire €HT": 2.4,
+    "Descriptif Produit": "Le Riz rond de Camargue « Spécial Risotto” est de type Carnarolli, une plante qui pousse aussi en Camargue. Il est parfait pour la réalisation de tous vos plats à connotation italienne type Risotto, Arancini, mais convient aussi à l’élaboration de plats type riz au lait ou tout autre dessert lacté.  ",
+    "Image produits sans fond": [
+      {
+        "id": "attSQ2zpH2ufvlOwC",
+        "width": 506,
+        "height": 493,
+        "url": "https://dl.airtable.com/.attachments/d183ebf7b487771a8f5190e8554d517b/b7a5e59c/Screenshot_2021-12-02_at_15-41-07_Riz_de_Camargue_Rond_Special_Risotto_IGP_-_Canavere-removebg-preview.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=73d0c98dce2213d1",
+        "filename": "Screenshot_2021-12-02_at_15-41-07_Riz_de_Camargue_Rond_Special_Risotto_IGP_-_Canavere-removebg-preview.png",
+        "size": 289858,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/113f509929d8a758b1bd86458b2525ec/6b4d6c04?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=7a5862db6c4a28bf",
+            "width": 37,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/b64f5cf2c253f13c8725d1aee0071d9b/ccb89348?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=6ca3d5b64cdf0cea",
+            "width": 506,
+            "height": 493
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/74a7c852095ccce8215cf343c4696b1a/03d38821?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=802c4602bfbfe089",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "EAN 13": {
+      "text": "3520991100116"
+    },
+    "SIQO": ["IGP"],
+    "Référence Fournisseur": "0061",
+    "UVC - Conditionnement": "sac",
+    "UVC - Poids/vol": 1,
+    "UVC - Unité": "kg",
+    "Prix d'achat kg/g/L €HT": 2.4,
+    "Unité d'achat(X*UV)": 20,
+    "Tx TVA": 0.055,
+    "Produit Pro": true,
+    "Produit Particulier": true,
+    "Tarif Particulier TTC": 4.0512,
+    "Commentaires": "EPICERIE - sous réserve de disponibilité",
+    "numéro": 893,
+    "Code Fournisseur (from Fournisseurs)": "FR30.0012",
+    "Département (from Coordonnées Sociétés)": ["GARD"],
+    "DESIGNATION": "RIZ DE CAMARGUE IGP ROND BLANC «SPECIAL RISOTTO» \"CANAVERE\" - IGP",
+    "Conditionnement": "sac 1 kg",
+    "Tarif Pro (HT)": 3.5999999999999996,
+    "Tarif Pro (HT) au Kg/L": 3.5999999999999996,
+    "Unité Vente": 1,
+    "Tarif Particulier TTC Arrondi": 4.1000000000000005,
+    "LABEL": [
+      {
+        "id": "attpiASv6llbLqJjW",
+        "width": 245,
+        "height": 245,
+        "url": "https://dl.airtable.com/.attachments/4ddebfa3010a70593140d0b7fa459db2/61771ed5/8c3d1490?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=584f3a9757bc4be1",
+        "filename": "8c3d1490",
+        "size": 45917,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/08eb6f2363ca31fb0052ed9df23ee4b0/69417b30?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=8959e3da0c9f53d0",
+            "width": 36,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/8bb10436d71fec8a3842cbc5f7b1d681/359ba35b?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=ca5865e22a9b1061",
+            "width": 245,
+            "height": 245
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/53f49e50cb06aee94e6d222d22ed9356/c107708c?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=ca77330c933390d5",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Image produits avec fond": [
+      {
+        "id": "attAAQqrv9my2zuYT",
+        "width": 434,
+        "height": 388,
+        "url": "https://dl.airtable.com/.attachments/241ba9738b39a8b90ff246bbd6e37661/80edd4cb/Captureweb_13-12-2021_141322_canavere.fr.jpeg?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=5e8a014b6a6afb00",
+        "filename": "Capture web_13-12-2021_141322_canavere.fr.jpeg",
+        "size": 58944,
+        "type": "image/jpeg",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/815e1751178be6833bd855b5063357ba/54a7869c?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=e6bd6f7792509583",
+            "width": 40,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/349c64f336f2e76031b30920cf01c778/5062eda4?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=5d54331c9a426d07",
+            "width": 434,
+            "height": 388
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/7827d2c817a5d55b6b9f55f8aa725323/d840cf0b?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=7d591f82bc6ebc4b",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Nom complet Produit pour formulaire de Mouvement de Stock": "sac 1 kg-RIZ DE CAMARGUE IGP ROND BLANC «SPECIAL RISOTTO» \"CANAVERE\" - IGP//Riz Canavere Camargue//FR30.0012.00893",
+    "Prix de vente € TTC conseillé": 3.88,
+    "Prix de vente typeform € TTC": 4.5,
+    "DESIGNATION TYPEFORM": "Riz de Camargue IGP rond blanc «special risotto» \"Canavere\" - 1kg - IGP // 4.50€",
+    "Hypothèse 15% marge px pro": 4.468235294117647,
+    "CATEGORIE/TYPE": "Épicerie salée>Riz",
+    "Condi.": "sac\n1 kg",
+    "Disponibilité": "En stock",
+    "PRODUCTEUR": "RIZ CANAVERE CAMARGUE",
+    "Spécificités": "Rond Spécial Risotto",
+    "Désignation Produit": "RIZ DE CAMARGUE IGP ROND BLANC «SPECIAL RISOTTO» \"CANAVERE\" - IGP - sac 1 kg",
+    "Désignation Produit 1 ligne": "RIZ DE CAMARGUE IGP ROND BLANC «SPECIAL RISOTTO» \"CANAVERE\" - IGP - sac 1 kg",
+    "Unité de vente détaillée": "1 X 1 kg",
+    "Délais d'appro (jours) (from FOURNISSEUR)": "15",
+    "Nom de la Société (from FOURNISSEUR)": "Riz Canavere Camargue",
+    "Descriptif Producteur (from FOURNISSEUR)": "Découvrez le riz de Camargue au travers de notre passion & notre savoir-faire familiale. UNE ENTREPRISE FAMILIALE La société Benoit Riz de Canavere a été fondée en 1993, par Jean Louis Benoit, fils de Louis Benoit, riziculteurs Camarguais de père en fils. Précurseur dans la riziculture en Camargue, \"Canavere\" est une entreprise familiale qui travaille depuis 4 générations au développement d’une production agricole respectueuse des sols et des Hommes : « Nous défendons une agriculture raisonnée ; et nous ne nous plierons pas à l’effet de mode du Green Marketing » qui consiste à marketer les produits BIO ou « Organic » sans conscience exacte de la provenance et la fabrication de notre produit. Riz semé, cultivé & emballé en Camargue dans un rayon de 30km Estampillé Sud de France, IGP, sans Gluten",
+    "Photos Producteurs (from FOURNISSEUR)": [
+      {
+        "id": "attZDGnYYdclQEm77",
+        "width": 1440,
+        "height": 1440,
+        "url": "https://dl.airtable.com/.attachments/56a872a411d285a32c78569cd73a17b3/feb1c8fa/123602542_3453678604701117_152993012696548202_n.jpg?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=98dadc5f2434d69a",
+        "filename": "123602542_3453678604701117_152993012696548202_n.jpg",
+        "size": 346171,
+        "type": "image/jpeg",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/285e15f2ad7ba136c900ad2fe7776fd8/35d04ee2?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=2d39789be67d0deb",
+            "width": 36,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/cfd0c1cca8979734d536292fcd10c980/dc5f692b?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a3d3a3f0dacc49cf",
+            "width": 512,
+            "height": 512
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/022baf280ed074a8a7b07899512114ee/29f83b23?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=e842cf2fb83ff89b",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Label (from FOURNISSEUR)": ["AB", "CCF", "IGP"],
+    "LABEL LOGO (from FOURNISSEUR)": [
+      {
+        "id": "attOjlB3OP92IAQLw",
+        "width": 1335,
+        "height": 606,
+        "url": "https://dl.airtable.com/.attachments/bde3a9041e764a52284e9d7e724c6906/c4f70304/Capture-2.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=d756dadedc675603",
+        "filename": "Capture-2.png",
+        "size": 105113,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/d610587c76107b1b40e5a9504a63a299/420fc780?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=e633319f22880b3f",
+            "width": 79,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/5e662ed8382bb04d74a88e0fd59474a4/1071aab4?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=514ecf10b66e52a7",
+            "width": 1128,
+            "height": 512
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/e515a39fdc1988e16ad042723ede9501/17bb594b?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=f39ad421fae1c051",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      },
+      {
+        "id": "attMuhgIz0i6EF3sO",
+        "width": 562,
+        "height": 796,
+        "url": "https://dl.airtable.com/.attachments/ac55e066dc4c694c226bc7aa3603b3ff/31baf7ba/PAQ_LOGO_DTOUR.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=5f9ecb47d2c8828c",
+        "filename": "PAQ_LOGO_DÉTOURÉ.png",
+        "size": 123333,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/e4ab024c3f5ae6d6703b12b21c377b2f/011e11ad?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=a84fb9c68ee69177",
+            "width": 25,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/e38099c48c3548fe4a91ffd6022b1f90/5617c169?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=184393cc28ae8a1c",
+            "width": 512,
+            "height": 725
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/3c384b36e8ef6fad60696f0f487e36e2/7835c7a6?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=9203cae9de52d04b",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      },
+      {
+        "id": "attIF8nQPkfYQg3PD",
+        "width": 245,
+        "height": 245,
+        "url": "https://dl.airtable.com/.attachments/30a5ed2ed078555a4bcfe03684fb85eb/372ed40a/IGP_inao_image_block.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=f55d376ae790607b",
+        "filename": "IGP_inao_image_block.png",
+        "size": 240796,
+        "type": "image/png",
+        "thumbnails": {
+          "small": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/0333ed4b7a128b7d06619f73677c9d6f/8c5f0926?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=12ae3b2b9bd683c5",
+            "width": 36,
+            "height": 36
+          },
+          "large": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/c4178b165dbce5f0be0c580da79693eb/c4b7af40?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=9c013afda0e91704",
+            "width": 245,
+            "height": 245
+          },
+          "full": {
+            "url": "https://dl.airtable.com/.attachmentThumbnails/a5071bafb6139fdd1692b3869089d1a7/2cb765ef?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=bc79c249dd2cea60",
+            "width": 3000,
+            "height": 3000
+          }
+        }
+      }
+    ],
+    "Département (from FOURNISSEUR)": ["GARD"],
+    "Code Postal (from FOURNISSEUR)": "30800",
+    "Ville (from FOURNISSEUR)": "Saint Gilles",
+    "STOCK DISPO (from Passerelle Stock vers BDD Produits/Producteurs)": "9",
+    "Import CSV Shopify": "FR30.0012.00893",
+    "Localisation (from FOURNISSEUR)": "30800 - SAINT GILLES - GARD",
+    "Produits": ["recKMolX3EwmYDo6C", "recxTvR413pVKOBVH"]
+  },
+  "name": "Riz de Camargue IGP rond blanc «special risotto» \"Canavere\"",
+  "weight": "sac 1 kg",
+  "price": "2.40",
+  "pricePerKg": "2.40",
+  "stock": "En stock",
+  "picture": "https://dl.airtable.com/.attachments/d183ebf7b487771a8f5190e8554d517b/b7a5e59c/Screenshot_2021-12-02_at_15-41-07_Riz_de_Camargue_Rond_Special_Risotto_IGP_-_Canavere-removebg-preview.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=73d0c98dce2213d1",
+  "makerPicture": "https://dl.airtable.com/.attachments/56a872a411d285a32c78569cd73a17b3/feb1c8fa/123602542_3453678604701117_152993012696548202_n.jpg?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=98dadc5f2434d69a",
+  "makerName": "RIZ CANAVERE CAMARGUE",
+  "makerAdress": "30800 - SAINT GILLES - GARD",
+  "descriptionProduit": "Le Riz rond de Camargue « Spécial Risotto” est de type Carnarolli, une plante qui pousse aussi en Camargue. Il est parfait pour la réalisation de tous vos plats à connotation italienne type Risotto, Arancini, mais convient aussi à l’élaboration de plats type riz au lait ou tout autre dessert lacté.  ",
+  "descriptionProducteur": "Découvrez le riz de Camargue au travers de notre passion & notre savoir-faire familiale. UNE ENTREPRISE FAMILIALE La société Benoit Riz de Canavere a été fondée en 1993, par Jean Louis Benoit, fils de Louis Benoit, riziculteurs Camarguais de père en fils. Précurseur dans la riziculture en Camargue, \"Canavere\" est une entreprise familiale qui travaille depuis 4 générations au développement d’une production agricole respectueuse des sols et des Hommes : « Nous défendons une agriculture raisonnée ; et nous ne nous plierons pas à l’effet de mode du Green Marketing » qui consiste à marketer les produits BIO ou « Organic » sans conscience exacte de la provenance et la fabrication de notre produit. Riz semé, cultivé & emballé en Camargue dans un rayon de 30km Estampillé Sud de France, IGP, sans Gluten",
+  "logo": "https://dl.airtable.com/.attachments/bde3a9041e764a52284e9d7e724c6906/c4f70304/Capture-2.png?ts=1655979216&userId=usrF6kLgBaja75CMj&cs=d756dadedc675603"
+}

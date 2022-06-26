@@ -4,9 +4,11 @@ const Popup = (product) => {
   return (
     <div className={s.popup_box}>
       <div className={s.box}>
-        <span className={s.close_icon} onClick={product.handleClose}>
-          x
-        </span>
+        <div className={s.icon_handler}>
+          <span className={s.close_icon} onClick={product.handleClose}>
+            x
+          </span>
+        </div>
         <div className={s.detail_wrapper}>
           <h1 className={s.detail_title}>{product.name}</h1>
           <div className={s.top_container}>

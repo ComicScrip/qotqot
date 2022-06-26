@@ -36,7 +36,11 @@ const DetailProduit = ({ product }) => {
             </div>
           </div>
           <div className={s.top_right}>
-            <p className={s.product_desc}>{product.descriptionProduit}</p>
+            <p className={s.product_desc}>
+              {product.descriptionProduit !== "x" && "X"
+                ? product.descriptionProduit
+                : "Aucune desciption disponible, merci de nous contacter"}
+            </p>
           </div>
         </div>
         <div className={s.bot_container}>

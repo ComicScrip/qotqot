@@ -40,6 +40,7 @@ export default function NewOrder() {
           makerAdress={prod.makerAdress}
           productDesc={prod.productDesc}
           makerDesc={prod.makerDesc}
+          logo={prod.logo}
         />
       ))}
       <style jsx>{`

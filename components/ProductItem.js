@@ -23,6 +23,7 @@ function ProductItem(props) {
           makerAdress={props.makerAdress}
           productDesc={props.productDesc}
           makerDesc={props.makerDesc}
+          logo={props.logo}
           setIsDetailed={true}
           handleClose={togglePopup}
         />

@@ -69,6 +69,11 @@
   margin-top: 0.5rem;
 }
 
+.product_logo {
+  height: 3rem;
+  width: 5rem;
+  margin: 0.5rem;
+}
 /* -----------------------TOP RIGHT ---------------- */
 .top_right {
   flex: 1;

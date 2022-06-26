@@ -24,15 +24,17 @@ function ProductItem(props) {
           productDesc={props.productDesc}
           makerDesc={props.makerDesc}
           setIsDetailed={true}
+          handleClose={togglePopup}
         />
       ) : (
         ""
       )}
       <div className={style.item_wrapper}>
-        <div className={style.item_picture} onClick={() => togglePopup}>
+        <div className={style.item_picture}>
           <img
             src={props.picture ? props.picture : "/images/notAvailable.png"}
             alt={props.name}
+            onClick={() => togglePopup()}
           />
         </div>
         <div className={style.item_detail}>

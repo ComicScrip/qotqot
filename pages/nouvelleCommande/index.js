@@ -38,8 +38,8 @@ export default function NewOrder() {
           makerPicture={prod.makerPicture}
           makerName={prod.makerName}
           makerAdress={prod.makerAdress}
-          productDesc={prod.productDesc}
-          makerDesc={prod.makerDesc}
+          productDesc={prod.descriptionProduit}
+          makerDesc={prod.descriptionProducteur}
           logo={prod.logo}
         />
       ))}

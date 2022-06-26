@@ -33,15 +33,7 @@ const Popup = (product) => {
               </div>
             </div>
             <div className={s.top_right}>
-              <p className={s.product_desc}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A
-                architecto eveniet provident. Excepturi similique esse maxime
-                necessitatibus nesciunt? Nulla, adipisci! Nihil officiis unde
-                quia possimus aperiam, veritatis voluptas consequatur quidem
-                magnam ab aut quaerat nobis quisquam sapiente esse dolorum
-                numquam. Iure nesciunt id unde aliquam cupiditate laboriosam
-                molestias blanditiis corrupti!{product.productDesc}
-              </p>
+              <p className={s.product_desc}>{product.productDesc}</p>
             </div>
           </div>
           <div className={s.bot_container}>
@@ -62,15 +54,7 @@ const Popup = (product) => {
               </div>
             </div>
             <div className={s.bot_bot}>
-              <p>
-                {product.makerDesc} Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Sed qui quas quam perspiciatis iste doloribus
-                soluta est libero et enim. Aspernatur illo commodi similique
-                suscipit cupiditate dolor libero consequuntur eum deserunt
-                repudiandae. Excepturi officiis quibusdam labore obcaecati natus
-                veniam accusantium deserunt, aliquid ab quia rem ipsum deleniti
-                suscipit, rerum tempore.
-              </p>
+              <p>{product.makerDesc}</p>
             </div>
           </div>
         </div>

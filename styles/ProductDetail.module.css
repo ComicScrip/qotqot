@@ -1,17 +1,18 @@
-/* ------------------- TOP SECTION ---------------- */
-.popup_box {
-  position: fixed;
+------------------- TOP SECTION ---------------- .popup_box {
+  position: absolute;
   background: #00000050;
   top: 0;
   left: 0;
   z-index: 999;
+  width: 100%;
+  height: 100vh;
 }
 .close_icon {
   font-weight: 900;
   font-size: x-large;
 }
 .box {
-  width: 100vw;
+  width: 90vw;
   position: relative;
   margin: 0 auto;
   margin-top: 3rem;
@@ -26,7 +27,7 @@
 .detail_wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .detail_title {
@@ -45,7 +46,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 0 1rem;
+  margin: 0 0.2rem;
 }
 .product_pic {
   height: 6rem;
@@ -76,7 +77,6 @@
   text-align: justify;
   font-size: 0.7rem;
   opacity: 70%;
-  min-height: 100vh;
   overflow: auto;
   padding: 0.5rem;
 }
@@ -113,6 +113,10 @@
   border-radius: 4px;
 }
 
-.bot_bot {
+.bot_bot p {
+  text-align: justify;
+  font-size: 0.7rem;
+  opacity: 70%;
   overflow: auto;
+  padding: 0.5rem;
 }

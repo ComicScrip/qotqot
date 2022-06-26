@@ -10,7 +10,7 @@ function ProductItem(props) {
 
   return (
     <>
-      {isDetailed ? (
+      {isDetailed && Popup ? (
         <Popup
           name={props.name}
           weight={props.weight}

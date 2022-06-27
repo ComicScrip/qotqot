@@ -17,7 +17,6 @@ export default async function getAllProducts(req, res) {
     )
     .then((response) => {
       res.send(minifyOrders(response.data.records));
-      console.log(response.data.records);
     })
     .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }

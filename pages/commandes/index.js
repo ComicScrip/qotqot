@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-key */
 import Link from "next/link";
 import Layout from "../../components/Layout";
-import OrderInProgress from "../../components/OrderInProgress";
-import OrderPassed from "../../components/OrderPassed";
+import Order from "../../components/Order";
 import styles from "../../styles/home.module.css";
 import axios from "axios";
 import { useState } from "react";
@@ -54,7 +53,7 @@ export default function Home() {
             <h2 className={styles.title}>Commandes à venir</h2>
             <div className={styles.displayCommande}>
               {ordersList.map((order) => (
-                <OrderInProgress
+                <Order
                   key={order.id}
                   statut={order.statut}
                   dateLivraison={order.dateLivraison}
@@ -67,7 +66,7 @@ export default function Home() {
             <h2 className={styles.title}>Commandes passées</h2>
             <div className={styles.displayCommande}>
               {ordersListPassed.map((order) => (
-                <OrderPassed
+                <Order
                   key={order.id}
                   statut={order.statut}
                   dateLivraison={order.dateLivraison}

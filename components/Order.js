@@ -5,7 +5,7 @@ import Link from "next/link";
 import "dayjs/locale/fr";
 const dayjs = require("dayjs");
 
-export default function OrderInProgress(props) {
+export default function OrderPassed(props) {
   const { setOrderNumberState, setOrderStatut, setOrderDate, setOrderAmount } =
     useContext(CurrentUserContext);
 
@@ -17,10 +17,17 @@ export default function OrderInProgress(props) {
       .format("DD/MM/YYYY");
     setOrderAmount(`${props.totalAmount}`);
   }
+
   return (
     <Link href={`/commandes/` + `${props.orderNumber}`}>
       <div className={styles.commande} onClick={handleClick}>
-        <div className={styles.state}>{props.statut}</div>
+        {props.statut === "Annulée" ? (
+          <div className={styles.state2}>{props.statut}</div>
+        ) : props.statut === "Livrée" ? (
+          <div className={styles.state1}>{props.statut}</div>
+        ) : (
+          <div className={styles.state}>{props.statut}</div>
+        )}
         <div className={styles.date}>{props.dateLivraison}</div>
       </div>
     </Link>

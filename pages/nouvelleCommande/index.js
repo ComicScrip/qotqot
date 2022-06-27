@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
@@ -68,8 +67,14 @@ export default function NewOrder() {
   );
 
   return (
-    <Layout pageTitle="nouvelle-commande">
-      <>
+    <>
+      <Layout pageTitle="nouvelle-commande">
+        {/* {modal && (
+          <div
+            className={
+              modal ? "fixed bg-black/50 w-full h-full z-10 " : "bg-white"
+            }
+          > */}
         <div className="flex justify-center items-center text-center m-auto py-5">
           <button
             type="button"
@@ -79,45 +84,52 @@ export default function NewOrder() {
             Confirmer la commande
           </button>
         </div>
+        {/* {modal && (
+            <div
+              className={
+                modal ? "fixed bg-black/50 w-full h-full z-10 " : "bg-white"
+              }
+            > */}
         {modal && (
-          <div
-            className={
-              modal ? "fixed bg-black/50 w-full h-full z-10 " : "bg-white"
-            }
-          >
-            <ConfirmationModal
-              modal={modal}
-              handleValidate={handleValidate}
-              handleClose={handleClose}
-            />
-          </div>
+          <ConfirmationModal
+            modal={modal}
+            handleValidate={handleValidate}
+            handleClose={handleClose}
+          />
         )}
+        {/* </div>
+         )} */}
+        {/*         
+            {modalCongrats && (
+              <div
+                className={
+                  modalCongrats
+                    ? "fixed bg-black/50 w-full h-full z-10 "
+                    : "bg-white"
+                }
+              > */}
         {modalCongrats && (
-          <div
-            className={
-              modalCongrats
-                ? "fixed bg-black/50 w-full h-full z-10 "
-                : "bg-white"
-            }
-          >
-            <CongratsModal
-              modalCongrats={modalCongrats}
-              showModalFranco={showModalFranco}
-              handleClose2={handleClose2}
-            />
-          </div>
+          <CongratsModal
+            modalCongrats={modalCongrats}
+            showModalFranco={showModalFranco}
+            handleClose2={handleClose2}
+          />
+          //   </div>
         )}
+        {/* {modalFranco && (
+              <div
+                className={
+                  modalFranco
+                    ? "fixed bg-black/50 w-full h-full z-10 "
+                    : "bg-white"
+                }
+              > */}
         {modalFranco && (
-          <div
-            className={
-              modalFranco ? "fixed bg-black/50 w-full h-full z-10 " : "bg-white"
-            }
-          >
-            <CongratsModal
-              modalFranco={modalFranco}
-              handleClose3={handleClose3}
-            />
-          </div>
+          <CongratsModal
+            modalFranco={modalFranco}
+            handleClose3={handleClose3}
+          />
+          // </div>
         )}
 
         {error && (
@@ -126,7 +138,9 @@ export default function NewOrder() {
           </p>
         )}
         {isLoading ? <LoadingSpin /> : renderProducts}
-      </>
-    </Layout>
+        {/* </div>
+        )} */}
+      </Layout>
+    </>
   );
 }

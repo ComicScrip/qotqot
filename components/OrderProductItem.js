@@ -8,7 +8,7 @@ function OrderProductItem(props) {
   const { setOrderAmount, setOrderNumberState, setOrderStatut, setOrderDate } =
     useContext(CurrentUserContext);
 
-  const calculateWeight = `${props.weight}` * `${props.quantity}`;
+  const calculateWeight = props.weight * props.quantity;
 
   useEffect(() => {
     setOrderAmount(`${props.totalAmount}`);

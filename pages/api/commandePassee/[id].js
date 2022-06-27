@@ -5,7 +5,6 @@ import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 
 export async function getOneOrder(req, res) {
   const { id } = req.query;
-  console.log(id);
   axios
     .get(
       `${process.env.AIRTABLE_API}/Commande%20Produits%20API?filterByFormula=%7BID%7D%3D%22${id}%22`,

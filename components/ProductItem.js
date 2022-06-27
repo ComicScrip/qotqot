@@ -36,7 +36,9 @@ function ProductItem(props) {
         </div>
         <div className={style.price}>
           <div className={style.itemPrice}>{props.price}€ HT</div>
-          <div className={style.itemPricePerKg}>{props.pricePerKg}€ HT /Kg</div>
+          <div className={style.itemPricePerKg}>
+            {props.pricePerKg.toFixed(2)}€ HT /Kg
+          </div>
         </div>
         <div className={style.item_stock}>
           <div
@@ -54,12 +56,19 @@ function ProductItem(props) {
           <div className={style.counter}>
             <button
               className={style.countBtn}
-              onClick={handleSubtractOneFromCart}
+              onClick={
+                count > 0 && props.stock === "En stock"
+                  ? handleSubtractOneFromCart
+                  : null
+              }
             >
               -
             </button>
             <div className={style.count_total}>{count}</div>
-            <button className={style.countBtn} onClick={handleAddOneToCart}>
+            <button
+              className={style.countBtn}
+              onClick={props.stock === "En stock" ? handleAddOneToCart : null}
+            >
               +
             </button>
           </div>

@@ -2,10 +2,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cart from "../../components/Cart";
+import Layout from "../../components/Layout";
+import LoadingSpin from "../../components/LoadingSpin";
+import styles from "../../styles/product_item.module.css";
+import Link from "next/link";
 
 export default function Panier() {
   const [cartItemsList, setCartItemsList] = useState([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setError("");
@@ -13,11 +18,12 @@ export default function Panier() {
       .get("/api/customerCartItem")
       .then((res) => res.data)
       .then((data) => setCartItemsList(data))
-      .catch(() => setError("Couldnt get data from cart"));
+      .catch(() => setError("Couldnt get data from cart"))
+      .finally(() => setIsLoading(false));
   }, []);
-  return (
-    <>
-      <div>Ceci est mon panier</div>
+
+  const renderProducts = (
+    <div className="main_container">
       {cartItemsList.map((item) => (
         <Cart
           key={item.id}
@@ -35,6 +41,38 @@ export default function Panier() {
           uniteUVC={item.uniteUVC}
         />
       ))}
+      <style jsx>{`
+  * {
+    padding: 10px 0;
+      background-color: #E5E5E5;
+  `}</style>
+    </div>
+  );
+
+  const handleCreateOrder = () => {
+    axios.post("/api/ordersProduct", {});
+  };
+
+  console.log(cartItemsList);
+
+  return (
+    <>
+      <Layout pageTitle="Panier">
+        <div className={styles.headCmd}>
+          <div className={styles.priceTotal}>Prix total</div>
+          <button onClick={handleCreateOrder} className={styles.btnCart}>
+            Confirmer la commande
+          </button>
+        </div>
+        <>
+          {error && (
+            <p className="error">
+              Could not get data from the server, please try again
+            </p>
+          )}
+          {isLoading ? <LoadingSpin /> : renderProducts}
+        </>
+      </Layout>
     </>
   );
 }

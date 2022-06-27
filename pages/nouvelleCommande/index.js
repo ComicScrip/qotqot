@@ -5,6 +5,7 @@ import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
 import Link from "next/link";
+import styles from "../../styles/product_item.module.css";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -26,7 +27,6 @@ export default function NewOrder() {
 
   const renderProducts = (
     <div className="main_container">
-      <Link href="/panier">Panier</Link>
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}
@@ -43,13 +43,20 @@ export default function NewOrder() {
 
       <style jsx>{`
   * {
+    padding: 10px 0;
       background-color: #E5E5E5;
   `}</style>
     </div>
   );
 
   return (
-    <Layout pageTitle="nouvelle-commande">
+    <Layout pageTitle="Nouvelle commande">
+      <div className={styles.headCmd}>
+        <div className={styles.priceTotal}>Prix total</div>
+        <button className={styles.btnCart}>
+          <Link href="/panier">Panier </Link>
+        </button>
+      </div>
       <>
         {error && (
           <p className="error">

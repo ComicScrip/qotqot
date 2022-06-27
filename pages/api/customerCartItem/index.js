@@ -3,7 +3,7 @@ import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 import { minifyCartItems } from "../utils/Airtable";
-import { setCartQuantity } from "../../../airtableCart";
+import { setCartQuantity } from "../../../models/cart_model";
 
 export async function getCartItems(req, res) {
   axios

@@ -8,8 +8,8 @@ describe("commandePassee", () => {
     cy.intercept("**/api/orders**", { fixture: "orderspending.json" });
     cy.visit("/commandes");
     cy.contains("12 mai").click();
-    cy.intercept("**/commandePassee/ENT69-0013-11-05-2022", {
-      fixture: "commandePassee.json",
+    cy.intercept("**/orderDetails/ENT69-0013-11-05-2022", {
+      fixture: "orderDetails.json",
     });
     cy.url().should("include", "/commandes/ENT69-0013-11-05-2022");
     cy.contains("Prévue pour le");
@@ -20,8 +20,8 @@ describe("commandePassee", () => {
     cy.intercept("**/api/orders**", { fixture: "orderspassed.json" });
     cy.visit("/commandes");
     cy.contains("17 mai").click();
-    cy.intercept("**/commandePassee/PRO69-0007-14-05-2022", {
-      fixture: "commandePassee.json",
+    cy.intercept("**/orderDetails/PRO69-0007-14-05-2022", {
+      fixture: "orderDetails.json",
     });
     cy.url().should("include", "/commandes/PRO69-0007-14-05-2022");
     cy.contains("Livrée le");
@@ -32,8 +32,8 @@ describe("commandePassee", () => {
     cy.intercept("**/api/orders**", { fixture: "orderspassed.json" });
     cy.visit("/commandes");
     cy.contains("5 avr.").click();
-    cy.intercept("**/commandePassee/PRO69-0006-04-04-2022", {
-      fixture: "commandePassee.json",
+    cy.intercept("**/orderDetails/PRO69-0006-04-04-2022", {
+      fixture: "orderDetails.json",
     });
     cy.url().should("include", "/commandes/PRO69-0006-04-04-2022");
     cy.contains("Annulée le");

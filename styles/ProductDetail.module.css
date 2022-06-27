@@ -21,7 +21,7 @@
   margin-right: 1rem;
 }
 .box {
-  width: 90vw;
+  width: 100vw;
   position: relative;
   margin: 0 auto;
   margin-top: 3rem;
@@ -36,7 +36,6 @@
 .detail_wrapper {
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
 }
 
 .detail_title {
@@ -55,7 +54,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 0 0.2rem;
+  margin: 0 0.5rem;
 }
 .product_pic {
   height: 6rem;
@@ -80,19 +79,19 @@
 
 .product_logo {
   height: 3rem;
-  width: 5rem;
+  width: 6rem;
   margin: 0.5rem;
 }
 /* -----------------------TOP RIGHT ---------------- */
 .top_right {
-  flex: 1;
+  flex: 2;
 }
 .product_desc {
   text-align: justify;
-  font-size: 0.7rem;
-  opacity: 70%;
+  font-size: 12px;
   overflow: auto;
-  padding: 0.5rem;
+  opacity: 70%;
+  font-style: italic;
 }
 
 /* ------------- BOTTOM SECTION ------------  */

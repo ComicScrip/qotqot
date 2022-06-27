@@ -1,7 +1,7 @@
 /* //------------------- TOP SECTION ----------------  */
 
 .popup_box {
-  position: absolute;
+  position: fixed;
   background: #00000050;
   top: 0;
   left: 0;
@@ -19,6 +19,7 @@
   font-size: x-large;
   align-self: center;
   margin-right: 1rem;
+  cursor: pointer;
 }
 .box {
   width: 100vw;

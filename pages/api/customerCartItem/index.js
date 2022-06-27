@@ -18,7 +18,10 @@ export async function getCartItems(req, res) {
     .then((response) => {
       res.send(minifyCartItems(response.data.records));
     })
-    .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ msg: "Something went very wrong" });
+    });
 }
 
 export async function handlePostCartItems(req, res) {
@@ -26,7 +29,7 @@ export async function handlePostCartItems(req, res) {
     product_id: req.body.ProductId,
     customer_id: req.currentUser.id,
     Quantity: req.body.Quantity,
-  });
+  }).catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }
 
 export default base()

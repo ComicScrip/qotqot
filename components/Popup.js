@@ -29,7 +29,7 @@ const Popup = (product) => {
                 </p>
                 <img
                   className={s.product_logo}
-                  src={product.logo}
+                  src={product.logo ? product.logo : "/images/notAvailable.png"}
                   alt="label producteur"
                 />
               </div>

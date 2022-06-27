@@ -21,7 +21,7 @@ export default function OrderHistory() {
     setError("");
     if (id) {
       axios
-        .get(`/api/commandePassee/${id}`)
+        .get(`/api/orderDetails/${id}`)
         .then((res) => res.data)
         .then((data) => setOrderProductList(data))
         .catch(() =>

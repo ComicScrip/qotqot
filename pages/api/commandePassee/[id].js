@@ -3,10 +3,12 @@ import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 
-export async function getAllProducts(req, res) {
+export async function getOneOrder(req, res) {
+  const { id } = req.query;
+  console.log(id);
   axios
     .get(
-      "https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Commande%20Produits%20API",
+      `${process.env.AIRTABLE_API}/Commande%20Produits%20API?filterByFormula=%7BID%7D%3D%22${id}%22`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
@@ -19,4 +21,4 @@ export async function getAllProducts(req, res) {
     .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }
 
-export default base().use(reqCurrentUser).get(getAllProducts);
+export default base().use(reqCurrentUser).get(getOneOrder);

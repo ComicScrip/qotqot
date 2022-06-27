@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import OrderProductItem from "../../components/OrderProductItem";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import Layout from "../../components/Layout";
@@ -10,32 +11,33 @@ import style from "../../styles/orderedProductItem.module.css";
 
 export default function OrderHistory() {
   const { orderNumberState } = useContext(CurrentUserContext);
-  const [productList, setProductList] = useState([]);
+  const [orderProductList, setOrderProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(() => {
     setError("");
-
-    axios
-      .get("/api/commandePassee")
-      .then((res) => res.data)
-      .then((data) => setProductList(data))
-      .catch(() =>
-        setError("Could not get data from the server, please try again")
-      )
-      .finally(() => setIsLoading(false));
-  }, []);
+    if (id) {
+      axios
+        .get(`/api/commandePassee/${id}`)
+        .then((res) => res.data)
+        .then((data) => setOrderProductList(data))
+        .catch(() =>
+          setError("Could not get data from the server, please try again")
+        )
+        .finally(() => setIsLoading(false));
+    }
+  }, [id]);
 
   const renderProducts = (
     <div className={style.homeBody}>
-      {productList
+      {orderProductList
         .filter(
           (order) =>
             orderNumberState === order.orderNumber ||
-            window.location
-              .toString()
-              .includes(`${order.orderNumber}`.slice(0, 10))
+            window.location.toString().includes(`${order.orderNumber}`)
         )
         .map((prod) => (
           <div className={style.product} key={prod.id}>

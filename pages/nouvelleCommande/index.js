@@ -69,12 +69,6 @@ export default function NewOrder() {
   return (
     <>
       <Layout pageTitle="nouvelle-commande">
-        {/* {modal && (
-          <div
-            className={
-              modal ? "fixed bg-black/50 w-full h-full z-10 " : "bg-white"
-            }
-          > */}
         <div className="flex justify-center items-center text-center m-auto py-5">
           <button
             type="button"
@@ -84,12 +78,6 @@ export default function NewOrder() {
             Confirmer la commande
           </button>
         </div>
-        {/* {modal && (
-            <div
-              className={
-                modal ? "fixed bg-black/50 w-full h-full z-10 " : "bg-white"
-              }
-            > */}
         {modal && (
           <ConfirmationModal
             modal={modal}
@@ -97,39 +85,20 @@ export default function NewOrder() {
             handleClose={handleClose}
           />
         )}
-        {/* </div>
-         )} */}
-        {/*         
-            {modalCongrats && (
-              <div
-                className={
-                  modalCongrats
-                    ? "fixed bg-black/50 w-full h-full z-10 "
-                    : "bg-white"
-                }
-              > */}
+
         {modalCongrats && (
           <CongratsModal
             modalCongrats={modalCongrats}
             showModalFranco={showModalFranco}
             handleClose2={handleClose2}
           />
-          //   </div>
         )}
-        {/* {modalFranco && (
-              <div
-                className={
-                  modalFranco
-                    ? "fixed bg-black/50 w-full h-full z-10 "
-                    : "bg-white"
-                }
-              > */}
+
         {modalFranco && (
           <CongratsModal
             modalFranco={modalFranco}
             handleClose3={handleClose3}
           />
-          // </div>
         )}
 
         {error && (
@@ -138,8 +107,6 @@ export default function NewOrder() {
           </p>
         )}
         {isLoading ? <LoadingSpin /> : renderProducts}
-        {/* </div>
-        )} */}
       </Layout>
     </>
   );

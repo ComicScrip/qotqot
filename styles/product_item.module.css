@@ -90,6 +90,9 @@
   text-align: center;
 }
 
+.instock {
+  display: none;
+}
 .out_of_stock {
   background-color: #e41b1b33;
   color: #e41b1b;
@@ -97,8 +100,9 @@
   border-radius: 4px;
 }
 .low_on_stock {
-  background-color: #ffb92333;
-  color: #ffb923;
+  background-color: #05050433;
+  color: #3b3a3a;
+  opacity: 60%;
   padding: 0.3rem;
   border-radius: 4px;
 }
@@ -110,35 +114,8 @@
   margin-top: 2rem;
 }
 
-/* ---- POP UP ----- */
-
-.popup_wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 90vw;
-  height: 100vh;
-  background: grey;
-  border-radius: 15px;
-}
-
-.popup_top {
-  margin-top: 6rem;
-  display: flex;
-  padding: 3px;
-}
-.popup_l1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  flex: 1;
-}
-.popup_r1 {
-  flex: 2;
-}
-
-.popup_picture {
-  height: 5rem;
-  width: 8rem;
-  border-radius: 10px;
+@media screen and (min-width: 480px) {
+  .item_wrapper {
+    margin: 0.5rem 20%;
+  }
 }

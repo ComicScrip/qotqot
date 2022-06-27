@@ -134,3 +134,16 @@
   overflow: auto;
   padding: 0.5rem;
 }
+
+@media screen and (min-width: 480px) {
+  .box {
+    width: 60%;
+  }
+
+  .top_left {
+    margin-left: 2rem;
+  }
+  .detail_title {
+    line-height: 3rem;
+  }
+}

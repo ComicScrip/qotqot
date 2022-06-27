@@ -50,8 +50,8 @@ function ProductItem(props) {
           <div
             className={
               props.stock === "En stock"
-                ? style.stock_display_instock
-                : props.stock === "Stock faible"
+                ? style.instock
+                : props.stock === "Sur demande"
                 ? style.low_on_stock
                 : style.out_of_stock
             }

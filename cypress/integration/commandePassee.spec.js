@@ -8,9 +8,11 @@ describe("commandePassee", () => {
     cy.intercept("**/api/orders", { fixture: "orders.json" });
     cy.visit("/commandes");
     cy.contains("12 mai").click();
-    cy.intercept("**/commandePassee", { fixture: "commandePassee.json" });
-    cy.url().should("include", "/commandes/ENT69-0013");
-    cy.contains("Prévue pour le 12/05/2022");
+    cy.intercept("**/commandePassee/ENT69-0013-11-05-2022", {
+      fixture: "commandePassee.json",
+    });
+    cy.url().should("include", "/commandes/ENT69-0013-11-05-2022");
+    cy.contains("Prévue pour le");
     cy.contains("Provençale de légumes");
   });
 
@@ -18,9 +20,11 @@ describe("commandePassee", () => {
     cy.intercept("**/api/orders", { fixture: "orders.json" });
     cy.visit("/commandes");
     cy.contains("17 mai").click();
-    cy.intercept("**/commandePassee", { fixture: "commandePassee.json" });
-    cy.url().should("include", "/commandes/PRO69-0007");
-    cy.contains("Livrée le 17/05/2022");
+    cy.intercept("**/commandePassee/PRO69-0007-14-05-2022", {
+      fixture: "commandePassee.json",
+    });
+    cy.url().should("include", "/commandes/PRO69-0007-14-05-2022");
+    cy.contains("Livrée le");
     cy.contains("Liqueur de Verveine");
   });
 
@@ -28,9 +32,11 @@ describe("commandePassee", () => {
     cy.intercept("**/api/orders", { fixture: "orders.json" });
     cy.visit("/commandes");
     cy.contains("5 avr.").click();
-    cy.intercept("**/commandePassee", { fixture: "commandePassee.json" });
-    cy.url().should("include", "/commandes/PRO69-0006");
-    cy.contains("Annulée le 05/04/2022");
+    cy.intercept("**/commandePassee/PRO69-0006-04-04-2022", {
+      fixture: "commandePassee.json",
+    });
+    cy.url().should("include", "/commandes/PRO69-0006-04-04-2022");
+    cy.contains("Annulée le");
     cy.contains("Provençale de légumes");
   });
 });

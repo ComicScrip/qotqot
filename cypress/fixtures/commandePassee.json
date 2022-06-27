@@ -1,7 +1,7 @@
 [
   {
     "id": "rec04YDqYmCqnXEtZ",
-    "orderNumber": "PRO69-0007-14/05/2022",
+    "orderNumber": "PRO69-0007-14-05-2022",
     "name": "Liqueur de Verveine 30°",
     "weight": 500,
     "totalAmount": 122.85,
@@ -14,7 +14,7 @@
   },
   {
     "id": "rec9R6A0bGAFhCwXv",
-    "orderNumber": "ENT69-0013-11/05/2022",
+    "orderNumber": "ENT69-0013-11-05-2022",
     "name": "Provençale de légumes",
     "weight": 100,
     "totalAmount": 9.99,
@@ -27,7 +27,7 @@
   },
   {
     "id": "recCwCdHIj5eroGqZ",
-    "orderNumber": "PRO69-0006-04/04/2022",
+    "orderNumber": "PRO69-0006-04-04-2022",
     "name": "Provençale de légumes",
     "weight": 100,
     "totalAmount": 48.27,
@@ -40,7 +40,7 @@
   },
   {
     "id": "recKqXBHV42F4eXIQ",
-    "orderNumber": "PRO69-0006-04/04/2022",
+    "orderNumber": "PRO69-0006-04-04-2022",
     "name": "Liqueur de Verveine 30°",
     "weight": 500,
     "totalAmount": 48.27,
@@ -53,7 +53,7 @@
   },
   {
     "id": "recNLElDh66yl78vA",
-    "orderNumber": "PRO69-0007-14/05/2022",
+    "orderNumber": "PRO69-0007-14-05-2022",
     "name": "Liqueur de Verveine 30°",
     "weight": 500,
     "totalAmount": 122.85,
@@ -66,7 +66,7 @@
   },
   {
     "id": "recWLdJJfYImHgqOh",
-    "orderNumber": "ENT69-0013-11/05/2022",
+    "orderNumber": "ENT69-0013-11-05/-022",
     "name": "Houmous de pois chiches à la grecque",
     "weight": 100,
     "totalAmount": 9.99,
@@ -82,7 +82,7 @@
   },
   {
     "id": "reca1hp5Cowp7zBf7",
-    "orderNumber": "PRO69-0007-14/05/2022",
+    "orderNumber": "PRO69-0007-14-05-2022",
     "name": "Gressins aux olives noires",
     "weight": 150,
     "totalAmount": 122.85,

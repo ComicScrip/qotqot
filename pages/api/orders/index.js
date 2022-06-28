@@ -4,10 +4,10 @@ import axios from "axios";
 export default async function getAllProducts(req, res) {
   axios
     .get(
-      `https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Commandes%20Pro%20TEST?filterByFormula=${
+      `${process.env.AIRTABLE_API}/Commandes%20Pro%20TEST?filterByFormula=${
         req.query.status === "pending"
-          ? "%7BStatus%7D%3D%22En%2520cours%22"
-          : "OR(%7BStatus%7D%3D%22Livr%C3%A9e%22%2C%7BStatus%7D%3D%22Annul%C3%A9e%22)"
+          ? `%7BStatus%7D%3D%22En-cours%22`
+          : `OR(%7BStatus%7D%3D%22Livr%C3%A9e%22%2C%7BStatus%7D%3D%22Annul%C3%A9e%22)`
       }`,
       {
         headers: {

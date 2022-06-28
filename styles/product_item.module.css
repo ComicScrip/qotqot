@@ -7,7 +7,6 @@
   background-color: white;
   padding: 0.4rem;
   height: 6rem;
-  width: 95vw;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -31,6 +30,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .item_picture img {
   height: 4rem;
@@ -52,17 +52,20 @@
   line-height: 18px;
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 0.7rem;
 }
 .item_title::-webkit-scrollbar {
   display: none;
 }
 
 .item_weight {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300;
   opacity: 60%;
   display: flex;
-  margin-top: 0.5rem;
+  margin-top: -0.2rem;
 }
 .price {
   display: flex;
@@ -73,8 +76,6 @@
 
 .itemPrice {
   background-color: #f2f2f2;
-  font-weight: 600;
-  font-size: 12px;
   padding: 0.2rem;
   border-radius: 4px;
   height: 27px;
@@ -82,18 +83,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.3rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 14px;
 }
 .itemPricePerKg {
   height: 1.5rem;
-  width: 5rem;
-  font-size: 10px;
-  font-weight: 300;
+  width: 6rem;
   overflow-x: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .item_stock {
@@ -103,15 +106,9 @@
   width: 4rem;
   text-align: center;
 }
-.stock_display_instock {
+
+.instock {
   display: none;
-  /* 
-  --- To be confirmed with client, commented for now ---
-  padding: 0.2rem;
-  border-radius: 4px;
-  background-color: #33996633;
-  color: #339966; 
-  ------------------------------  */
 }
 .out_of_stock {
   position: absolute;
@@ -123,11 +120,9 @@
   border-radius: 4px;
 }
 .low_on_stock {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  background-color: #ffb92333;
-  color: #ffb923;
+  background-color: #05050433;
+  color: #3b3a3a;
+  opacity: 60%;
   padding: 0.3rem;
   border-radius: 4px;
 }
@@ -205,5 +200,11 @@ CART */
     display: flex;
     align-items: center;
     margin-left: 30%;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .item_wrapper {
+    margin: 0.5rem 20%;
   }
 }

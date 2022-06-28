@@ -9,6 +9,11 @@ export default function CurrentUserContextProvider({ children }) {
   const { status } = useSession();
 
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
+  const [orderNumberState, setOrderNumberState] = useState("");
+  const [orderStatut, setOrderStatut] = useState("");
+  const [orderDate, setOrderDate] = useState("");
+  const [orderAmount, setOrderAmount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const currentUserLogged = useMemo(
     () => currentUserProfile,
@@ -43,6 +48,16 @@ export default function CurrentUserContextProvider({ children }) {
         setCurrentUserProfile,
         getProfile,
         status,
+        orderNumberState,
+        setOrderNumberState,
+        orderStatut,
+        setOrderStatut,
+        orderDate,
+        setOrderDate,
+        orderAmount,
+        setOrderAmount,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

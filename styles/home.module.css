@@ -35,6 +35,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+  padding-bottom: 15px;
 }
 
 .title {
@@ -48,6 +49,7 @@
   height: 98px;
   background-color: white;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .state {
@@ -57,7 +59,7 @@
   border-radius: 4px;
   text-align: center;
   margin: 10px auto;
-  color: #06968a;
+  color: #fc623a;
   font-size: 13px;
   padding: auto;
 }

@@ -1,5 +1,6 @@
 const argon2 = require("argon2");
 const { default: axios } = require("axios");
+import instance from "../models/instance";
 
 module.exports.findUserByEmail = (email) => {
   return axios
@@ -34,3 +35,9 @@ const hashPassword = (plainPassword) =>
   argon2.hash(plainPassword, hashingOptions);
 
 module.exports.hashPassword = hashPassword;
+
+module.exports.updateUser = async (id, data) =>
+  instance.user.patch({
+    records: { id: parseInt(id, 10) },
+    data,
+  });

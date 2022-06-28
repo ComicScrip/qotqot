@@ -18,6 +18,14 @@ const getMinifiedProduct = (record) => {
     pricePerKg: record.fields["Prix d'achat kg/g/L €HT"].toFixed(2),
     stock: record.fields.Dispo,
     picture: record.fields["Image produits sans fond"]?.[0].url,
+    makerPicture:
+      record.fields["Photos Producteurs (from FOURNISSEUR)"]?.[0].url,
+    makerName: record.fields.PRODUCTEUR,
+    makerAdress: record.fields["Localisation (from FOURNISSEUR)"],
+    descriptionProduit: record.fields["Descriptif Produit"],
+    descriptionProducteur:
+      record.fields["Descriptif Producteur (from FOURNISSEUR)"],
+    logo: record.fields["LABEL LOGO (from FOURNISSEUR)"]?.[0].url,
   };
 };
 

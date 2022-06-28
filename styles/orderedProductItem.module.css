@@ -1,3 +1,10 @@
+.homeBody {
+  background-color: #f2f2f2;
+  margin: auto 0;
+  height: 100vh;
+  padding-top: 5px;
+}
+
 .item_wrapper {
   background-color: white;
   padding: 0.4rem;
@@ -8,7 +15,6 @@
   align-items: center;
   border-radius: 4px;
   margin: 0.5rem auto;
-  font-family: "Raleway", sans-serif;
 }
 .item_picture {
   height: 44px;
@@ -22,6 +28,28 @@
   height: 4rem;
   width: 4rem;
   border-radius: 4px;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemQuantity {
+  background-color: #f2f2f2;
+  padding: 0.2rem;
+  border-radius: 4px;
+  height: 27px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 .item_detail {
@@ -40,19 +68,30 @@
   margin-right: 0.5rem;
   font-size: 14px;
   font-weight: 700;
-  margin-top: 0.7rem;
 }
 .item_title::-webkit-scrollbar {
   display: none;
 }
 
 .item_weight {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 300;
   opacity: 60%;
   display: flex;
-  margin-top: -0.2rem;
+  margin-top: -0.5rem;
+  font-size: 12px;
+  font-weight: 300;
 }
+
+.totalWeight {
+  font-size: 10px;
+  font-weight: 300;
+  opacity: 60%;
+  display: flex;
+  font-size: 12px;
+  font-weight: 300;
+}
+
 .price {
   display: flex;
   flex-direction: column;
@@ -69,10 +108,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 0.3rem;
   margin-bottom: 1rem;
-  font-weight: 700;
   font-size: 14px;
+  font-weight: 700;
 }
 .itemPricePerKg {
   height: 1.5rem;
@@ -81,43 +120,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -0.3rem;
   font-size: 12px;
   font-weight: 300;
-}
-
-.item_stock {
-  font-size: 9px;
-  font-weight: 400;
-  margin-left: 0.5rem;
-  width: 4rem;
-  text-align: center;
-}
-.stock_display_instock {
-  display: none;
-  /* 
-  --- To be confirmed with client, commented for now ---
-  padding: 0.2rem;
-  border-radius: 4px;
-  background-color: #33996633;
-  color: #339966; 
-  ------------------------------  */
-}
-.out_of_stock {
-  background-color: #e41b1b33;
-  color: #e41b1b;
-  padding: 0.3rem;
-  border-radius: 4px;
-}
-.low_on_stock {
-  background-color: #ffb92333;
-  color: #ffb923;
-  padding: 0.3rem;
-  border-radius: 4px;
-}
-.counter {
-  background-color: lightgray;
-  opacity: 50%;
-  display: flex;
-  justify-content: space-around;
-  margin-top: 2rem;
 }

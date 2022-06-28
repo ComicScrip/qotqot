@@ -25,11 +25,11 @@
     "argon2": "^0.28.5",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.3",
     "dotenv": "^16.0.1",
     "joi": "^17.6.0",
-    "morgan": "^1.10.0",
-    "dayjs": "^1.11.3",
     "moment": "^2.29.3",
+    "morgan": "^1.10.0",
     "next": "12.1.6",
     "next-auth": "^4.3.4",
     "next-connect": "^0.12.2",
@@ -48,6 +48,7 @@
     "lint-staged": "^12.3.7",
     "postcss": "^8.4.14",
     "prettier": "2.6.2",
+    "prisma": "^3.15.2",
     "tailwindcss": "^3.0.24"
   },
   "lint-staged": {
@@ -57,5 +58,21 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --quiet --cache --fix"
     ]
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "db.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ComicScrip/qotqot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ComicScrip/qotqot/issues"
+  },
+  "homepage": "https://github.com/ComicScrip/qotqot#readme"
 }

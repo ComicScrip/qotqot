@@ -3,7 +3,7 @@ import Image from "next/image";
 import logoImg from "../public/assets/logo-qot-qot.png";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 
@@ -14,17 +14,7 @@ export default function Login({ csrfToken }) {
   return (
     <>
       {currentUserProfile ? (
-        <>
-          Connecté en tant que {currentUserProfile.fields.Email} <br />
-          <button
-            className="border-2 rounded-md p-4 uppercase text-sm text-white bg-[red] font-medium"
-            type="submit"
-            data-cy="disconnectBtn"
-            onClick={() => signOut()}
-          >
-            Se déconnecter
-          </button>
-        </>
+        window.location.replace(`/commandes/`)
       ) : (
         <>
           <div

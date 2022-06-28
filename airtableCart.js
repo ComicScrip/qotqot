@@ -17,7 +17,7 @@ async function getCartItem({ product_id, customer_id }) {
     .then((res) => res.data?.records?.[0]);
 }
 
-async function getCustomerCartItems({ customer_id }) {
+export async function getCustomerCartItems({ customer_id }) {
   return instance
     .get(`/Panier?filterByFormula=%7BCode_Client%7D%3D%22${customer_id}%22`)
     .then((res) => res.data?.records);

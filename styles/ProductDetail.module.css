@@ -23,6 +23,7 @@
 }
 .box {
   width: 100vw;
+  height: 90vh;
   position: relative;
   margin: 0 auto;
   margin-top: 3rem;

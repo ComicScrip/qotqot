@@ -31,18 +31,17 @@ function ProductItem(props) {
         ""
       )}
       <div className={style.item_wrapper}>
-        <div className={style.item_picture}>
+        <div className={style.item_picture} onClick={() => togglePopup()}>
           <img
             src={props.picture ? props.picture : "/images/notAvailable.png"}
             alt={props.name}
-            onClick={() => togglePopup()}
           />
         </div>
-        <div className={style.item_detail}>
+        <div className={style.item_detail} onClick={() => togglePopup()}>
           <div className={style.item_title}>{props.name}</div>
           <div className={style.item_weight}>{props.weight}</div>
         </div>
-        <div className={style.price}>
+        <div className={style.price} onClick={() => togglePopup()}>
           <div className={style.itemPrice}>{props.price}€ HT</div>
           <div className={style.itemPricePerKg}>{props.pricePerKg}€ HT /Kg</div>
         </div>

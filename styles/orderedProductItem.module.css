@@ -15,7 +15,6 @@
   align-items: center;
   border-radius: 4px;
   margin: 0.5rem auto;
-  font-family: "Raleway", sans-serif;
 }
 .item_picture {
   height: 44px;
@@ -40,8 +39,6 @@
 
 .itemQuantity {
   background-color: #f2f2f2;
-  font-weight: 600;
-  font-size: 12px;
   padding: 0.2rem;
   border-radius: 4px;
   height: 27px;
@@ -51,6 +48,8 @@
   align-items: center;
   margin-top: 0.2rem;
   margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 .item_detail {
@@ -67,6 +66,8 @@
   line-height: 18px;
   margin-bottom: 1rem;
   margin-right: 0.5rem;
+  font-size: 14px;
+  font-weight: 700;
 }
 .item_title::-webkit-scrollbar {
   display: none;
@@ -78,6 +79,8 @@
   opacity: 60%;
   display: flex;
   margin-top: -0.5rem;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .totalWeight {
@@ -85,6 +88,8 @@
   font-weight: 300;
   opacity: 60%;
   display: flex;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .price {
@@ -96,8 +101,6 @@
 
 .itemPrice {
   background-color: #f2f2f2;
-  font-weight: 600;
-  font-size: 12px;
   padding: 0.2rem;
   border-radius: 4px;
   height: 27px;
@@ -107,15 +110,17 @@
   align-items: center;
   margin-top: 0.3rem;
   margin-bottom: 1rem;
+  font-size: 14px;
+  font-weight: 700;
 }
 .itemPricePerKg {
   height: 1.5rem;
-  width: 5rem;
-  font-size: 10px;
-  font-weight: 300;
+  width: 6rem;
   overflow-x: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -0.5rem;
+  margin-top: -0.3rem;
+  font-size: 12px;
+  font-weight: 300;
 }

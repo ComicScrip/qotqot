@@ -22,13 +22,12 @@
 }
 
 .title {
-  font-size: 20px;
-  font-style: var(--var-main-font-style1);
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .date {
   font-size: 16px;
-  font-size: var(--var-main-font-style1);
   font-weight: 400;
 }
 
@@ -46,6 +45,8 @@
   width: 110px;
   height: 35px;
   background-color: white;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .commandeDetails {
@@ -66,7 +67,6 @@
   border-radius: 4px;
   padding: 0;
   font-size: 14px;
-  font-family: var(--var-main-font-style1);
   color: black;
   background-color: #f2f2f2;
 }
@@ -82,7 +82,9 @@
   border-radius: 4px;
   padding: 0;
   font-size: 14px;
-  font-family: var(--var-main-font-style1);
+
+  font-size: 16px;
+  font-weight: 700;
   color: #06968a;
   background-color: rgba(51, 153, 102, 0.2);
 }
@@ -98,8 +100,10 @@
   border-radius: 4px;
   padding: 0;
   font-size: 14px;
-  font-family: var(--var-main-font-style1);
-  color: #ffb923;
+
+  font-size: 16px;
+  font-weight: 700;
+  color: #fc623a;
   background-color: rgba(255, 185, 35, 0.2);
 }
 
@@ -114,7 +118,9 @@
   border-radius: 4px;
   padding: 0;
   font-size: 14px;
-  font-family: var(--var-main-font-style1);
+
+  font-size: 16px;
+  font-weight: 700;
   color: #e41b1b;
   background-color: rgba(228, 27, 27, 0.2);
 }

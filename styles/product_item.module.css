@@ -31,7 +31,6 @@
 }
 .item_title {
   overflow: scroll;
-
   height: 2rem;
   width: 108px;
   font-weight: bolder;
@@ -39,17 +38,20 @@
   line-height: 18px;
   margin-bottom: 1rem;
   margin-right: 0.5rem;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 0.7rem;
 }
 .item_title::-webkit-scrollbar {
   display: none;
 }
 
 .item_weight {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300;
   opacity: 60%;
   display: flex;
-  margin-top: 0.5rem;
+  margin-top: -0.2rem;
 }
 .price {
   display: flex;
@@ -60,8 +62,6 @@
 
 .itemPrice {
   background-color: #f2f2f2;
-  font-weight: 600;
-  font-size: 12px;
   padding: 0.2rem;
   border-radius: 4px;
   height: 27px;
@@ -69,18 +69,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.3rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 14px;
 }
 .itemPricePerKg {
   height: 1.5rem;
-  width: 5rem;
-  font-size: 10px;
-  font-weight: 300;
+  width: 6rem;
   overflow-x: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .item_stock {

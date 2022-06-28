@@ -1,4 +1,3 @@
-import "dayjs/locale/fr";
 const dayjs = require("dayjs");
 
 const customParseFormat = require("dayjs/plugin/customParseFormat");
@@ -92,7 +91,7 @@ const getMinifiedOrderProduct = (record) => {
   };
 };
 
-export {
+module.exports = {
   minifyProducts,
   getMinifiedProduct,
   minifyOrders,

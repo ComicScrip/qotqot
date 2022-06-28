@@ -11,15 +11,20 @@ datasource db {
 }
 
 model Product {
-  id          String  @id @default(cuid())
-  name        String?
-  price       Int?
-  pricePerKg  Int?
-  stock       String?
-  codeProduit String?
-  weight      String?
-  picture     String?
-  category    String?
+  id                    String  @id @default(cuid())
+  name                  String?
+  price                 Int?
+  pricePerKg            Int?
+  stock                 String?
+  codeProduit           String?
+  weight                String?
+  picture               String?
+  makerPicture          String?
+  makerName             String?
+  makerAdress           String?
+  descriptionProduit    String?
+  descriptionProducteur String?
+  logo                  String?
 }
 
 model customerCartItem {

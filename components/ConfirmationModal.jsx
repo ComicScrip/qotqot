@@ -29,16 +29,14 @@ export default function ConfirmationModal({
         {modal && (
           <>
             <div className={s.confirmation}>
-              <div className="flex flex-col justify-center mt-32 mx-auto sm:mt-20 sm:px-52 rounded-xl bg-white">
-                <div
-                  onClick={handleClose}
-                  className="fixed right-0 top-0 p-4 cursor-pointer"
-                >
+              <div className="flex flex-col justify-center mt-32 mx-auto sm:mt-20 sm:px-48 sm:w-[70%] rounded-xl bg-white">
+                <div onClick={handleClose} className="flex p-4 cursor-pointer">
                   <AiOutlineClose />
                 </div>
                 <h1 className="sm:text-4xl bold text-center py-3 mt-3">
                   Confirmation de commande
                 </h1>
+
                 <form>
                   <div className="flex flex-col justify-center text-left w-[90%] rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] mb-4 p-2">
                     <label className="text-sm sm:text-base cursor-pointer ">

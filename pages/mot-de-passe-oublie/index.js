@@ -56,12 +56,12 @@ export default function RestPasswordPage({ csrfToken }) {
                 height={164}
               />
             </div>
-            <h1 className="my-8 tracking-2">Mot de passe oublié</h1>
+            <h1 className="my-8 tracking-2">Réinitialiser mot de passe</h1>
           </div>
 
           <form
             method="post"
-            onSubmit={sendResetPasswordEmail}
+            onSubmit={resetPassword}
             className="flex flex-col px-3 py-4 "
             data-cy="loginForm"
           >
@@ -107,12 +107,12 @@ export default function RestPasswordPage({ csrfToken }) {
                 height={164}
               />
             </div>
-            <h1 className="my-8 tracking-2">Réinitialiser mot de passe</h1>
+            <h1 className="my-8 tracking-2">Mot de passe oublié</h1>
           </div>
 
           <form
             method="post"
-            onSubmit={resetPassword}
+            onSubmit={sendResetPasswordEmail}
             className="flex flex-col px-3 py-4 "
             data-cy="loginForm"
           >

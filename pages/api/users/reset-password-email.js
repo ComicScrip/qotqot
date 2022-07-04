@@ -1,16 +1,20 @@
 /* eslint-disable no-undef */
 import base from "../../../middlewares/common";
-import crypto from "crypto";
-import { findByEmail, hashPassword, updateUser } from "../../../models/user";
 import mailer from "../../../mailer";
+import {
+  findUserByEmail,
+  hashPassword,
+  updateUser,
+} from "../../../models/user";
+import crypto from "crypto";
 
 async function handlePost(req, res) {
   const { email } = req.body;
-  const user = await findByEmail(email);
+  const user = await findUserByEmail(email);
   if (!user) return res.status(404).send();
 
   const resetPasswordToken = crypto.randomBytes(50).toString("hex");
-  await updateUser(user.id, {
+  await updateUser(user, {
     resetPasswordToken: await hashPassword(resetPasswordToken),
   });
 

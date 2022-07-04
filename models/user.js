@@ -1,6 +1,5 @@
 const argon2 = require("argon2");
 const { default: axios } = require("axios");
-import instance from "../models/instance";
 
 module.exports.findUserByEmail = (email) => {
   return axios
@@ -36,8 +35,17 @@ const hashPassword = (plainPassword) =>
 
 module.exports.hashPassword = hashPassword;
 
-module.exports.updateUser = async (id, data) =>
-  instance.user.patch({
-    records: { id: parseInt(id, 10) },
-    data,
-  });
+module.exports.updateUser = async (resetPasswordToken) => {
+  return axios
+    .patch(
+      `${process.env.AIRTABLE_API}/users?filterByFormula=%7BResetMDP%7D%3D%22${resetPasswordToken}%22`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
+        },
+      }
+    )
+    .then(({ data }) => {
+      return data?.records?.[0];
+    });
+};

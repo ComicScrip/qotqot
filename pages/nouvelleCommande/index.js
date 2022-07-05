@@ -14,7 +14,6 @@ export default function NewOrder() {
 
   useEffect(() => {
     setError("");
-
     axios
       .get("/api/getProducts")
       .then((res) => res.data)

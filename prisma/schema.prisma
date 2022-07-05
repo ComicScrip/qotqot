@@ -36,3 +36,10 @@ model customerCartItem {
 
   @@unique([idProduct, idClient])
 }
+
+model order {
+  id        String  @id @default(cuid())
+  quantity  Float?
+  idProduct String? @db.VarChar(255)
+  idClient  String? @db.VarChar(255)
+}

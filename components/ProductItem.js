@@ -12,7 +12,7 @@ function ProductItem(props) {
   const [count, setCount] = useState(0);
 
   const handleSubtractOneFromCart = () => {
-    setCount(count - 1);
+    setCount(count > 0 ? count - 1 : "0");
     axios.post("/api/customerCartItem", {
       quantity: count - 1,
       idProduct: props.id,

@@ -15,8 +15,9 @@ async function handlePost(req, res) {
   if (!user) return res.status(404).send();
 
   const resetPasswordToken = crypto.randomBytes(50).toString("hex");
+  console.log(email, resetPasswordToken);
   await updateUser(user, {
-    ResetMDP: await hashPassword(ResetMDP),
+    resetPasswordToken: await hashPassword(resetPasswordToken),
   });
 
   const mailBody = `Rendez-vous sur ce lien pour changer votre mot de passe : ${process.env.NEXTAUTH_URL}/reset-password?resetPasswordToken=${resetPasswordToken}&email=${email}`;

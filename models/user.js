@@ -38,7 +38,7 @@ module.exports.hashPassword = hashPassword;
 
 module.exports.updateUser = async (ResetMDP) => {
   return axios
-    .get(
+    .patch(
       `${process.env.AIRTABLE_API}/users?filterByFormula=%7BResetMDP%7D%3D%22${ResetMDP}%22`,
       {
         headers: {

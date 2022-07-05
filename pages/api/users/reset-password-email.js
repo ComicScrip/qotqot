@@ -10,12 +10,13 @@ import crypto from "crypto";
 
 async function handlePost(req, res) {
   const { email } = req.body;
+  console.log({ email });
   const user = await findUserByEmail(email);
   if (!user) return res.status(404).send();
 
   const resetPasswordToken = crypto.randomBytes(50).toString("hex");
   await updateUser(user, {
-    resetPasswordToken: await hashPassword(resetPasswordToken),
+    ResetMDP: await hashPassword(ResetMDP),
   });
 
   const mailBody = `Rendez-vous sur ce lien pour changer votre mot de passe : ${process.env.NEXTAUTH_URL}/reset-password?resetPasswordToken=${resetPasswordToken}&email=${email}`;

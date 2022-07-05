@@ -1,55 +1,55 @@
 const db = require("./db");
 const axios = require("axios");
-const minifyProducts = require("./Airtable");
+const { minifyProducts } = require("./Airtable");
 
 (async function main() {
   await db.Product.deleteMany();
 
   const { data: productList } = await axios.get(
-    "https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Produits",
+    "https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Produits%20Actifs",
     {
       headers: {
         Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
       },
     }
   );
-  console.log(productList);
+  console.log(productList?.records);
+
+  const products = minifyProducts(productList.records);
 
   await db.Product.createMany({
-    data: minifyProducts(
-      productList.map(
-        ({
-          id,
-          codeProduit,
-          name,
-          weight,
-          price,
-          pricePerKg,
-          stock,
-          picture,
-          makerPicture,
-          makerName,
-          makerAdress,
-          descriptionProduit,
-          descriptionProducteur,
-          logo,
-        }) => ({
-          id,
-          codeProduit,
-          name,
-          weight,
-          price,
-          pricePerKg,
-          stock,
-          picture,
-          makerPicture,
-          makerName,
-          makerAdress,
-          descriptionProduit,
-          descriptionProducteur,
-          logo,
-        })
-      )
+    data: products.map(
+      ({
+        codeProduit,
+        name,
+        weight,
+        price,
+        pricePerKg,
+        stock,
+        picture,
+        makerPicture,
+        makerName,
+        makerAdress,
+        descriptionProduit,
+        descriptionProducteur,
+        logo,
+        category,
+      }) => ({
+        codeProduit,
+        name,
+        weight,
+        price,
+        pricePerKg,
+        stock,
+        picture,
+        makerPicture,
+        makerName,
+        makerAdress,
+        descriptionProduit,
+        descriptionProducteur,
+        logo,
+        category,
+      })
     ),
   });
 

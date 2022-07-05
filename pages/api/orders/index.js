@@ -1,4 +1,4 @@
-import { minifyOrders } from "../utils/Airtable";
+import { minifyOrders } from "../../../Airtable";
 import axios from "axios";
 
 export default async function getAllProducts(req, res) {

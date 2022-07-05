@@ -1,0 +1,14 @@
+/*
+  Warnings:
+
+  - A unique constraint covering the columns `[idProduct,idClient]` on the table `customerCartItem` will be added. If there are existing duplicate values, this will fail.
+
+*/
+-- DropIndex
+DROP INDEX `customerCartItem_idClient_key` ON `customerCartItem`;
+
+-- DropIndex
+DROP INDEX `customerCartItem_idProduct_key` ON `customerCartItem`;
+
+-- CreateIndex
+CREATE UNIQUE INDEX `customerCartItem_idProduct_idClient_key` ON `customerCartItem`(`idProduct`, `idClient`);

@@ -2,37 +2,30 @@
 import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
-import { minifyCartItems } from "../utils/Airtable";
-import { setCartQuantity } from "../../../models/cart_model";
+import { findAllCartItems, setCartQuantity } from "../../../models/cart_model";
 
-export async function getCartItems(req, res) {
-  axios
-    .get(
-      `https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Panier?filterByFormula=%7BCode_Client%7D%3D%22${req.currentUser.id}%22`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
-        },
-      }
-    )
-    .then((response) => {
-      res.send(minifyCartItems(response.data.records));
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).json({ msg: "Something went very wrong" });
-    });
+export async function getAllCartItems(req, res) {
+  try {
+    res.send(await findAllCartItems());
+  } catch {
+    res.status(500).send("Error");
+  }
 }
 
 export async function handlePostCartItems(req, res) {
-  setCartQuantity({
-    product_id: req.body.ProductId,
-    customer_id: req.currentUser.id,
-    Quantity: req.body.Quantity,
-  }).catch(() => res.status(500).json({ msg: "Something went very wrong" }));
+  try {
+    await setCartQuantity({
+      idProduct: req.body.idProduct,
+      idClient: req.currentUser.id,
+      quantity: req.body.quantity,
+    });
+  } catch (err) {
+    res.status(500).send("Error");
+    console.log(err);
+  }
 }
 
 export default base()
   .use(reqCurrentUser)
-  .get(getCartItems)
+  .get(getAllCartItems)
   .post(handlePostCartItems);

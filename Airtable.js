@@ -10,11 +10,11 @@ const minifyProducts = (records) => {
 const getMinifiedProduct = (record) => {
   return {
     id: record.id,
-    codeProduit: record.fields["Code Produit Qot Qot"][0],
-    name: record.fields.Produit[0],
-    weight: record.fields.Conditionnement[0],
-    price: record.fields["Prix d'achat unitaire €HT"][0],
-    pricePerKg: record.fields["Prix d'achat kg/g/L €HT"][0],
+    codeProduit: record.fields["Code Produit QotQot"],
+    name: record.fields.Produit,
+    weight: record.fields.Conditionnement,
+    price: record.fields["Prix d'achat unitaire €HT"],
+    pricePerKg: record.fields["Prix d'achat kg/g/L €HT"],
     stock: record.fields.Dispo[0],
     picture: record.fields["Image produits sans fond"]?.[0].url,
     makerPicture:
@@ -25,6 +25,7 @@ const getMinifiedProduct = (record) => {
     descriptionProducteur:
       record.fields["Descriptif Producteur (from FOURNISSEUR)"],
     logo: record.fields["LABEL LOGO (from FOURNISSEUR)"]?.[0].url,
+    category: record.fields.Catégorie[0],
   };
 };
 

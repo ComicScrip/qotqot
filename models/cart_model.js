@@ -1,59 +1,65 @@
-require("dotenv").config();
-const { default: axios } = require("axios");
+const db = require("../db");
 
-const instance = axios.create({
-  baseURL: process.env.AIRTABLE_API,
-  headers: {
-    Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
-  },
-});
-
-const getCartItem = async function ({ product_id, customer_id }) {
-  return instance
-    .get(
-      `/Panier?filterByFormula=AND(%7BCode_Client%7D%3D%22${customer_id}%22%2C%7BCode_Produit%7D%3D%22${product_id}%22)`
-    )
-    .then((res) => res.data?.records?.[0]);
-};
-
-module.exports.getCartItem = getCartItem;
+module.exports.findAllCartItems = () => db.customerCartItem.findMany();
 
 module.exports.setCartQuantity = async function ({
-  product_id,
-  customer_id,
-  Quantity,
+  idProduct,
+  idClient,
+  quantity,
 }) {
-  const cartItem = await getCartItem({ product_id, customer_id });
-
-  if (cartItem) {
-    if (Quantity !== 0)
-      return instance.patch("/Panier", {
-        records: [
-          {
-            id: cartItem.fields.id,
-            fields: {
-              Code_Produit: [product_id],
-              Code_Client: [customer_id],
-              quantité: Quantity,
-            },
-          },
-        ],
-      });
-    else return instance.delete(`/Panier/${cartItem.fields.id}`);
-  } else if (Quantity !== 0) {
-    return instance.post("/Panier", {
-      records: [
-        {
-          fields: {
-            Code_Produit: [product_id],
-            Code_Client: [customer_id],
-            quantité: Quantity,
-          },
-        },
-      ],
-    });
-  }
+  return db.customerCartItem.upsert({
+    where: {
+      idProduct_idClient: {
+        idProduct: idProduct,
+        idClient: idClient,
+      },
+    },
+    update: {
+      quantity: quantity,
+    },
+    create: {
+      idProduct: idProduct,
+      idClient: idClient,
+      quantity: quantity,
+    },
+  });
 };
+// module.exports.setCartQuantity = async function ({
+//   idProduct,
+//   idClient,
+//   quantity,
+// }) {
+//   const cartItem = await this.findAllCartItems({ idProduct, idClient });
+
+//   if (cartItem) {
+//     if (quantity !== 0)
+//       return patch("/Panier", {
+//         records: [
+//           {
+//             id: cartItem.id,
+//             fields: {
+//               Code_Produit: idProduct,
+//               Code_Client: idClient,
+//               quantité: quantity,
+//             },
+//           },
+//         ],
+//       });
+//     else return delete `/Panier/${cartItem.fields.id}`;
+//   } else if (quantity !== 0) {
+//     return post("/Panier", {
+//       records: [
+//         {
+//           fields: {
+//             Code_Produit: idProduct,
+//             Code_Client: idClient,
+//             quantité: quantity,
+//           },
+//         },
+//       ],
+//     });
+//   }
+// };
 
 // module.exports.createOrder = async function () {
 //   instance.post("/Commande%20Produits", {

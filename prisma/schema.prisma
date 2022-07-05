@@ -12,24 +12,27 @@ datasource db {
 
 model Product {
   id                    String  @id @default(cuid())
-  name                  String?
-  price                 Int?
-  pricePerKg            Int?
-  stock                 String?
-  codeProduit           String?
-  weight                String?
-  picture               String?
-  makerPicture          String?
-  makerName             String?
-  makerAdress           String?
-  descriptionProduit    String?
-  descriptionProducteur String?
-  logo                  String?
+  name                  String? @db.VarChar(255)
+  price                 Float?
+  pricePerKg            Float?
+  stock                 String? @db.VarChar(255)
+  codeProduit           String? @db.VarChar(255)
+  weight                String? @db.VarChar(255)
+  picture               String? @db.Text
+  makerPicture          String? @db.Text
+  makerName             String? @db.VarChar(255)
+  makerAdress           String? @db.VarChar(255)
+  descriptionProduit    String? @db.Text
+  descriptionProducteur String? @db.Text
+  logo                  String? @db.VarChar(255)
+  category              String? @db.VarChar(255)
 }
 
 model customerCartItem {
   id        String  @id @default(cuid())
-  quantity  Int?
-  idProduct String?
-  idClient  String?
+  quantity  Float?
+  idProduct String? @db.VarChar(255)
+  idClient  String? @db.VarChar(255)
+
+  @@unique([idProduct, idClient])
 }

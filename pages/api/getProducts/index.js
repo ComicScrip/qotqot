@@ -1,19 +1,12 @@
-import { minifyProducts } from "../utils/Airtable";
-import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
+import { findAllProducts } from "../../../models/product";
 
 export async function getAllProducts(req, res) {
-  axios
-    .get("https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Produits", {
-      headers: {
-        Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
-      },
-    })
-    .then((response) => {
-      res.send(minifyProducts(response.data.records));
-    })
-    .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
+  try {
+    res.send(await findAllProducts());
+  } catch {
+    res.status(500).send("Error");
+  }
 }
-
 export default base().use(reqCurrentUser).get(getAllProducts);

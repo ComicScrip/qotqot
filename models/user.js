@@ -36,10 +36,10 @@ const hashPassword = (plainPassword) =>
 
 module.exports.hashPassword = hashPassword;
 
-module.exports.updateUser = async (ResetMDP) => {
+module.exports.updateUser = async (resetPasswordToken) => {
   return axios
-    .get(
-      `${process.env.AIRTABLE_API}/users?filterByFormula=%7BResetMDP%7D%3D%22${ResetMDP}%22`,
+    .patch(
+      `${process.env.AIRTABLE_API}/users?filterByFormula=%7BResetMDP%7D%3D%22${resetPasswordToken}%22`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
@@ -48,5 +48,6 @@ module.exports.updateUser = async (ResetMDP) => {
     )
     .then(({ data }) => {
       return data?.records?.[0];
-    });
+    })
+    .catch(console.error("updateUser route not working"));
 };

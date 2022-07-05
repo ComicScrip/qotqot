@@ -14,27 +14,29 @@ const Congrats = ({
     <>
       {modalCongrats && (
         <div className={s.congrats}>
-          <div className="flex flex-col justify-center items-center h-fit mt-32 mx-auto sm:px-52 rounded-xl bg-white">
+          <div className="flex flex-col justify-center h-fit mt-32 mx-auto sm:px-52 sm:w-[70%] rounded-xl bg-white">
             <div
               onClick={handleClose2} //props
-              className="fixed right-0 p-4 cursor-pointer"
+              className="flex justify-end items-end p-4 cursor-pointer"
             >
               <AiOutlineClose />
             </div>
-            <div className="pt-5">
-              <Image
-                alt="confetti emoji"
-                src={confettiImg}
-                width={90}
-                height={100}
-              />
+            <div className="text-center">
+              <div className="pt-5">
+                <Image
+                  alt="confetti emoji"
+                  src={confettiImg}
+                  width={90}
+                  height={100}
+                />
+              </div>
+              <h2 className="text-xl p-2">Félicitations !</h2>
+              <p className="text-gray-600 text-[14px] font-base p-2  py-12 text-center">
+                La commande est envoyée, nous reviendrons vers vous dans les
+                plus brefs délais !
+              </p>
+              <div onClick={showModalFranco}>voir la popup franco</div>
             </div>
-            <h2 className="text-xl p-2">Félicitations !</h2>
-            <p className="text-gray-600 text-[14px] font-thin p-2  py-12 text-center">
-              La commande est envoyée, nous reviendrons vers vous dans les plus
-              brefs délais !
-            </p>
-            <div onClick={showModalFranco}>voir la popup franco</div>
           </div>
         </div>
       )}
@@ -49,7 +51,7 @@ const Congrats = ({
               <AiOutlineClose />
             </div>
             <h2 className="text-xl p-4">Attention </h2>
-            <p className="text-gray-600 text-[14px] font-thin p-10 text-center">
+            <p className="text-gray-600 text-[14px] font-base p-10 text-center">
               Vous n'avez pas atteind le franco minimum de 75€ HT. <br />
               Souhaitez-vous poursuivre votre commande ? <br />
               La livraison vous sera facturée 25€ HT.

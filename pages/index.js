@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import logoImg from "../public/assets/logo-qot-qot.png";
 import axios from "axios";
+import style from "../styles/home.module.css";
 import { useRouter } from "next/dist/client/router";
 import { signIn } from "next-auth/react";
 import { useContext } from "react";
@@ -12,7 +13,7 @@ export default function Login({ csrfToken }) {
   const { query } = useRouter();
 
   return (
-    <>
+    <div className={style.loginBg}>
       {currentUserProfile ? (
         window.location.replace(`/commandes/`)
       ) : (
@@ -21,7 +22,7 @@ export default function Login({ csrfToken }) {
             id="login"
             className="w-full h-full m-auto sm:w-[60%] lg:w-[50%]"
           >
-            <div className=" m-auto mt-16 flex flex-col justify-center items-center ">
+            <div className=" m-auto pt-16 flex flex-col justify-center items-center ">
               <div>
                 <Image
                   src={logoImg}
@@ -30,7 +31,7 @@ export default function Login({ csrfToken }) {
                   height={164}
                 />
               </div>
-              <h1 className="my-8 tracking-2">Espace Professionnel</h1>
+              <h1 className="my-6 tracking-2">Espace Professionnel</h1>
             </div>
 
             <form
@@ -93,7 +94,7 @@ export default function Login({ csrfToken }) {
               <div className="flex justify-center flex-col">
                 <button
                   data-cy="loginBtn"
-                  className="text-md rounded-md px-22 py-5 uppercase text-white bg-[#06968A] font-bold"
+                  className="text-md rounded-md px-20 py-4 uppercase text-white bg-[#06968A] font-bold"
                   type="submit"
                 >
                   Se connecter
@@ -116,7 +117,7 @@ export default function Login({ csrfToken }) {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
 

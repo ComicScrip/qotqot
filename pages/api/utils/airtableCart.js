@@ -15,7 +15,7 @@ async function getCartItem({ product_id, customer_id }) {
     .then((res) => res.data?.records?.[0]);
 }
 
-export async function getCustomerCartItems({ customer_id }) {
+async function getCustomerCartItems({ customer_id }) {
   return instance
     .get(`/cart_items?filterByFormula=%7Bcustomer_id%7D%3D%22${customer_id}%22`)
     .then((res) => res.data?.records);
@@ -129,6 +129,8 @@ async function main() {
     product_id: product2.fields.id,
     quantity: 5,
   });
+
+  console.log(await getCustomerCartItems({ customer_id: customer.fields.id }));
 }
 
 main();

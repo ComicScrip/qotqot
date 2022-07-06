@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id                    String  @id @default(cuid())
+  name                  String? @db.VarChar(255)
+  price                 Float?
+  pricePerKg            Float?
+  stock                 String? @db.VarChar(255)
+  codeProduit           String? @db.VarChar(255)
+  weight                String? @db.VarChar(255)
+  picture               String? @db.Text
+  makerPicture          String? @db.Text
+  makerName             String? @db.VarChar(255)
+  makerAdress           String? @db.VarChar(255)
+  descriptionProduit    String? @db.Text
+  descriptionProducteur String? @db.Text
+  logo                  String? @db.VarChar(255)
+  category              String? @db.VarChar(255)
+}
+
+model customerCartItem {
+  id        String  @id @default(cuid())
+  quantity  Float?
+  idProduct String? @db.VarChar(255)
+  idClient  String? @db.VarChar(255)
+
+  @@unique([idProduct, idClient])
+}
+
+model order {
+  id        String  @id @default(cuid())
+  quantity  Float?
+  idProduct String? @db.VarChar(255)
+  idClient  String? @db.VarChar(255)
+}

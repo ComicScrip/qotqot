@@ -1,20 +1,32 @@
 import style from "../styles/product_item.module.css";
 import { useState } from "react";
 import Popup from "./Popup";
+import axios from "axios";
 
 function ProductItem(props) {
   const [isDetailed, setIsDetailed] = useState(false);
   const [count, setCount] = useState(0);
 
-  // ------------- Visual Counter -------------- //
-  const handleSubtractOneFromCart = () => {
-    setCount(count - 1);
-  };
-  const handleAddOneToCart = () => {
-    setCount(count + 1);
-  };
   const togglePopup = () => {
     setIsDetailed(!isDetailed);
+  };
+
+  // ------------- Visual Counter -------------- //
+  const handleSubtractOneFromCart = () => {
+    setCount(count > 0 ? count - 1 : "0");
+    axios.post("/api/customerCartItem", {
+      quantity: count - 1,
+      idProduct: props.id,
+    });
+    console.log(props.id);
+  };
+
+  const handleAddOneToCart = () => {
+    setCount(count + 1);
+    axios.post("/api/customerCartItem", {
+      quantity: count + 1,
+      idProduct: props.id,
+    });
   };
 
   return (
@@ -70,24 +82,16 @@ function ProductItem(props) {
           <div className={style.counter}>
             <button
               className={style.countBtn}
-              onClick={
-                count > 0 && props.stock === "En stock"
-                  ? handleSubtractOneFromCart
-                  : null
-              }
+              onClick={handleSubtractOneFromCart}
             >
               -
             </button>
             <div className={style.count_total}>{count}</div>
-            <button
-              className={style.countBtn}
-              onClick={props.stock === "En stock" ? handleAddOneToCart : null}
-            >
+            <button className={style.countBtn} onClick={handleAddOneToCart}>
               +
             </button>
           </div>
         </div>
-        <div className={count > 0 ? style.is_selected : ""}></div>
       </div>
     </>
   );

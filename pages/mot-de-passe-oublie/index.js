@@ -15,7 +15,7 @@ export default function RestPasswordPage({ csrfToken }) {
     e.preventDefault();
     console.log({ email });
     axios
-      .patch("/api/users/reset-password-email", { email })
+      .post("/api/users/reset-password-email", { email })
       .then(() => {
         setResetEmailSent(!resetEmailSent);
       })

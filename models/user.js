@@ -37,17 +37,28 @@ const hashPassword = (plainPassword) =>
 module.exports.hashPassword = hashPassword;
 
 module.exports.updateUser = async (email, resetPasswordToken) => {
+  console.log(resetPasswordToken.resetPasswordToken);
+  const emailDetail = email.fields.Email;
+  console.log(emailDetail);
   return axios
     .patch(
       `${
         process.env.AIRTABLE_API
-      }/users?filterByFormula=%7BEmail%7D%3D%22${encodeURIComponent(email)}%22`,
+      }/users?filterByFormula=%7BEmail%7D%3D%22${encodeURIComponent(
+        emailDetail
+      )}%22`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
         },
         data: {
-          ResetMDP: resetPasswordToken,
+          records: [
+            {
+              fields: {
+                resetPasswordToken: resetPasswordToken.resetPasswordToken,
+              },
+            },
+          ],
         },
       }
     )

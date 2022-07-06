@@ -2,24 +2,36 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cart from "../../components/Cart";
+import Layout from "../../components/Layout";
+import LoadingSpin from "../../components/LoadingSpin";
+import styles from "../../styles/product_item.module.css";
+import Link from "next/link";
 
 export default function Panier() {
   const [cartItemsList, setCartItemsList] = useState([]);
+  const [product, setProduct] = useState([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setError("");
     axios
-      .get("/api/getCartItems")
+      .get(`/api/customerCartItem`)
       .then((res) => res.data)
-      .then((data) => setCartItemsList(data))
-      .catch(() => setError("Couldnt get data from cart"));
+      .then((data) => {
+        setCartItemsList(data);
+        data.map((d) => {
+          axios.get(`/api/getProducts/?id=${d.idProduct}`).then((res) => {
+            setProduct(res.data);
+          });
+        });
+      })
+      .catch(() => setError("Couldnt get data from cart"))
+      .finally(() => setIsLoading(false));
   }, []);
-  return (
-    <>
-      <div>Ceci est mon panier</div>
 
-      {console.log(cartItemsList)}
+  const renderProducts = (
+    <div className="main_container">
       {cartItemsList.map((item) => (
         <Cart
           key={item.id}
@@ -27,12 +39,52 @@ export default function Panier() {
           codeProduit={item.codeProduit}
           name={item.name}
           weight={item.weight}
-          price={item.price}
+          totalPrice={item.totalPrice}
           pricePerKg={item.pricePerKg}
-          quantité={item.quantité}
+          stock={item.stock}
           picture={item.picture ? item.picture : ""}
+          Quantity={item.quantity}
+          typeUVC={item.typeUVC}
+          poidsUVC={item.poidsUVC}
+          uniteUVC={item.uniteUVC}
         />
       ))}
+      <style jsx>{`
+  * {
+    padding: 10px 0;
+      background-color: #E5E5E5;
+  `}</style>
+    </div>
+  );
+
+  const handleCreateOrder = ({ idProduct, idClient, quantity }) => {
+    axios.post("/api/ordersProduct", {
+      idProduct: idProduct,
+      idClient: idClient,
+      quantity: quantity,
+    });
+  };
+
+  console.log(cartItemsList);
+
+  return (
+    <>
+      <Layout pageTitle="Panier">
+        <div className={styles.headCmd}>
+          <div className={styles.priceTotal}>Prix total</div>
+          <button onClick={handleCreateOrder} className={styles.btnCart}>
+            Confirmer la commande
+          </button>
+        </div>
+        <>
+          {error && (
+            <p className="error">
+              Could not get data from the server, please try again
+            </p>
+          )}
+          {isLoading ? <LoadingSpin /> : renderProducts}
+        </>
+      </Layout>
     </>
   );
 }

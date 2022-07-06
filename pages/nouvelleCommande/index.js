@@ -5,6 +5,7 @@ import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
 import Link from "next/link";
+import styles from "../../styles/product_item.module.css";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -13,7 +14,6 @@ export default function NewOrder() {
 
   useEffect(() => {
     setError("");
-
     axios
       .get("/api/getProducts")
       .then((res) => res.data)
@@ -26,7 +26,6 @@ export default function NewOrder() {
 
   const renderProducts = (
     <div className="main_container">
-      <Link href="/pages/panier">Panier</Link>
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}
@@ -38,18 +37,31 @@ export default function NewOrder() {
           pricePerKg={prod.pricePerKg}
           stock={prod.stock}
           picture={prod.picture ? prod.picture : ""}
+          makerPicture={prod.makerPicture}
+          makerName={prod.makerName}
+          makerAdress={prod.makerAdress}
+          productDesc={prod.descriptionProduit}
+          makerDesc={prod.descriptionProducteur}
+          logo={prod.logo}
         />
       ))}
 
       <style jsx>{`
   * {
+    padding: 10px 0;
       background-color: #E5E5E5;
   `}</style>
     </div>
   );
 
   return (
-    <Layout pageTitle="nouvelle-commande">
+    <Layout pageTitle="Nouvelle commande">
+      <div className={styles.headCmd}>
+        <div className={styles.priceTotal}>Prix total</div>
+        <button className={styles.btnCart}>
+          <Link href="/panier">Panier </Link>
+        </button>
+      </div>
       <>
         {error && (
           <p className="error">

@@ -4,11 +4,13 @@ module.exports.findAllCartItems = async ({ idClient }) => {
   return await db.customerCartItem.findMany({
     where: {
       idClient,
+      idOrder: null,
+    },
+    include: {
+      product: true,
     },
   });
 };
-
-module.exports.validateCart = () => db.customerCartItem.updateMany();
 
 module.exports.setCartQuantity = async function ({
   idProduct,

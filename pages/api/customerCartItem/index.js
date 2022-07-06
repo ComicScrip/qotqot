@@ -2,11 +2,7 @@
 import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
-import {
-  findAllCartItems,
-  setCartQuantity,
-  validateCart,
-} from "../../../models/cart_model";
+import { findAllCartItems, setCartQuantity } from "../../../models/cart_model";
 
 export async function getAllCartItems(req, res) {
   try {
@@ -37,17 +33,7 @@ export async function handlePostCartItems(req, res) {
   }
 }
 
-export async function handleCartValidation(req, res) {
-  try {
-    await validateCart({ cartValidation: true });
-  } catch (err) {
-    res.status(500).send("Error");
-    console.log(err);
-  }
-}
-
 export default base()
   .use(reqCurrentUser)
   .get(getAllCartItems)
-  .post(handlePostCartItems)
-  .patch(handleCartValidation);
+  .post(handlePostCartItems);

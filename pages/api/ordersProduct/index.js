@@ -2,13 +2,10 @@
 import { createOrder } from "../../../models/order_model";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
+import { customerCartItem } from "../../../db";
 
 export async function handleCreateOrder(req, res) {
-  await createOrder({
-    idProduct: req.body.idProduct,
-    idClient: req.body.idClient,
-    quantity: req.body.quantity,
-  });
+  await createOrder();
 }
 
 export default base().use(reqCurrentUser).post(handleCreateOrder);

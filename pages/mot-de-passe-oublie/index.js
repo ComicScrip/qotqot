@@ -13,7 +13,6 @@ export default function RestPasswordPage({ csrfToken }) {
 
   const sendResetPasswordEmail = (e) => {
     e.preventDefault();
-    console.log({ email });
     axios
       .post("/api/users/reset-password-email", { email })
       .then(() => {

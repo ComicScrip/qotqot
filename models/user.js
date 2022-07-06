@@ -36,32 +36,21 @@ const hashPassword = (plainPassword) =>
 
 module.exports.hashPassword = hashPassword;
 
-module.exports.updateUser = async (email, resetPasswordToken) => {
+module.exports.updateUser = async (user, resetPasswordToken) => {
   console.log(resetPasswordToken.resetPasswordToken);
-  const emailDetail = email.fields.Email;
-  console.log(emailDetail);
+  const userID = user.id;
+  console.log(userID);
   return axios
-    .patch(
-      `${
-        process.env.AIRTABLE_API
-      }/users?filterByFormula=%7BEmail%7D%3D%22${encodeURIComponent(
-        emailDetail
-      )}%22`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
+    .patch(`${process.env.AIRTABLE_API}/users/${userID}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
+      },
+      data: {
+        fields: {
+          resetPasswordToken: resetPasswordToken.resetPasswordToken,
         },
-        data: {
-          records: [
-            {
-              fields: {
-                resetPasswordToken: resetPasswordToken.resetPasswordToken,
-              },
-            },
-          ],
-        },
-      }
-    )
+      },
+    })
     .then(({ data }) => {
       return data?.records?.[0];
     })

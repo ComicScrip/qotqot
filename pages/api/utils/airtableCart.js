@@ -1,5 +1,4 @@
-require("dotenv").config();
-const { default: axios } = require("axios");
+import axios from "axios";
 
 const instance = axios.create({
   baseURL: process.env.AIRTABLE_API,
@@ -133,3 +132,5 @@ async function main() {
 }
 
 main();
+
+export { getCartItem };

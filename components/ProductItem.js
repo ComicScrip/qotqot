@@ -4,6 +4,15 @@ import Popup from "./Popup";
 
 function ProductItem(props) {
   const [isDetailed, setIsDetailed] = useState(false);
+  const [count, setCount] = useState(0);
+
+  // ------------- Visual Counter -------------- //
+  const handleSubtractOneFromCart = () => {
+    setCount(count - 1);
+  };
+  const handleAddOneToCart = () => {
+    setCount(count + 1);
+  };
   const togglePopup = () => {
     setIsDetailed(!isDetailed);
   };
@@ -59,14 +68,28 @@ function ProductItem(props) {
           </div>
 
           <div className={style.counter}>
-            <div>-</div>
-            <div>Qt</div>
-            <div>+</div>
+            <button
+              className={style.countBtn}
+              onClick={
+                count > 0 && props.stock === "En stock"
+                  ? handleSubtractOneFromCart
+                  : null
+              }
+            >
+              -
+            </button>
+            <div className={style.count_total}>{count}</div>
+            <button
+              className={style.countBtn}
+              onClick={props.stock === "En stock" ? handleAddOneToCart : null}
+            >
+              +
+            </button>
           </div>
         </div>
+        <div className={count > 0 ? style.is_selected : ""}></div>
       </div>
     </>
   );
 }
-
 export default ProductItem;

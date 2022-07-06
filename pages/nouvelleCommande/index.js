@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
+import Link from "next/link";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -14,7 +15,7 @@ export default function NewOrder() {
     setError("");
 
     axios
-      .get("/api/products")
+      .get("/api/getProducts")
       .then((res) => res.data)
       .then((data) => setProductList(data))
       .catch(() =>
@@ -25,16 +26,18 @@ export default function NewOrder() {
 
   const renderProducts = (
     <div className="main_container">
+      <Link href="/pages/panier">Panier</Link>
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}
+          id={prod.id}
+          codeProduit={prod.codeProduit}
           name={prod.name}
           weight={prod.weight}
           price={prod.price}
           pricePerKg={prod.pricePerKg}
           stock={prod.stock}
           picture={prod.picture ? prod.picture : ""}
-          id={prod.id}
           makerPicture={prod.makerPicture}
           makerName={prod.makerName}
           makerAdress={prod.makerAdress}
@@ -43,6 +46,7 @@ export default function NewOrder() {
           logo={prod.logo}
         />
       ))}
+
       <style jsx>{`
   * {
       background-color: #E5E5E5;

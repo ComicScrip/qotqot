@@ -34,3 +34,12 @@ module.exports.setCartQuantity = async function ({
     },
   });
 };
+
+module.exports.updateCartItem = async function (id, data) {
+  return db.customerCartItem.update({
+    data,
+    where: {
+      id,
+    },
+  });
+};

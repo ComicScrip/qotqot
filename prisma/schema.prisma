@@ -26,6 +26,9 @@ model Product {
   descriptionProducteur String?            @db.Text
   logo                  String?            @db.VarChar(255)
   category              String?            @db.VarChar(255)
+  typeUVC               String?            @db.VarChar(255)
+  poidsUVC              Float?
+  uniteUVC              String?            @db.VarChar(255)
   customerCartItems     customerCartItem[]
 }
 
@@ -35,13 +38,15 @@ model customerCartItem {
   idProduct String  @db.VarChar(255)
   idClient  String  @db.VarChar(255)
   idOrder   String? @db.VarChar(255)
-  product   Product @relation(fields: [idProduct], references: [id])
-  order     order?  @relation(fields: [idOrder], references: [id])
+  product   Product @relation(fields: [idProduct], references: [id], onDelete: Cascade)
+  order     order?  @relation(fields: [idOrder], references: [id], onDelete: Cascade)
 
   @@unique([idProduct, idClient])
 }
 
 model order {
   id               String             @id @default(cuid())
+  createdAt        DateTime           @default(now())
+  synchWithAT      Boolean            @default(false)
   customerCartItem customerCartItem[]
 }

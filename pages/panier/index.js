@@ -9,7 +9,6 @@ import Link from "next/link";
 
 export default function Panier() {
   const [cartItemsList, setCartItemsList] = useState([]);
-  const [product, setProduct] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,15 +19,16 @@ export default function Panier() {
       .then((res) => res.data)
       .then((data) => {
         setCartItemsList(data);
-        data.map((d) => {
-          axios.get(`/api/getProducts/?id=${d.idProduct}`).then((res) => {
-            setProduct(res.data);
-          });
-        });
       })
       .catch(() => setError("Couldnt get data from cart"))
       .finally(() => setIsLoading(false));
   }, []);
+
+  const handleCreateOrder = (id) => {
+    axios.post("/api/ordersProduct", {
+      id,
+    });
+  };
 
   const renderProducts = (
     <div className="main_container">
@@ -56,14 +56,6 @@ export default function Panier() {
   `}</style>
     </div>
   );
-
-  const handleCreateOrder = ({ idProduct, idClient, quantity }) => {
-    axios.post("/api/ordersProduct", {
-      idProduct: idProduct,
-      idClient: idClient,
-      quantity: quantity,
-    });
-  };
 
   console.log(cartItemsList);
 

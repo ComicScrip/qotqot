@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
+import SearchComp from "../../components/SearchComp";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
@@ -63,6 +64,7 @@ export default function NewOrder() {
         </button>
       </div>
       <>
+        <SearchComp />
         {error && (
           <p className="error">
             Could not get data from the server, please try again

@@ -24,10 +24,8 @@ export default function Panier() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const handleCreateOrder = (id) => {
-    axios.post("/api/ordersProduct", {
-      id,
-    });
+  const handleCreateOrder = (data) => {
+    axios.post("/api/ordersProduct");
   };
 
   const renderProducts = (

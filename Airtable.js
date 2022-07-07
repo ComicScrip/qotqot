@@ -26,6 +26,9 @@ const getMinifiedProduct = (record) => {
       record.fields["Descriptif Producteur (from FOURNISSEUR)"],
     logo: record.fields["LABEL LOGO (from FOURNISSEUR)"]?.[0].url,
     category: record.fields.Catégorie[0],
+    typeUVC: record.fields["UVC - Conditionnement"],
+    poidsUVC: record.fields["UVC - Poids/vol"],
+    uniteUVC: record.fields["UVC - Unité"],
   };
 };
 

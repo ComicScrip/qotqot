@@ -34,6 +34,9 @@ const { minifyProducts } = require("./Airtable");
         descriptionProducteur,
         logo,
         category,
+        typeUVC,
+        poidsUVC,
+        uniteUVC,
       }) => ({
         codeProduit,
         name,
@@ -49,6 +52,9 @@ const { minifyProducts } = require("./Airtable");
         descriptionProducteur,
         logo,
         category,
+        typeUVC,
+        poidsUVC,
+        uniteUVC,
       })
     ),
   });

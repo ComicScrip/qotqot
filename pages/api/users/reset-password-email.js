@@ -10,14 +10,11 @@ import crypto from "crypto";
 
 async function handlePost(req, res) {
   const { email } = req.body;
-  const showEmail = email.fiels.Email;
-  console.log(showEmail);
-  console.log({ email }, "2");
+  console.log(email);
   const user = await findUserByEmail(email);
   if (!user) return res.status(404).send();
 
   const resetPasswordToken = crypto.randomBytes(50).toString("hex");
-  console.log(email, resetPasswordToken);
   await updateUser(user, {
     resetPasswordToken: await hashPassword(resetPasswordToken),
   });

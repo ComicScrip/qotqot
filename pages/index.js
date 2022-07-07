@@ -66,7 +66,7 @@ export default function Login({ csrfToken }) {
                 <label className="text-[#7F7F7F] ">Mot de passe :</label>
                 <input
                   data-cy="password"
-                  type="password"
+                  type="text"
                   id="password"
                   name="password"
                   className="text-[#7F7F7F]"

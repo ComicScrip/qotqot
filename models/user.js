@@ -37,8 +37,9 @@ const hashPassword = (plainPassword) =>
 module.exports.hashPassword = hashPassword;
 
 module.exports.updateUser = async (user, resetPasswordToken) => {
-  console.log(resetPasswordToken.resetPasswordToken);
+  const passwordToken = resetPasswordToken.resetPasswordToken;
   const userID = user.id;
+  console.log(passwordToken);
   console.log(userID);
   return axios
     .patch(`${process.env.AIRTABLE_API}/users/${userID}`, {
@@ -47,12 +48,9 @@ module.exports.updateUser = async (user, resetPasswordToken) => {
       },
       data: {
         fields: {
-          resetPasswordToken: resetPasswordToken.resetPasswordToken,
+          resetPasswordToken: passwordToken,
         },
       },
-    })
-    .then(({ data }) => {
-      return data?.records?.[0];
     })
     .catch(console.error("updateUser route not working"));
 };

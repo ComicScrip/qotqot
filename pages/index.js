@@ -7,6 +7,7 @@ import { useRouter } from "next/dist/client/router";
 import { signIn } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import Link from "next/link";
 
 export default function Login({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
@@ -33,7 +34,6 @@ export default function Login({ csrfToken }) {
               </div>
               <h1 className="my-6 tracking-2">Espace Professionnel</h1>
             </div>
-
             <form
               method="post"
               onSubmit={(e) => {
@@ -105,15 +105,17 @@ export default function Login({ csrfToken }) {
                   </p>
                 )}
               </div>
-              <div className="flex justify-center px-3">
-                <p
+            </form>{" "}
+            <div className="flex justify-center px-3">
+              <Link href="/mot-de-passe-oublie">
+                <a
                   className=" text-gray-400 underline underline-offset-1 py-2"
                   data-cy="lostPassword"
                 >
                   Mot de passe oublié ?
-                </p>
-              </div>
-            </form>
+                </a>
+              </Link>
+            </div>
           </div>
         </>
       )}

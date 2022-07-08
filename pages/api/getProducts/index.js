@@ -8,7 +8,7 @@ export async function getAllProducts(req, res) {
       res.send(await findAllProducts());
       console.log("hello");
     } catch (error) {
-      res.send("error biatch");
+      res.send("Couldn't find products, please try again");
     }
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import ProductItem from "./ProductItem";
@@ -10,7 +11,9 @@ export const SearchModule = () => {
   const router = useRouter();
   const { category = "" } = router.query;
 
+  const [categoryList, setCategoryList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [productList, setProductList] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [error, setError] = useState("");
 
@@ -20,10 +23,16 @@ export const SearchModule = () => {
   };
 
   useEffect(() => {
+    axios
+      .get("/api/getProducts")
+      .then((res) => setProductList(res.data))
+      .then(productList.map((item) => categoryList.push(item.category)))
+      .then(setCategoryList([...new Set(categoryList)]));
+  }, []);
+
+  useEffect(() => {
     setError("");
     const queryString = QueryString.stringify(router.query);
-    console.log("coucou", queryString);
-    console.log("hello", router.query);
 
     axios
       .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
@@ -42,7 +51,11 @@ export const SearchModule = () => {
         <option className={s.option} value="Tous">
           Tous
         </option>
-        <option className={s.option} value="Dernière Commande">
+        {categoryList.map((o) => {
+          console.log(o);
+          <option value={o}>{o}</option>;
+        })}
+        {/* <option className={s.option} value="Dernière Commande">
           Dernière Commande
         </option>
         <option className={s.option} value="Charcuteries et salaisons">
@@ -62,7 +75,7 @@ export const SearchModule = () => {
           value="Céréales et produits de boulangerie"
         >
           Céréales et produits de boulangerie
-        </option>
+        </option> */}
       </select>
 
       <div>

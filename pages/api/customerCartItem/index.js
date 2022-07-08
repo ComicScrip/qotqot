@@ -24,7 +24,8 @@ export async function handlePostCartItems(req, res) {
   try {
     if (req.body.quantity === 0) {
       await deleteCartItem({
-        id: req.body.id,
+        idProduct: req.body.idProduct,
+        idClient: req.currentUser.id,
       });
     } else {
       await setCartQuantity({

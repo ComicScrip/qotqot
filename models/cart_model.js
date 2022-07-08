@@ -35,10 +35,11 @@ module.exports.setCartQuantity = async function ({
   });
 };
 
-module.exports.deleteCartItem = async function (id) {
-  return db.customerCartItem.delete({
+module.exports.deleteCartItem = async function ({ idClient, idProduct }) {
+  return db.customerCartItem.deleteMany({
     where: {
-      id,
+      idClient,
+      idProduct,
     },
   });
 };

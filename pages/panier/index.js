@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Cart from "../../components/Cart";
 import Layout from "../../components/Layout";
 import LoadingSpin from "../../components/LoadingSpin";
 import styles from "../../styles/product_item.module.css";
 import Link from "next/link";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function Panier() {
   const [cartItemsList, setCartItemsList] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { cartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
     setError("");
@@ -56,13 +58,18 @@ export default function Panier() {
     </div>
   );
 
-  console.log(cartItemsList);
-
   return (
     <>
       <Layout pageTitle="Panier">
         <div className={styles.headCmd}>
-          <div className={styles.priceTotal}>Prix total</div>
+          <div className={styles.priceTotal}>
+            {cartItems
+              .reduce((acc, item) => {
+                return acc + item.product.price * item.quantity;
+              }, 0)
+              .toFixed(2)}
+            € HT
+          </div>
           <button onClick={handleCreateOrder} className={styles.btnCart}>
             Confirmer la commande
           </button>

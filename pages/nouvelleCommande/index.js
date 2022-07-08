@@ -1,16 +1,19 @@
 import axios from "axios";
 import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const { cartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
     setError("");
@@ -60,11 +63,19 @@ export default function NewOrder() {
   return (
     <Layout pageTitle="Nouvelle commande">
       <div className={styles.headCmd}>
-        <div className={styles.priceTotal}>Prix total</div>
+        <div className={styles.priceTotal}>
+          {cartItems
+            .reduce((acc, item) => {
+              return acc + item.product.price * item.quantity;
+            }, 0)
+            .toFixed(2)}
+          € HT
+        </div>
         <button className={styles.btnCart}>
           <Link href="/panier">Panier </Link>
         </button>
       </div>
+      <p>Plus que € pour le franco minimum</p>
       <>
         {error && (
           <p className="error">

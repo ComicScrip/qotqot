@@ -11,26 +11,23 @@ function ProductItem(props) {
     setIsDetailed(!isDetailed);
   };
 
-  console.log({ cartItems });
   const { setCartItems, cartItems } = useContext(CurrentUserContext);
 
   const cartItem = cartItems.find(
     (cartItem) => cartItem.idProduct === props.id
   );
-  console.log(cartItem);
 
   const count = cartItem?.quantity || 0;
 
   const setCount = (quantity) => {
     if (quantity === 0) {
       setCartItems((oldCartItems) =>
-        oldCartItems.filter((item) => item.idProduct === props.id)
+        oldCartItems.filter((item) => item.idProduct !== props.id)
       );
     } else {
       if (count) {
         setCartItems((oldCartItems) =>
           oldCartItems.map((item) => {
-            console.log(item.idProduct, props.id);
             if (item.idProduct === props.id) {
               return {
                 ...item,
@@ -46,6 +43,9 @@ function ProductItem(props) {
           {
             idProduct: props.id,
             quantity: 1,
+            product: {
+              price: props.price,
+            },
           },
         ]);
       }
@@ -55,11 +55,9 @@ function ProductItem(props) {
   const handleSubtractOneFromCart = () => {
     setCount(count > 0 ? count - 1 : 0);
     axios.post("/api/customerCartItem", {
-      // quantity: count > 0 ? count - 1 : 0,
-      quantity: count - 1,
+      quantity: count > 0 ? count - 1 : 0,
       idProduct: props.id,
     });
-    console.log(props.id);
   };
 
   const handleAddOneToCart = () => {
@@ -104,8 +102,10 @@ function ProductItem(props) {
           <div className={style.item_weight}>{props.weight}</div>
         </div>
         <div className={style.price} onClick={() => togglePopup()}>
-          <div className={style.itemPrice}>{props.price}€ HT</div>
-          <div className={style.itemPricePerKg}>{props.pricePerKg}€ HT /Kg</div>
+          <div className={style.itemPrice}>{props.price.toFixed(2)}€ HT</div>
+          <div className={style.itemPricePerKg}>
+            {props.pricePerKg.toFixed(2)}€ HT /Kg
+          </div>
         </div>
         <div className={style.item_stock}>
           <div

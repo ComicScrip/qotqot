@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/dist/client/router";
 
 export default function RestPasswordPage({ csrfToken }) {
@@ -19,7 +20,7 @@ export default function RestPasswordPage({ csrfToken }) {
         setResetEmailSent(!resetEmailSent);
       })
       .catch(() => {
-        alert("email introuvable");
+        toast.error("email introuvable");
       });
   };
   const resetPassword = (e) => {
@@ -39,14 +40,17 @@ export default function RestPasswordPage({ csrfToken }) {
         router.push("/");
       })
       .catch(() => {
-        alert("invalidToken");
-        // router.push("/");
+        toast.error("Invalid token");
+        setTimeout(() => {
+          router.push("/");
+        }, 5000);
         setResetEmailSent(false);
       });
   };
 
   return (
     <>
+      <Toaster position="bottom-center" />
       {resetEmailSent ? (
         <div id="email-sent" className="w-full h-full m-auto ">
           <div className="m-auto mt-16 flex flex-col justify-center items-center ">
@@ -98,7 +102,7 @@ export default function RestPasswordPage({ csrfToken }) {
                   </label>
                   <input
                     data-cy="newPassword"
-                    type="text"
+                    type="password"
                     id="newPassword"
                     name="newPassword"
                     className="text-[#7F7F7F]"
@@ -115,7 +119,7 @@ export default function RestPasswordPage({ csrfToken }) {
                   </label>
                   <input
                     data-cy="newPasswordConfirmation"
-                    type="text"
+                    type="password"
                     id="newPasswordConfirmation"
                     name="newPasswordConfirmation"
                     className="text-[#7F7F7F]"

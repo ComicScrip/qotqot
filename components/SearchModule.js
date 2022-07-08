@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
@@ -51,31 +52,11 @@ export const SearchModule = () => {
         <option className={s.option} value="Tous">
           Tous
         </option>
-        {categoryList.map((o) => {
-          console.log(o);
-          <option value={o}>{o}</option>;
-        })}
-        {/* <option className={s.option} value="Dernière Commande">
-          Dernière Commande
-        </option>
-        <option className={s.option} value="Charcuteries et salaisons">
-          Charcuteries et salaisons
-        </option>
-        <option className={s.option} value="Épicerie salée">
-          Épicerie salée
-        </option>
-        <option className={s.option} value="Épicerie sucrée">
-          Épicerie sucrée
-        </option>
-        <option className={s.option} value="Boissons Alcoolisés">
-          Boissons Alcoolisés
-        </option>
-        <option
-          className={s.option}
-          value="Céréales et produits de boulangerie"
-        >
-          Céréales et produits de boulangerie
-        </option> */}
+        {categoryList.map((o) => (
+          <option className={s.option} key={o} value={o}>
+            {o}
+          </option>
+        ))}
       </select>
 
       <div>

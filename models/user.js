@@ -42,15 +42,23 @@ module.exports.updateUser = async (user, resetPasswordToken) => {
   console.log(passwordToken);
   console.log(userID);
   return axios
-    .patch(`${process.env.AIRTABLE_API}/users/${userID}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
+    .patch(
+      `${process.env.AIRTABLE_API}/users`,
+      {
+        records: [
+          {
+            id: userID,
+            fields: {
+              resetPasswordToken: passwordToken,
+            },
+          },
+        ],
       },
-      data: {
-        fields: {
-          resetPasswordToken: passwordToken,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
         },
-      },
-    })
-    .catch(console.error("updateUser route not working"));
+      }
+    )
+    .catch(console.error);
 };

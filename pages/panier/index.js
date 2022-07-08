@@ -34,17 +34,18 @@ export default function Panier() {
         <Cart
           key={item.id}
           id={item.id}
-          codeProduit={item.codeProduit}
-          name={item.name}
-          weight={item.weight}
-          totalPrice={item.totalPrice}
-          pricePerKg={item.pricePerKg}
-          stock={item.stock}
-          picture={item.picture ? item.picture : ""}
+          codeProduit={item.product.codeProduit}
+          name={item.product.name}
+          weight={item.product.weight}
+          totalPrice={item.product.totalPrice}
+          pricePerKg={item.product.pricePerKg}
+          stock={item.product.stock}
+          picture={item.product.picture ? item.product.picture : ""}
           Quantity={item.quantity}
-          typeUVC={item.typeUVC}
-          poidsUVC={item.poidsUVC}
-          uniteUVC={item.uniteUVC}
+          typeUVC={item.product.typeUVC}
+          poidsUVC={item.product.poidsUVC}
+          uniteUVC={item.product.uniteUVC}
+          price={item.product.price}
         />
       ))}
       <style jsx>{`

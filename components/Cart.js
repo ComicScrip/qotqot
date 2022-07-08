@@ -21,7 +21,9 @@ function Cart(props) {
         </div>
       </div>
       <div className={style.price}>
-        <div className={style.itemPrice}>{props.totalPrice}€ HT</div>
+        <div className={style.itemPrice}>
+          {props.quantity * props.price}€ HT
+        </div>
         <div className={style.itemPricePerKg}>{props.pricePerKg}€ HT /Kg</div>
       </div>
     </div>

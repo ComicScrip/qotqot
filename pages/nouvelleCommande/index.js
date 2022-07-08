@@ -24,6 +24,8 @@ export default function NewOrder() {
       .finally(() => setIsLoading(false));
   }, []);
 
+  console.table(productList);
+
   const renderProducts = (
     <div className="main_container">
       {productList.map((prod) => (
@@ -43,6 +45,7 @@ export default function NewOrder() {
           productDesc={prod.descriptionProduit}
           makerDesc={prod.descriptionProducteur}
           logo={prod.logo}
+          cartItem={prod.customerCartItem}
         />
       ))}
 

@@ -1,3 +1,7 @@
+.main_container {
+  margin: 10% 0;
+}
+
 .item_wrapper {
   position: relative;
   background-color: white;
@@ -46,7 +50,7 @@
   font-weight: bolder;
   font-size: 12px;
   line-height: 18px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   margin-right: 0.5rem;
   font-size: 14px;
   font-weight: 700;
@@ -125,20 +129,78 @@
 .counter {
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 .countBtn {
   border-radius: 90%;
   border: none;
   font-size: large;
-  margin: 6px;
+  height: 14px;
+  width: 14px;
   color: #9d9d9d;
   background-color: #f2f2f2;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .count_total {
   font-weight: 700;
   font-size: 12px;
+}
+
+.btnCart {
+  margin: 30px auto;
+  background: #06968a !important;
+  border-radius: 4px;
+  width: 217px;
+  height: 48px;
+  color: white;
+}
+
+.headCmd {
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
+}
+
+.priceTotal {
+  background-color: gray;
+}
+
+/* 
+CART */
+.item_quantity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quantity {
+  width: 30px;
+  height: 27px;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.poids {
+  font-size: 9px;
+  font-weight: 300;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 700px) {
+  .item_wrapper {
+    width: 50vw;
+  }
+
+  .headCmd {
+    display: flex;
+    align-items: center;
+    margin-left: 30%;
+  }
 }
 
 @media screen and (min-width: 480px) {

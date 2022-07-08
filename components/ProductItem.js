@@ -1,11 +1,31 @@
 import style from "../styles/product_item.module.css";
 import { useState } from "react";
 import Popup from "./Popup";
+import axios from "axios";
 
 function ProductItem(props) {
   const [isDetailed, setIsDetailed] = useState(false);
   const togglePopup = () => {
     setIsDetailed(!isDetailed);
+  };
+
+  const [count, setCount] = useState(0);
+
+  const handleSubtractOneFromCart = () => {
+    setCount(count > 0 ? count - 1 : "0");
+    axios.post("/api/customerCartItem", {
+      quantity: count - 1,
+      idProduct: props.id,
+    });
+    console.log(props.id);
+  };
+
+  const handleAddOneToCart = () => {
+    setCount(count + 1);
+    axios.post("/api/customerCartItem", {
+      quantity: count + 1,
+      idProduct: props.id,
+    });
   };
 
   return (
@@ -59,9 +79,16 @@ function ProductItem(props) {
           </div>
 
           <div className={style.counter}>
-            <div>-</div>
-            <div>Qt</div>
-            <div>+</div>
+            <button
+              className={style.countBtn}
+              onClick={handleSubtractOneFromCart}
+            >
+              -
+            </button>
+            <div className={style.count_total}>{count}</div>
+            <button className={style.countBtn} onClick={handleAddOneToCart}>
+              +
+            </button>
           </div>
         </div>
       </div>

@@ -1,3 +1,6 @@
+/*global Promise */
+/*eslint no-undef: "error"*/
+
 import s from "../styles/nouvelleCommande.module.css";
 import { useState, useRef, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
@@ -21,15 +24,16 @@ function getRandomNumber(min, max) {
 // }
 
 function fakeFetch(date, { signal }) {
-  return new ((resolve, reject) => {
-    //Promise
+  return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       const daysInMonth = getDaysInMonth(date);
-      const daysToHighlight = [1, 2, 3, 4].map(() =>
-        getRandomNumber(4, daysInMonth)
+      const daysToHighlight = [1, 2, 3].map(() =>
+        getRandomNumber(1, daysInMonth)
       );
+
       resolve({ daysToHighlight });
     }, 500);
+
     signal.onabort = () => {
       clearTimeout(timeout);
       reject(new DOMException("aborted", "AbortError"));

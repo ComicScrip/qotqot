@@ -48,10 +48,22 @@ export default function RestPasswordPage({ csrfToken }) {
   return (
     <>
       {resetEmailSent ? (
-        <p>
-          Un message avec un lien de réinitialisation vous a été envoyé, merci
-          de vérifier votre boîte mail
-        </p>
+        <div id="email-sent" className="w-full h-full m-auto ">
+          <div className="m-auto mt-16 flex flex-col justify-center items-center ">
+            <div>
+              <Image
+                src="/assets/logo-qot-qot.png"
+                alt="logo_qotqot"
+                width={148}
+                height={164}
+              />
+            </div>
+            <p className="m-auto mt-6 ml-7 mr-7 font-bold text-lg text-center text-[#7F7F7F]">
+              Un message avec un lien de réinitialisation vous a été envoyé,
+              merci de vérifier votre boîte mail
+            </p>
+          </div>
+        </div>
       ) : (
         <>
           {router.query.resetPasswordToken ? (

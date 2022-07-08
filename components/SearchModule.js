@@ -8,7 +8,7 @@ import s from "../styles/SearchModule.module.css";
 
 export const SearchModule = () => {
   const router = useRouter();
-  const { like = "" } = router.query;
+  const { category = "" } = router.query;
 
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -21,10 +21,12 @@ export const SearchModule = () => {
 
   useEffect(() => {
     setError("");
-
     const queryString = QueryString.stringify(router.query);
+    console.log("coucou", queryString);
+    console.log("hello", router.query);
+
     axios
-      .get(`/api/searchByName/${queryString ? "?" : ""}${queryString}`)
+      .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
       .then((res) => setSearchResult(res.data))
       .catch(() =>
         setError("Could not get data from the server, please try again")
@@ -33,9 +35,9 @@ export const SearchModule = () => {
   return (
     <>
       <select
-        value={like}
+        value={category}
         className={s.search_input}
-        onChange={(e) => setSearchParams({ like: e.target.value })}
+        onChange={(e) => setSearchParams({ category: e.target.value })}
       >
         <option className={s.option} value="Tous">
           Tous

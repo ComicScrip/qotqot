@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
-import SearchComp from "../../components/SearchComp";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
+import { SearchModule } from "../../components/SearchModule";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -64,7 +64,7 @@ export default function NewOrder() {
         </button>
       </div>
       <>
-        <SearchComp />
+        <SearchModule />
         {error && (
           <p className="error">
             Could not get data from the server, please try again

@@ -1,9 +1,9 @@
 const db = require("../db");
 
 module.exports.findAllProducts = () => db.product.findMany();
-module.exports.filterProducts = (keyWord) => {
+module.exports.filterProducts = (category) => {
   return db.product.findMany({
-    where: { keyWord },
+    where: category,
   });
 };
 module.exports.findOneProduct = (id) => {

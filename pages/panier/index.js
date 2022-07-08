@@ -58,22 +58,30 @@ export default function Panier() {
     </div>
   );
 
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
+
+  const francoMin = 75 - totalPrice;
+
   return (
     <>
       <Layout pageTitle="Panier">
         <div className={styles.headCmd}>
-          <div className={styles.priceTotal}>
-            {cartItems
-              .reduce((acc, item) => {
-                return acc + item.product.price * item.quantity;
-              }, 0)
-              .toFixed(2)}
-            € HT
-          </div>
+          <div className={styles.priceTotal}>{totalPrice}€ HT</div>
           <button onClick={handleCreateOrder} className={styles.btnCart}>
             Confirmer la commande
           </button>
         </div>
+        <p>
+          Plus que{" "}
+          <span className={styles.franco}>
+            {francoMin >= 0 ? francoMin.toFixed(2) : 0}
+          </span>
+          € pour le franco minimum
+        </p>
         <>
           {error && (
             <p className="error">

@@ -29,6 +29,14 @@ export default function NewOrder() {
 
   console.table(productList);
 
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
+
+  const francoMin = 75 - totalPrice;
+
   const renderProducts = (
     <div className="main_container">
       {productList.map((prod) => (
@@ -63,19 +71,18 @@ export default function NewOrder() {
   return (
     <Layout pageTitle="Nouvelle commande">
       <div className={styles.headCmd}>
-        <div className={styles.priceTotal}>
-          {cartItems
-            .reduce((acc, item) => {
-              return acc + item.product.price * item.quantity;
-            }, 0)
-            .toFixed(2)}
-          € HT
-        </div>
+        <div className={styles.priceTotal}>{totalPrice}€ HT</div>
         <button className={styles.btnCart}>
           <Link href="/panier">Panier </Link>
         </button>
       </div>
-      <p>Plus que € pour le franco minimum</p>
+      <p>
+        Plus que{" "}
+        <span className={styles.franco}>
+          {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
+        </span>{" "}
+        pour le franco minimum
+      </p>
       <>
         {error && (
           <p className="error">

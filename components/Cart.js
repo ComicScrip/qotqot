@@ -17,13 +17,17 @@ function Cart(props) {
       <div className={style.item_quantity}>
         <div className={style.quantity}>{props.Quantity}</div>
         <div className={style.poids}>
-          {props.poidsUVC * props.quantity}
+          {(props.poidsUVC * props.Quantity).toFixed(0)}
           {props.uniteUVC}
         </div>
       </div>
       <div className={style.price}>
-        <div className={style.itemPrice}>{props.totalPrice}€ HT</div>
-        <div className={style.itemPricePerKg}>{props.pricePerKg}€ HT /Kg</div>
+        <div className={style.itemPrice}>
+          {(props.Quantity * props.price).toFixed(2)}€ HT
+        </div>
+        <div className={style.itemPricePerKg}>
+          {props.pricePerKg.toFixed(2)}€ HT /Kg
+        </div>
       </div>
     </div>
   );

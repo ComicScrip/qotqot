@@ -15,7 +15,7 @@ const getMinifiedProduct = (record) => {
     weight: record.fields.Conditionnement,
     price: record.fields["Prix d'achat unitaire €HT"],
     pricePerKg: record.fields["Prix d'achat kg/g/L €HT"],
-    stock: record.fields.Dispo[0],
+    stock: record.fields.Dispo,
     picture: record.fields["Image produits sans fond"]?.[0].url,
     makerPicture:
       record.fields["Photos Producteurs (from FOURNISSEUR)"]?.[0].url,
@@ -41,7 +41,7 @@ const getMinifiedOrder = (record) => {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
     dateLivraison: dayjs(
-      record.fields["Date de Livraison (import)"],
+      record.fields["Date de commande (import)"],
       "DD/MM/YYYY"
     )
       .locale("fr")

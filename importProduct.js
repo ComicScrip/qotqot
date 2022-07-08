@@ -59,10 +59,5 @@ const { minifyProducts } = require("./Airtable");
     ),
   });
 
-  // alternative, but slower because we wait for one insertion to be over to start the next one:
-  // for (const { firstName, lastName, imageUrl } of characterList) {
-  //    await db.character.create({ data: { firstName, lastName, imageUrl } });
-  // }
-
   console.log("done");
 })();

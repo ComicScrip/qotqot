@@ -18,7 +18,9 @@ export default function RestPasswordPage({ csrfToken }) {
       .then(() => {
         setResetEmailSent(!resetEmailSent);
       })
-      .catch(console.error("email introuvable"));
+      .catch(() => {
+        alert("email introuvable");
+      });
   };
   const resetPassword = (e) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ export default function RestPasswordPage({ csrfToken }) {
       })
       .catch(() => {
         alert("invalidToken");
-        router.push("/");
+        // router.push("/");
         setResetEmailSent(false);
       });
   };
@@ -46,7 +48,10 @@ export default function RestPasswordPage({ csrfToken }) {
   return (
     <>
       {resetEmailSent ? (
-        <p>resetEmailSent</p>
+        <p>
+          Un message avec un lien de réinitialisation vous a été envoyé, merci
+          de vérifier votre boîte mail
+        </p>
       ) : (
         <>
           {router.query.resetPasswordToken ? (

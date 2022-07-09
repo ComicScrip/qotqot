@@ -10,7 +10,6 @@ import crypto from "crypto";
 
 async function handlePost(req, res) {
   const { email } = req.body;
-  console.log(email);
   const user = await findUserByEmail(email);
   if (!user) return res.status(404).send();
 

@@ -20,14 +20,14 @@ export default function RestPasswordPage({ csrfToken }) {
         setResetEmailSent(!resetEmailSent);
       })
       .catch(() => {
-        toast.error("email introuvable");
+        toast.error("Email introuvable");
       });
   };
   const resetPassword = (e) => {
     e.preventDefault();
 
     if (newPassword !== newPasswordConfirmation)
-      return alert("passwordsDontMatch");
+      return toast.error("Les mots de passe ne correspondent pas");
 
     axios
       .post("/api/users/reset-password", {
@@ -37,10 +37,14 @@ export default function RestPasswordPage({ csrfToken }) {
         email: router.query.email,
       })
       .then(() => {
-        router.push("/");
+        toast.success("Nouveau mot de passe enregistré");
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
       })
-      .catch(() => {
-        toast.error("Invalid token");
+      .catch((err) => {
+        if (err.response.status === 400) return;
+        toast.error("Ce lien de réinitialisation n'est plus valide");
         setTimeout(() => {
           router.push("/");
         }, 5000);

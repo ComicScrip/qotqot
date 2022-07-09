@@ -13,10 +13,6 @@ async function handlePost(req, res) {
     return res.status(400).send("passwords dont match");
   const user = await findUserByEmail(email);
   if (!user) return res.status(404).send();
-  console.log(user);
-  console.log(resetPasswordToken);
-  console.log(user.fields.resetPasswordToken);
-  console.log(newPassword);
   if (
     !(await verifyPassword(resetPasswordToken, user.fields.resetPasswordToken))
   )

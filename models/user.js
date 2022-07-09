@@ -37,15 +37,8 @@ const hashPassword = (plainPassword) =>
 module.exports.hashPassword = hashPassword;
 
 module.exports.updateUser = async (user, resetPasswordToken) => {
-  console.log({
-    user,
-    resetPasswordToken,
-  });
   const passwordToken = resetPasswordToken.resetPasswordToken;
   const userID = user.id;
-  console.log(passwordToken);
-  console.log(userID);
-  console.log(resetPasswordToken.hashedPassword);
   return axios
     .patch(
       `${process.env.AIRTABLE_API}/users`,
@@ -68,39 +61,3 @@ module.exports.updateUser = async (user, resetPasswordToken) => {
     )
     .catch(console.error);
 };
-
-// module.exports.updateUser2 = async (
-//   user,
-//   resetPasswordToken,
-//   hashedPassword
-// ) => {
-//   // console.log({
-//   //   user,
-//   //   resetPasswordToken,
-//   //   hashedPassword,
-//   // });
-//   const passwordToken = resetPasswordToken.resetPasswordToken;
-//   const userID = user.id;
-//   console.log(userID);
-//   return axios
-//     .patch(
-//       `${process.env.AIRTABLE_API}/users`,
-//       {
-//         records: [
-//           {
-//             id: userID,
-//             fields: {
-//               resetPasswordToken: passwordToken,
-//               MDP: hashedPassword,
-//             },
-//           },
-//         ],
-//       },
-//       {
-//         headers: {
-//           Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
-//         },
-//       }
-//     )
-//     .catch(console.error);
-// };

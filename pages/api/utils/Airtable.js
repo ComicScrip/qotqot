@@ -69,6 +69,10 @@ const getMinifiedOrderProduct = (record) => {
   };
 };
 
+const getMinifyAccountInfo = () => {
+  return {};
+};
+
 export {
   minifyProducts,
   getMinifiedProduct,
@@ -76,4 +80,5 @@ export {
   getMinifiedOrder,
   minifyOrderProducts,
   getMinifiedOrderProduct,
+  getMinifyAccountInfo,
 };

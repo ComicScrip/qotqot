@@ -1,0 +1,49 @@
+.ctnAcc {
+  background-color: #e5e5e5;
+}
+
+.formAcc {
+  margin: 20px 5px;
+}
+
+.titleAcc {
+  margin: 15px 0 10px 5px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.pAcc {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldsAcc {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border-radius: 4px;
+}
+
+.labelAcc {
+  color: #7f7f7f;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  margin: 2px 0 0 8px;
+}
+
+.btnAcc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background-color: #06968a;
+  color: white;
+  width: 97%;
+  height: 48px;
+}

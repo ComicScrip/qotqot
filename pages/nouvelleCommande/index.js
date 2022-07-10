@@ -28,8 +28,6 @@ export default function NewOrder() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  console.table(productList);
-
   const totalPrice = cartItems
     .reduce((acc, item) => {
       return acc + item.product.price * item.quantity;

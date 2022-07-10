@@ -2,7 +2,11 @@
 import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
-import { findAllCartItems, setCartQuantity } from "../../../models/cart_model";
+import {
+  deleteCartItem,
+  findAllCartItems,
+  setCartQuantity,
+} from "../../../models/cart_model";
 
 export async function getAllCartItems(req, res) {
   try {
@@ -18,18 +22,21 @@ export async function getAllCartItems(req, res) {
 
 export async function handlePostCartItems(req, res) {
   try {
-    if (req.body.quantity < 0) res.status(422);
-    else
+    if (req.body.quantity === 0) {
+      await deleteCartItem({
+        idProduct: req.body.idProduct,
+        idClient: req.currentUser.id,
+      });
+    } else {
       await setCartQuantity({
         idProduct: req.body.idProduct,
         idClient: req.currentUser.id,
         quantity: req.body.quantity,
       });
-
-    res.send("ok");
+      res.send("ok");
+    }
   } catch (err) {
     res.status(500).send("Error");
-    console.log(err);
   }
 }
 

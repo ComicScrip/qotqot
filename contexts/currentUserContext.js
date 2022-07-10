@@ -14,6 +14,8 @@ export default function CurrentUserContextProvider({ children }) {
   const [orderDate, setOrderDate] = useState("");
   const [orderAmount, setOrderAmount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  // const [count, setCount] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
   const currentUserLogged = useMemo(
     () => currentUserProfile,
@@ -40,6 +42,16 @@ export default function CurrentUserContextProvider({ children }) {
     }
   }, [status, getProfile]);
 
+  useEffect(() => {
+    axios
+      .get("/api/customerCartItem")
+      .then((res) => res.data)
+      .then((data) => setCartItems(data))
+      .catch(() =>
+        console.log("Could not get data from the server, please try again")
+      );
+  }, []);
+
   return (
     <CurrentUserContext.Provider
       value={{
@@ -58,6 +70,8 @@ export default function CurrentUserContextProvider({ children }) {
         setOrderAmount,
         isLoading,
         setIsLoading,
+        cartItems,
+        setCartItems,
       }}
     >
       {children}

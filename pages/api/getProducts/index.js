@@ -6,9 +6,8 @@ export async function getAllProducts(req, res) {
   {
     try {
       res.send(await findAllProducts());
-      console.log("hello");
-    } catch (error) {
-      res.send("Couldn't find products, please try again");
+    } catch {
+      res.status(500).send("Error");
     }
   }
 }

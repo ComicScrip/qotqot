@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Cart from "../../components/Cart";
 import Layout from "../../components/Layout";
 import LoadingSpin from "../../components/LoadingSpin";
 import styles from "../../styles/product_item.module.css";
 import Link from "next/link";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function Panier() {
   const [cartItemsList, setCartItemsList] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { cartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
     setError("");
@@ -34,17 +36,18 @@ export default function Panier() {
         <Cart
           key={item.id}
           id={item.id}
-          codeProduit={item.codeProduit}
-          name={item.name}
-          weight={item.weight}
-          totalPrice={item.totalPrice}
-          pricePerKg={item.pricePerKg}
-          stock={item.stock}
-          picture={item.picture ? item.picture : ""}
+          codeProduit={item.product.codeProduit}
+          name={item.product.name}
+          weight={item.product.weight}
+          totalPrice={item.product.totalPrice}
+          pricePerKg={item.product.pricePerKg}
+          stock={item.product.stock}
+          picture={item.product.picture ? item.product.picture : ""}
           Quantity={item.quantity}
-          typeUVC={item.typeUVC}
-          poidsUVC={item.poidsUVC}
-          uniteUVC={item.uniteUVC}
+          typeUVC={item.product.typeUVC}
+          poidsUVC={item.product.poidsUVC}
+          uniteUVC={item.product.uniteUVC}
+          price={item.product.price}
         />
       ))}
       <style jsx>{`
@@ -55,17 +58,30 @@ export default function Panier() {
     </div>
   );
 
-  console.log(cartItemsList);
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
+
+  const francoMin = 75 - totalPrice;
 
   return (
     <>
       <Layout pageTitle="Panier">
         <div className={styles.headCmd}>
-          <div className={styles.priceTotal}>Prix total</div>
+          <div className={styles.priceTotal}>{totalPrice}€ HT</div>
           <button onClick={handleCreateOrder} className={styles.btnCart}>
             Confirmer la commande
           </button>
         </div>
+        <p>
+          Plus que{" "}
+          <span className={styles.franco}>
+            {francoMin >= 0 ? francoMin.toFixed(2) : 0}
+          </span>
+          € pour le franco minimum
+        </p>
         <>
           {error && (
             <p className="error">

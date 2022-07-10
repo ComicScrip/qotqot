@@ -35,6 +35,15 @@ module.exports.setCartQuantity = async function ({
   });
 };
 
+module.exports.deleteCartItem = async function ({ idClient, idProduct }) {
+  return db.customerCartItem.deleteMany({
+    where: {
+      idClient,
+      idProduct,
+    },
+  });
+};
+
 module.exports.updateCartItem = async function (id, data) {
   return db.customerCartItem.update({
     data,

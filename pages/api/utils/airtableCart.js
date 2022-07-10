@@ -130,7 +130,7 @@ async function main() {
     quantity: 5,
   });
 
-  console.log(await getCustomerCartItems({ customer_id: customer.fields.id }));
+  // console.log(await getCustomerCartItems({ customer_id: customer.fields.id }));
 }
 
 main();

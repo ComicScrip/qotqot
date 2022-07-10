@@ -14,7 +14,6 @@ export async function getCustomerCartItems(req, res) {
     )
     .then((response) => {
       res.send(response.data?.records);
-      console.log(response.data?.records);
     })
     .catch(() => res.status(500).json({ msg: "toujours pas" }));
 }

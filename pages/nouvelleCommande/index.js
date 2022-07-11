@@ -68,6 +68,11 @@ export default function NewOrder() {
 
   return (
     <Layout pageTitle="Nouvelle commande">
+      <div className={styles.arrow}>
+        <Link href="/commandes">
+          <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
+        </Link>
+      </div>
       <div className={styles.headCmd}>
         <div className={styles.priceTotal}>{totalPrice}€ HT</div>
         <button className={styles.btnCart}>

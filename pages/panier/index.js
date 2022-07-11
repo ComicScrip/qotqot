@@ -7,6 +7,7 @@ import LoadingSpin from "../../components/LoadingSpin";
 import styles from "../../styles/product_item.module.css";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import ProgressBar from "@ramonak/react-progress-bar";
+import Link from "next/link";
 
 export default function Panier() {
   const [cartItemsList, setCartItemsList] = useState([]);
@@ -69,6 +70,11 @@ export default function Panier() {
   return (
     <>
       <Layout pageTitle="Panier">
+        <div className={styles.arrow}>
+          <Link href="/nouvelleCommande">
+            <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
+          </Link>
+        </div>
         <div className={styles.headCmd}>
           <div className={styles.priceTotal}>{totalPrice}€ HT</div>
           <button onClick={handleCreateOrder} className={styles.btnCart}>

@@ -145,6 +145,11 @@
   justify-content: center;
 }
 
+.arrow {
+  margin: 13px 0 0 18px;
+  cursor: pointer;
+}
+
 .count_total {
   font-weight: 700;
   font-size: 12px;
@@ -247,6 +252,11 @@ CART */
 
   .btnCart {
     margin-right: 50%;
+  }
+
+  .arrow {
+    margin-top: 20px;
+    margin-left: 25%;
   }
 }
 

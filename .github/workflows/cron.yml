@@ -1,4 +1,4 @@
-name: Cron
+name: Trigger cron API route
 on:
   schedule:
     - cron: '*/4 * * * *'

@@ -9,4 +9,4 @@ jobs:
       - name: Call the cron API route
         run: |
           curl --request POST \
-          --url 'https://qotqot-git-cron-comicscrip.vercel.app/api/cron?key=123'
+          --url 'https://qotqot-git-cron-comicscrip.vercel.app/api/cron?key=${{ secrets.API_SECRET_KEY }}'

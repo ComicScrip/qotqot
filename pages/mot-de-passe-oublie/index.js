@@ -117,7 +117,7 @@ export default function RestPasswordPage({ csrfToken }) {
                     onChange={(e) => setNewPassword(e.target.value)}
                   />
                 </div>
-                <div className="text-[#7F7F7F] border-2 border-gray-200 h-14 px-4 flex flex-col rounded-lg">
+                <div className="text-[#7F7F7F] mt-2 border-2 border-gray-200 h-14 px-4 flex flex-col rounded-lg">
                   <label className="text-[#7F7F7F]">
                     Confirmez votre mot de passe
                   </label>
@@ -136,8 +136,8 @@ export default function RestPasswordPage({ csrfToken }) {
                 </div>
                 <div className="flex justify-center flex-col">
                   <button
-                    data-cy="loginBtn"
-                    className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
+                    data-cy="resetPasswordBtn"
+                    className="text-md mt-2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
                     type="submit"
                   >
                     Réinitialiser le mot de passe
@@ -191,8 +191,8 @@ export default function RestPasswordPage({ csrfToken }) {
                 </div>
                 <div className="flex justify-center flex-col">
                   <button
-                    data-cy="loginBtn"
-                    className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
+                    data-cy="sendResetLinkBtn"
+                    className="text-md mt-2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
                     type="submit"
                   >
                     Réinitialiser le mot de passe

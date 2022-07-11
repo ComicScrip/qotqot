@@ -1,4 +1,4 @@
-import { minifyOrders } from "../utils/Airtable";
+import { minifyOrders } from "../../../Airtable";
 import axios from "axios";
 
 export default async function getAllProducts(req, res) {
@@ -11,7 +11,7 @@ export default async function getAllProducts(req, res) {
   console.log(url);
   axios
     .get(
-      `${process.env.AIRTABLE_API}/Commande%20Produits%20API?filterByFormula=${
+      `${process.env.AIRTABLE_API}/Commandes%20Pro?filterByFormula=${
         req.query.status === "pending"
           ? `%7BStatus%7D%3D%22En-cours%22`
           : `OR(%7BStatus%7D%3D%22Livr%C3%A9e%22%2C%7BStatus%7D%3D%22Annul%C3%A9e%22)`

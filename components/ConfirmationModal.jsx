@@ -1,6 +1,5 @@
 /*global Promise */
 /*eslint no-undef: "error"*/
-
 import s from "../styles/nouvelleCommande.module.css";
 import { useState, useRef, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";

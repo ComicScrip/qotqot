@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import logoImg from "../public/assets/logo-qot-qot.png";
 import axios from "axios";
-import style from "../styles/home.module.css";
 import { useRouter } from "next/dist/client/router";
 import { signIn } from "next-auth/react";
 import { useContext } from "react";
@@ -14,7 +13,7 @@ export default function Login({ csrfToken }) {
   const { query } = useRouter();
 
   return (
-    <div className={style.loginBg}>
+    <>
       {currentUserProfile ? (
         window.location.replace(`/commandes/`)
       ) : (
@@ -119,7 +118,7 @@ export default function Login({ csrfToken }) {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }
 

@@ -47,6 +47,7 @@ model customerCartItem {
 model order {
   id               String             @id @default(cuid())
   createdAt        DateTime           @default(now())
+  delivery         DateTime 
   synchWithAT      Boolean            @default(false)
   customerCartItem customerCartItem[]
 }

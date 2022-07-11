@@ -1,4 +1,4 @@
-import { minifyOrderProducts } from "../utils/Airtable";
+import { minifyOrderProducts } from "../../../Airtable";
 import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";

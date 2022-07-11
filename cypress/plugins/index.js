@@ -32,23 +32,7 @@ module.exports = (on, config) => {
     };
   });
   on("task", {
-    createSampleUser: async ({
-      name = "test",
-      email = "test@test.com",
-      password = "test1234456",
-      active = true,
-    } = {}) =>
-      User.createUser({
-        active,
-        email,
-        name,
-        password,
-      }),
     findUserByEmail: User.findByEmail,
-    createUser: User.createUser,
-    getLastEmail(userEmail) {
-      return lastEmail[userEmail] || null;
-    },
   });
   return config;
 };

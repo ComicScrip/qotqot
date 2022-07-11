@@ -41,7 +41,7 @@ const getMinifiedOrder = (record) => {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
     dateLivraison: dayjs(
-      record.fields["Date de commande (import)"],
+      record.fields["Date de paiement (import)"],
       "DD/MM/YYYY"
     )
       .locale("fr")

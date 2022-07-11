@@ -136,7 +136,7 @@ export default function RestPasswordPage({ csrfToken }) {
                 </div>
                 <div className="flex justify-center flex-col">
                   <button
-                    data-cy="loginBtn"
+                    data-cy="resetPasswordBtn"
                     className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
                     type="submit"
                   >

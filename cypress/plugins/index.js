@@ -1,4 +1,8 @@
 /// <reference types="cypress" />
+const User = require("../../models/user");
+const ms = require("smtp-tester");
+const dotenvPlugin = require("cypress-dotenv");
+
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -15,8 +19,36 @@
 /**
  * @type {Cypress.PluginConfig}
  */
+
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+  config = dotenvPlugin(config);
+  const mailServer = ms.init(7777);
+  const lastEmail = {};
+  mailServer.bind((addr, id, email) => {
+    lastEmail[email.headers.to] = {
+      body: email.body,
+      html: email.html,
+    };
+  });
+  on("task", {
+    createSampleUser: async ({
+      name = "test",
+      email = "test@test.com",
+      password = "test1234456",
+      active = true,
+    } = {}) =>
+      User.createUser({
+        active,
+        email,
+        name,
+        password,
+      }),
+    findUserByEmail: User.findByEmail,
+    createUser: User.createUser,
+    getLastEmail(userEmail) {
+      return lastEmail[userEmail] || null;
+    },
+  });
+  return config;
 };

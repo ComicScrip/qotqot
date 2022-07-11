@@ -57,4 +57,13 @@
   .date {
     font-size: 19px;
   }
+
+  .menu {
+    font-size: 40px;
+    margin-right: 40%;
+  }
+
+  .logout {
+    margin: 4% 5% 0 37%;
+  }
 } ;

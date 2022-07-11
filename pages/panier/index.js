@@ -1,49 +1,48 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Cart from "../../components/Cart";
 import Layout from "../../components/Layout";
 import LoadingSpin from "../../components/LoadingSpin";
 import styles from "../../styles/product_item.module.css";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
+import ProgressBar from "@ramonak/react-progress-bar";
+import Link from "next/link";
 
 export default function Panier() {
-  const [cartItemsList, setCartItemsList] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { cartItems, getCartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
     setError("");
-    axios
-      .get(`/api/customerCartItem`)
-      .then((res) => res.data)
-      .then((data) => {
-        setCartItemsList(data);
-      })
+    getCartItems()
       .catch(() => setError("Couldnt get data from cart"))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [getCartItems]);
 
   const handleCreateOrder = (data) => {
-    axios.post("/api/ordersProduct");
+    axios.post("/api/ordersProduct").then(getCartItems);
   };
 
   const renderProducts = (
     <div className="main_container">
-      {cartItemsList.map((item) => (
+      {cartItems.map((item) => (
         <Cart
           key={item.id}
           id={item.id}
-          codeProduit={item.codeProduit}
-          name={item.name}
-          weight={item.weight}
-          totalPrice={item.totalPrice}
-          pricePerKg={item.pricePerKg}
-          stock={item.stock}
-          picture={item.picture ? item.picture : ""}
+          codeProduit={item.product.codeProduit}
+          name={item.product.name}
+          weight={item.product.weight}
+          totalPrice={item.product.totalPrice}
+          pricePerKg={item.product.pricePerKg}
+          stock={item.product.stock}
+          picture={item.product.picture ? item.product.picture : ""}
           Quantity={item.quantity}
-          typeUVC={item.typeUVC}
-          poidsUVC={item.poidsUVC}
-          uniteUVC={item.uniteUVC}
+          typeUVC={item.product.typeUVC}
+          poidsUVC={item.product.poidsUVC}
+          uniteUVC={item.product.uniteUVC}
+          price={item.product.price}
         />
       ))}
       <style jsx>{`
@@ -54,17 +53,48 @@ export default function Panier() {
     </div>
   );
 
-  console.log(cartItemsList);
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
+
+  const francoMin = 75 - totalPrice;
 
   return (
     <>
       <Layout pageTitle="Panier">
+        <div className={styles.arrow}>
+          <Link href="/nouvelleCommande">
+            <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
+          </Link>
+        </div>
         <div className={styles.headCmd}>
-          <div className={styles.priceTotal}>Prix total</div>
-          <button onClick={handleCreateOrder} className={styles.btnCart}>
+          <div className={styles.priceTotal}>{totalPrice}€ HT</div>
+          <button
+            onClick={handleCreateOrder}
+            className={
+              cartItems.length === 0 ? styles.btnCartEmpty : styles.btnCart
+            }
+          >
             Confirmer la commande
           </button>
         </div>
+        <div className={styles.francoText}>
+          Plus que{" "}
+          <span className={styles.franco}>
+            {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
+          </span>{" "}
+          pour le franco minimum
+        </div>
+
+        <ProgressBar
+          completed={totalPrice}
+          maxCompleted={75}
+          className={styles.wrapper}
+          barContainerClassName={styles.container}
+          labelClassName={styles.label}
+        />
         <>
           {error && (
             <p className="error">

@@ -1,10 +1,14 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
 import ConfirmationModal from "../../components/ConfirmationModal";
 import CongratsModal from "../../components/CongratsModal";
+import React, { useState, useEffect, useContext } from "react";
+import Link from "next/link";
+import styles from "../../styles/product_item.module.css";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -14,6 +18,7 @@ export default function NewOrder() {
   const [modal, setModal] = useState(false);
   const [modalCongrats, setModalCongrats] = useState(false);
   const [modalFranco, setModalFranco] = useState(false);
+  const { cartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
     setError("");
@@ -48,6 +53,13 @@ export default function NewOrder() {
   const handleClose3 = () => {
     setModalFranco(!modalFranco);
   };
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
+
+  const francoMin = 75 - totalPrice;
 
   const renderProducts = (
     <div className="main_container">
@@ -66,6 +78,7 @@ export default function NewOrder() {
           productDesc={prod.descriptionProduit}
           makerDesc={prod.descriptionProducteur}
           logo={prod.logo}
+          cartItem={prod.customerCartItem}
         />
       ))}
     </div>
@@ -74,6 +87,32 @@ export default function NewOrder() {
   return (
     <>
       <Layout pageTitle="nouvelle-commande">
+        <div className={styles.arrow}>
+          <Link href="/commandes">
+            <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
+          </Link>
+        </div>
+        <div className={styles.headCmd}>
+          <div className={styles.priceTotal}>{totalPrice}€ HT</div>
+          <Link href="/panier">
+            <button className={styles.btnCart}>Panier </button>
+          </Link>
+        </div>
+        <div className={styles.francoText}>
+          Plus que{" "}
+          <span className={styles.franco}>
+            {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
+          </span>{" "}
+          pour le franco minimum
+        </div>
+        <ProgressBar
+          completed={totalPrice}
+          maxCompleted={75}
+          className={styles.wrapper}
+          barContainerClassName={styles.container}
+          labelClassName={styles.label}
+        />
+
         <div className="flex justify-center items-center text-center m-auto py-5">
           <button
             type="button"
@@ -105,7 +144,6 @@ export default function NewOrder() {
             handleClose3={handleClose3}
           />
         )}
-
         {error && (
           <p className="error">
             Could not get data from the server, please try again

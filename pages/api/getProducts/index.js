@@ -1,15 +1,13 @@
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
-import { findAllProducts, findOneProduct } from "../../../models/product";
+import { findAllProducts } from "../../../models/product";
 
 export async function getAllProducts(req, res) {
   if (req.query) {
     try {
-      res.send(await findOneProduct(req.query.id));
-      console.log("query");
-    } catch {
       res.send(await findAllProducts());
-      console.log("hello");
+    } catch {
+      res.status(500).send("Error");
     }
   }
 }

@@ -75,9 +75,9 @@ export default function NewOrder() {
       </div>
       <div className={styles.headCmd}>
         <div className={styles.priceTotal}>{totalPrice}€ HT</div>
-        <button className={styles.btnCart}>
-          <Link href="/panier">Panier </Link>
-        </button>
+        <Link href="/panier">
+          <button className={styles.btnCart}>Panier </button>
+        </Link>
       </div>
       <div className={styles.francoText}>
         Plus que{" "}

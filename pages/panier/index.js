@@ -10,30 +10,24 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import Link from "next/link";
 
 export default function Panier() {
-  const [cartItemsList, setCartItemsList] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const { cartItems } = useContext(CurrentUserContext);
+  const { cartItems, getCartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
     setError("");
-    axios
-      .get(`/api/customerCartItem`)
-      .then((res) => res.data)
-      .then((data) => {
-        setCartItemsList(data);
-      })
+    getCartItems()
       .catch(() => setError("Couldnt get data from cart"))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [getCartItems]);
 
   const handleCreateOrder = (data) => {
-    axios.post("/api/ordersProduct");
+    axios.post("/api/ordersProduct").then(getCartItems);
   };
 
   const renderProducts = (
     <div className="main_container">
-      {cartItemsList.map((item) => (
+      {cartItems.map((item) => (
         <Cart
           key={item.id}
           id={item.id}
@@ -77,7 +71,12 @@ export default function Panier() {
         </div>
         <div className={styles.headCmd}>
           <div className={styles.priceTotal}>{totalPrice}€ HT</div>
-          <button onClick={handleCreateOrder} className={styles.btnCart}>
+          <button
+            onClick={handleCreateOrder}
+            className={
+              cartItems.length === 0 ? styles.btnCartEmpty : styles.btnCart
+            }
+          >
             Confirmer la commande
           </button>
         </div>

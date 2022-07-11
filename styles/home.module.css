@@ -33,7 +33,7 @@
 .displayCommande {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-gap: 15px;
   grid-auto-rows: minmax(100px, auto);
   padding-bottom: 15px;
 }
@@ -45,15 +45,15 @@
 }
 
 .commande {
-  width: 98px;
-  height: 98px;
+  width: 105px;
+  height: 105px;
   background-color: white;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .state {
-  width: 88px;
+  width: 92px;
   height: 17px;
   background-color: rgba(255, 185, 35, 0.2);
   border-radius: 4px;
@@ -68,6 +68,8 @@
   font-weight: 700;
   font-size: 20px;
   text-align: center;
+  padding: 0 5px;
+  padding-bottom: 10px;
 }
 
 .state1 {

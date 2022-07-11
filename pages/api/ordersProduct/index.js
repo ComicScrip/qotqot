@@ -9,6 +9,9 @@ export async function handleCreateOrder(req, res) {
   const customerCartItems = await findAllCartItems({
     idClient: req.currentUser.id,
   });
+  if (customerCartItems.length === 0) {
+    return res.status(422).send("Your cart is empty...");
+  }
   const newOrder = await createOrder({});
   await Promise.all(
     customerCartItems.map((item) => {

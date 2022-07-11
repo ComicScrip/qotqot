@@ -162,6 +162,17 @@
   width: 217px;
   height: 48px;
   color: white;
+  cursor: pointer;
+}
+
+.btnCartEmpty {
+  margin: 30px auto;
+  background: #06968a !important;
+  opacity: 0.5;
+  border-radius: 4px;
+  width: 217px;
+  height: 48px;
+  color: white;
 }
 
 .headCmd {

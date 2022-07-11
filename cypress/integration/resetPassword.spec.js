@@ -54,5 +54,3 @@ describe("/mot-de-passe-oublie", () => {
     cy.contains("Les mots de passe ne correspondent pas");
   });
 });
-
-//

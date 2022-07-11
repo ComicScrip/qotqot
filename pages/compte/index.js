@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import styles from "../../styles/account.module.css";
 import Layout from "../../components/Layout";
 import axios from "axios";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function Account() {
   const [companyName, setCompanyName] = useState("");
+  const { currentUserProfile } = useContext(CurrentUserContext);
+  console.log(currentUserProfile);
 
   const createAccountInfo = (e) => {
     e.preventDefault();

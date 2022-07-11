@@ -22,8 +22,13 @@ export default function NewUserPage({ csrfToken }) {
       .catch((err) => {
         if (err.response.status === 404)
           return toast.error("Email introuvable");
-        if (err.response.status === 401)
-          return toast.error("Ce compte existe déjà");
+        if (err.response.status === 401) {
+          toast.error("Ce compte existe déjà");
+          setTimeout(() => {
+            router.push("/");
+          }, 3000);
+          return;
+        }
         return toast.error("erreur");
       });
   };
@@ -67,7 +72,7 @@ export default function NewUserPage({ csrfToken }) {
                 height={164}
               />
             </div>
-            <h1 className="my-8 tracking-2">Création de mot de passe</h1>
+            <h1 className="my-8 tracking-2">Créez votre mot de passe</h1>
           </div>
 
           <form
@@ -99,7 +104,7 @@ export default function NewUserPage({ csrfToken }) {
                 onChange={(e) => setNewPassword(e.target.value)}
               />
             </div>
-            <div className="text-[#7F7F7F] border-2 border-gray-200 h-14 px-4 flex flex-col rounded-lg">
+            <div className="text-[#7F7F7F] border-2 border-gray-200 mt-2 h-14 px-4 flex flex-col rounded-lg">
               <label className="text-[#7F7F7F]">
                 Confirmez votre mot de passe
               </label>
@@ -119,7 +124,7 @@ export default function NewUserPage({ csrfToken }) {
             <div className="flex justify-center flex-col">
               <button
                 data-cy="loginBtn"
-                className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
+                className="text-md mt-2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
                 type="submit"
               >
                 Créer le mot de passe
@@ -138,7 +143,7 @@ export default function NewUserPage({ csrfToken }) {
                 height={164}
               />
             </div>
-            <h1 className="my-8 tracking-2">Créer votre compte</h1>
+            <h1 className="my-8 tracking-2">Créez votre compte</h1>
           </div>
 
           <form
@@ -172,7 +177,7 @@ export default function NewUserPage({ csrfToken }) {
             <div className="flex justify-center flex-col">
               <button
                 data-cy="loginBtn"
-                className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
+                className="text-md mt-2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
                 type="submit"
               >
                 Créer votre compte

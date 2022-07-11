@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
-import { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -26,8 +26,6 @@ export default function NewOrder() {
       )
       .finally(() => setIsLoading(false));
   }, []);
-
-  console.table(productList);
 
   const totalPrice = cartItems
     .reduce((acc, item) => {
@@ -76,13 +74,21 @@ export default function NewOrder() {
           <Link href="/panier">Panier </Link>
         </button>
       </div>
-      <p>
+      <div className={styles.francoText}>
         Plus que{" "}
         <span className={styles.franco}>
           {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
         </span>{" "}
         pour le franco minimum
-      </p>
+      </div>
+
+      <ProgressBar
+        completed={totalPrice}
+        maxCompleted={75}
+        className={styles.wrapper}
+        barContainerClassName={styles.container}
+        labelClassName={styles.label}
+      />
       <>
         {error && (
           <p className="error">

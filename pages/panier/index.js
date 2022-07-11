@@ -5,8 +5,8 @@ import Cart from "../../components/Cart";
 import Layout from "../../components/Layout";
 import LoadingSpin from "../../components/LoadingSpin";
 import styles from "../../styles/product_item.module.css";
-import Link from "next/link";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 export default function Panier() {
   const [cartItemsList, setCartItemsList] = useState([]);
@@ -75,13 +75,21 @@ export default function Panier() {
             Confirmer la commande
           </button>
         </div>
-        <p>
+        <div className={styles.francoText}>
           Plus que{" "}
           <span className={styles.franco}>
-            {francoMin >= 0 ? francoMin.toFixed(2) : 0}
-          </span>
-          € pour le franco minimum
-        </p>
+            {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
+          </span>{" "}
+          pour le franco minimum
+        </div>
+
+        <ProgressBar
+          completed={totalPrice}
+          maxCompleted={75}
+          className={styles.wrapper}
+          barContainerClassName={styles.container}
+          labelClassName={styles.label}
+        />
         <>
           {error && (
             <p className="error">

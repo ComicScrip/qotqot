@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 import {
@@ -37,7 +36,6 @@ export async function handlePostCartItems(req, res) {
     }
   } catch (err) {
     res.status(500).send("Error");
-    console.log(err);
   }
 }
 

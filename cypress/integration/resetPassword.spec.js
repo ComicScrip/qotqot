@@ -12,11 +12,6 @@ describe("/mot-de-passe-oublie", () => {
       `Un message avec un lien de réinitialisation vous a été envoyé,
       merci de vérifier votre boîte mail`
     );
-
-    cy.task("getLastEmail", email).then((mail) => {
-      expect(mail).not.to.be.null;
-      expect(mail.body).to.contain(`/mot-de-passe-oublie`);
-    });
   });
 
   it("cannot send the mail if the user is not in db", () => {
@@ -28,15 +23,13 @@ describe("/mot-de-passe-oublie", () => {
   });
 
   it("should reset the password when provided valid info", () => {
-    cy.task("hashPassword", resetPasswordToken).then(() => {
-      cy.visit(
-        `/reset-password?email=${email}&resetPasswordToken=${resetPasswordToken}`
-      );
-      cy.get("[data-cy='newPassword']").type(newPassword);
-      cy.get("[data-cy='newPasswordConfirmation']").type(newPassword);
-      cy.get("[data-cy='resetPasswordBtn']").click();
-      cy.url().should("match", "/");
-    });
+    cy.visit(
+      `/reset-password?email=${email}&resetPasswordToken=${resetPasswordToken}`
+    );
+    cy.get("[data-cy='newPassword']").type(newPassword);
+    cy.get("[data-cy='newPasswordConfirmation']").type(newPassword);
+    cy.get("[data-cy='resetPasswordBtn']").click();
+    cy.url().should("match", "/");
   });
 
   it("prints an error if the token is ivalid", () => {

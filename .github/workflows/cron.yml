@@ -1,7 +1,7 @@
 name: Trigger cron API route
 on:
   schedule:
-    - cron: '*/4 * * * *'
+    - cron: '*/5 * * * *'
 jobs:
   cron:
     runs-on: ubuntu-latest

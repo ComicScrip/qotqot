@@ -1,0 +1,12 @@
+name: 15-seconds-cron
+on:
+  schedule:
+    - cron: '* */4 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the cron API route
+        run: |
+          curl --request POST \
+          --url 'https://yoursite.com/api/cron?key=${{ secrets.API_SECRET_KEY }}'

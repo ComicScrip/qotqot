@@ -12,8 +12,8 @@ export const SearchModule = () => {
   const router = useRouter();
   const { category = "" } = router.query;
 
+  const [searchTerm, setSearchTerm] = useState("");
   const [categoryList, setCategoryList] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
   const [productList, setProductList] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [error, setError] = useState("");
@@ -23,13 +23,15 @@ export const SearchModule = () => {
     router.push(`/nouvelleCommande${queryString ? "?" : ""}${queryString}`);
   };
 
+  // here we get the list of all products, extract the categories from it and push it to a mappable array
   useEffect(() => {
     axios
       .get("/api/getProducts")
       .then((res) => setProductList(res.data))
       .then(productList.map((item) => categoryList.push(item.category)))
-      .then(setCategoryList([...new Set(categoryList)]));
+      .finally(setCategoryList([...new Set(categoryList)]));
   }, []);
+  console.log(categoryList);
 
   useEffect(() => {
     setError("");
@@ -44,6 +46,14 @@ export const SearchModule = () => {
   }, [router.query]);
   return (
     <>
+      <input
+        type="text"
+        placeholder="Cherchez..."
+        className={s.text_input}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
+      />
       <select
         value={category}
         className={s.search_input}
@@ -60,25 +70,35 @@ export const SearchModule = () => {
       </select>
 
       <div>
-        {searchResult.map((prod) => {
-          return (
-            <ProductItem
-              key={prod.id}
-              name={prod.name}
-              weight={prod.weight}
-              price={prod.price}
-              pricePerKg={prod.pricePerKg}
-              stock={prod.stock}
-              picture={prod.picture ? prod.picture : ""}
-              makerPicture={prod.makerPicture}
-              makerName={prod.makerName}
-              makerAdress={prod.makerAdress}
-              productDesc={prod.productDesc}
-              makerDesc={prod.makerDesc}
-              logo={prod.logo}
-            />
-          );
-        })}
+        {searchResult
+          .filter((val) => {
+            if (val == "") {
+              return val;
+            } else if (
+              val.name.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return val;
+            }
+          })
+          .map((prod) => {
+            return (
+              <ProductItem
+                key={prod.id}
+                name={prod.name}
+                weight={prod.weight}
+                price={prod.price}
+                pricePerKg={prod.pricePerKg}
+                stock={prod.stock}
+                picture={prod.picture ? prod.picture : ""}
+                makerPicture={prod.makerPicture}
+                makerName={prod.makerName}
+                makerAdress={prod.makerAdress}
+                productDesc={prod.productDesc}
+                makerDesc={prod.makerDesc}
+                logo={prod.logo}
+              />
+            );
+          })}
       </div>
     </>
   );

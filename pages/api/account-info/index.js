@@ -24,3 +24,5 @@ export async function GetAccountInfo(req, res) {
 }
 
 export default base().use(reqCurrentUser).get(GetAccountInfo);
+
+//

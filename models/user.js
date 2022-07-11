@@ -1,7 +1,7 @@
 const argon2 = require("argon2");
 const { default: axios } = require("axios");
 
-module.exports.findUserByEmail = (email) => {
+module.exports.findUserByEmail = async (email) => {
   return axios
     .get(
       `${
@@ -26,11 +26,38 @@ const hashingOptions = {
   type: argon2.argon2id,
 };
 
-module.exports.verifyPassword = (plainPassword, hashedPassword) => {
-  return argon2.verify(hashedPassword, plainPassword, hashingOptions);
-};
+const verifyPassword = (plainPassword, hashedPassword) =>
+  argon2.verify(hashedPassword, plainPassword, hashingOptions);
+
+module.exports.verifyPassword = verifyPassword;
 
 const hashPassword = (plainPassword) =>
   argon2.hash(plainPassword, hashingOptions);
 
 module.exports.hashPassword = hashPassword;
+
+module.exports.updateUser = async (user, resetPasswordToken) => {
+  const passwordToken = resetPasswordToken.resetPasswordToken;
+  const userID = user.id;
+  return axios
+    .patch(
+      `${process.env.AIRTABLE_API}/users`,
+      {
+        records: [
+          {
+            id: userID,
+            fields: {
+              resetPasswordToken: passwordToken,
+              MDP: resetPasswordToken.hashedPassword,
+            },
+          },
+        ],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
+        },
+      }
+    )
+    .catch(console.error);
+};

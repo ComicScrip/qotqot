@@ -1,20 +1,45 @@
 /* eslint-disable no-unused-vars */
-import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
+import {
+  deleteCartItem,
+  findAllCartItems,
+  setCartQuantity,
+} from "../../../models/cart_model";
 
-async function getCustomerCartItems({ req }) {
-  console.log(req.currentUser.customer_id);
-  axios
-    .get(
-      `https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Panier?filterByFormula=%7BCode_Client%7D%3D%22${req.currentUser.customer_id}%22`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
-        },
-      }
-    )
-    .then((res) => res.data.records);
+export async function getAllCartItems(req, res) {
+  try {
+    res.send(
+      await findAllCartItems({
+        idClient: req.currentUser.id,
+      })
+    );
+  } catch {
+    res.status(500).send("Error");
+  }
 }
 
-export default base().use(reqCurrentUser).get(getCustomerCartItems);
+export async function handlePostCartItems(req, res) {
+  try {
+    if (req.body.quantity === 0) {
+      await deleteCartItem({
+        idProduct: req.body.idProduct,
+        idClient: req.currentUser.id,
+      });
+    } else {
+      await setCartQuantity({
+        idProduct: req.body.idProduct,
+        idClient: req.currentUser.id,
+        quantity: req.body.quantity,
+      });
+      res.send("ok");
+    }
+  } catch (err) {
+    res.status(500).send("Error");
+  }
+}
+
+export default base()
+  .use(reqCurrentUser)
+  .get(getAllCartItems)
+  .post(handlePostCartItems);

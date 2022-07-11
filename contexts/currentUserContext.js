@@ -14,6 +14,8 @@ export default function CurrentUserContextProvider({ children }) {
   const [orderDate, setOrderDate] = useState("");
   const [orderAmount, setOrderAmount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  // const [count, setCount] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
   const currentUserLogged = useMemo(
     () => currentUserProfile,
@@ -32,6 +34,16 @@ export default function CurrentUserContextProvider({ children }) {
       });
   }, []);
 
+  const getCartItems = useCallback(() => {
+    return axios
+      .get("/api/customerCartItem")
+      .then((res) => res.data)
+      .then((data) => setCartItems(data))
+      .catch(() =>
+        console.log("Could not get data from the server, please try again")
+      );
+  }, []);
+
   useEffect(() => {
     if (status === "authenticated") {
       getProfile();
@@ -39,6 +51,10 @@ export default function CurrentUserContextProvider({ children }) {
       setCurrentUserProfile(null);
     }
   }, [status, getProfile]);
+
+  useEffect(() => {
+    getCartItems();
+  }, [getCartItems]);
 
   return (
     <CurrentUserContext.Provider
@@ -58,6 +74,9 @@ export default function CurrentUserContextProvider({ children }) {
         setOrderAmount,
         isLoading,
         setIsLoading,
+        cartItems,
+        setCartItems,
+        getCartItems,
       }}
     >
       {children}

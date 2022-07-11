@@ -3,8 +3,6 @@ import { useState } from "react";
 // import axios from "axios";
 import { AiOutlineClose } from "react-icons/ai";
 import dayjs from "dayjs";
-// import { fr } from "date-fns/locale";
-// import getDaysInMonth from "date-fns/getDaysInMonth";
 
 export default function ConfirmationModal({
   modal,
@@ -13,17 +11,38 @@ export default function ConfirmationModal({
 }) {
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
-  // const [date, setDate] = useState([]);
-  const setValue = new Date("2014-08-18T21:11:54");
-  const now = dayjs(Date.now());
+  // eslint-disable-next-line no-unused-vars
+  const [date, setDate] = useState("");
+  var weekday = require("dayjs/plugin/weekday");
+  dayjs.extend(weekday);
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
+  const date1 = dayjs().weekday(1).format("DD-MM-YY");
+  const date2 = dayjs().weekday(4).format("DD-MM-YY");
+  const date3 = dayjs().weekday(8).format("DD-MM-YY");
+  const date4 = dayjs().weekday(11).format("DD-MM-YY");
+
+  const options = [
+    {
+      label: date1,
+      value: date,
+    },
+    {
+      label: date2,
+      value: "",
+    },
+    {
+      label: date3,
+      value: "",
+    },
+    {
+      label: date4,
+      value: "",
+    },
+  ];
+
+  const handleChange = (value) => {
+    setDate(value);
   };
-
-  // conditions selecter :
-  // mardi : dayjs().day(3) ou  jeudi : dayjs().day(5)
-  // dayjs.duration().weeks(2);
 
   // useEffect(() => {
   //   setError("");
@@ -57,17 +76,29 @@ export default function ConfirmationModal({
                   <label className="text-sm sm:text-base cursor-pointer ">
                     Créneau de livraison{" "}
                   </label>
+                  {/* <Calendar
+                    onChange={onChange}
+                    value={today}
+                    defaultView="month"
+                    disableDays={["mon", "wed", "fri", "sun", "sat"]}
+                    defaultValue={{
+                      activeStartDate: { today },
+                      endDate: "2022-07-25",
+                    }}
+                  /> */}
+
                   <select
                     id="choose-date "
                     className="text-[#bbbbbb] bg-[#F2F2F2]"
-                    value={now}
-                    onChange={(e) => handleChange(e.target.value)}
+                    type="date"
+                    onChange={handleChange}
                   >
-                    <option className="">choisir une date</option>
-                    <option value="aujourd'hui">jeudi</option>
-                    <option value="mardi"></option>
-                    {/* mardi : dayjs().day(3) ou  jeudi : dayjs().day(5) */}
-                    <option value="jeudi">jeudi</option>
+                    <option value={date}>---</option>
+                    {options.map((option) => (
+                      <option key={option.id} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className=" flex flex-col text-left w-[90%] rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] p-2">

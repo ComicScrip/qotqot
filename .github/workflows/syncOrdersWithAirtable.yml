@@ -1,0 +1,12 @@
+name: Trigger /api/syncOrders API route every 10m
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the API route that will sync the database orders with airtable
+        run: |
+          curl --request GET \
+          --url 'https://qotqot-git-cron-comicscrip.vercel.app/api/syncOrders?secret=${{ secrets.API_SECRET_KEY }}'

@@ -40,7 +40,10 @@ const getMinifiedOrder = (record) => {
   return {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
-    dateLivraison: dayjs(record.fields["Date de livraison"], "DD/MM/YYYY")
+    dateLivraison: dayjs(
+      record.fields["Date de commande (import)"],
+      "DD/MM/YYYY"
+    )
       .locale("fr")
       .format("D MMM YYYY"),
     statut: record.fields.Status,

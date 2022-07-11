@@ -5,6 +5,27 @@ import Popup from "./Popup";
 import axios from "axios";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 
+const data = {
+  nextPromiseFactory: null,
+  currentPromise: null,
+};
+
+function runLatest(promiseFacotry) {
+  if (!data.currentPromise)
+    data.currentPromise = promiseFacotry().finally(() => {
+      data.currentPromise = null;
+      if (data.nextPromiseFactory) {
+        data.currentPromise = data.nextPromiseFactory().finally(() => {
+          data.nextPromiseFactory = null;
+          data.currentPromise = null;
+        });
+      }
+    });
+  else data.nextPromiseFactory = promiseFacotry;
+}
+
+setInterval(() => console.log(data), 1000);
+
 function ProductItem(props) {
   const [isDetailed, setIsDetailed] = useState(false);
   const togglePopup = () => {
@@ -54,18 +75,22 @@ function ProductItem(props) {
 
   const handleSubtractOneFromCart = () => {
     setCount(count > 0 ? count - 1 : 0);
-    axios.post("/api/customerCartItem", {
-      quantity: count > 0 ? count - 1 : 0,
-      idProduct: props.id,
-    });
+    runLatest(() =>
+      axios.post("/api/customerCartItem", {
+        quantity: count > 0 ? count - 1 : 0,
+        idProduct: props.id,
+      })
+    );
   };
 
   const handleAddOneToCart = () => {
     setCount(count + 1);
-    axios.post("/api/customerCartItem", {
-      quantity: count + 1,
-      idProduct: props.id,
-    });
+    runLatest(() =>
+      axios.post("/api/customerCartItem", {
+        quantity: count + 1,
+        idProduct: props.id,
+      })
+    );
   };
 
   return (

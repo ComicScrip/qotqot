@@ -11,7 +11,7 @@ async function handlePost(req, res) {
     return res.status(400).send("passwords dont match");
   const user = await findUserByEmail(email);
   if (!user) return res.status(404).send();
-  if (user && !user.fields.MDP) res.status(200).send();
+  if (user.fields.MDP) res.status(404).send();
   await updateUser(user, {
     hashedPassword: await hashPassword(newPassword),
   });

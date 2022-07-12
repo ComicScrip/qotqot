@@ -2,8 +2,6 @@ import axios from "axios";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
-// import ConfirmationModal from "../../components/ConfirmationModal";
-// import CongratsModal from "../../components/CongratsModal";
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import styles from "../../styles/product_item.module.css";

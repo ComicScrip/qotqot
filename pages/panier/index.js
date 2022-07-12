@@ -30,6 +30,23 @@ export default function Panier() {
     axios.post("/api/ordersProduct").then(getCartItems);
   };
 
+  const handleConfirmOrder = () => {
+    if (totalPrice >= 75) {
+      setModal(!modal);
+      setModalCongrats(!modalCongrats);
+    } else {
+      setModal(!modal);
+      setModalFranco(!modalFranco);
+    }
+  };
+
+  const confirmPurchase = () => {
+    setModalFranco(!modalFranco);
+    setModalCongrats(!modalCongrats);
+    setModal(false);
+    handleCreateOrder();
+  };
+
   const handleClose = () => {
     setModal(!modal);
   };
@@ -40,12 +57,6 @@ export default function Panier() {
 
   const handleClose3 = () => {
     setModalFranco(!modalFranco);
-  };
-
-  const confirmPurchase = () => {
-    setModalFranco(!modalFranco);
-    setModalCongrats(!modalCongrats);
-    setModal(false);
   };
 
   const totalPrice = cartItems
@@ -84,16 +95,6 @@ export default function Panier() {
     </div>
   );
 
-  async function handleValidate() {
-    if (totalPrice >= 75) {
-      setModal(!modal);
-      setModalCongrats(!modalCongrats);
-    } else {
-      setModal(!modal);
-      setModalFranco(!modalFranco);
-    }
-  }
-
   return (
     <>
       <Layout pageTitle="Panier">
@@ -105,7 +106,7 @@ export default function Panier() {
         <div className={styles.headCmd}>
           <div className={styles.priceTotal}>{totalPrice}€ HT</div>
           <button
-            onClick={handleCreateOrder}
+            onClick={() => setModal(!modal)}
             className={
               cartItems.length === 0 ? styles.btnCartEmpty : styles.btnCart
             }
@@ -143,7 +144,7 @@ export default function Panier() {
           {modal && (
             <ConfirmationModal
               modal={modal}
-              handleValidate={handleValidate}
+              handleValidate={handleConfirmOrder}
               handleClose={handleClose}
             />
           )}
@@ -151,7 +152,7 @@ export default function Panier() {
           {modalCongrats && (
             <CongratsModal
               modalCongrats={modalCongrats}
-              showModalFranco={handleValidate}
+              showModalFranco={handleConfirmOrder}
               handleClose2={handleClose2}
             />
           )}

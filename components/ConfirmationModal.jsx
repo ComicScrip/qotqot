@@ -98,12 +98,11 @@ export default function ConfirmationModal({
                   </label>
 
                   <select
-                    id="choose-date "
                     className="text-[#3f3f3f] bg-[#F2F2F2]"
                     type="date"
+                    required
                     onChange={handleChange}
                   >
-                    <option>---</option>
                     {dayjs().isBefore(dayjs().weekday(2).hour(23))
                       ? optionsM.map((option) => (
                           <option key={option.id} value={option.value}>

@@ -14,7 +14,6 @@ export default function NewOrder() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-
   const [modal, setModal] = useState(false);
   const [modalCongrats, setModalCongrats] = useState(false);
   const [modalFranco, setModalFranco] = useState(false);
@@ -33,14 +32,19 @@ export default function NewOrder() {
   }, []);
 
   async function handleValidate() {
-    setModal(!modal);
-    setModalCongrats(!modalCongrats);
+    if (totalPrice >= 75) {
+      setModal(!modal);
+      setModalCongrats(!modalCongrats);
+    } else {
+      setModalCongrats(false);
+      setModalFranco(!modalFranco);
+    }
   }
 
-  const showModalFranco = () => {
-    setModalCongrats(!modalCongrats);
-    setModalFranco(!modalFranco);
-  };
+  // const showModalFranco = () => {
+  //   setModalCongrats(!modalCongrats);
+  //   setModalFranco(!modalFranco);
+  // };
 
   const handleClose = () => {
     setModal(!modal);
@@ -53,6 +57,12 @@ export default function NewOrder() {
   const handleClose3 = () => {
     setModalFranco(!modalFranco);
   };
+
+  const confirmPurchase = () => {
+    setModalFranco(!modalFranco);
+    setModalCongrats(!modalCongrats);
+  };
+
   const totalPrice = cartItems
     .reduce((acc, item) => {
       return acc + item.product.price * item.quantity;
@@ -129,11 +139,11 @@ export default function NewOrder() {
             handleClose={handleClose}
           />
         )}
-        {/* {totalPrice >= 75 ?  */}
+
         {modalCongrats && (
           <CongratsModal
             modalCongrats={modalCongrats}
-            showModalFranco={showModalFranco}
+            showModalFranco={handleValidate}
             handleClose2={handleClose2}
           />
         )}
@@ -142,6 +152,7 @@ export default function NewOrder() {
           <CongratsModal
             modalFranco={modalFranco}
             handleClose3={handleClose3}
+            confirmPurchase={confirmPurchase}
           />
         )}
 

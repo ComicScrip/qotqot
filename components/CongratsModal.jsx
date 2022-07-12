@@ -6,7 +6,7 @@ import s from "../styles/nouvelleCommande.module.css";
 const Congrats = ({
   modalCongrats,
   modalFranco,
-  showModalFranco,
+  confirmPurchase,
   handleClose2,
   handleClose3,
 }) => {
@@ -35,7 +35,7 @@ const Congrats = ({
                 La commande est envoyée, nous reviendrons vers vous dans les
                 plus brefs délais !
               </p>
-              <div onClick={showModalFranco}>voir la popup franco</div>
+              {/* <div onClick={showModalFranco}>voir la popup franco</div> */}
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ const Congrats = ({
               <button
                 type="button"
                 className=" bg-[#06968A] w-[100%] cursor-pointer rounded-md p-3uppercase text-sm h-12 mt-2 text-center text-white font-bold"
-                onClick={handleClose3}
+                onClick={confirmPurchase}
               >
                 poursuivre
               </button>

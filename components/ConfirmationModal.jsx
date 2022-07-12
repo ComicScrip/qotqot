@@ -100,11 +100,11 @@ export default function ConfirmationModal({
 
                   <select
                     id="choose-date "
-                    className="text-[#bbbbbb] bg-[#F2F2F2]"
+                    className="text-[#3f3f3f] bg-[#F2F2F2]"
                     type="date"
                     onChange={handleChange}
                   >
-                    <option value={date}>---</option>
+                    <option>---</option>
                     {dayjs().isBefore(dayjs().weekday(2).hour(23))
                       ? optionsM.map((option) => (
                           <option key={option.id} value={option.value}>
@@ -124,7 +124,7 @@ export default function ConfirmationModal({
                   </label>
                   <textarea
                     type="textarea"
-                    className="text-sm  bg-[#F2F2F2]"
+                    className="text-sm text-black bg-[#F2F2F2]"
                     rows="3"
                     name="message"
                     onChange={(e) => e.target.value}

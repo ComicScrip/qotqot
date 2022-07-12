@@ -31,16 +31,6 @@ export default function NewOrder() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  async function handleValidate() {
-    if (totalPrice >= 75) {
-      setModal(!modal);
-      setModalCongrats(!modalCongrats);
-    } else {
-      setModal(!modal);
-      setModalFranco(!modalFranco);
-    }
-  }
-
   const handleClose = () => {
     setModal(!modal);
   };
@@ -66,6 +56,16 @@ export default function NewOrder() {
     .toFixed(2);
 
   const francoMin = 75 - totalPrice;
+
+  async function handleValidate() {
+    if (totalPrice >= 75) {
+      setModal(!modal);
+      setModalCongrats(!modalCongrats);
+    } else {
+      setModal(!modal);
+      setModalFranco(!modalFranco);
+    }
+  }
 
   const renderProducts = (
     <div className="main_container">
@@ -111,6 +111,7 @@ export default function NewOrder() {
           </span>{" "}
           pour le franco minimum
         </div>
+
         <ProgressBar
           completed={totalPrice}
           maxCompleted={75}
@@ -128,35 +129,37 @@ export default function NewOrder() {
             Confirmer la commande
           </button>
         </div>
-        {modal && (
-          <ConfirmationModal
-            modal={modal}
-            handleValidate={handleValidate}
-            handleClose={handleClose}
-          />
-        )}
+        <>
+          {modal && (
+            <ConfirmationModal
+              modal={modal}
+              handleValidate={handleValidate}
+              handleClose={handleClose}
+            />
+          )}
 
-        {modalCongrats && (
-          <CongratsModal
-            modalCongrats={modalCongrats}
-            showModalFranco={handleValidate}
-            handleClose2={handleClose2}
-          />
-        )}
+          {modalCongrats && (
+            <CongratsModal
+              modalCongrats={modalCongrats}
+              showModalFranco={handleValidate}
+              handleClose2={handleClose2}
+            />
+          )}
 
-        {modalFranco && (
-          <CongratsModal
-            modalFranco={modalFranco}
-            handleClose3={handleClose3}
-            confirmPurchase={confirmPurchase}
-          />
-        )}
+          {modalFranco && (
+            <CongratsModal
+              modalFranco={modalFranco}
+              handleClose3={handleClose3}
+              confirmPurchase={confirmPurchase}
+            />
+          )}
 
-        {error && (
-          <p className="error">
-            Could not get data from the server, please try again
-          </p>
-        )}
+          {error && (
+            <p className="error">
+              Could not get data from the server, please try again
+            </p>
+          )}
+        </>
         {isLoading ? <LoadingSpin /> : renderProducts}
       </Layout>
     </>

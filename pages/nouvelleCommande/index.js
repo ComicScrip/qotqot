@@ -36,15 +36,10 @@ export default function NewOrder() {
       setModal(!modal);
       setModalCongrats(!modalCongrats);
     } else {
-      setModalCongrats(false);
+      setModal(!modal);
       setModalFranco(!modalFranco);
     }
   }
-
-  // const showModalFranco = () => {
-  //   setModalCongrats(!modalCongrats);
-  //   setModalFranco(!modalFranco);
-  // };
 
   const handleClose = () => {
     setModal(!modal);
@@ -61,6 +56,7 @@ export default function NewOrder() {
   const confirmPurchase = () => {
     setModalFranco(!modalFranco);
     setModalCongrats(!modalCongrats);
+    setModal(false);
   };
 
   const totalPrice = cartItems

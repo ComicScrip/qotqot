@@ -34,6 +34,7 @@ export default function Panier() {
     if (totalPrice >= 75) {
       setModal(!modal);
       setModalCongrats(!modalCongrats);
+      handleCreateOrder();
     } else {
       setModal(!modal);
       setModalFranco(!modalFranco);

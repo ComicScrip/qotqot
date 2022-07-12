@@ -1,16 +1,15 @@
-import { getMinifyAccountInfo } from "../utils/Airtable";
+// import { getMinifyAccountInfo } from "../utils/Airtable";
 import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
-import { useContext } from "react";
-import { CurrentUserContext } from "../contexts/currentUserContext";
+// import { handleGetProfile } from "../profile";
 
 export async function GetAccountInfo(req, res) {
-  const { currentUserProfile } = useContext(CurrentUserContext);
-  console.log(currentUserProfile);
-  axios
+  // const user = await handleGetProfile();
+  // console.log(user);
+  await axios
     .get(
-      "https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Coordonn%C3%A9es%20Clients%20Personnalisables?filterByFormula=%7BCode%20Client%7D%3D%22EVENT69-0001%22",
+      `https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Coordonn%C3%A9es%20Clients%20Personnalisables?filterByFormula=%7BCode%20Client%7D%3D%22EVENT69-0001%22`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
@@ -18,7 +17,7 @@ export async function GetAccountInfo(req, res) {
       }
     )
     .then((response) => {
-      res.send(getMinifyAccountInfo(response.data.records));
+      res.send(response.data.records);
     })
     .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }

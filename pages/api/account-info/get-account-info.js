@@ -5,11 +5,10 @@ import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 // import { handleGetProfile } from "../profile";
 
 export async function GetAccountInfo(req, res) {
-  // const user = await handleGetProfile();
-  // console.log(user);
+  const user = req.currentUser.fields["Code_Client_Test"];
   await axios
     .get(
-      `https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Coordonn%C3%A9es%20Clients%20Personnalisables?filterByFormula=%7BCode%20Client%7D%3D%22EVENT69-0001%22`,
+      `${process.env.AIRTABLE_API}/Coordonn%C3%A9es%20Clients%20Personnalisables?filterByFormula=%7BCode%20Client%7D%3D%22${user}%22`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,

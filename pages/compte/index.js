@@ -2,43 +2,65 @@ import React, { useState } from "react";
 import styles from "../../styles/account.module.css";
 import Layout from "../../components/Layout";
 import axios from "axios";
-import { useContext, useEffect } from "react";
-import { CurrentUserContext } from "../../contexts/currentUserContext";
+import { useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 
 export default function Account() {
   const [companyName, setCompanyName] = useState("");
+  const [accountId, setAccountId] = useState("");
   const [corporateName, setCorporateName] = useState("");
   const [siret, setSiret] = useState("");
   const [tva, setTva] = useState("");
+  const [billingAddress, setBillingAddress] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [userInfo, setUserInfo] = useState([]);
-  const { currentUserProfile } = useContext(CurrentUserContext);
-  console.log(currentUserProfile);
-  console.log("coucou");
+  const [city, setCity] = useState("");
+  const [contact, setContact] = useState("");
+  const [phone, setPhone] = useState("");
+  const [mail, setMail] = useState("");
+  const [accountInfo, setAccountInfo] = useState([]);
+  console.log("re-render");
 
   useEffect(() => {
     axios
       .get("/api/account-info/get-account-info")
       .then((response) => {
-        console.log("working");
-        setUserInfo(response.data);
-        userInfo.map((info) => {
+        console.log("GET working");
+        setAccountInfo(response.data);
+        accountInfo.map((info) => {
+          setAccountId(info.id);
           setCompanyName(info.fields["Nom établissement"]);
           setCorporateName(info.fields["Dénomination Sociale"]);
           setSiret(info.fields["N°SIRET"]);
           setTva(info.fields["N° TVA INTRA"]);
+          setBillingAddress(info.fields["Adresse (N° et voie) - Facturation"]);
+          setPostalCode(info.fields["Code Postal - Facturation"]);
+          setCity(info.fields["Ville - Facturation"]);
+          setContact(info.fields["Contact pour la livraison"]);
+          setPhone(info.fields["Téléphone (Contact Livraison)"]);
+          setMail(info.fields["Mail (envoi facture)"]);
         });
       })
       .catch(() => {
-        console.log("not working");
+        console.log("GET not working");
       });
-  }, [userInfo]);
+  }, [accountInfo]);
 
   const createAccountInfo = (e) => {
     e.preventDefault();
     axios
-      .post("/api/account-info/post-account-info", { postalCode })
+      .post("/api/account-info/post-account-info", {
+        accountId,
+        companyName,
+        corporateName,
+        siret,
+        tva,
+        billingAddress,
+        postalCode,
+        city,
+        contact,
+        phone,
+        mail,
+      })
       .then(() => {
         console.log("POST worked");
       })
@@ -121,7 +143,16 @@ export default function Account() {
                 <h1 className={styles.titleAcc}>Adresse de facturation</h1>
                 <div className={styles.fieldsAcc}>
                   <label className={styles.labelAcc}>Numéro et voie*</label>
-                  <input></input>
+                  <input
+                    type="text"
+                    id="billingAddress"
+                    name="billingAddress"
+                    className="text-[#7F7F7F]"
+                    minLength="1"
+                    maxLength="30"
+                    value={billingAddress}
+                    onChange={(e) => setBillingAddress(e.target.value)}
+                  ></input>
                 </div>
                 <div className={styles.fieldsAcc}>
                   <label className={styles.labelAcc}>Code postal*</label>
@@ -138,7 +169,16 @@ export default function Account() {
                 </div>
                 <div className={styles.fieldsAcc}>
                   <label className={styles.labelAcc}>Ville*</label>
-                  <input></input>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    className="text-[#7F7F7F]"
+                    minLength="1"
+                    maxLength="30"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  ></input>
                 </div>
               </div>
               <div className={styles.pAcc}>
@@ -160,7 +200,15 @@ export default function Account() {
                 <h1 className={styles.titleAcc}>Contact</h1>
                 <div className={styles.fieldsAcc}>
                   <label className={styles.labelAcc}>Nom*</label>
-                  <input></input>
+                  <input
+                    id="contact"
+                    name="contact"
+                    className="text-[#7F7F7F]"
+                    minLength="1"
+                    maxLength="30"
+                    value={contact}
+                    onChange={(e) => setContact(e.target.value)}
+                  ></input>
                 </div>
                 <div className={styles.fieldsAcc}>
                   <label className={styles.labelAcc}>Prénom*</label>
@@ -168,11 +216,27 @@ export default function Account() {
                 </div>
                 <div className={styles.fieldsAcc}>
                   <label className={styles.labelAcc}>Téléphone*</label>
-                  <input></input>
+                  <input
+                    id="phone"
+                    name="phone"
+                    className="text-[#7F7F7F]"
+                    minLength="1"
+                    maxLength="30"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  ></input>
                 </div>
                 <div className={styles.fieldsAcc}>
                   <label className={styles.labelAcc}>Email*</label>
-                  <input></input>
+                  <input
+                    id="mail"
+                    name="mail"
+                    className="text-[#7F7F7F]"
+                    minLength="1"
+                    maxLength="30"
+                    value={mail}
+                    onChange={(e) => setMail(e.target.value)}
+                  ></input>
                 </div>
               </div>
               <div className={styles.btnAcc}>

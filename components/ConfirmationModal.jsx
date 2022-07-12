@@ -80,7 +80,7 @@ export default function ConfirmationModal({
       {modal && (
         <>
           <div className={s.confirmation}>
-            <div className="flex flex-col justify-center mt-32 h-fit mx-auto sm:mt-20 sm:px-48 sm:w-[70%] rounded-xl bg-white">
+            <div className="flex flex-col justify-center mt-32 h-fit mx-auto sm:px-52 sm:w-[70%] rounded-xl bg-white">
               <div
                 onClick={handleClose}
                 className="flex justify-end p-4 cursor-pointer"

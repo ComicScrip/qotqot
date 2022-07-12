@@ -43,14 +43,17 @@ const Congrats = ({
 
       {modalFranco && (
         <div className={s.franco}>
-          <div className="z-40 w-full flex flex-col items-center mt-24 rounded-xl bg-white">
+          <div
+            className="z-40 flex flex-col items-center mt-32 h-fit mx-auto sm:px-52
+            sm:w-[70%] rounded-xl bg-white"
+          >
             <div
               onClick={handleClose3}
               className="fixed right-0 p-4 cursor-pointer"
             >
               <AiOutlineClose />
             </div>
-            <h2 className="text-xl p-4">Attention </h2>
+            <h2 className="text-center text-xl p-4">Attention </h2>
             <p className="text-gray-600 text-[14px] font-base p-10 text-center">
               Vous n'avez pas atteind le franco minimum de 75€ HT. <br />
               Souhaitez-vous poursuivre votre commande ? <br />

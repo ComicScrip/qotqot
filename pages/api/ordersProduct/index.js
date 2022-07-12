@@ -12,7 +12,14 @@ export async function handleCreateOrder(req, res) {
   if (customerCartItems.length === 0) {
     return res.status(422).send("Your cart is empty...");
   }
-  const newOrder = await createOrder({});
+  const newOrder = await createOrder({
+    id,
+    createdAt,
+    delivery,
+    comment,
+    synchWithAT,
+    customerCartItem,
+  });
   await Promise.all(
     customerCartItems.map((item) => {
       return updateCartItem(item.id, {

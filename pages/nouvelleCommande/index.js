@@ -129,7 +129,7 @@ export default function NewOrder() {
             handleClose={handleClose}
           />
         )}
-
+        {/* {totalPrice >= 75 ?  */}
         {modalCongrats && (
           <CongratsModal
             modalCongrats={modalCongrats}
@@ -144,6 +144,7 @@ export default function NewOrder() {
             handleClose3={handleClose3}
           />
         )}
+
         {error && (
           <p className="error">
             Could not get data from the server, please try again

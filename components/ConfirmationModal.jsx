@@ -1,6 +1,5 @@
 import s from "../styles/nouvelleCommande.module.css";
 import { useState } from "react";
-// import axios from "axios";
 import { AiOutlineClose } from "react-icons/ai";
 import dayjs from "dayjs";
 

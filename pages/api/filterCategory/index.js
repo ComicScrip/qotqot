@@ -1,11 +1,13 @@
 import { filterProducts } from "../../../models/product";
 
 async function filterCategory(req, res) {
-  const userInput = Object.values(req.query).toLocaleString();
+  const userFilter = req.query.category;
+
   try {
+    console.log(req.query);
     res.send(
       await filterProducts({
-        category: userInput,
+        category: userFilter,
       })
     );
   } catch {

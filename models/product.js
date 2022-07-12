@@ -15,6 +15,11 @@ module.exports.filterProducts = (category) => {
     where: category,
   });
 };
+module.exports.filterSearch = (name) => {
+  return db.product.findMany({
+    where: name,
+  });
+};
 module.exports.findOneProduct = (id) => {
   return db.product.findUnique({
     where: { id },

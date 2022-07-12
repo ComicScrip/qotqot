@@ -11,10 +11,8 @@ import s from "../styles/SearchModule.module.css";
 export const SearchModule = () => {
   const router = useRouter();
   const { category = "" } = router.query;
-
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryList, setCategoryList] = useState([]);
-  const [productList, setProductList] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [error, setError] = useState("");
 
@@ -23,7 +21,6 @@ export const SearchModule = () => {
     router.push(`/nouvelleCommande${queryString ? "?" : ""}${queryString}`);
   };
 
-  // here we get the list of all products, extract the categories from it and push it to a mappable array
   useEffect(() => {
     axios.get("/api/getCategories").then((res) => setCategoryList(res.data));
   }, []);
@@ -32,15 +29,22 @@ export const SearchModule = () => {
     setError("");
     const queryString = QueryString.stringify(router.query);
 
-    axios
-      .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
-      .then((res) => setSearchResult(res.data))
-      .catch(() =>
-        setError("Could not get data from the server, please try again")
-      );
+    queryString !== "category=Tous"
+      ? axios
+          .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
+          .then((res) => setSearchResult(res.data))
+          .catch(() =>
+            setError("Could not get data from the server, please try again")
+          )
+      : axios
+          .get("/api/getProducts")
+          .then((res) => setSearchResult(res.data))
+          .catch(() =>
+            setError("Could not get data from the server, please try again")
+          );
   }, [router.query]);
   return (
-    <>
+    <div className={s.searchModuleWrapper}>
       <input
         type="text"
         placeholder="Cherchez..."
@@ -49,7 +53,7 @@ export const SearchModule = () => {
           setSearchTerm(e.target.value);
         }}
       />
-      <select
+      {/* <select
         value={category}
         className={s.search_input}
         onChange={(e) => setSearchParams({ category: e.target.value })}
@@ -62,7 +66,26 @@ export const SearchModule = () => {
             {o}
           </option>
         ))}
-      </select>
+      </select> */}
+      <div className={s.listButtons}>
+        <button
+          className={s.filterButtons}
+          value={"Tous"}
+          onClick={(e) => setSearchParams({ category: e.target.value })}
+        >
+          Tous
+        </button>
+        {categoryList.map((o) => (
+          <div className={s.filterButtons} key={o}>
+            <button
+              onClick={(e) => setSearchParams({ category: e.target.value })}
+              value={o}
+            >
+              {o}
+            </button>
+          </div>
+        ))}
+      </div>
 
       <div>
         {searchResult
@@ -98,6 +121,6 @@ export const SearchModule = () => {
             );
           })}
       </div>
-    </>
+    </div>
   );
 };

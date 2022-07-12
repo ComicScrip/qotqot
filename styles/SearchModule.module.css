@@ -1,3 +1,6 @@
+.searchModuleWrapper {
+  max-width: 100vw;
+}
 .search_input {
   cursor: pointer;
   border-radius: 10px;
@@ -24,4 +27,33 @@
   padding: 4px 12px;
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+.listButtons {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.filterButtons {
+  cursor: pointer;
+  padding: 0.2rem;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 900;
+  overflow: auto;
+  border-radius: 10px;
+  color: white;
+  background-color: #06968a;
+  width: 9rem;
+  height: 2rem;
+  margin: 0.2rem;
+}
+.filterButtons::-webkit-scrollbar {
+  display: none;
+}
+.filterButtons {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

@@ -18,6 +18,7 @@ export default function Panier() {
   const [modalCongrats, setModalCongrats] = useState(false);
   const [modalFranco, setModalFranco] = useState(false);
   const { cartItems, getCartItems } = useContext(CurrentUserContext);
+  // const [newOrder, setNewOrder] = useState("");
 
   useEffect(() => {
     setError("");
@@ -27,10 +28,13 @@ export default function Panier() {
   }, [getCartItems]);
 
   const handleCreateOrder = (data) => {
-    axios.post("/api/ordersProduct").then(getCartItems);
+    if (totalPrice !== 0) {
+      axios.post("/api/ordersProduct").then(getCartItems);
+    }
+    console.log(data);
   };
 
-  const handleConfirmOrder = () => {
+  async function handleConfirmO() {
     if (totalPrice >= 75) {
       setModal(!modal);
       setModalCongrats(!modalCongrats);
@@ -39,7 +43,8 @@ export default function Panier() {
       setModal(!modal);
       setModalFranco(!modalFranco);
     }
-  };
+    // .then(handleConfirmOrder());
+  }
 
   const confirmPurchase = () => {
     setModalFranco(!modalFranco);
@@ -135,7 +140,7 @@ export default function Panier() {
           {modal && (
             <ConfirmationModal
               modal={modal}
-              handleValidate={handleConfirmOrder}
+              handleValidate={handleConfirmO}
               handleClose={handleClose}
             />
           )}
@@ -143,7 +148,7 @@ export default function Panier() {
           {modalCongrats && (
             <CongratsModal
               modalCongrats={modalCongrats}
-              showModalFranco={handleConfirmOrder}
+              showModalFranco={handleConfirmO}
               handleClose2={handleClose2}
             />
           )}

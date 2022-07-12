@@ -91,7 +91,7 @@ export default function ConfirmationModal({
                 Confirmation de commande
               </h1>
 
-              <form>
+              <form onSubmit={handleValidate}>
                 <div className="flex flex-col justify-center text-left w-[90%] rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] mb-4 p-2">
                   <label className="text-sm sm:text-base cursor-pointer ">
                     Créneau de livraison{" "}
@@ -104,13 +104,13 @@ export default function ConfirmationModal({
                     onChange={handleChange}
                   >
                     {dayjs().isBefore(dayjs().weekday(2).hour(23))
-                      ? optionsM.map((option) => (
-                          <option key={option.id} value={option.value}>
+                      ? optionsM.map((option, index) => (
+                          <option key={index} value={option.value}>
                             {option.label}
                           </option>
                         ))
-                      : optionsJ.map((option) => (
-                          <option key={option.id} value={option.value}>
+                      : optionsJ.map((option, index) => (
+                          <option key={index} value={option.value}>
                             {option.label}
                           </option>
                         ))}
@@ -131,9 +131,8 @@ export default function ConfirmationModal({
                 </div>
                 <div className="flex justify-center items-center text-center m-auto my-3">
                   <button
-                    type="button"
+                    type="submit"
                     className=" bg-[#06968A] w-[90%] cursor-pointer rounded-md p-3 uppercase text-sm h-12 mt-2 text-center text-white font-bold"
-                    onClick={handleValidate}
                   >
                     Confirmer la commande
                   </button>

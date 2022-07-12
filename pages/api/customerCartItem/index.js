@@ -43,4 +43,4 @@ export async function handlePostCartItems(req, res) {
 export default base()
   .use(reqCurrentUser)
   .get(getAllCartItems)
-  .post((req, res) => setTimeout(() => handlePostCartItems(req, res), 2000));
+  .post(handlePostCartItems);

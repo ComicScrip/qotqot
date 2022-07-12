@@ -4,7 +4,7 @@ module.exports.findAllCartItems = async ({ idClient }) => {
   return await db.customerCartItem.findMany({
     where: {
       idClient,
-      idOrder: null,
+      idOrder: "",
     },
     include: {
       product: true,
@@ -19,9 +19,10 @@ module.exports.setCartQuantity = async function ({
 }) {
   return db.customerCartItem.upsert({
     where: {
-      idProduct_idClient: {
+      idProduct_idClient_idOrder: {
         idProduct: idProduct,
         idClient: idClient,
+        idOrder: "",
       },
     },
     update: {

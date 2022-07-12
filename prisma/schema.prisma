@@ -40,11 +40,11 @@ model customerCartItem {
   quantity  Float
   idProduct String  @db.VarChar(255)
   idClient  String  @db.VarChar(255)
-  idOrder   String? @db.VarChar(255)
+  idOrder   String  @default("") @db.VarChar(255)
   product   Product @relation(fields: [idProduct], references: [id], onDelete: Cascade)
   order     order?  @relation(fields: [idOrder], references: [id], onDelete: Cascade)
 
-  @@unique([idProduct, idClient])
+  @@unique([idProduct, idClient, idOrder])
 }
 
 model order {

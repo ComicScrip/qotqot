@@ -4,27 +4,7 @@ import { useState, useContext } from "react";
 import Popup from "./Popup";
 import axios from "axios";
 import { CurrentUserContext } from "../contexts/currentUserContext";
-
-const data = {
-  nextPromiseFactory: null,
-  currentPromise: null,
-};
-
-function runLatest(promiseFacotry) {
-  if (!data.currentPromise)
-    data.currentPromise = promiseFacotry().finally(() => {
-      data.currentPromise = null;
-      if (data.nextPromiseFactory) {
-        data.currentPromise = data.nextPromiseFactory().finally(() => {
-          data.nextPromiseFactory = null;
-          data.currentPromise = null;
-        });
-      }
-    });
-  else data.nextPromiseFactory = promiseFacotry;
-}
-
-setInterval(() => console.log(data), 1000);
+import { runLatest } from "../utils/runLatest";
 
 function ProductItem(props) {
   const [isDetailed, setIsDetailed] = useState(false);
@@ -75,7 +55,7 @@ function ProductItem(props) {
 
   const handleSubtractOneFromCart = () => {
     setCount(count > 0 ? count - 1 : 0);
-    runLatest(() =>
+    runLatest(props.id, () =>
       axios.post("/api/customerCartItem", {
         quantity: count > 0 ? count - 1 : 0,
         idProduct: props.id,
@@ -85,7 +65,7 @@ function ProductItem(props) {
 
   const handleAddOneToCart = () => {
     setCount(count + 1);
-    runLatest(() =>
+    runLatest(props.id, () =>
       axios.post("/api/customerCartItem", {
         quantity: count + 1,
         idProduct: props.id,

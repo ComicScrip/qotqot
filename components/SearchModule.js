@@ -25,13 +25,8 @@ export const SearchModule = () => {
 
   // here we get the list of all products, extract the categories from it and push it to a mappable array
   useEffect(() => {
-    axios
-      .get("/api/getProducts")
-      .then((res) => setProductList(res.data))
-      .then(productList.map((item) => categoryList.push(item.category)))
-      .finally(setCategoryList([...new Set(categoryList)]));
+    axios.get("/api/getCategories").then((res) => setCategoryList(res.data));
   }, []);
-  console.log(categoryList);
 
   useEffect(() => {
     setError("");
@@ -84,6 +79,8 @@ export const SearchModule = () => {
             return (
               <ProductItem
                 key={prod.id}
+                id={prod.id}
+                codeProduit={prod.codeProduit}
                 name={prod.name}
                 weight={prod.weight}
                 price={prod.price}
@@ -93,9 +90,10 @@ export const SearchModule = () => {
                 makerPicture={prod.makerPicture}
                 makerName={prod.makerName}
                 makerAdress={prod.makerAdress}
-                productDesc={prod.productDesc}
-                makerDesc={prod.makerDesc}
+                productDesc={prod.descriptionProduit}
+                makerDesc={prod.descriptionProducteur}
                 logo={prod.logo}
+                cartItem={prod.customerCartItem}
               />
             );
           })}

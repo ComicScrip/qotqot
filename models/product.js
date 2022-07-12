@@ -1,17 +1,14 @@
+/* eslint-disable no-undef */
 const db = require("../db");
 
 module.exports.findAllProducts = () => db.product.findMany();
 
-// module.exports.getAllCategories = (category, categoryList) => {
-//   const productList = db.product.findMany({
-//     where: {
-//       category,
-//     },
-//   });
-//   categoryList = [];
-//   productList.map((item) => categoryList.push(item.category));
-//   console.log("coucou", categoryList);
-// };
+module.exports.getAllCategories = async () => {
+  const categoryList = await db.product.findMany({
+    distinct: ["category"],
+  });
+  return categoryList.map((item) => item.category);
+};
 
 module.exports.filterProducts = (category) => {
   return db.product.findMany({

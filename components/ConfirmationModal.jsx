@@ -27,37 +27,37 @@ export default function ConfirmationModal({
   const optionsM = [
     {
       label: date1,
-      value: date,
+      value: date1,
     },
     {
       label: date2,
-      value: "",
+      value: date2,
     },
     {
       label: date3,
-      value: "",
+      value: date3,
     },
     {
       label: date4,
-      value: "",
+      value: date4,
     },
   ];
   const optionsJ = [
     {
       label: date2,
-      value: date,
+      value: date2,
     },
     {
       label: date3,
-      value: "",
+      value: date3,
     },
     {
       label: date4,
-      value: "",
+      value: date4,
     },
     {
       label: date5,
-      value: "",
+      value: date5,
     },
   ];
 

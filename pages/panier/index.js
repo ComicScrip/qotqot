@@ -1,13 +1,8 @@
-/* eslint-disable no-unused-vars */
-import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import Cart from "../../components/Cart";
 import Layout from "../../components/Layout";
 import LoadingSpin from "../../components/LoadingSpin";
-import styles from "../../styles/product_item.module.css";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
-import ProgressBar from "@ramonak/react-progress-bar";
-import Link from "next/link";
 
 export default function Panier() {
   const [error, setError] = useState("");
@@ -49,14 +44,6 @@ export default function Panier() {
   `}</style>
     </div>
   );
-
-  const totalPrice = cartItems
-    .reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0)
-    .toFixed(2);
-
-  const francoMin = 75 - totalPrice;
 
   return (
     <>

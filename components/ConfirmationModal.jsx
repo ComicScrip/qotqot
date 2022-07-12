@@ -13,15 +13,18 @@ export default function ConfirmationModal({
   const [error, setError] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState("");
-  var weekday = require("dayjs/plugin/weekday");
+  const weekday = require("dayjs/plugin/weekday");
   dayjs.extend(weekday);
+  const isToday = require("dayjs/plugin/isToday");
+  dayjs.extend(isToday);
 
-  const date1 = dayjs().weekday(1).format("DD-MM-YY");
+  const date1 = dayjs().weekday(2).format("DD-MM-YY");
   const date2 = dayjs().weekday(4).format("DD-MM-YY");
   const date3 = dayjs().weekday(8).format("DD-MM-YY");
   const date4 = dayjs().weekday(11).format("DD-MM-YY");
+  const date5 = dayjs().weekday(13).format("DD-MM-YY");
 
-  const options = [
+  const optionsM = [
     {
       label: date1,
       value: date,
@@ -39,6 +42,24 @@ export default function ConfirmationModal({
       value: "",
     },
   ];
+  const optionsJ = [
+    {
+      label: date2,
+      value: date,
+    },
+    {
+      label: date3,
+      value: "",
+    },
+    {
+      label: date4,
+      value: "",
+    },
+    {
+      label: date5,
+      value: "",
+    },
+  ];
 
   const handleChange = (value) => {
     setDate(value);
@@ -47,7 +68,7 @@ export default function ConfirmationModal({
   // useEffect(() => {
   //   setError("");
   //   axios
-  //     .post("/api/panier")
+  //     .post()
   //     .then((res) => setDate(res.data))
   //     .catch(() =>
   //       setError("Could not get data from the server, please try again")
@@ -76,16 +97,6 @@ export default function ConfirmationModal({
                   <label className="text-sm sm:text-base cursor-pointer ">
                     Créneau de livraison{" "}
                   </label>
-                  {/* <Calendar
-                    onChange={onChange}
-                    value={today}
-                    defaultView="month"
-                    disableDays={["mon", "wed", "fri", "sun", "sat"]}
-                    defaultValue={{
-                      activeStartDate: { today },
-                      endDate: "2022-07-25",
-                    }}
-                  /> */}
 
                   <select
                     id="choose-date "
@@ -94,11 +105,17 @@ export default function ConfirmationModal({
                     onChange={handleChange}
                   >
                     <option value={date}>---</option>
-                    {options.map((option) => (
-                      <option key={option.id} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
+                    {dayjs().isBefore(dayjs().weekday(2))
+                      ? optionsM.map((option) => (
+                          <option key={option.id} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))
+                      : optionsJ.map((option) => (
+                          <option key={option.id} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
                   </select>
                 </div>
                 <div className=" flex flex-col text-left w-[90%] rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] p-2">

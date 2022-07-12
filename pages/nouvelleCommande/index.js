@@ -2,8 +2,8 @@ import axios from "axios";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
-import ConfirmationModal from "../../components/ConfirmationModal";
-import CongratsModal from "../../components/CongratsModal";
+// import ConfirmationModal from "../../components/ConfirmationModal";
+// import CongratsModal from "../../components/CongratsModal";
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
@@ -14,9 +14,6 @@ export default function NewOrder() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [modal, setModal] = useState(false);
-  const [modalCongrats, setModalCongrats] = useState(false);
-  const [modalFranco, setModalFranco] = useState(false);
   const { cartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
@@ -31,24 +28,6 @@ export default function NewOrder() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const handleClose = () => {
-    setModal(!modal);
-  };
-
-  const handleClose2 = () => {
-    setModalCongrats(!modalCongrats);
-  };
-
-  const handleClose3 = () => {
-    setModalFranco(!modalFranco);
-  };
-
-  const confirmPurchase = () => {
-    setModalFranco(!modalFranco);
-    setModalCongrats(!modalCongrats);
-    setModal(false);
-  };
-
   const totalPrice = cartItems
     .reduce((acc, item) => {
       return acc + item.product.price * item.quantity;
@@ -56,16 +35,6 @@ export default function NewOrder() {
     .toFixed(2);
 
   const francoMin = 75 - totalPrice;
-
-  async function handleValidate() {
-    if (totalPrice >= 75) {
-      setModal(!modal);
-      setModalCongrats(!modalCongrats);
-    } else {
-      setModal(!modal);
-      setModalFranco(!modalFranco);
-    }
-  }
 
   const renderProducts = (
     <div className="main_container">
@@ -120,40 +89,7 @@ export default function NewOrder() {
           labelClassName={styles.label}
         />
 
-        <div className="flex justify-center items-center text-center m-auto py-5">
-          <button
-            type="button"
-            className=" bg-[#06968A] w-[90%] sm:w-[50%] cursor-pointer rounded-md p-4 uppercase text-sm h-12 text-center text-white font-bold"
-            onClick={() => setModal(!modal)}
-          >
-            Confirmer la commande
-          </button>
-        </div>
         <>
-          {modal && (
-            <ConfirmationModal
-              modal={modal}
-              handleValidate={handleValidate}
-              handleClose={handleClose}
-            />
-          )}
-
-          {modalCongrats && (
-            <CongratsModal
-              modalCongrats={modalCongrats}
-              showModalFranco={handleValidate}
-              handleClose2={handleClose2}
-            />
-          )}
-
-          {modalFranco && (
-            <CongratsModal
-              modalFranco={modalFranco}
-              handleClose3={handleClose3}
-              confirmPurchase={confirmPurchase}
-            />
-          )}
-
           {error && (
             <p className="error">
               Could not get data from the server, please try again

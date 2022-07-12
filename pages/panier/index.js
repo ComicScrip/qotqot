@@ -7,11 +7,16 @@ import LoadingSpin from "../../components/LoadingSpin";
 import styles from "../../styles/product_item.module.css";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import ProgressBar from "@ramonak/react-progress-bar";
+import ConfirmationModal from "../../components/ConfirmationModal";
+import CongratsModal from "../../components/CongratsModal";
 import Link from "next/link";
 
 export default function Panier() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [modal, setModal] = useState(false);
+  const [modalCongrats, setModalCongrats] = useState(false);
+  const [modalFranco, setModalFranco] = useState(false);
   const { cartItems, getCartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
@@ -24,6 +29,32 @@ export default function Panier() {
   const handleCreateOrder = (data) => {
     axios.post("/api/ordersProduct").then(getCartItems);
   };
+
+  const handleClose = () => {
+    setModal(!modal);
+  };
+
+  const handleClose2 = () => {
+    setModalCongrats(!modalCongrats);
+  };
+
+  const handleClose3 = () => {
+    setModalFranco(!modalFranco);
+  };
+
+  const confirmPurchase = () => {
+    setModalFranco(!modalFranco);
+    setModalCongrats(!modalCongrats);
+    setModal(false);
+  };
+
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
+
+  const francoMin = 75 - totalPrice;
 
   const renderProducts = (
     <div className="main_container">
@@ -53,13 +84,15 @@ export default function Panier() {
     </div>
   );
 
-  const totalPrice = cartItems
-    .reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0)
-    .toFixed(2);
-
-  const francoMin = 75 - totalPrice;
+  async function handleValidate() {
+    if (totalPrice >= 75) {
+      setModal(!modal);
+      setModalCongrats(!modalCongrats);
+    } else {
+      setModal(!modal);
+      setModalFranco(!modalFranco);
+    }
+  }
 
   return (
     <>
@@ -95,7 +128,41 @@ export default function Panier() {
           barContainerClassName={styles.container}
           labelClassName={styles.label}
         />
+
         <>
+          <div className="flex justify-center items-center text-center m-auto py-5">
+            <button
+              type="button"
+              className=" bg-[#06968A] w-[90%] sm:w-[50%] cursor-pointer rounded-md p-4 uppercase text-sm h-12 text-center text-white font-bold"
+              onClick={() => setModal(!modal)}
+            >
+              Confirmer la commande
+            </button>
+          </div>
+
+          {modal && (
+            <ConfirmationModal
+              modal={modal}
+              handleValidate={handleValidate}
+              handleClose={handleClose}
+            />
+          )}
+
+          {modalCongrats && (
+            <CongratsModal
+              modalCongrats={modalCongrats}
+              showModalFranco={handleValidate}
+              handleClose2={handleClose2}
+            />
+          )}
+
+          {modalFranco && (
+            <CongratsModal
+              modalFranco={modalFranco}
+              handleClose3={handleClose3}
+              confirmPurchase={confirmPurchase}
+            />
+          )}
           {error && (
             <p className="error">
               Could not get data from the server, please try again

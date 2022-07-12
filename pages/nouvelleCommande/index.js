@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
-import { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
@@ -8,6 +7,7 @@ import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
 import { SearchModule } from "../../components/SearchModule";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);
@@ -69,19 +69,32 @@ export default function NewOrder() {
 
   return (
     <Layout pageTitle="Nouvelle commande">
+      <div className={styles.arrow}>
+        <Link href="/commandes">
+          <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
+        </Link>
+      </div>
       <div className={styles.headCmd}>
         <div className={styles.priceTotal}>{totalPrice}€ HT</div>
-        <button className={styles.btnCart}>
-          <Link href="/panier">Panier </Link>
-        </button>
+        <Link href="/panier">
+          <button className={styles.btnCart}>Panier </button>
+        </Link>
       </div>
-      <p>
+      <div className={styles.francoText}>
         Plus que{" "}
         <span className={styles.franco}>
           {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
         </span>{" "}
         pour le franco minimum
-      </p>
+      </div>
+
+      <ProgressBar
+        completed={totalPrice}
+        maxCompleted={75}
+        className={styles.wrapper}
+        barContainerClassName={styles.container}
+        labelClassName={styles.label}
+      />
       <>
         <SearchModule />
         {error && (

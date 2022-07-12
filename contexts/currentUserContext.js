@@ -34,6 +34,16 @@ export default function CurrentUserContextProvider({ children }) {
       });
   }, []);
 
+  const getCartItems = useCallback(() => {
+    return axios
+      .get("/api/customerCartItem")
+      .then((res) => res.data)
+      .then((data) => setCartItems(data))
+      .catch(() =>
+        console.log("Could not get data from the server, please try again")
+      );
+  }, []);
+
   useEffect(() => {
     if (status === "authenticated") {
       getProfile();
@@ -43,14 +53,8 @@ export default function CurrentUserContextProvider({ children }) {
   }, [status, getProfile]);
 
   useEffect(() => {
-    axios
-      .get("/api/customerCartItem")
-      .then((res) => res.data)
-      .then((data) => setCartItems(data))
-      .catch(() =>
-        console.log("Could not get data from the server, please try again")
-      );
-  }, []);
+    getCartItems();
+  }, [getCartItems]);
 
   return (
     <CurrentUserContext.Provider
@@ -72,6 +76,7 @@ export default function CurrentUserContextProvider({ children }) {
         setIsLoading,
         cartItems,
         setCartItems,
+        getCartItems,
       }}
     >
       {children}

@@ -36,7 +36,7 @@ export default function NewUserPage({ csrfToken }) {
   const createPassword = (e) => {
     e.preventDefault();
     if (newPassword !== newPasswordConfirmation)
-      toast.error("Les mots de passe ne correspondent pas");
+      return toast.error("Les mots de passe ne correspondent pas");
     axios
       .post("/api/users/new-user-password", {
         newPassword,
@@ -81,12 +81,6 @@ export default function NewUserPage({ csrfToken }) {
             className="flex flex-col px-3 py-4 "
             data-cy="loginForm"
           >
-            <input
-              id="csrfToken"
-              name="csrfToken"
-              type="hidden"
-              defaultValue={csrfToken}
-            />
             <div className="text-[#7F7F7F] border-2 border-gray-200 h-14 px-4 flex flex-col rounded-lg">
               <label className="text-[#7F7F7F]">
                 Renseignez votre mot de passe

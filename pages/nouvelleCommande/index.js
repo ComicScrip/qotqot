@@ -1,8 +1,8 @@
 import axios from "axios";
+import React, { useState, useEffect, useContext } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
-import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
@@ -12,6 +12,7 @@ export default function NewOrder() {
   const [productList, setProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+
   const { cartItems } = useContext(CurrentUserContext);
 
   useEffect(() => {
@@ -39,6 +40,8 @@ export default function NewOrder() {
       {productList.map((prod) => (
         <ProductItem
           key={prod.id}
+          id={prod.id}
+          codeProduit={prod.codeProduit}
           name={prod.name}
           weight={prod.weight}
           price={prod.price}
@@ -54,48 +57,51 @@ export default function NewOrder() {
           cartItem={prod.customerCartItem}
         />
       ))}
+
+      <style jsx>{`
+  * {
+    padding: 10px 0;
+      background-color: #E5E5E5;
+  `}</style>
     </div>
   );
 
   return (
-    <>
-      <Layout pageTitle="nouvelle-commande">
-        <div className={styles.arrow}>
-          <Link href="/commandes">
-            <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
-          </Link>
-        </div>
-        <div className={styles.headCmd}>
-          <div className={styles.priceTotal}>{totalPrice}€ HT</div>
-          <Link href="/panier">
-            <button className={styles.btnCart}>Panier </button>
-          </Link>
-        </div>
-        <div className={styles.francoText}>
-          Plus que{" "}
-          <span className={styles.franco}>
-            {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
-          </span>{" "}
-          pour le franco minimum
-        </div>
+    <Layout pageTitle="Nouvelle commande">
+      <div className={styles.arrow}>
+        <Link href="/commandes">
+          <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
+        </Link>
+      </div>
+      <div className={styles.headCmd}>
+        <div className={styles.priceTotal}>{totalPrice}€ HT</div>
+        <Link href="/panier">
+          <button className={styles.btnCart}>Panier </button>
+        </Link>
+      </div>
+      <div className={styles.francoText}>
+        Plus que{" "}
+        <span className={styles.franco}>
+          {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
+        </span>{" "}
+        pour le franco minimum
+      </div>
 
-        <ProgressBar
-          completed={totalPrice}
-          maxCompleted={75}
-          className={styles.wrapper}
-          barContainerClassName={styles.container}
-          labelClassName={styles.label}
-        />
-
-        <>
-          {error && (
-            <p className="error">
-              Could not get data from the server, please try again
-            </p>
-          )}
-        </>
+      <ProgressBar
+        completed={totalPrice}
+        maxCompleted={75}
+        className={styles.wrapper}
+        barContainerClassName={styles.container}
+        labelClassName={styles.label}
+      />
+      <>
+        {error && (
+          <p className="error">
+            Could not get data from the server, please try again
+          </p>
+        )}
         {isLoading ? <LoadingSpin /> : renderProducts}
-      </Layout>
-    </>
+      </>
+    </Layout>
   );
 }

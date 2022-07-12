@@ -132,16 +132,6 @@ export default function Panier() {
         />
 
         <>
-          <div className="flex justify-center items-center text-center m-auto py-5">
-            <button
-              type="button"
-              className=" bg-[#06968A] w-[90%] sm:w-[50%] cursor-pointer rounded-md p-4 uppercase text-sm h-12 text-center text-white font-bold"
-              onClick={() => setModal(!modal)}
-            >
-              Confirmer la commande
-            </button>
-          </div>
-
           {modal && (
             <ConfirmationModal
               modal={modal}

@@ -105,7 +105,7 @@ export default function ConfirmationModal({
                     onChange={handleChange}
                   >
                     <option value={date}>---</option>
-                    {dayjs().isBefore(dayjs().weekday(2))
+                    {dayjs().isBefore(dayjs().weekday(2).hour(23))
                       ? optionsM.map((option) => (
                           <option key={option.id} value={option.value}>
                             {option.label}

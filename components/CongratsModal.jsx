@@ -14,7 +14,7 @@ const Congrats = ({
     <>
       {modalCongrats && (
         <div className={s.congrats}>
-          <div className="flex flex-col justify-center h-fit mt-32 mx-auto sm:px-52 sm:w-[70%] rounded-xl bg-white">
+          <div className="flex flex-col justify-center h-fit mt-32 mx-auto sm:px-52 sm:w-[60%] rounded-xl bg-white">
             <div
               onClick={handleClose2} //props
               className="flex justify-end items-end p-4 cursor-pointer"
@@ -43,10 +43,7 @@ const Congrats = ({
 
       {modalFranco && (
         <div className={s.franco}>
-          <div
-            className="z-40 flex flex-col items-center mt-32 h-fit mx-auto sm:px-52
-            sm:w-[70%] rounded-xl bg-white"
-          >
+          <div className="z-40 flex flex-col items-center mt-32 h-fit mx-auto sm:px-52 sm:w-[60%] rounded-xl bg-white">
             <div
               onClick={handleClose3}
               className="fixed right-0 p-4 cursor-pointer"

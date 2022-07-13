@@ -28,10 +28,10 @@ export default function Panier() {
   }, [getCartItems]);
 
   const handleCreateOrder = (data) => {
-    // if (totalPrice !== 0) {
-    axios.post("/api/ordersProduct").then(getCartItems);
-    // }
-    console.log(data);
+    axios
+      .post("/api/ordersProduct")
+      .then(getCartItems)
+      .catch(() => console.error("panier not working"));
   };
 
   async function handleConfirmO() {

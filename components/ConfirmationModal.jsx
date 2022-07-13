@@ -19,9 +19,8 @@ export default function ConfirmationModal({
 
   const date1 = dayjs().weekday(2).format("DD-MM-YY");
   const date2 = dayjs().weekday(4).format("DD-MM-YY");
-  const date3 = dayjs().weekday(8).format("DD-MM-YY");
+  const date3 = dayjs().weekday(9).format("DD-MM-YY");
   const date4 = dayjs().weekday(11).format("DD-MM-YY");
-  const date5 = dayjs().weekday(13).format("DD-MM-YY");
 
   const optionsM = [
     {
@@ -54,10 +53,6 @@ export default function ConfirmationModal({
       label: date4,
       value: date4,
     },
-    {
-      label: date5,
-      value: date5,
-    },
   ];
 
   const handleChange = (value) => {
@@ -80,7 +75,7 @@ export default function ConfirmationModal({
       {modal && (
         <>
           <div className={s.confirmation}>
-            <div className="flex flex-col justify-center mt-32 h-fit mx-auto sm:px-52 sm:w-[70%] rounded-xl bg-white">
+            <div className="flex flex-col justify-center mt-32 h-fit mx-auto sm:px-52 sm:w-[60%] rounded-xl bg-white">
               <div
                 onClick={handleClose}
                 className="flex justify-end p-4 cursor-pointer"

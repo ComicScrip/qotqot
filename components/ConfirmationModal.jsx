@@ -9,8 +9,8 @@ export default function ConfirmationModal({
   handleClose,
 }) {
   const [error] = useState("");
-  // eslint-disable-next-line no-unused-vars
-  const [date, setDate] = useState("");
+
+  const [setDate] = useState("");
   const weekday = require("dayjs/plugin/weekday");
   dayjs.extend(weekday);
   const isToday = require("dayjs/plugin/isToday");

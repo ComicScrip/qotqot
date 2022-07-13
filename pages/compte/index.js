@@ -176,16 +176,22 @@ export default function Account() {
           <div className={styles.pAcc}>
             <h1 className={styles.titleAcc}>Adresse de livraison</h1>
             <div className={styles.fieldsAcc}>
-              <label className={styles.labelAcc}>Numéro et voie*</label>
-              <input></input>
+              <label className={styles.labelAcc && "bg-[#c6c5c5]"}>
+                Numéro et voie*
+              </label>
+              <input disabled className="text-[#444242] bg-[#c6c5c5]"></input>
             </div>
             <div className={styles.fieldsAcc}>
-              <label className={styles.labelAcc}>Code postal*</label>
-              <input></input>
+              <label className={styles.labelAcc && "bg-[#c6c5c5]"}>
+                Code postal*
+              </label>
+              <input disabled className="text-[#444242] bg-[#c6c5c5]"></input>
             </div>
             <div className={styles.fieldsAcc}>
-              <label className={styles.labelAcc}>Ville*</label>
-              <input></input>
+              <label className={styles.labelAcc && "bg-[#c6c5c5]"}>
+                Ville*
+              </label>
+              <input disabled className="text-[#444242] bg-[#c6c5c5]"></input>
             </div>
           </div>
           <div className={styles.pAcc}>
@@ -203,8 +209,10 @@ export default function Account() {
               ></input>
             </div>
             <div className={styles.fieldsAcc}>
-              <label className={styles.labelAcc}>Prénom*</label>
-              <input></input>
+              <label className={styles.labelAcc && "bg-[#c6c5c5]"}>
+                Prénom*
+              </label>
+              <input disabled className="text-[#444242] bg-[#c6c5c5]"></input>
             </div>
             <div className={styles.fieldsAcc}>
               <label className={styles.labelAcc}>Téléphone*</label>

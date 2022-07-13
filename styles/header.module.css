@@ -1,6 +1,7 @@
 .header {
   margin: auto 0;
   height: 50px;
+  margin-bottom: 40px;
 }
 
 .divTitle {
@@ -11,14 +12,19 @@
   justify-content: space-between;
 }
 
+.arrow {
+  margin-top: 10px;
+  width: 10%;
+  height: 5%;
+}
+
 .title {
   font-size: 22px;
-  font-style: var(--var-main-font-style1);
+  font-weight: 700;
 }
 
 .date {
   font-size: 16px;
-  font-size: var(--var-main-font-style1);
   font-weight: 400;
 }
 
@@ -27,25 +33,60 @@
   margin-right: 10px;
 }
 
-.logout {
+.accountDiv {
   position: absolute;
+  z-index: 1;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   margin: 12% 5% 0 65%;
   width: 110px;
-  height: 35px;
+  height: 60px;
   background-color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.monCompte {
+  position: relative;
+  border-radius: 4px;
+  width: 110px;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.logout {
+  position: relative;
+  border-radius: 4px;
+  width: 100px;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: white;
+  color: red;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 @media screen and (min-width: 700px) {
   .header {
     margin: auto 0;
     height: 35px;
+    margin-bottom: 70px;
   }
 
   .divTitle {
     margin-left: 25%;
     margin-left: 25%;
+  }
+
+  .arrow {
+    margin-top: 10px;
+    width: 5%;
+    height: 2%;
   }
 
   .title {
@@ -54,5 +95,14 @@
 
   .date {
     font-size: 19px;
+  }
+
+  .menu {
+    font-size: 40px;
+    margin-right: 40%;
+  }
+
+  .logout {
+    margin: 4% 5% 0 37%;
   }
 } ;

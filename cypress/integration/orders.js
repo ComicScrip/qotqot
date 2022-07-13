@@ -5,7 +5,7 @@ describe("orders", () => {
   });
 
   it("should display the list of orders when the api responds", () => {
-    cy.intercept("**/orders**", { fixture: "order.json" });
+    cy.intercept("**/orders**", { fixture: "orders.json" });
     cy.visit("/commandes");
     cy.contains("17 mai 2022");
     cy.contains("24 mars 2022");

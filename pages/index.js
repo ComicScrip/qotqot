@@ -1,10 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import logoImg from "../public/assets/logo-qot-qot.png";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import Link from "next/link";
 
 export default function Login({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
@@ -13,32 +15,24 @@ export default function Login({ csrfToken }) {
   return (
     <>
       {currentUserProfile ? (
-        <>
-          Connecté en tant que {currentUserProfile.fields.Email} <br />
-          <button
-            className="border-2 rounded-md p-4 uppercase text-sm text-white bg-[red] font-medium"
-            type="submit"
-            data-cy="disconnectBtn"
-            onClick={() => signOut()}
-          >
-            Se déconnecter
-          </button>
-        </>
+        window.location.replace(`/commandes/`)
       ) : (
         <>
-          <div id="login" className="w-full h-full m-auto ">
-            <div className=" m-auto mt-16 flex flex-col justify-center items-center ">
+          <div
+            id="login"
+            className="w-full h-full m-auto sm:w-[60%] lg:w-[50%]"
+          >
+            <div className=" m-auto pt-16 flex flex-col justify-center items-center ">
               <div>
                 <Image
-                  src="/assets/logo-qot-qot.png"
+                  src={logoImg}
                   alt="logo_qotqot"
                   width={148}
                   height={164}
                 />
               </div>
-              <h1 className="my-8 tracking-2">Espace Professionnel</h1>
+              <h1 className="my-6 tracking-2">Espace Professionnel</h1>
             </div>
-
             <form
               method="post"
               onSubmit={(e) => {
@@ -76,7 +70,7 @@ export default function Login({ csrfToken }) {
                 <label className="text-[#7F7F7F] ">Mot de passe :</label>
                 <input
                   data-cy="password"
-                  type="text"
+                  type="password"
                   id="password"
                   name="password"
                   className="text-[#7F7F7F]"
@@ -99,7 +93,7 @@ export default function Login({ csrfToken }) {
               <div className="flex justify-center flex-col">
                 <button
                   data-cy="loginBtn"
-                  className="text-md -2 rounded-md px-22 py-5 uppercase text-sm text-white bg-[#06968A] font-bold"
+                  className="text-md rounded-md px-20 py-4 uppercase text-white bg-[#06968A] font-bold"
                   type="submit"
                 >
                   Se connecter
@@ -110,15 +104,17 @@ export default function Login({ csrfToken }) {
                   </p>
                 )}
               </div>
-              <div className="flex justify-center px-3">
-                <p
+            </form>{" "}
+            <div className="flex justify-center px-3">
+              <Link href="/mot-de-passe-oublie">
+                <a
                   className=" text-gray-400 underline underline-offset-1 py-2"
                   data-cy="lostPassword"
                 >
                   Mot de passe oublié ?
-                </p>
-              </div>
-            </form>
+                </a>
+              </Link>
+            </div>
           </div>
         </>
       )}

@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+
+}
+
+model Product {
+  id                    String             @id @default(cuid())
+  name                  String?            @db.VarChar(255)
+  price                 Float?
+  pricePerKg            Float?
+  stock                 String?            @db.VarChar(255)
+  codeProduit           String?            @db.VarChar(255)
+  weight                String?            @db.VarChar(255)
+  picture               String?            @db.Text
+  makerPicture          String?            @db.Text
+  makerName             String?            @db.VarChar(255)
+  makerAdress           String?            @db.VarChar(255)
+  descriptionProduit    String?            @db.Text
+  descriptionProducteur String?            @db.Text
+  logo                  String?            @db.VarChar(255)
+  category              String?            @db.VarChar(255)
+  typeUVC               String?            @db.VarChar(255)
+  poidsUVC              Float?
+  uniteUVC              String?            @db.VarChar(255)
+  customerCartItems     customerCartItem[]
+}
+
+model customerCartItem {
+  id        String  @id @default(cuid())
+  quantity  Float
+  idProduct String  @db.VarChar(255)
+  idClient  String  @db.VarChar(255)
+  idOrder   String  @default("") @db.VarChar(255)
+  product   Product @relation(fields: [idProduct], references: [id], onDelete: Cascade)
+  order     order?  @relation(fields: [idOrder], references: [id], onDelete: Cascade)
+
+  @@unique([idProduct, idClient, idOrder])
+}
+
+model order {
+  id               String             @id @default(cuid())
+  createdAt        DateTime           @default(now())
+  delivery         DateTime
+  comment          String?            @db.VarChar(255)
+  synchWithAT      Boolean            @default(false)
+  customerCartItem customerCartItem[]
+}

@@ -1,9 +1,11 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import HeaderCommandePassee from "../components/HeaderCommandePassee";
 import LoadingSpin from "../components/LoadingSpin";
 import { useContext } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import HeaderNouvelleCommande from "./HeaderNouvelleCommande";
 
 export default function Layout({ children, pageTitle }) {
   const { currentUserLogged } = useContext(CurrentUserContext);
@@ -19,11 +21,21 @@ export default function Layout({ children, pageTitle }) {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
-            href={`https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap`}
+            href={`https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,400;0,500;1,300&display=swap`}
             rel="stylesheet"
           />
         </Head>
-        <Header></Header>
+        {pageTitle === "commandes" ? (
+          <Header></Header>
+        ) : pageTitle === "detail-commande" ? (
+          <HeaderCommandePassee></HeaderCommandePassee>
+        ) : pageTitle == "Nouvelle commande" ? (
+          <HeaderNouvelleCommande></HeaderNouvelleCommande>
+        ) : pageTitle == "Panier" ? (
+          <Header />
+        ) : (
+          <Header></Header>
+        )}
         {children}
       </>
     );

@@ -7,7 +7,6 @@ describe("getProducts", () => {
   it("should display a list of products when the api responds", () => {
     cy.intercept("**/products", { fixture: "products.json" });
     cy.visit("/nouvelleCommande");
-    cy.contains("Mousse de carotte au bleu d'Auvergne");
     cy.contains("Caviar d'artichaut");
     cy.contains("Caramel à la Fleur de Sel de Guérande");
     cy.contains("Ketchup Piment'ail");

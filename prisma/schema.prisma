@@ -50,8 +50,8 @@ model customerCartItem {
 model order {
   id               String             @id @default(cuid())
   createdAt        DateTime           @default(now())
-  delivery         DateTime           
-  comment          String             @db.VarChar(255)
+  delivery         DateTime
+  comment          String?            @db.VarChar(255)
   synchWithAT      Boolean            @default(false)
   customerCartItem customerCartItem[]
 }

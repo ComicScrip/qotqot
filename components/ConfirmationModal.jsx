@@ -1,26 +1,31 @@
 import s from "../styles/nouvelleCommande.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import dayjs from "dayjs";
 
 export default function ConfirmationModal({
   modal,
-  handleValidate,
   handleClose,
-  handleCreateOrder,
+  handleConfirm,
+  date,
+  setDate,
+  comment,
+  setComment,
 }) {
   const [error] = useState("");
-
-  const [setDate] = useState("");
   const weekday = require("dayjs/plugin/weekday");
   dayjs.extend(weekday);
   const isToday = require("dayjs/plugin/isToday");
   dayjs.extend(isToday);
 
-  const date1 = dayjs().weekday(2).format("DD-MM-YY");
-  const date2 = dayjs().weekday(4).format("DD-MM-YY");
-  const date3 = dayjs().weekday(9).format("DD-MM-YY");
-  const date4 = dayjs().weekday(11).format("DD-MM-YY");
+  const date1 = dayjs().weekday(2).format("DD-MM-YYYY");
+  const date2 = dayjs().weekday(4).format("DD-MM-YYYY");
+  const date3 = dayjs().weekday(9).format("DD-MM-YYYY");
+  const date4 = dayjs().weekday(11).format("DD-MM-YYYY");
+
+  useEffect(() => {
+    setDate(date1);
+  }, []);
 
   const optionsM = [
     {
@@ -55,9 +60,9 @@ export default function ConfirmationModal({
     },
   ];
 
-  const handleChange = (value) => {
-    setDate(value);
-    handleCreateOrder();
+  const handleChange = (event) => {
+    console.log("test");
+    setDate(event.target.value);
   };
 
   return (
@@ -76,7 +81,7 @@ export default function ConfirmationModal({
                 Confirmation de commande
               </h1>
 
-              <form onSubmit={handleValidate}>
+              <form onSubmit={handleConfirm}>
                 <div className="flex flex-col justify-center text-left w-[90%] rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] mb-4 p-2">
                   <label className="text-sm sm:text-base cursor-pointer ">
                     Créneau de livraison{" "}
@@ -85,6 +90,7 @@ export default function ConfirmationModal({
                   <select
                     className="text-[#3f3f3f] bg-[#F2F2F2]"
                     type="date"
+                    value={date}
                     required
                     onChange={handleChange}
                   >
@@ -107,10 +113,11 @@ export default function ConfirmationModal({
                   </label>
                   <textarea
                     type="textarea"
+                    value={comment}
                     className="text-sm text-black bg-[#F2F2F2]"
                     rows="3"
                     name="message"
-                    onChange={(e) => e.target.value}
+                    onChange={(e) => setComment(e.target.value)}
                     placeholder="Mon message..."
                   />
                 </div>

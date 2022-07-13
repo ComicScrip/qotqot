@@ -7,15 +7,20 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import ConfirmationModal from "../../components/ConfirmationModal";
 import CongratsModal from "../../components/CongratsModal";
 import Link from "next/link";
+import styles from "../../styles/product_item.module.css";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Panier() {
+  const router = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [modal, setModal] = useState(false);
   const [modalCongrats, setModalCongrats] = useState(false);
   const [modalFranco, setModalFranco] = useState(false);
   const { cartItems, getCartItems } = useContext(CurrentUserContext);
-  // const [newOrder, setNewOrder] = useState("");
+  const [date, setDate] = useState("");
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     setError("");
@@ -23,32 +28,6 @@ export default function Panier() {
       .catch(() => setError("Couldnt get data from cart"))
       .finally(() => setIsLoading(false));
   }, [getCartItems]);
-
-  const handleCreateOrder = (data) => {
-    axios
-      .post("/api/ordersProduct")
-      .then(getCartItems)
-      .catch(() => console.error("panier not working"));
-  };
-
-  async function handleConfirmO() {
-    if (totalPrice >= 75) {
-      setModal(!modal);
-      setModalCongrats(!modalCongrats);
-      handleCreateOrder();
-    } else {
-      setModal(!modal);
-      setModalFranco(!modalFranco);
-    }
-    // .then(handleConfirmOrder());
-  }
-
-  const confirmPurchase = () => {
-    setModalFranco(!modalFranco);
-    setModalCongrats(!modalCongrats);
-    setModal(false);
-    handleCreateOrder();
-  };
 
   const handleClose = () => {
     setModal(!modal);
@@ -69,6 +48,32 @@ export default function Panier() {
     .toFixed(2);
 
   const francoMin = 75 - totalPrice;
+
+  const confirmPurchase = () => {
+    setModalFranco(!modalFranco);
+    setModalCongrats(!modalCongrats);
+    setModal(false);
+    handleCreateOrder();
+  };
+
+  const handleCreateOrder = () => {
+    axios
+      .post("/api/ordersProduct", { date, comment })
+      .then(getCartItems)
+      .then(router.push("/nouvelleCommande"))
+      .catch(() => console.error("panier not working"));
+  };
+
+  async function handleConfirm() {
+    if (totalPrice >= 75) {
+      setModal(!modal);
+      setModalCongrats(!modalCongrats);
+      handleCreateOrder();
+    } else {
+      setModal(!modal);
+      setModalFranco(!modalFranco);
+    }
+  }
 
   const renderProducts = (
     <div className="main_container">
@@ -138,25 +143,33 @@ export default function Panier() {
           {modal && (
             <ConfirmationModal
               modal={modal}
-              handleValidate={handleConfirmO}
               handleClose={handleClose}
-              handleCreateOrder={handleCreateOrder}
+              setModal={setModal}
+              handleConfirm={handleConfirm}
+              date={date}
+              setDate={setDate}
+              comment={comment}
+              setComment={setComment}
             />
           )}
 
           {modalCongrats && (
             <CongratsModal
+              confirmPurchase={confirmPurchase}
               modalCongrats={modalCongrats}
-              showModalFranco={handleConfirmO}
               handleClose2={handleClose2}
             />
           )}
 
           {modalFranco && (
             <CongratsModal
+              confirmPurchase={confirmPurchase}
+              setModalCongratsm={setModalCongrats}
+              setModal={setModal}
+              setModalFranco={setModalFranco}
               modalFranco={modalFranco}
               handleClose3={handleClose3}
-              confirmPurchase={confirmPurchase}
+              handleCreateOrder={handleCreateOrder}
             />
           )}
           {error && (

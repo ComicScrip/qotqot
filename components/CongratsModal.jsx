@@ -6,9 +6,9 @@ import s from "../styles/nouvelleCommande.module.css";
 const Congrats = ({
   modalCongrats,
   modalFranco,
-  confirmPurchase,
   handleClose2,
   handleClose3,
+  confirmPurchase,
 }) => {
   return (
     <>

@@ -129,8 +129,6 @@ async function main() {
     product_id: product2.fields.id,
     quantity: 5,
   });
-
-  // console.log(await getCustomerCartItems({ customer_id: customer.fields.id }));
 }
 
 main();

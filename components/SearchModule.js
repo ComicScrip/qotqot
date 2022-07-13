@@ -15,7 +15,6 @@ export const SearchModule = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [error, setError] = useState("");
-  const [isActive, setIsactive] = useState(false);
 
   const setSearchParams = (newSearch) => {
     const queryString = QueryString.stringify(newSearch);
@@ -68,7 +67,6 @@ export const SearchModule = () => {
               className={s.filterButtons}
               onClick={(e) => {
                 setSearchParams({ category: e.target.value });
-                setIsactive(!isActive);
               }}
               value={o}
             >
@@ -78,7 +76,7 @@ export const SearchModule = () => {
         ))}
       </div>
 
-      <div>
+      <div className={s.searchResult}>
         {searchResult
           .filter((val) => {
             if (val == "") {
@@ -91,24 +89,26 @@ export const SearchModule = () => {
           })
           .map((prod) => {
             return (
-              <ProductItem
-                key={prod.id}
-                id={prod.id}
-                codeProduit={prod.codeProduit}
-                name={prod.name}
-                weight={prod.weight}
-                price={prod.price}
-                pricePerKg={prod.pricePerKg}
-                stock={prod.stock}
-                picture={prod.picture ? prod.picture : ""}
-                makerPicture={prod.makerPicture}
-                makerName={prod.makerName}
-                makerAdress={prod.makerAdress}
-                productDesc={prod.descriptionProduit}
-                makerDesc={prod.descriptionProducteur}
-                logo={prod.logo}
-                cartItem={prod.customerCartItem}
-              />
+              <div key={prod.id} className={s.prods}>
+                <ProductItem
+                  key={prod.id}
+                  id={prod.id}
+                  codeProduit={prod.codeProduit}
+                  name={prod.name}
+                  weight={prod.weight}
+                  price={prod.price}
+                  pricePerKg={prod.pricePerKg}
+                  stock={prod.stock}
+                  picture={prod.picture ? prod.picture : ""}
+                  makerPicture={prod.makerPicture}
+                  makerName={prod.makerName}
+                  makerAdress={prod.makerAdress}
+                  productDesc={prod.descriptionProduit}
+                  makerDesc={prod.descriptionProducteur}
+                  logo={prod.logo}
+                  cartItem={prod.customerCartItem}
+                />
+              </div>
             );
           })}
       </div>

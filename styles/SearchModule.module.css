@@ -1,5 +1,6 @@
 .searchModuleWrapper {
   width: 100%;
+  background-color: #e5e5e5;
 }
 .search_input {
   cursor: pointer;
@@ -21,7 +22,6 @@
 .text_input {
   margin: 1rem;
   width: 60%;
-  border: #06968a 1px solid;
   cursor: pointer;
   border-radius: 10px;
   padding: 4px 12px;
@@ -31,9 +31,9 @@
 
 .listButtons {
   display: flex;
-  width: 60%;
+  width: 100%;
   overflow-x: scroll;
-  background-color: #f2f2f2;
+  background-color: #e5e5e5;
 }
 .listButtons::-webkit-scrollbar {
   display: none;
@@ -60,17 +60,8 @@
   color: white;
 }
 .filterButtons:hover {
-  cursor: pointer;
-  padding: 0.2rem;
-  text-align: center;
-  font-size: 0.6rem;
-  font-weight: 900;
-  border-radius: 10px;
   color: white;
   background-color: #06968a;
-  min-width: 7rem;
-  height: 2rem;
-  margin: 0.2rem;
 }
 .filterButtons::-webkit-scrollbar {
   display: none;
@@ -82,18 +73,19 @@
 
 @media screen and (min-width: 480px) {
   .searchModuleWrapper {
-    width: 100%;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .search_input {
-    align-self: center;
+  .text_input {
+    width: 50%;
+    margin-left: 15%;
   }
   .listButtons {
     justify-content: space-evenly;
+    margin: 0 auto;
     text-align: center;
+    width: 50%;
   }
   .filterButtons {
     width: 6rem;

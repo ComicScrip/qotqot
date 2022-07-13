@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import styles from "../../styles/account.module.css";
 import Layout from "../../components/Layout";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Account() {
   const [companyName, setCompanyName] = useState("");
@@ -60,15 +61,16 @@ export default function Account() {
         mail,
       })
       .then(() => {
-        console.log("POST worked");
+        toast.success("Informations enregistrées");
       })
       .catch(() => {
-        console.log("POST not working");
+        toast.error("Une erreur est survenue");
       });
   };
 
   return (
     <Layout pageTitle="nouvelle-commande">
+      <Toaster position="bottom-center" />
       <div className={styles.ctnAcc}>
         <form
           className={styles.formAcc}

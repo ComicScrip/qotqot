@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "../styles/header.module.css";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/dist/client/router";
 
 export default function Header() {
+  const router = useRouter();
   const [displayMenu, setDisplayMenu] = useState(false);
   const today = new Date();
   const options = {
@@ -32,13 +34,22 @@ export default function Header() {
           ...
         </button>
         {displayMenu && (
-          <button
-            onClick={() => signOut({ callbackUrl: window.location.origin })}
-            className={styles.logout}
-            data-cy="disconnectBtn"
-          >
-            Déconnexion
-          </button>
+          <div className={styles.accountDiv}>
+            <button
+              onClick={() => router.push("/compte")}
+              className={styles.monCompte}
+              data-cy="accountBtn"
+            >
+              Mon compte
+            </button>
+            <button
+              onClick={() => signOut({ callbackUrl: window.location.origin })}
+              className={styles.logout}
+              data-cy="disconnectBtn"
+            >
+              Déconnexion
+            </button>
+          </div>
         )}
       </div>
     </header>

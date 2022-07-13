@@ -45,6 +45,9 @@ export async function GetAccountInfo(req, res) {
         },
       }
     )
+    .then((response) => {
+      res.send(response.data.records);
+    })
     .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }
 

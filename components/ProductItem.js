@@ -1,10 +1,6 @@
 /* eslint-disable no-unused-vars */
 import style from "../styles/product_item.module.css";
-<<<<<<< HEAD
-import { useState } from "react";
-=======
 import { useState, useContext } from "react";
->>>>>>> 3ff7ba1d4e54f1b1fb04fdf73c2b9bc2cdcb24a4
 import Popup from "./Popup";
 import axios from "axios";
 import { CurrentUserContext } from "../contexts/currentUserContext";
@@ -130,11 +126,6 @@ function ProductItem(props) {
           </div>
 
           <div className={style.counter}>
-<<<<<<< HEAD
-            <div>-</div>
-            <div>Qt</div>
-            <div>+</div>
-=======
             <button
               className={style.countBtn}
               onClick={handleSubtractOneFromCart}
@@ -145,7 +136,6 @@ function ProductItem(props) {
             <button className={style.countBtn} onClick={handleAddOneToCart}>
               +
             </button>
->>>>>>> 3ff7ba1d4e54f1b1fb04fdf73c2b9bc2cdcb24a4
           </div>
         </div>
       </div>

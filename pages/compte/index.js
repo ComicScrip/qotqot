@@ -69,7 +69,7 @@ export default function Account() {
   };
 
   return (
-    <Layout pageTitle="nouvelle-commande">
+    <Layout pageTitle="compte">
       <Toaster position="bottom-center" />
       <div className={styles.ctnAcc}>
         <form

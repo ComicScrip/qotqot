@@ -7,6 +7,7 @@ export default function ConfirmationModal({
   modal,
   handleValidate,
   handleClose,
+  handleCreateOrder,
 }) {
   const [error] = useState("");
 
@@ -56,6 +57,7 @@ export default function ConfirmationModal({
 
   const handleChange = (value) => {
     setDate(value);
+    handleCreateOrder();
   };
 
   return (

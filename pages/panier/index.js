@@ -142,6 +142,7 @@ export default function Panier() {
               modal={modal}
               handleValidate={handleConfirmO}
               handleClose={handleClose}
+              handleCreateOrder={handleCreateOrder}
             />
           )}
 

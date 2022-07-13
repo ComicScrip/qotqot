@@ -13,6 +13,15 @@
   margin-right: 5%;
 }
 
+.loginBg {
+  background-image: url("../public/images/background.jpg");
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
 .nouvelleCommandeBtn {
   width: 100%;
   height: 50px;

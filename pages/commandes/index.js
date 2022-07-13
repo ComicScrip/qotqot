@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import Link from "next/link";
 import Layout from "../../components/Layout";
 import Order from "../../components/Order";

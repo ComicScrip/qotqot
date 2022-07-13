@@ -23,6 +23,7 @@ export default function RestPasswordPage({ csrfToken }) {
         toast.error("Email introuvable");
       });
   };
+
   const resetPassword = (e) => {
     e.preventDefault();
 

@@ -7,7 +7,6 @@ import { useContext } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import HeaderNouvelleCommande from "./HeaderNouvelleCommande";
-import HeaderPanier from "./HeaderPanier";
 
 export default function Layout({ children, pageTitle }) {
   const { currentUserLogged } = useContext(CurrentUserContext);
@@ -34,7 +33,7 @@ export default function Layout({ children, pageTitle }) {
         ) : pageTitle == "Nouvelle commande" ? (
           <HeaderNouvelleCommande></HeaderNouvelleCommande>
         ) : pageTitle == "Panier" ? (
-          <HeaderPanier></HeaderPanier>
+          <Header />
         ) : pageTitle == "compte" ? (
           <HeaderCompte></HeaderCompte>
         ) : (

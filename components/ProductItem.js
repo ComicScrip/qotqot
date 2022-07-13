@@ -7,6 +7,7 @@ import { CurrentUserContext } from "../contexts/currentUserContext";
 
 function ProductItem(props) {
   const [isDetailed, setIsDetailed] = useState(false);
+
   const togglePopup = () => {
     setIsDetailed(!isDetailed);
   };
@@ -52,6 +53,7 @@ function ProductItem(props) {
     }
   };
 
+  // ------------- Visual Counter -------------- //
   const handleSubtractOneFromCart = () => {
     setCount(count > 0 ? count - 1 : 0);
     axios.post("/api/customerCartItem", {
@@ -137,5 +139,4 @@ function ProductItem(props) {
     </>
   );
 }
-
 export default ProductItem;

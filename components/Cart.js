@@ -12,6 +12,7 @@ function Cart(props) {
       <div className={style.item_detail}>
         <div className={style.item_title}>{props.name}</div>
         <div className={style.item_weight}>{props.weight}</div>
+        <div className={style.item_weight}>{props.quantité}</div>
       </div>
       <div className={style.item_quantity}>
         <div className={style.quantity}>{props.Quantity}</div>

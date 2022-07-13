@@ -13,7 +13,6 @@ const { minifyProducts } = require("./Airtable");
       },
     }
   );
-  console.log(productList?.records);
 
   const products = minifyProducts(productList.records);
 
@@ -58,6 +57,4 @@ const { minifyProducts } = require("./Airtable");
       })
     ),
   });
-
-  console.log("done");
 })();

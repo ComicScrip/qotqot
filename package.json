@@ -52,6 +52,7 @@
     "react-dom": "18.1.0",
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.4.0",
+    "react-responsive-carousel": "^3.2.23",
     "reactjs-popup": "^2.0.5",
     "smtp-tester": "^2.0.0",
     "weekday": "^3.0.1"

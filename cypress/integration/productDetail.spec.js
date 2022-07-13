@@ -12,6 +12,6 @@ describe("detailProduit", () => {
     cy.intercept("**/products", { fixture: "products.json" });
     cy.visit("/nouvelleCommande");
     cy.get("img ").click();
-    cy.window().contains("Mousse");
+    cy.window().contains("Douceur");
   });
 });

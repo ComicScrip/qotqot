@@ -1,13 +1,8 @@
-/* eslint-disable no-unused-vars */
-import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import Cart from "../../components/Cart";
 import Layout from "../../components/Layout";
 import LoadingSpin from "../../components/LoadingSpin";
-import styles from "../../styles/product_item.module.css";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
-import ProgressBar from "@ramonak/react-progress-bar";
-import Link from "next/link";
 
 export default function Panier() {
   const [error, setError] = useState("");
@@ -20,10 +15,6 @@ export default function Panier() {
       .catch(() => setError("Couldnt get data from cart"))
       .finally(() => setIsLoading(false));
   }, [getCartItems]);
-
-  const handleCreateOrder = (data) => {
-    axios.post("/api/ordersProduct").then(getCartItems);
-  };
 
   const renderProducts = (
     <div className="main_container">
@@ -47,54 +38,16 @@ export default function Panier() {
       ))}
       <style jsx>{`
   * {
-    padding: 10px 0;
+    padding: 265px 0 10px 0;
       background-color: #E5E5E5;
+      height:100vh;
   `}</style>
     </div>
   );
 
-  const totalPrice = cartItems
-    .reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0)
-    .toFixed(2);
-
-  const francoMin = 75 - totalPrice;
-
   return (
     <>
       <Layout pageTitle="Panier">
-        <div className={styles.arrow}>
-          <Link href="/nouvelleCommande">
-            <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
-          </Link>
-        </div>
-        <div className={styles.headCmd}>
-          <div className={styles.priceTotal}>{totalPrice}€ HT</div>
-          <button
-            onClick={handleCreateOrder}
-            className={
-              cartItems.length === 0 ? styles.btnCartEmpty : styles.btnCart
-            }
-          >
-            Confirmer la commande
-          </button>
-        </div>
-        <div className={styles.francoText}>
-          Plus que{" "}
-          <span className={styles.franco}>
-            {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
-          </span>{" "}
-          pour le franco minimum
-        </div>
-
-        <ProgressBar
-          completed={totalPrice}
-          maxCompleted={75}
-          className={styles.wrapper}
-          barContainerClassName={styles.container}
-          labelClassName={styles.label}
-        />
         <>
           {error && (
             <p className="error">

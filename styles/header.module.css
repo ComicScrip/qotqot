@@ -1,6 +1,7 @@
 .header {
   margin: auto 0;
   height: 50px;
+  margin-bottom: 40px;
 }
 
 .divTitle {
@@ -73,11 +74,18 @@
   .header {
     margin: auto 0;
     height: 35px;
+    margin-bottom: 70px;
   }
 
   .divTitle {
     margin-left: 25%;
     margin-left: 25%;
+  }
+
+  .arrow {
+    margin-top: 10px;
+    width: 5%;
+    height: 2%;
   }
 
   .title {

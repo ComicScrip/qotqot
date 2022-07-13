@@ -8,8 +8,7 @@ export default function ConfirmationModal({
   handleValidate,
   handleClose,
 }) {
-  // eslint-disable-next-line no-unused-vars
-  const [error, setError] = useState("");
+  const [error] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState("");
   const weekday = require("dayjs/plugin/weekday");
@@ -58,17 +57,6 @@ export default function ConfirmationModal({
   const handleChange = (value) => {
     setDate(value);
   };
-
-  // useEffect(() => {
-  //   setError("");
-  //   axios
-  //     .post()
-  //     .then((res) => setDate(res.data))
-  //     .catch(() =>
-  //       setError("Could not get data from the server, please try again")
-  //     );
-  // }, []);
-  // console.log(date);
 
   return (
     <>

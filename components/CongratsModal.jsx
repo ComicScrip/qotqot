@@ -16,7 +16,7 @@ const Congrats = ({
         <div className={s.congrats}>
           <div className="flex flex-col justify-center h-fit mt-32 mx-auto sm:px-52 sm:w-[60%] rounded-xl bg-white">
             <div
-              onClick={handleClose2} //props
+              onClick={handleClose2}
               className="flex justify-end items-end p-4 cursor-pointer"
             >
               <AiOutlineClose />
@@ -35,7 +35,6 @@ const Congrats = ({
                 La commande est envoyée, nous reviendrons vers vous dans les
                 plus brefs délais !
               </p>
-              {/* <div onClick={showModalFranco}>voir la popup franco</div> */}
             </div>
           </div>
         </div>

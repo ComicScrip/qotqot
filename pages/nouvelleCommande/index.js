@@ -3,12 +3,7 @@ import React, { useState, useEffect } from "react";
 import LoadingSpin from "../../components/LoadingSpin";
 import ProductItem from "../../components/ProductItem";
 import Layout from "../../components/Layout";
-import Link from "next/link";
-import styles from "../../styles/product_item.module.css";
 import { SearchModule } from "../../components/SearchModule";
-import { CurrentUserContext } from "../../contexts/currentUserContext";
-import ProgressBar from "@ramonak/react-progress-bar";
-
 
 export default function NewOrder() {
   const [productList, setProductList] = useState([]);

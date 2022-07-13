@@ -19,6 +19,8 @@ async function exportOrdersToAirtable() {
       Quantite: cartItem.quantity,
       Client: cartItem.idClient,
       "Numéro de commande": cartItem.idOrder,
+      "Commentaire Livraison": order.comment,
+      "Date Livraison": order.delivery.toString(),
     }))
   );
 

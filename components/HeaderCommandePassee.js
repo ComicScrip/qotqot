@@ -4,8 +4,10 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import { useRouter } from "next/dist/client/router";
 
 export default function HeaderCommandePassee() {
+  const router = useRouter();
   const [displayMenu, setDisplayMenu] = useState(false);
   const { orderStatut, orderDate, orderNumberState, orderAmount } =
     useContext(CurrentUserContext);
@@ -42,13 +44,22 @@ export default function HeaderCommandePassee() {
           ...
         </button>
         {displayMenu && (
-          <button
-            onClick={() => signOut({ callbackUrl: window.location.origin })}
-            className={styles.logout}
-            data-cy="disconnectBtn"
-          >
-            Déconnexion
-          </button>
+          <div className={styles.accountDiv}>
+            <button
+              onClick={() => router.push("/compte")}
+              className={styles.monCompte}
+              data-cy="accountBtn"
+            >
+              Mon compte
+            </button>
+            <button
+              onClick={() => signOut({ callbackUrl: window.location.origin })}
+              className={styles.logout}
+              data-cy="disconnectBtn"
+            >
+              Déconnexion
+            </button>
+          </div>
         )}
       </div>
       <div className={styles.commandeDetails}>

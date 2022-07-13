@@ -16,6 +16,13 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.divTitle}>
+        <img
+          className={styles.arrow}
+          src="/images/arrow.png"
+          alt="arrow"
+          onClick={() => router.push("/")}
+        />
+
         <div>
           <h1 className={styles.title}>Mon compte 👤</h1>
           <p className={styles.date}>

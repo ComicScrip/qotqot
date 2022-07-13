@@ -1,7 +1,7 @@
-const db = require("./db");
+const db = require("../db");
 const axios = require("axios");
 
-(async function main() {
+async function exportOrdersToAirtable() {
   const orders = await db.order.findMany({
     include: {
       customerCartItem: {
@@ -53,4 +53,8 @@ const axios = require("axios");
       },
     },
   });
-})();
+}
+
+exportOrdersToAirtable();
+
+module.exports = exportOrdersToAirtable;

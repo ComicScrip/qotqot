@@ -32,9 +32,10 @@ export async function handlePostCartItems(req, res) {
         idClient: req.currentUser.id,
         quantity: req.body.quantity,
       });
-      res.send("ok");
     }
+    res.send("ok");
   } catch (err) {
+    console.error(err);
     res.status(500).send("Error");
   }
 }

@@ -12,7 +12,6 @@ async function handlePost(req, res) {
   const { email } = req.body;
   const user = await findUserByEmail(email);
   if (!user) return res.status(404).send();
-
   const resetPasswordToken = crypto.randomBytes(50).toString("hex");
   await updateUser(user, {
     resetPasswordToken: await hashPassword(resetPasswordToken),

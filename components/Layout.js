@@ -35,6 +35,8 @@ export default function Layout({ children, pageTitle }) {
           <HeaderNouvelleCommande></HeaderNouvelleCommande>
         ) : pageTitle == "Panier" ? (
           <HeaderPanier></HeaderPanier>
+        ) : pageTitle == "compte" ? (
+          <HeaderCompte></HeaderCompte>
         ) : (
           <Header></Header>
         )}

@@ -1,5 +1,5 @@
 .searchModuleWrapper {
-  max-width: 100vw;
+  width: 100%;
 }
 .search_input {
   cursor: pointer;
@@ -31,22 +31,44 @@
 
 .listButtons {
   display: flex;
-  flex-wrap: nowrap;
-  width: 100%;
+  width: 60%;
   overflow-x: scroll;
+  background-color: #f2f2f2;
 }
-
+.listButtons::-webkit-scrollbar {
+  display: none;
+}
+.listButtons {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 .filterButtons {
   cursor: pointer;
   padding: 0.2rem;
   text-align: center;
   font-size: 0.6rem;
   font-weight: 900;
-  overflow: auto;
+  border-radius: 10px;
+  color: black;
+  background-color: white;
+  min-width: 7rem;
+  height: 2rem;
+  margin: 0.2rem;
+}
+.filterActive {
+  background-color: #06968a;
+  color: white;
+}
+.filterButtons:hover {
+  cursor: pointer;
+  padding: 0.2rem;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 900;
   border-radius: 10px;
   color: white;
   background-color: #06968a;
-  width: 9rem;
+  min-width: 7rem;
   height: 2rem;
   margin: 0.2rem;
 }
@@ -56,4 +78,24 @@
 .filterButtons {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+@media screen and (min-width: 480px) {
+  .searchModuleWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .search_input {
+    align-self: center;
+  }
+  .listButtons {
+    justify-content: space-evenly;
+    text-align: center;
+  }
+  .filterButtons {
+    width: 6rem;
+  }
 }

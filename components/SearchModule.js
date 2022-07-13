@@ -15,6 +15,7 @@ export const SearchModule = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [error, setError] = useState("");
+  const [isActive, setIsactive] = useState(false);
 
   const setSearchParams = (newSearch) => {
     const queryString = QueryString.stringify(newSearch);
@@ -53,20 +54,6 @@ export const SearchModule = () => {
           setSearchTerm(e.target.value);
         }}
       />
-      {/* <select
-        value={category}
-        className={s.search_input}
-        onChange={(e) => setSearchParams({ category: e.target.value })}
-      >
-        <option className={s.option} value="Tous">
-          Tous
-        </option>
-        {categoryList.map((o) => (
-          <option className={s.option} key={o} value={o}>
-            {o}
-          </option>
-        ))}
-      </select> */}
       <div className={s.listButtons}>
         <button
           className={s.filterButtons}
@@ -76,9 +63,13 @@ export const SearchModule = () => {
           Tous
         </button>
         {categoryList.map((o) => (
-          <div className={s.filterButtons} key={o}>
+          <div key={o}>
             <button
-              onClick={(e) => setSearchParams({ category: e.target.value })}
+              className={s.filterButtons}
+              onClick={(e) => {
+                setSearchParams({ category: e.target.value });
+                setIsactive(!isActive);
+              }}
               value={o}
             >
               {o}

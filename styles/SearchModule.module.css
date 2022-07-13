@@ -79,11 +79,11 @@
   }
   .text_input {
     width: 50%;
-    margin-left: 15%;
+    margin-left: 20%;
   }
   .listButtons {
     justify-content: space-evenly;
-    margin: 0 auto;
+    margin-left: 20%;
     text-align: center;
     width: 50%;
   }

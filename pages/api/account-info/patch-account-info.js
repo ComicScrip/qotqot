@@ -5,6 +5,7 @@ import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 
 export async function GetAccountInfo(req, res) {
   const {
+    accountId,
     companyName,
     corporateName,
     siret,
@@ -16,13 +17,13 @@ export async function GetAccountInfo(req, res) {
     phone,
     mail,
   } = req.body;
-  const user = req.currentUser.fields["Code_Client_Test"];
   await axios
-    .post(
+    .patch(
       `${process.env.AIRTABLE_API}/Coordonn%C3%A9es%20Clients%20Personnalisables`,
       {
         records: [
           {
+            id: accountId,
             fields: {
               ["Nom établissement"]: companyName,
               ["Dénomination Sociale"]: corporateName,
@@ -34,7 +35,6 @@ export async function GetAccountInfo(req, res) {
               ["Contact pour la livraison"]: contact,
               ["Téléphone (Contact Livraison)"]: phone,
               ["Mail (envoi facture)"]: mail,
-              ["Code Client"]: user,
             },
           },
         ],

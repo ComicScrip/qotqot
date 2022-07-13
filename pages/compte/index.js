@@ -23,7 +23,6 @@ export default function Account() {
     axios
       .get("/api/account-info/get-account-info")
       .then((response) => {
-        console.log("GET working");
         const accountInfo = response.data;
         accountInfo.map((info) => {
           setAccountId(info.id);
@@ -40,14 +39,14 @@ export default function Account() {
         });
       })
       .catch(() => {
-        console.log("GET not working");
+        console.error("GET not working");
       });
   }, [accountInfo]);
 
-  const createAccountInfo = (e) => {
+  const updateAccountInfo = (e) => {
     e.preventDefault();
     axios
-      .post("/api/account-info/post-account-info", {
+      .post("/api/account-info/patch-account-info", {
         accountId,
         companyName,
         corporateName,
@@ -68,6 +67,32 @@ export default function Account() {
       });
   };
 
+  const createAccountInfo = (e) => {
+    e.preventDefault();
+    axios
+      .post("/api/account-info/post-account-info", {
+        companyName,
+        corporateName,
+        siret,
+        tva,
+        billingAddress,
+        postalCode,
+        city,
+        contact,
+        phone,
+        mail,
+      })
+      .then(() => {
+        toast.success("Informations enregistrées");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch(() => {
+        toast.error("Une erreur est survenue");
+      });
+  };
+
   return (
     <Layout pageTitle="compte">
       <Toaster position="bottom-center" />
@@ -75,7 +100,7 @@ export default function Account() {
         <form
           className={styles.formAcc}
           method="post"
-          onSubmit={createAccountInfo}
+          onSubmit={accountId === "" ? createAccountInfo : updateAccountInfo}
         >
           <div className={styles.pAcc}>
             <h1 className={styles.titleAcc}>Société</h1>

@@ -9,6 +9,7 @@ import axios from "axios";
 export default function HeaderPanier() {
   const [displayMenu, setDisplayMenu] = useState(false);
   const { cartItems, getCartItems } = useContext(CurrentUserContext);
+  console.log(cartItems);
   const today = new Date();
   const options = {
     weekday: "long",

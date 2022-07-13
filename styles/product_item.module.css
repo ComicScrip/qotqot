@@ -217,30 +217,6 @@ CART */
   text-align: center;
 }
 
-.francoText {
-  margin-left: 24px;
-  font-size: 14px;
-}
-.franco {
-  font-weight: 800;
-}
-
-/* Progress bar */
-
-.container {
-  background-color: #f2f2f2;
-  height: 7px;
-  margin-top: 5px;
-}
-
-.container div {
-  background: #06968a !important;
-}
-
-.label {
-  display: none;
-}
-
 @media screen and (min-width: 700px) {
   .item_wrapper {
     width: 50vw;

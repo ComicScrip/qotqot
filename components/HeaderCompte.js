@@ -16,8 +16,15 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.divTitle}>
+        <img
+          className={styles.arrow}
+          src="/images/arrow.png"
+          alt="arrow"
+          onClick={() => router.push("/")}
+        />
+
         <div>
-          <h1 className={styles.title}>Bonjour 👋</h1>
+          <h1 className={styles.title}>Mon compte 👤</h1>
           <p className={styles.date}>
             {today
               .toLocaleDateString("fr-FR", options)
@@ -36,11 +43,11 @@ export default function Header() {
         {displayMenu && (
           <div className={styles.accountDiv}>
             <button
-              onClick={() => router.push("/compte")}
+              onClick={() => router.push("/")}
               className={styles.monCompte}
               data-cy="accountBtn"
             >
-              Mon compte
+              Accueil
             </button>
             <button
               onClick={() => signOut({ callbackUrl: window.location.origin })}

@@ -3,7 +3,7 @@ import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 import { findAllProducts } from "../../../models/product";
 
 export async function getAllProducts(req, res) {
-  if (req.query) {
+  {
     try {
       res.send(await findAllProducts());
     } catch {

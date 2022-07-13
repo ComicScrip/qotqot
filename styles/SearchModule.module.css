@@ -1,0 +1,93 @@
+.searchModuleWrapper {
+  width: 100%;
+  background-color: #e5e5e5;
+}
+.search_input {
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 4px 12px;
+  margin: 1rem;
+  width: 60%;
+  background-color: #06968a;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.option {
+  margin: 1rem;
+  font-weight: 600;
+}
+
+.text_input {
+  margin: 1rem;
+  width: 60%;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 4px 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.listButtons {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  background-color: #e5e5e5;
+}
+.listButtons::-webkit-scrollbar {
+  display: none;
+}
+.listButtons {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.filterButtons {
+  cursor: pointer;
+  padding: 0.2rem;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 900;
+  border-radius: 10px;
+  color: black;
+  background-color: white;
+  min-width: 7rem;
+  height: 2rem;
+  margin: 0.2rem;
+}
+.filterActive {
+  background-color: #06968a;
+  color: white;
+}
+.filterButtons:hover {
+  color: white;
+  background-color: #06968a;
+}
+.filterButtons::-webkit-scrollbar {
+  display: none;
+}
+.filterButtons {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@media screen and (min-width: 480px) {
+  .searchModuleWrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .text_input {
+    width: 50%;
+    margin-left: 20%;
+  }
+  .listButtons {
+    justify-content: space-evenly;
+    margin-left: 20%;
+    text-align: center;
+    width: 50%;
+  }
+  .filterButtons {
+    width: 6rem;
+  }
+}

@@ -120,9 +120,11 @@
   border-radius: 4px;
 }
 .low_on_stock {
-  background-color: #05050433;
-  color: #3b3a3a;
-  opacity: 60%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #ffb92333;
+  color: #ffb923;
   padding: 0.3rem;
   border-radius: 4px;
 }

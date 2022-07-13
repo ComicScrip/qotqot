@@ -2,11 +2,8 @@
 import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
-// import { handleGetProfile } from "../profile";
 
 export async function GetAccountInfo(req, res) {
-  //   const userId = req.currentUser.id;
-  //   console.log(req.currentUser.id);
   const {
     accountId,
     companyName,

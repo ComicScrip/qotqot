@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "../../styles/account.module.css";
 import Layout from "../../components/Layout";
 import axios from "axios";
-import { useEffect } from "react";
-import LoadingSpin from "../../components/LoadingSpin";
 
 export default function Account() {
   const [companyName, setCompanyName] = useState("");
@@ -17,7 +15,7 @@ export default function Account() {
   const [contact, setContact] = useState("");
   const [phone, setPhone] = useState("");
   const [mail, setMail] = useState("");
-  const [accountInfo, setAccountInfo] = useState([]);
+  const accountInfo = useRef([]);
   console.log("re-render");
 
   useEffect(() => {
@@ -25,7 +23,7 @@ export default function Account() {
       .get("/api/account-info/get-account-info")
       .then((response) => {
         console.log("GET working");
-        setAccountInfo(response.data);
+        const accountInfo = response.data;
         accountInfo.map((info) => {
           setAccountId(info.id);
           setCompanyName(info.fields["Nom établissement"]);
@@ -70,194 +68,174 @@ export default function Account() {
   };
 
   return (
-    <>
-      {companyName === "" ? (
-        <LoadingSpin></LoadingSpin>
-      ) : (
-        <Layout pageTitle="nouvelle-commande">
-          <div className={styles.ctnAcc}>
-            <form
-              className={styles.formAcc}
-              method="post"
-              onSubmit={createAccountInfo}
-            >
-              <div className={styles.pAcc}>
-                <h1 className={styles.titleAcc}>Société</h1>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>
-                    Nom de l'établissement*
-                  </label>
-                  <input
-                    data-cy="companyName"
-                    type="text"
-                    id="companyName"
-                    name="companyName"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
-                  ></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Raison sociale*</label>
-                  <input
-                    type="text"
-                    id="corporateName"
-                    name="corporateName"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={corporateName}
-                    onChange={(e) => setCorporateName(e.target.value)}
-                  ></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>SIRET*</label>
-                  <input
-                    type="text"
-                    id="siret"
-                    name="siret"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={siret}
-                    onChange={(e) => setSiret(e.target.value)}
-                  ></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Numéro de TVA*</label>
-                  <input
-                    type="text"
-                    id="companyName"
-                    name="companyName"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={tva}
-                    onChange={(e) => setTva(e.target.value)}
-                  ></input>
-                </div>
-              </div>
-              <div className={styles.pAcc}>
-                <h1 className={styles.titleAcc}>Adresse de facturation</h1>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Numéro et voie*</label>
-                  <input
-                    type="text"
-                    id="billingAddress"
-                    name="billingAddress"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={billingAddress}
-                    onChange={(e) => setBillingAddress(e.target.value)}
-                  ></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Code postal*</label>
-                  <input
-                    type="text"
-                    id="postalCode"
-                    name="postalCode"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                  ></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Ville*</label>
-                  <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                  ></input>
-                </div>
-              </div>
-              <div className={styles.pAcc}>
-                <h1 className={styles.titleAcc}>Adresse de livraison</h1>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Numéro et voie*</label>
-                  <input></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Code postal*</label>
-                  <input></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Ville*</label>
-                  <input></input>
-                </div>
-              </div>
-              <div className={styles.pAcc}>
-                <h1 className={styles.titleAcc}>Contact</h1>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Nom*</label>
-                  <input
-                    id="contact"
-                    name="contact"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
-                  ></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Prénom*</label>
-                  <input></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Téléphone*</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  ></input>
-                </div>
-                <div className={styles.fieldsAcc}>
-                  <label className={styles.labelAcc}>Email*</label>
-                  <input
-                    id="mail"
-                    name="mail"
-                    className="text-[#7F7F7F]"
-                    minLength="1"
-                    maxLength="30"
-                    value={mail}
-                    onChange={(e) => setMail(e.target.value)}
-                  ></input>
-                </div>
-              </div>
-              <div className={styles.btnAcc}>
-                <button>Enregistrer</button>
-              </div>
-            </form>
+    <Layout pageTitle="nouvelle-commande">
+      <div className={styles.ctnAcc}>
+        <form
+          className={styles.formAcc}
+          method="post"
+          onSubmit={createAccountInfo}
+        >
+          <div className={styles.pAcc}>
+            <h1 className={styles.titleAcc}>Société</h1>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Nom de l'établissement*</label>
+              <input
+                data-cy="companyName"
+                type="text"
+                id="companyName"
+                name="companyName"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={companyName || ""}
+                onChange={(e) => setCompanyName(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Raison sociale*</label>
+              <input
+                type="text"
+                id="corporateName"
+                name="corporateName"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={corporateName || ""}
+                onChange={(e) => setCorporateName(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>SIRET*</label>
+              <input
+                type="text"
+                id="siret"
+                name="siret"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={siret || ""}
+                onChange={(e) => setSiret(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Numéro de TVA*</label>
+              <input
+                type="text"
+                id="companyName"
+                name="companyName"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={tva || ""}
+                onChange={(e) => setTva(e.target.value)}
+              ></input>
+            </div>
           </div>
-        </Layout>
-      )}
-    </>
+          <div className={styles.pAcc}>
+            <h1 className={styles.titleAcc}>Adresse de facturation</h1>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Numéro et voie*</label>
+              <input
+                type="text"
+                id="billingAddress"
+                name="billingAddress"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={billingAddress || ""}
+                onChange={(e) => setBillingAddress(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Code postal*</label>
+              <input
+                type="text"
+                id="postalCode"
+                name="postalCode"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={postalCode || ""}
+                onChange={(e) => setPostalCode(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Ville*</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={city || ""}
+                onChange={(e) => setCity(e.target.value)}
+              ></input>
+            </div>
+          </div>
+          <div className={styles.pAcc}>
+            <h1 className={styles.titleAcc}>Adresse de livraison</h1>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Numéro et voie*</label>
+              <input></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Code postal*</label>
+              <input></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Ville*</label>
+              <input></input>
+            </div>
+          </div>
+          <div className={styles.pAcc}>
+            <h1 className={styles.titleAcc}>Contact</h1>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Nom*</label>
+              <input
+                id="contact"
+                name="contact"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={contact || ""}
+                onChange={(e) => setContact(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Prénom*</label>
+              <input></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Téléphone*</label>
+              <input
+                id="phone"
+                name="phone"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={phone || ""}
+                onChange={(e) => setPhone(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.fieldsAcc}>
+              <label className={styles.labelAcc}>Email*</label>
+              <input
+                id="mail"
+                name="mail"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={mail || ""}
+                onChange={(e) => setMail(e.target.value)}
+              ></input>
+            </div>
+          </div>
+          <div className={styles.btnAcc}>
+            <button>Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </Layout>
   );
 }
-
-// export const getServerSideProps = async () => {
-//   await axios
-//     .get("/account-info")
-//     .then(() => {
-//       console.log("working");
-//     })
-//     .catch(() => {
-//       console.log("not working");
-//     });
-//   return { props: {} };
-// };

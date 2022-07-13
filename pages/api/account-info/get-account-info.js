@@ -2,7 +2,6 @@
 import axios from "axios";
 import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
-// import { handleGetProfile } from "../profile";
 
 export async function GetAccountInfo(req, res) {
   const user = req.currentUser.fields["Code_Client_Test"];
@@ -22,5 +21,3 @@ export async function GetAccountInfo(req, res) {
 }
 
 export default base().use(reqCurrentUser).get(GetAccountInfo);
-
-//

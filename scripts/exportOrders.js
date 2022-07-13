@@ -57,6 +57,4 @@ async function exportOrdersToAirtable() {
   });
 }
 
-exportOrdersToAirtable();
-
 module.exports = exportOrdersToAirtable;

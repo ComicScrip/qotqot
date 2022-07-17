@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useContext } from "react";
 import Cart from "../../components/Cart";
 import Layout from "../../components/Layout";
@@ -15,10 +16,10 @@ export default function Panier() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [modal, setModal] = useState(false);
   const [modalCongrats, setModalCongrats] = useState(false);
   const [modalFranco, setModalFranco] = useState(false);
-  const { cartItems, getCartItems } = useContext(CurrentUserContext);
+  const { cartItems, getCartItems, modal, setModal } =
+    useContext(CurrentUserContext);
   const [date, setDate] = useState("");
   const [comment, setComment] = useState("");
 
@@ -46,8 +47,6 @@ export default function Panier() {
       return acc + item.product.price * item.quantity;
     }, 0)
     .toFixed(2);
-
-  const francoMin = 75 - totalPrice;
 
   const confirmPurchase = () => {
     setModalFranco(!modalFranco);
@@ -97,7 +96,7 @@ export default function Panier() {
       ))}
       <style jsx>{`
   * {
-    padding: 265px 0 10px 0;
+      padding-top: 260px;
       background-color: #E5E5E5;
       height:100vh;
   `}</style>
@@ -107,38 +106,6 @@ export default function Panier() {
   return (
     <>
       <Layout pageTitle="Panier">
-        <div className={styles.arrow}>
-          <Link href="/nouvelleCommande">
-            <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
-          </Link>
-        </div>
-        <div className={styles.headCmd}>
-          <div className={styles.priceTotal}>{totalPrice}€ HT</div>
-          <button
-            onClick={() => setModal(!modal)}
-            className={
-              cartItems.length === 0 ? styles.btnCartEmpty : styles.btnCart
-            }
-          >
-            Confirmer la commande
-          </button>
-        </div>
-        <div className={styles.francoText}>
-          Plus que{" "}
-          <span className={styles.franco}>
-            {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
-          </span>{" "}
-          pour le franco minimum
-        </div>
-
-        <ProgressBar
-          completed={totalPrice}
-          maxCompleted={75}
-          className={styles.wrapper}
-          barContainerClassName={styles.container}
-          labelClassName={styles.label}
-        />
-
         <>
           {modal && (
             <ConfirmationModal

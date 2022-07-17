@@ -14,6 +14,7 @@ export default function CurrentUserContextProvider({ children }) {
   const [orderDate, setOrderDate] = useState("");
   const [orderAmount, setOrderAmount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [modal, setModal] = useState(false);
   // const [count, setCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
@@ -77,6 +78,8 @@ export default function CurrentUserContextProvider({ children }) {
         cartItems,
         setCartItems,
         getCartItems,
+        modal,
+        setModal,
       }}
     >
       {children}

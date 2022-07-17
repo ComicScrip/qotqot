@@ -47,7 +47,7 @@ export default function NewOrder() {
 
       <style jsx>{`
   * {
-    padding: 265px 0 10px 0;
+    padding: 100px 0 10px 0;
       background-color: #E5E5E5;
       height:100%;
   `}</style>

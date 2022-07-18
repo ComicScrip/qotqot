@@ -16,7 +16,7 @@ export async function GetAccountInfo(req, res) {
     phone,
     mail,
   } = req.body;
-  const user = req.currentUser.fields["Code_Client_Test"];
+  const user = req.currentUser.fields["Code Client"];
   await axios
     .post(
       `${process.env.AIRTABLE_API}/Coordonn%C3%A9es%20Clients%20Personnalisables`,

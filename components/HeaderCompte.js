@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import styles from "../styles/header.module.css";
+import styles from "../styles/headerCompte.module.css";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/dist/client/router";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import Link from "next/link";
 
 export default function Header() {
   const router = useRouter();
@@ -18,14 +19,13 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.divTitle}>
-        <img
-          className={styles.arrow}
-          src="/images/arrow.png"
-          alt="arrow"
-          onClick={() => router.push("/")}
-        />
+        <div className={styles.arrow}>
+          <Link href="/commandes">
+            <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
+          </Link>
+        </div>
 
-        <div>
+        <div className={styles.account}>
           <h1 className={styles.title}>Mon compte 👤</h1>
           <p className={styles.date}>
             {today

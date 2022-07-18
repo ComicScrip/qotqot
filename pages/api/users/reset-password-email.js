@@ -17,7 +17,7 @@ async function handlePost(req, res) {
     resetPasswordToken: await hashPassword(resetPasswordToken),
   });
 
-  const mailBody = `Rendez-vous sur ce lien pour changer votre mot de passe : ${
+  const mailBody = `Bonjour, vous avez oublié votre mot de passe ? Pas de panique, vous pouvez le changer en cliquant sur ce lien : ${
     process.env.NEXTAUTH_URL ||
     process.env.VERCEL_URL ||
     `http://localhost:3000`

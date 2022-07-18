@@ -22,6 +22,7 @@ export default function ConfirmationModal({
   const date2 = dayjs().weekday(4).format("DD-MM-YYYY");
   const date3 = dayjs().weekday(9).format("DD-MM-YYYY");
   const date4 = dayjs().weekday(11).format("DD-MM-YYYY");
+  const date5 = dayjs().weekday(13).format("DD-MM-YYYY");
 
   useEffect(() => {
     setDate(date1);
@@ -60,6 +61,21 @@ export default function ConfirmationModal({
     },
   ];
 
+  const optionsV = [
+    {
+      label: date3,
+      value: date3,
+    },
+    {
+      label: date4,
+      value: date4,
+    },
+    {
+      label: date5,
+      value: date5,
+    },
+  ];
+
   const handleChange = (event) => {
     console.log("test");
     setDate(event.target.value);
@@ -94,13 +110,19 @@ export default function ConfirmationModal({
                     required
                     onChange={handleChange}
                   >
-                    {dayjs().isBefore(dayjs().weekday(2).hour(23))
+                    {dayjs().isBefore(dayjs().weekday(1).hour(23))
                       ? optionsM.map((option, index) => (
                           <option key={index} value={option.value}>
                             {option.label}
                           </option>
                         ))
-                      : optionsJ.map((option, index) => (
+                      : dayjs().isBefore(dayjs().weekday(3).hour(23))
+                      ? optionsJ.map((option, index) => (
+                          <option key={index} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))
+                      : optionsV.map((option, index) => (
                           <option key={index} value={option.value}>
                             {option.label}
                           </option>

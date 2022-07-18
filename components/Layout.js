@@ -6,7 +6,7 @@ import LoadingSpin from "../components/LoadingSpin";
 import { useContext } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
-//import HeaderNouvelleCommande from "./HeaderNouvelleCommande";
+import HeaderNouvelleCommande from "./HeaderNouvelleCommande";
 
 export default function Layout({ children, pageTitle }) {
   const { currentUserLogged } = useContext(CurrentUserContext);
@@ -31,7 +31,7 @@ export default function Layout({ children, pageTitle }) {
         ) : pageTitle === "detail-commande" ? (
           <HeaderCommandePassee></HeaderCommandePassee>
         ) : pageTitle == "Nouvelle commande" ? (
-          <Header></Header>
+          <HeaderNouvelleCommande></HeaderNouvelleCommande>
         ) : pageTitle == "Panier" ? (
           <Header />
         ) : pageTitle == "compte" ? (

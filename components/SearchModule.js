@@ -47,7 +47,7 @@ export const SearchModule = () => {
     <div className={s.searchModuleWrapper}>
       <input
         type="text"
-        placeholder="Cherchez..."
+        placeholder="🔍 Nom d'un produit"
         className={s.text_input}
         onChange={(e) => {
           setSearchTerm(e.target.value);

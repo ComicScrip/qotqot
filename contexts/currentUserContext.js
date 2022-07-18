@@ -16,6 +16,7 @@ export default function CurrentUserContextProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [modal, setModal] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [displayMenu, setDisplayMenu] = useState(false);
 
   const currentUserLogged = useMemo(
     () => currentUserProfile,
@@ -79,6 +80,8 @@ export default function CurrentUserContextProvider({ children }) {
         getCartItems,
         modal,
         setModal,
+        displayMenu,
+        setDisplayMenu,
       }}
     >
       {children}

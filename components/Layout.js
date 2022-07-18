@@ -10,7 +10,7 @@ import HeaderNouvelleCommande from "./HeaderNouvelleCommande";
 import HeaderPanier from "./HeaderPanier";
 
 export default function Layout({ children, pageTitle }) {
-  const { currentUserLogged } = useContext(CurrentUserContext);
+  const { currentUserLogged, setDisplayMenu } = useContext(CurrentUserContext);
   const { status } = useSession();
 
   if (currentUserLogged) {
@@ -40,7 +40,13 @@ export default function Layout({ children, pageTitle }) {
         ) : (
           <Header></Header>
         )}
-        {children}
+        <div
+          onClick={() => {
+            setDisplayMenu(false);
+          }}
+        >
+          {children}
+        </div>
       </>
     );
   }

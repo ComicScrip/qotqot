@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styles from "../styles/headerNouvelleCommande.module.css";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -8,8 +8,9 @@ import { useRouter } from "next/router";
 
 export default function HeaderPanier() {
   const router = useRouter();
-  const [displayMenu, setDisplayMenu] = useState(false);
-  const { cartItems, modal, setModal } = useContext(CurrentUserContext);
+
+  const { cartItems, modal, setModal, displayMenu, setDisplayMenu } =
+    useContext(CurrentUserContext);
   const today = new Date();
   const options = {
     weekday: "long",

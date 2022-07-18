@@ -10,7 +10,7 @@ export default function NewOrder() {
   useEffect(() => {
     setError("");
     setIsLoading(false);
-  }, [isLoading]);
+  }, []);
 
   return (
     <Layout pageTitle="Nouvelle commande">

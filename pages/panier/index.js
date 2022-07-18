@@ -98,7 +98,7 @@ export default function Panier() {
   * {
       padding-top: 260px;
       background-color: #E5E5E5;
-      height:100vh;
+      height:100%;
   `}</style>
     </div>
   );

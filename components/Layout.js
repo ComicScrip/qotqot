@@ -7,9 +7,10 @@ import { useContext } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import HeaderNouvelleCommande from "./HeaderNouvelleCommande";
+import HeaderPanier from "./HeaderPanier";
 
 export default function Layout({ children, pageTitle }) {
-  const { currentUserLogged } = useContext(CurrentUserContext);
+  const { currentUserLogged, setDisplayMenu } = useContext(CurrentUserContext);
   const { status } = useSession();
 
   if (currentUserLogged) {
@@ -33,13 +34,19 @@ export default function Layout({ children, pageTitle }) {
         ) : pageTitle == "Nouvelle commande" ? (
           <HeaderNouvelleCommande></HeaderNouvelleCommande>
         ) : pageTitle == "Panier" ? (
-          <Header />
+          <HeaderPanier></HeaderPanier>
         ) : pageTitle == "compte" ? (
           <HeaderCompte></HeaderCompte>
         ) : (
           <Header></Header>
         )}
-        {children}
+        <div
+          onClick={() => {
+            setDisplayMenu(false);
+          }}
+        >
+          {children}
+        </div>
       </>
     );
   }

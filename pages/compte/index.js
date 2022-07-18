@@ -17,7 +17,6 @@ export default function Account() {
   const [phone, setPhone] = useState("");
   const [mail, setMail] = useState("");
   const accountInfo = useRef([]);
-  console.log("re-render");
 
   useEffect(() => {
     axios

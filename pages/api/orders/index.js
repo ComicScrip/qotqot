@@ -1,7 +1,9 @@
 import { minifyOrders } from "../../../Airtable";
+import reqCurrentUser from "../../../middlewares/reqCurrentUser";
+import base from "../../../middlewares/common";
 import axios from "axios";
 
-export default async function getAllProducts(req, res) {
+export async function getAllProducts(req, res) {
   const url = `https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Commande%20Produits%20API?filterByFormula=${
     req.query.status == "pending"
       ? "%7BStatus%7D%3D%22En%2520cours%22"
@@ -26,3 +28,5 @@ export default async function getAllProducts(req, res) {
     })
     .catch(() => res.status(500).json({ msg: "Something went very wrong" }));
 }
+
+export default base().use(reqCurrentUser).get(getAllProducts);

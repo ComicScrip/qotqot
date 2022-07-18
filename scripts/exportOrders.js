@@ -1,5 +1,9 @@
 const db = require("../db");
 const axios = require("axios");
+const makeChunks = require("../utils/makeChunks");
+
+const wait = (seconds) =>
+  new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 
 async function exportOrdersToAirtable() {
   const orders = await db.order.findMany({
@@ -28,22 +32,28 @@ async function exportOrdersToAirtable() {
     return;
   }
 
-  await axios.post(
-    "https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Commande%20Produits%20API",
+  const chunks = makeChunks(items, 10);
 
-    {
-      records: items.map((item) => ({
-        fields: {
-          ...item,
-        },
-      })),
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
+  for (let chunk of chunks) {
+    console.log("syncing 10 items...");
+
+    await axios.post(
+      "https://api.airtable.com/v0/app5Yy06J0dhcG7Xb/Commande%20Produits%20API",
+      {
+        records: chunk.map((item) => ({
+          fields: {
+            ...item,
+          },
+        })),
       },
-    }
-  );
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,
+        },
+      }
+    );
+    await wait(1);
+  }
 
   await db.order.updateMany({
     data: {
@@ -56,5 +66,7 @@ async function exportOrdersToAirtable() {
     },
   });
 }
+
+exportOrdersToAirtable();
 
 module.exports = exportOrdersToAirtable;

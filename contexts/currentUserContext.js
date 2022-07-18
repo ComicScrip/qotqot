@@ -15,7 +15,6 @@ export default function CurrentUserContextProvider({ children }) {
   const [orderAmount, setOrderAmount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [modal, setModal] = useState(false);
-  // const [count, setCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
   const currentUserLogged = useMemo(

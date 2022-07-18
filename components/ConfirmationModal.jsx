@@ -77,7 +77,6 @@ export default function ConfirmationModal({
   ];
 
   const handleChange = (event) => {
-    console.log("test");
     setDate(event.target.value);
   };
 

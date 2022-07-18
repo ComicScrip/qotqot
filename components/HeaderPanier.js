@@ -10,7 +10,6 @@ export default function HeaderPanier() {
   const router = useRouter();
   const [displayMenu, setDisplayMenu] = useState(false);
   const { cartItems, modal, setModal } = useContext(CurrentUserContext);
-  console.log(cartItems);
   const today = new Date();
   const options = {
     weekday: "long",

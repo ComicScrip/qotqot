@@ -29,25 +29,29 @@ export const SearchModule = () => {
     setError("");
     const queryString = QueryString.stringify(router.query);
 
-    queryString !== "category=Tous"
-      ? axios
-          .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
-          .then((res) => setSearchResult(res.data))
-          .catch(() =>
-            setError("Could not get data from the server, please try again")
-          )
-      : axios
-          .get("/api/getProducts")
-          .then((res) => setSearchResult(res.data))
-          .catch(() =>
-            setError("Could not get data from the server, please try again")
-          );
+    if (queryString === "category=Tous") {
+      axios
+        .get("/api/getProducts")
+        .then((res) => setSearchResult(res.data))
+        .catch(() =>
+          setError("Could not get data from the server, please try again")
+        );
+    } else if (queryString === "category=Dernières%20Commandes") {
+      console.log("coucou");
+    } else {
+      axios
+        .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
+        .then((res) => setSearchResult(res.data))
+        .catch(() =>
+          setError("Could not get data from the server, please try again")
+        );
+    }
   }, [router.query]);
   return (
     <div className={s.searchModuleWrapper}>
       <input
         type="text"
-        placeholder="Nom d'un produit"
+        placeholder="🔎 Nom d'un produit"
         className={s.text_input}
         onChange={(e) => {
           setSearchTerm(e.target.value);
@@ -60,6 +64,13 @@ export const SearchModule = () => {
           onClick={(e) => setSearchParams({ category: e.target.value })}
         >
           Tous
+        </button>
+        <button
+          className={s.filterButtons}
+          value={"Dernières Commandes"}
+          onClick={(e) => setSearchParams({ category: e.target.value })}
+        >
+          Dernières commandes
         </button>
         {categoryList.map((o) => (
           <div key={o}>

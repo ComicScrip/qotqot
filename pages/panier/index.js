@@ -95,12 +95,6 @@ export default function Panier() {
           price={item.product.price}
         />
       ))}
-      <style jsx>{`
-  * {
-    padding: 265px 0 10px 0;
-      background-color: #E5E5E5;
-      height:100vh;
-  `}</style>
     </div>
   );
 

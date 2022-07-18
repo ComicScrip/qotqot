@@ -36,8 +36,6 @@ export const SearchModule = () => {
         .catch(() =>
           setError("Could not get data from the server, please try again")
         );
-    } else if (queryString === "category=Dernières%20Commandes") {
-      console.log("coucou");
     } else {
       axios
         .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
@@ -64,13 +62,6 @@ export const SearchModule = () => {
           onClick={(e) => setSearchParams({ category: e.target.value })}
         >
           Tous
-        </button>
-        <button
-          className={s.filterButtons}
-          value={"Dernières Commandes"}
-          onClick={(e) => setSearchParams({ category: e.target.value })}
-        >
-          Dernières commandes
         </button>
         {categoryList.map((o) => (
           <div key={o}>

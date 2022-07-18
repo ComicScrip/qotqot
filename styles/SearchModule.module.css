@@ -2,6 +2,11 @@
   width: 100%;
   background-color: #f2f2f2;
 }
+.searchFilters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .search_input {
   cursor: pointer;
   border-radius: 10px;
@@ -20,8 +25,9 @@
 }
 
 .text_input {
-  margin: 1rem;
-  width: 80%;
+  align-self: flex-start;
+  margin: 0.5rem;
+  width: 90%;
   height: 48px;
   cursor: pointer;
   border-radius: 100px;
@@ -57,10 +63,7 @@
   height: 2rem;
   margin: 0.2rem;
 }
-.filterActive {
-  background-color: #06968a;
-  color: white;
-}
+
 .filterButtons:hover {
   color: white;
   background-color: #06968a;
@@ -81,15 +84,17 @@
   }
   .text_input {
     width: 50%;
-    margin-left: 20%;
+    align-self: center;
   }
   .listButtons {
-    justify-content: space-evenly;
-    margin-left: 20%;
-    text-align: center;
-    width: 50%;
+    justify-content: space-between;
+    width: 51%;
   }
   .filterButtons {
     width: 6rem;
+  }
+  .filterButtons:visited {
+    background-color: #06968a;
+    color: white;
   }
 }

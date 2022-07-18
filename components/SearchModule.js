@@ -47,35 +47,39 @@ export const SearchModule = () => {
   }, [router.query]);
   return (
     <div className={s.searchModuleWrapper}>
-      <input
-        type="text"
-        placeholder="🔎 Nom d'un produit"
-        className={s.text_input}
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-        }}
-      />
-      <div className={s.listButtons}>
-        <button
-          className={s.filterButtons}
-          value={"Tous"}
-          onClick={(e) => setSearchParams({ category: e.target.value })}
-        >
-          Tous
-        </button>
-        {categoryList.map((o) => (
-          <div key={o}>
-            <button
-              className={s.filterButtons}
-              onClick={(e) => {
-                setSearchParams({ category: e.target.value });
-              }}
-              value={o}
-            >
-              {o}
-            </button>
-          </div>
-        ))}
+      <div className={s.searchFilters}>
+        <input
+          type="text"
+          placeholder="🔎 Nom d'un produit"
+          className={s.text_input}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
+        />
+        <div className={s.listButtons}>
+          <button
+            className={s.filterButtons}
+            value={"Tous"}
+            onClick={(e) => {
+              setSearchParams({ category: e.target.value });
+            }}
+          >
+            Tous
+          </button>
+          {categoryList.map((o) => (
+            <div key={o}>
+              <button
+                className={s.filterButtons}
+                onClick={(e) => {
+                  setSearchParams({ category: e.target.value });
+                }}
+                value={o}
+              >
+                {o}
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className={s.searchResult}>

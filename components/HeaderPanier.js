@@ -4,8 +4,10 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import ProgressBar from "@ramonak/react-progress-bar";
+import { useRouter } from "next/router";
 
 export default function HeaderPanier() {
+  const router = useRouter();
   const [displayMenu, setDisplayMenu] = useState(false);
   const { cartItems, modal, setModal } = useContext(CurrentUserContext);
   console.log(cartItems);
@@ -52,13 +54,22 @@ export default function HeaderPanier() {
           ...
         </button>
         {displayMenu && (
-          <button
-            onClick={() => signOut({ callbackUrl: window.location.origin })}
-            className={styles.logout}
-            data-cy="disconnectBtn"
-          >
-            Déconnexion
-          </button>
+          <div className={styles.accountDiv}>
+            <button
+              onClick={() => router.push("/compte")}
+              className={styles.monCompte}
+              data-cy="accountBtn"
+            >
+              Mon compte
+            </button>
+            <button
+              onClick={() => signOut({ callbackUrl: window.location.origin })}
+              className={styles.logout}
+              data-cy="disconnectBtn"
+            >
+              Déconnexion
+            </button>
+          </div>
         )}
       </div>
       <div className={styles.headCmd}>

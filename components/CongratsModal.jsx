@@ -31,7 +31,7 @@ const Congrats = ({
                 />
               </div>
               <h2 className="text-xl p-2">Félicitations !</h2>
-              <p className="text-gray-600 text-[14px] font-base p-2  py-12 text-center">
+              <p className="text-gray-600 text-[16px] font-base p-2  py-12 text-center">
                 La commande est envoyée, nous reviendrons vers vous dans les
                 plus brefs délais !
               </p>
@@ -50,7 +50,7 @@ const Congrats = ({
               <AiOutlineClose />
             </div>
             <h2 className="text-center text-xl p-4">Attention </h2>
-            <p className="text-gray-600 text-[14px] font-base p-10 text-center">
+            <p className="text-gray-600 text-[16px] font-base p-10 text-center">
               Vous n'avez pas atteind le franco minimum de 75€ HT. <br />
               Souhaitez-vous poursuivre votre commande ? <br />
               La livraison vous sera facturée 25€ HT.

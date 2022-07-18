@@ -1,10 +1,10 @@
 .header {
   margin: auto 0;
-  height: 100px;
+  height: 50px;
 }
 
 .divTitle {
-  margin-top: 60px;
+  margin-top: 20px;
   margin-left: 5%;
   display: flex;
   justify-content: space-between;

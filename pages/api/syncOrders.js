@@ -8,6 +8,7 @@ export default async function handler(req, res) {
       await exportOrdersToAirtable();
       res.send("export has been done");
     } catch (err) {
+      console.error(err.response.data);
       res.status(500).json({ statusCode: 500, message: err.message });
     }
   } else {

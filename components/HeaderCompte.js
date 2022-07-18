@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styles from "../styles/headerCompte.module.css";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/dist/client/router";
+import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
 
 export default function Header() {
   const router = useRouter();
-  const [displayMenu, setDisplayMenu] = useState(false);
+  const { displayMenu, setDisplayMenu } = useContext(CurrentUserContext);
+
   const today = new Date();
   const options = {
     weekday: "long",

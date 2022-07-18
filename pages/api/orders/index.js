@@ -1,7 +1,7 @@
 import { minifyOrders } from "../../../Airtable";
-import axios from "axios";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 import base from "../../../middlewares/common";
+import axios from "axios";
 
 export async function getAllProducts(req, res) {
   const user = req.currentUser.fields["Code Client"];
@@ -21,5 +21,3 @@ export async function getAllProducts(req, res) {
 }
 
 export default base().use(reqCurrentUser).get(getAllProducts);
-
-// Commandes%20Pro?filterByFormula=%7BCode%20Client%7D%3D%22${user}%22

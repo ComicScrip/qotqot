@@ -17,14 +17,10 @@ export async function handleCreateOrder(req, res) {
     return res.status(422).send("Your cart is empty...");
   }
 
-  console.log("date", dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"));
-
   const orderProps = {
     comment,
     delivery: dayjs(date, "DD-MM-YYYY").toDate(),
   };
-
-  console.log(orderProps);
 
   const newOrder = await createOrder(orderProps);
   await Promise.all(

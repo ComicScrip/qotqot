@@ -85,7 +85,7 @@ const getMinifiedOrderProduct = (record) => {
     orderNumber: record.fields["Numéro de commande"],
     name: record.fields.Produit,
     weight: record.fields["Poids (grammes)"],
-    totalAmount: record.fields["Total de commande"],
+    totalAmount: record.fields["Total (HT) Rollup (from Commandes Pro)"],
     quantity: record.fields.Quantite,
     price: record.fields["Tarif Pro (HT)"],
     pricePerKg: record.fields["Tarif Pro (HT) au Kg/L"],

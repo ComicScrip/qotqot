@@ -36,6 +36,7 @@ export default function Panier() {
 
   const handleClose2 = () => {
     setModalCongrats(!modalCongrats);
+    router.push("/nouvelleCommande");
   };
 
   const handleClose3 = () => {
@@ -59,7 +60,6 @@ export default function Panier() {
     axios
       .post("/api/ordersProduct", { date, comment })
       .then(getCartItems)
-      .then(router.push("/nouvelleCommande"))
       .catch(() => console.error("panier not working"));
   };
 
@@ -99,6 +99,7 @@ export default function Panier() {
       padding-top: 260px;
       background-color: #E5E5E5;
       min-height:100vh;
+      padding-bottom: 10px;
   `}</style>
     </div>
   );

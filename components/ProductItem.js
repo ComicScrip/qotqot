@@ -53,7 +53,6 @@ function ProductItem(props) {
     }
   };
 
-  // ------------- Visual Counter -------------- //
   const handleSubtractOneFromCart = () => {
     setCount(count > 0 ? count - 1 : 0);
     axios.post("/api/customerCartItem", {
@@ -122,7 +121,11 @@ function ProductItem(props) {
             {props.stock}
           </div>
 
-          <div className={style.counter}>
+          <div
+            className={
+              props.stock === "En stock" ? style.counter : style.instock
+            }
+          >
             <button
               className={style.countBtn}
               onClick={handleSubtractOneFromCart}

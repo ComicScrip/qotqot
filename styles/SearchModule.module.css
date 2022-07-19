@@ -52,7 +52,7 @@
 }
 .filterButtons {
   cursor: pointer;
-  padding: 0.2rem;
+  padding: 5px;
   text-align: center;
   font-size: 0.6rem;
   font-weight: 900;
@@ -60,7 +60,7 @@
   color: black;
   background-color: white;
   min-width: 7rem;
-  height: 2rem;
+  height: 40px;
   margin: 0.2rem;
 }
 

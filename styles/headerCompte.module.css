@@ -1,6 +1,6 @@
 .header {
   margin: auto 0;
-  height: 180px;
+  height: 50px;
 }
 
 .divTitle {
@@ -16,9 +16,9 @@
   margin-left: 7px;
 }
 
-.order {
+.account {
   margin: auto;
-  margin-left: 20px;
+  margin-left: -90px;
 }
 
 .title {
@@ -33,7 +33,8 @@
 
 .menu {
   font-size: 20px;
-  margin-right: 10px;
+  margin-right: 30px;
+  margin-left: 20px;
 }
 
 .accountDiv {
@@ -41,7 +42,9 @@
   z-index: 1;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  margin: 12% 55%;
+  margin: 12% 5% 0 65%;
+  width: 110px;
+  height: 60px;
   background-color: white;
   font-size: 16px;
   font-weight: 700;
@@ -50,8 +53,8 @@
 .monCompte {
   position: relative;
   border-radius: 4px;
-  width: 130px;
-  height: 35px;
+  width: 110px;
+  height: 30px;
   padding-left: 5px;
   padding-right: 5px;
   background-color: white;
@@ -62,8 +65,8 @@
 .logout {
   position: relative;
   border-radius: 4px;
-  width: 130px;
-  height: 35px;
+  width: 100px;
+  height: 30px;
   padding-left: 5px;
   padding-right: 5px;
   background-color: white;
@@ -152,11 +155,18 @@
   .header {
     margin: auto 0;
     height: 35px;
+    margin-bottom: 70px;
   }
 
   .divTitle {
     margin-left: 25%;
     margin-left: 25%;
+  }
+
+  .arrow {
+    margin-top: 10px;
+    width: 5%;
+    height: 2%;
   }
 
   .title {
@@ -166,23 +176,13 @@
   .date {
     font-size: 19px;
   }
-}
-
-@media screen and (min-width: 700px) {
-  .header {
-    height: 200px;
-  }
-
-  .arrow {
-    margin-left: -100px;
-  }
 
   .menu {
-    font-size: 35px;
+    font-size: 40px;
     margin-right: 40%;
   }
 
-  .accountDiv {
-    margin: 3% 38%;
+  .logout {
+    margin: 4% 5% 0 37%;
   }
 } ;

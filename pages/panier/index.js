@@ -75,7 +75,7 @@ export default function Panier() {
   }
 
   const renderProducts = (
-    <div className="main_container">
+    <div className={styles.main_container}>
       {cartItems.map((item) => (
         <Cart
           key={item.id}

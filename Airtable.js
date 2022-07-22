@@ -48,6 +48,7 @@ const getMinifiedOrder = (record) => {
       .format("D MMM YYYY"),
     statut: record.fields.Status,
     totalAmount: record.fields["Total (HT) Rollup (from Commandes Pro)"],
+    productsIdList: record.fields["Commandes produits Pro"],
   };
 };
 

@@ -16,7 +16,10 @@ export default function Home() {
       .get("/api/orders")
       .then((res) => res.data)
       .then((data) => data)
-      .then((data) => setOrdersList(data))
+      .then((data) => {
+        setOrdersList(data);
+        console.log(ordersList);
+      })
       .catch(() =>
         setError("Could not get data from the server, please try again")
       );
@@ -48,6 +51,7 @@ export default function Home() {
                     dateLivraison={order.dateLivraison}
                     orderNumber={order.orderNumber}
                     totalAmount={order.totalAmount}
+                    productsIdList={order.productsIdList}
                   />
                 ))}
             </div>
@@ -66,6 +70,7 @@ export default function Home() {
                     dateLivraison={order.dateLivraison}
                     orderNumber={order.orderNumber}
                     totalAmount={order.totalAmount}
+                    productsIdList={order.productsIdList}
                   />
                 ))}
             </div>

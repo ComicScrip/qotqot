@@ -1,5 +1,6 @@
 import styles from "../styles/home.module.css";
 import { useContext } from "react";
+// import { useState, useRef } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
 import "dayjs/locale/fr";
@@ -9,6 +10,8 @@ export default function OrderPassed(props) {
   const { setOrderNumberState, setOrderStatut, setOrderDate, setOrderAmount } =
     useContext(CurrentUserContext);
 
+  // const getProductsIdList = useRef("");
+
   function handleClick() {
     setOrderNumberState(`${props.orderNumber}`);
     setOrderStatut(`${props.statut}`);
@@ -16,6 +19,8 @@ export default function OrderPassed(props) {
       .locale("fr")
       .format("DD/MM/YYYY");
     setOrderAmount(`${props.totalAmount}`);
+    const getProductsIdList = props.productsIdList;
+    console.log(getProductsIdList);
   }
 
   return (

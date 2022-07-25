@@ -1,13 +1,12 @@
-/* eslint-disable no-unused-vars */
-const db = require("./db");
-const { minifyProducts } = require("./Airtable");
+const db = require("../db");
+const { minifyProducts } = require("../Airtable");
 
 const Airtable = require("airtable");
 const base = new Airtable({ apiKey: `keyH3Q5oGVJYOHLMj` }).base(
   "app5Yy06J0dhcG7Xb"
 );
 
-(async function main() {
+export async function importProductsFromAT() {
   await db.Product.deleteMany();
 
   const records = await base("Produits Actifs")
@@ -56,4 +55,4 @@ const base = new Airtable({ apiKey: `keyH3Q5oGVJYOHLMj` }).base(
       })
     ),
   });
-})();
+}

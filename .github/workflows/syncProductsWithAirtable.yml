@@ -1,7 +1,7 @@
 name: Trigger /api/syncOrders API route every 10m
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: "*/10 * * * *"
 jobs:
   cron:
     runs-on: ubuntu-latest
@@ -9,7 +9,4 @@ jobs:
       - name: Call the API route that will sync the database orders with airtable
         run: |
           curl --request GET \
-          --url '${{ secrets.API_BASE_URL }}/api/syncOrders?secret=${{ secrets.API_SECRET_KEY }}'
-
-
-          
+          --url '${{ secrets.API_BASE_URL }}/api/syncProducts?secret=${{ secrets.API_SECRET_KEY }}'

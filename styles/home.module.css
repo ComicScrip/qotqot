@@ -118,6 +118,8 @@
 
   .nouvelleCommandeBtn {
     font-size: 18px;
+    width: 93%;
+    margin: 20px 0;
   }
 
   .home {

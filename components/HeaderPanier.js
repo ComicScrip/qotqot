@@ -1,14 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styles from "../styles/headerNouvelleCommande.module.css";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import ProgressBar from "@ramonak/react-progress-bar";
-import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function HeaderPanier() {
-  const [displayMenu, setDisplayMenu] = useState(false);
-  const { cartItems, getCartItems } = useContext(CurrentUserContext);
+  const router = useRouter();
+
+  const { cartItems, modal, setModal, displayMenu, setDisplayMenu } =
+    useContext(CurrentUserContext);
   const today = new Date();
   const options = {
     weekday: "long",
@@ -24,16 +26,12 @@ export default function HeaderPanier() {
 
   const francoMin = 75 - totalPrice;
 
-  const handleCreateOrder = () => {
-    axios.post("/api/ordersProduct").then(getCartItems);
-  };
-
   return (
     <header className={styles.header}>
       <div className={styles.divTitle}>
         <div className={styles.info}>
           <div className={styles.arrow}>
-            <Link href="/commandes">
+            <Link href="/nouvelleCommande">
               <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
             </Link>
           </div>
@@ -56,19 +54,28 @@ export default function HeaderPanier() {
           ...
         </button>
         {displayMenu && (
-          <button
-            onClick={() => signOut({ callbackUrl: window.location.origin })}
-            className={styles.logout}
-            data-cy="disconnectBtn"
-          >
-            Déconnexion
-          </button>
+          <div className={styles.accountDiv}>
+            <button
+              onClick={() => router.push("/compte")}
+              className={styles.monCompte}
+              data-cy="accountBtn"
+            >
+              Mon compte
+            </button>
+            <button
+              onClick={() => signOut({ callbackUrl: window.location.origin })}
+              className={styles.logout}
+              data-cy="disconnectBtn"
+            >
+              Déconnexion
+            </button>
+          </div>
         )}
       </div>
       <div className={styles.headCmd}>
         <div className={styles.priceTotal}>{totalPrice}€ HT</div>
         <button
-          onClick={handleCreateOrder}
+          onClick={() => setModal(!modal)}
           className={
             cartItems.length === 0 ? styles.btnCartEmpty : styles.btnCart
           }

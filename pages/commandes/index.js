@@ -8,29 +8,17 @@ import { useEffect } from "react";
 
 export default function Home() {
   const [ordersList, setOrdersList] = useState([]);
-  const [ordersListPassed, setOrdersListPassed] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
     setError("");
     axios
-      .get("/api/orders?status=pending")
+      .get("/api/orders")
       .then((res) => res.data)
       .then((data) => data)
       .then((data) => setOrdersList(data))
       .catch(() =>
         setError("Could not get data from the server, please try again")
-      );
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("/api/orders?status=passed")
-      .then((res) => res.data)
-      .then((data) => data)
-      .then((data) => setOrdersListPassed(data))
-      .catch(() =>
-        alert("Could not get data from the server, please try again")
       );
   }, []);
 
@@ -51,28 +39,35 @@ export default function Home() {
             </Link>
             <h2 className={styles.title}>Commandes à venir</h2>
             <div className={styles.displayCommande}>
-              {ordersList.map((order) => (
-                <Order
-                  key={order.id}
-                  statut={order.statut}
-                  dateLivraison={order.dateLivraison}
-                  orderNumber={order.orderNumber}
-                  totalAmount={order.totalAmount}
-                />
-              ))}
+              {ordersList
+                .filter((statut) => statut.statut === "En cours")
+                .map((order) => (
+                  <Order
+                    key={order.id}
+                    statut={order.statut}
+                    dateLivraison={order.dateLivraison}
+                    orderNumber={order.orderNumber}
+                    totalAmount={order.totalAmount}
+                  />
+                ))}
             </div>
 
             <h2 className={styles.title}>Commandes passées</h2>
             <div className={styles.displayCommande}>
-              {ordersListPassed.map((order) => (
-                <Order
-                  key={order.id}
-                  statut={order.statut}
-                  dateLivraison={order.dateLivraison}
-                  orderNumber={order.orderNumber}
-                  totalAmount={order.totalAmount}
-                />
-              ))}
+              {ordersList
+                .filter(
+                  (statut) =>
+                    statut.statut === "Livrée" || statut.statut === "Annulée"
+                )
+                .map((order) => (
+                  <Order
+                    key={order.id}
+                    statut={order.statut}
+                    dateLivraison={order.dateLivraison}
+                    orderNumber={order.orderNumber}
+                    totalAmount={order.totalAmount}
+                  />
+                ))}
             </div>
           </div>
         </div>

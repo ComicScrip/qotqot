@@ -41,13 +41,13 @@ const getMinifiedOrder = (record) => {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
     dateLivraison: dayjs(
-      record.fields["Date de paiement (import)"],
+      record.fields["Date de commande (import)"],
       "DD/MM/YYYY"
     )
       .locale("fr")
       .format("D MMM YYYY"),
     statut: record.fields.Status,
-    totalAmount: record.fields["Total de commande"],
+    totalAmount: record.fields["Total (HT) Rollup (from Commandes Pro)"],
   };
 };
 
@@ -85,7 +85,7 @@ const getMinifiedOrderProduct = (record) => {
     orderNumber: record.fields["Numéro de commande"],
     name: record.fields.Produit,
     weight: record.fields["Poids (grammes)"],
-    totalAmount: record.fields["Total de commande"],
+    totalAmount: record.fields["Total (HT) Rollup (from Commandes Pro)"],
     quantity: record.fields.Quantite,
     price: record.fields["Tarif Pro (HT)"],
     pricePerKg: record.fields["Tarif Pro (HT) au Kg/L"],

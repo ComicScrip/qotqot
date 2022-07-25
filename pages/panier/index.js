@@ -140,11 +140,6 @@ export default function Panier() {
           barContainerClassName={styles.container}
           labelClassName={styles.label}
         />
-        {/* {totalPrice === 0 ? (
-          <Image src={emptyCartImg} alt="empty cart" width={90} height={100} />
-        ) : (
-          ""
-        )} */}
 
         <>
           {modal && (

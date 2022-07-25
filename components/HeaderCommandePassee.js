@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "../styles/headerCommandePassee.module.css";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -8,9 +7,14 @@ import { useRouter } from "next/dist/client/router";
 
 export default function HeaderCommandePassee() {
   const router = useRouter();
-  const [displayMenu, setDisplayMenu] = useState(false);
-  const { orderStatut, orderDate, orderNumberState, orderAmount } =
-    useContext(CurrentUserContext);
+  const {
+    orderStatut,
+    orderDate,
+    orderNumberState,
+    orderAmount,
+    displayMenu,
+    setDisplayMenu,
+  } = useContext(CurrentUserContext);
   const today = new Date();
   const options = {
     weekday: "long",
@@ -64,7 +68,7 @@ export default function HeaderCommandePassee() {
       </div>
       <div className={styles.commandeDetails}>
         {orderStatut === "Livrée" ||
-        orderStatut === "En-cours" ||
+        orderStatut === "En cours" ||
         orderStatut === "Annulée" ? (
           <button
             className={styles.commandePrice}
@@ -76,7 +80,7 @@ export default function HeaderCommandePassee() {
           <button
             className={styles.livraison1}
           >{`Livrée le ${orderDate}`}</button>
-        ) : orderStatut === "En-cours" ? (
+        ) : orderStatut === "En cours" ? (
           <button className={styles.livraison2}>
             {`Prévue pour le ${orderDate}`}
           </button>

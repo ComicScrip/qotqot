@@ -5,6 +5,7 @@ import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 import { findAllCartItems, updateCartItem } from "../../../models/cart_model";
 import dayjs from "dayjs";
+import exportOrdersToAirtable from "../../../scripts/exportOrders";
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
 
@@ -17,14 +18,10 @@ export async function handleCreateOrder(req, res) {
     return res.status(422).send("Your cart is empty...");
   }
 
-  console.log("date", dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"));
-
   const orderProps = {
     comment,
     delivery: dayjs(date, "DD-MM-YYYY").toDate(),
   };
-
-  console.log(orderProps);
 
   const newOrder = await createOrder(orderProps);
   await Promise.all(
@@ -35,6 +32,8 @@ export async function handleCreateOrder(req, res) {
     })
   );
   res.send("ok");
+
+  await exportOrdersToAirtable();
 }
 
 export default base().use(reqCurrentUser).post(handleCreateOrder);

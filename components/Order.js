@@ -19,7 +19,7 @@ export default function OrderPassed(props) {
   }
 
   return (
-    <Link href={`/commandes/` + `${props.orderNumber}`}>
+    <Link href={`/commandes/` + encodeURIComponent(`${props.orderNumber}`)}>
       <div className={styles.commande} onClick={handleClick}>
         {props.statut === "Annulée" ? (
           <div className={styles.state2}>{props.statut}</div>

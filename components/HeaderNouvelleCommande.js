@@ -30,7 +30,7 @@ export default function HeaderNouvelleCommande() {
       <div
         style={{
           width: "100%",
-          position: "fixed !important",
+          position: "fixed",
           "z-index": "1",
           "background-color": "white",
           top: "0",

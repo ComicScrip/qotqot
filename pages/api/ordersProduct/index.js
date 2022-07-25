@@ -5,6 +5,7 @@ import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 import { findAllCartItems, updateCartItem } from "../../../models/cart_model";
 import dayjs from "dayjs";
+import exportOrdersToAirtable from "../../../scripts/exportOrders";
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
 
@@ -31,6 +32,8 @@ export async function handleCreateOrder(req, res) {
     })
   );
   res.send("ok");
+
+  await exportOrdersToAirtable();
 }
 
 export default base().use(reqCurrentUser).post(handleCreateOrder);

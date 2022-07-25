@@ -14,9 +14,7 @@ describe("getProducts", () => {
   it("should have content appear on screen", () => {
     cy.get("div");
   });
-  it("should present a picture of products", () => {
-    cy.get("img").should("be.visible");
-  });
+
   it("should display an error when the api is down", () => {
     cy.intercept("**/products", { statusCode: 500 });
     cy.login({ email: "user@gmail.com" });

@@ -23,6 +23,12 @@ export default function CurrentUserContextProvider({ children }) {
     [currentUserProfile]
   );
 
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
+
   const getProfile = useCallback(() => {
     axios
       .get("/api/profile")
@@ -82,6 +88,7 @@ export default function CurrentUserContextProvider({ children }) {
         setModal,
         displayMenu,
         setDisplayMenu,
+        totalPrice,
       }}
     >
       {children}

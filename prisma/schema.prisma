@@ -10,7 +10,6 @@ datasource db {
   provider             = "mysql"
   url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
-
 }
 
 model Product {
@@ -53,5 +52,6 @@ model order {
   delivery         DateTime
   comment          String?            @db.VarChar(255)
   synchWithAT      Boolean            @default(false)
+  totalPrice       String?
   customerCartItem customerCartItem[]
 }

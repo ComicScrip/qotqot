@@ -44,7 +44,7 @@ const getMinifiedOrder = (record) => {
       .locale("fr")
       .format("D MMM YYYY"),
     statut: record.fields.Status,
-    totalAmount: record.fields["Total (HT) Rollup (from Commandes Pro)"],
+    totalAmount: record.fields["Total (HT) (from Total (HT))"],
   };
 };
 

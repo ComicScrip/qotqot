@@ -17,7 +17,7 @@ export const SearchModule = () => {
   const [error, setError] = useState("");
 
   const setSearchParams = (newSearch) => {
-    const queryString = QueryString.stringify(newSearch);
+    const queryString = QueryString.stringify(newSearch, { skipNulls: true });
     router.push(`/nouvelleCommande${queryString ? "?" : ""}${queryString}`);
   };
 
@@ -29,21 +29,12 @@ export const SearchModule = () => {
     setError("");
     const queryString = QueryString.stringify(router.query);
 
-    if (queryString === "category=Tous") {
-      axios
-        .get("/api/getProducts")
-        .then((res) => setSearchResult(res.data))
-        .catch(() =>
-          setError("Could not get data from the server, please try again")
-        );
-    } else {
-      axios
-        .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
-        .then((res) => setSearchResult(res.data))
-        .catch(() =>
-          setError("Could not get data from the server, please try again")
-        );
-    }
+    axios
+      .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
+      .then((res) => setSearchResult(res.data))
+      .catch(() =>
+        setError("Could not get data from the server, please try again")
+      );
   }, [router.query]);
   return (
     <div className={s.searchModuleWrapper}>
@@ -60,8 +51,8 @@ export const SearchModule = () => {
           <button
             className={s.filterButtons}
             value={"Tous"}
-            onClick={(e) => {
-              setSearchParams({ category: e.target.value });
+            onClick={() => {
+              setSearchParams({ category: null });
             }}
           >
             Tous

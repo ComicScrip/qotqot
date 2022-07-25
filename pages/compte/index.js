@@ -306,8 +306,8 @@ export default function Account() {
               ></input>
             </div>
           </div>
-          <div className={styles.btnAcc}>
-            <button>Enregistrer</button>
+          <div>
+            <button className={styles.btnAcc}>Enregistrer</button>
           </div>
         </form>
       </div>

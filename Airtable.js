@@ -40,15 +40,11 @@ const getMinifiedOrder = (record) => {
   return {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
-    dateLivraison: dayjs(
-      record.fields["Date de commande (import)"],
-      "DD/MM/YYYY"
-    )
+    dateLivraison: dayjs(record.fields["Date commande Rollup"][0], "DD/MM/YYYY")
       .locale("fr")
       .format("D MMM YYYY"),
     statut: record.fields.Status,
     totalAmount: record.fields["Total (HT) Rollup (from Commandes Pro)"],
-    productsIdList: record.fields["Commandes produits Pro"],
   };
 };
 
@@ -84,15 +80,17 @@ const getMinifiedOrderProduct = (record) => {
   return {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
-    name: record.fields.Produit,
-    weight: record.fields["Poids (grammes)"],
-    totalAmount: record.fields["Total (HT) Rollup (from Commandes Pro)"],
-    quantity: record.fields.Quantite,
-    price: record.fields["Tarif Pro (HT)"],
-    pricePerKg: record.fields["Tarif Pro (HT) au Kg/L"],
-    picture: record.fields["Image produits sans fond"]?.[0].url,
-    dateLivraison: record.fields["Date de livraison"],
+    name: record.fields["Numéro de commande"],
+    weight: record.fields["Numéro de commande"],
+    totalAmount: record.fields["Numéro de commande"],
+    quantity: record.fields["Numéro de commande"],
+    price: record.fields["Numéro de commande"],
+    pricePerKg: record.fields["Numéro de commande"],
+    picture: record.fields["Numéro de commande"],
+    dateLivraison: record.fields["Numéro de commande"],
     statut: record.fields.Status,
+    codeProduits:
+      record.fields["Code Produit QotQot (from Commande Produits API)"],
   };
 };
 

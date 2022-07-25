@@ -51,7 +51,6 @@ export default function Home() {
                     dateLivraison={order.dateLivraison}
                     orderNumber={order.orderNumber}
                     totalAmount={order.totalAmount}
-                    productsIdList={order.productsIdList}
                   />
                 ))}
             </div>

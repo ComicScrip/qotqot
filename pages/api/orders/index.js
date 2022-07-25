@@ -4,10 +4,11 @@ import base from "../../../middlewares/common";
 import axios from "axios";
 
 export async function getAllProducts(req, res) {
-  const user = req.currentUser.fields["Code Client"];
+  const user = req.currentUser.fields["ID"];
+  console.log(user);
   axios
     .get(
-      `${process.env.AIRTABLE_API}/Commandes%20Pro%20Test?filterByFormula=%7BCode%20Client%7D%3D%22${user}%22`,
+      `${process.env.AIRTABLE_API}/Commande%20Pro%202?filterByFormula=%7BCode%20Client%7D%3D%22${user}%22`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,

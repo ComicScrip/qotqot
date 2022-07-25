@@ -21,7 +21,7 @@ export default function OrderHistory() {
     setError("");
     if (id) {
       axios
-        .get(`/api/orderDetails/${id}`)
+        .get(`/api/customerCartItem/${id}`)
         .then((res) => res.data)
         .then((data) => setOrderProductList(data))
         .catch(() =>
@@ -36,22 +36,20 @@ export default function OrderHistory() {
       {orderProductList
         .filter(
           (order) =>
-            orderNumberState === order.orderNumber ||
-            window.location.toString().includes(`${order.orderNumber}`)
+            orderNumberState === order.idOrder ||
+            window.location.toString().includes(`${order.idOrder}`)
         )
         .map((prod) => (
           <div className={style.product} key={prod.id}>
             <OrderProductItem
-              key={prod.id}
-              date={prod.date}
-              orderNumber={prod.orderNumber}
-              name={prod.name}
-              weight={prod.weight}
+              key={prod.product.id}
+              orderNumber={prod.idOrder}
+              name={prod.product.name}
+              weight={prod.product.weight}
               quantity={prod.quantity}
-              price={prod.price}
-              pricePerKg={prod.pricePerKg}
-              picture={prod.picture ? prod.picture : ""}
-              totalAmount={prod.totalAmount}
+              price={prod.product.price}
+              pricePerKg={prod.product.pricePerKg}
+              picture={prod.product.picture ? prod.product.picture : ""}
               dateLivraison={prod.dateLivraison}
               statut={prod.statut}
             />

@@ -75,7 +75,7 @@ export default function Panier() {
   }
 
   const renderProducts = (
-    <div className="main_container">
+    <div className={styles.main_container}>
       {cartItems.map((item) => (
         <Cart
           key={item.id}
@@ -94,13 +94,6 @@ export default function Panier() {
           price={item.product.price}
         />
       ))}
-      <style jsx>{`
-  * {
-      padding-top: 260px;
-      background-color: #E5E5E5;
-      min-height:100vh;
-      padding-bottom: 10px;
-  `}</style>
     </div>
   );
 

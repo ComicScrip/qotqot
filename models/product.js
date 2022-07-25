@@ -25,5 +25,3 @@ module.exports.findOneProduct = (id) => {
     where: { id },
   });
 };
-module.exports.findAllProducts = () =>
-  db.product.findMany({ include: { customerCartItems: true } });

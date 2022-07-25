@@ -27,7 +27,15 @@ export default function HeaderNouvelleCommande() {
 
   return (
     <header>
-      <div className={styles.header}>
+      <div
+        style={{
+          width: "100%",
+          position: "fixed",
+          "z-index": "1",
+          "background-color": "white",
+          top: "0",
+        }}
+      >
         <div className={styles.divTitle}>
           <div className={styles.info}>
             <div className={styles.arrow}>

@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 export default function HeaderNouvelleCommande() {
   const router = useRouter();
-  const { cartItems, displayMenu, setDisplayMenu } =
+  const { totalPrice, displayMenu, setDisplayMenu } =
     useContext(CurrentUserContext);
   const today = new Date();
   const options = {
@@ -17,11 +17,6 @@ export default function HeaderNouvelleCommande() {
     month: "long",
     day: "2-digit",
   };
-  const totalPrice = cartItems
-    .reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0)
-    .toFixed(2);
 
   const francoMin = 75 - totalPrice;
 

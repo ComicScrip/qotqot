@@ -45,6 +45,12 @@ export default function CurrentUserContextProvider({ children }) {
       );
   }, []);
 
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
+
   useEffect(() => {
     if (status === "authenticated") {
       getProfile();
@@ -82,6 +88,7 @@ export default function CurrentUserContextProvider({ children }) {
         setModal,
         displayMenu,
         setDisplayMenu,
+        totalPrice,
       }}
     >
       {children}

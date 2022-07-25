@@ -10,6 +10,8 @@ import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import emptyCartImg from "../../public/images/emptyCart.png";
 
 export default function Panier() {
   const router = useRouter();
@@ -138,6 +140,11 @@ export default function Panier() {
           barContainerClassName={styles.container}
           labelClassName={styles.label}
         />
+        {/* {totalPrice === 0 ? (
+          <Image src={emptyCartImg} alt="empty cart" width={90} height={100} />
+        ) : (
+          ""
+        )} */}
 
         <>
           {modal && (
@@ -152,7 +159,6 @@ export default function Panier() {
               setComment={setComment}
             />
           )}
-
           {modalCongrats && (
             <CongratsModal
               confirmPurchase={confirmPurchase}
@@ -160,7 +166,6 @@ export default function Panier() {
               handleClose2={handleClose2}
             />
           )}
-
           {modalFranco && (
             <CongratsModal
               confirmPurchase={confirmPurchase}
@@ -177,7 +182,23 @@ export default function Panier() {
               Could not get data from the server, please try again
             </p>
           )}
-          {isLoading ? <LoadingSpin /> : renderProducts}
+          {isLoading ? (
+            <LoadingSpin />
+          ) : totalPrice === "0.00" ? (
+            <div className="flex justify-center items-center flex-col my-12">
+              <Image
+                src={emptyCartImg}
+                alt="empty cart"
+                width={150}
+                height={150}
+              />
+              <p className="text-[#676767] text-[16px] md:text-[18px]">
+                Votre panier est vide... 🙁
+              </p>
+            </div>
+          ) : (
+            renderProducts
+          )}
         </>
       </Layout>
     </>

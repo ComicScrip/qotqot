@@ -44,7 +44,7 @@ export default function Layout({ children, pageTitle }) {
   return (
     <div>
       {status === "loading" || status === "authenticated" ? (
-        <LoadingSpin></LoadingSpin>
+        <LoadingSpin className="flex justify-center items-center"></LoadingSpin>
       ) : (
         <>
           <p className="flex flex-col justify-center items-center bg-[red] text-white h-full text-xl text-center">

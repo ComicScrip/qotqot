@@ -128,4 +128,12 @@
     margin-left: 25%;
     margin-right: 25%;
   }
+
+  .loginBg {
+    background-image: url("../public/images/background.jpg");
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 } ;

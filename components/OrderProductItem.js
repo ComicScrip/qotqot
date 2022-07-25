@@ -9,7 +9,7 @@ function OrderProductItem(props) {
   const { setOrderAmount, setOrderNumberState, setOrderStatut, setOrderDate } =
     useContext(CurrentUserContext);
 
-  const calculateWeight = props.weight * props.quantity;
+  const calculateWeight = parseInt(props.poidsUVC * props.quantity);
 
   useEffect(() => {
     axios
@@ -40,7 +40,7 @@ function OrderProductItem(props) {
       </div>
       <div className={style.item_detail}>
         <div className={style.item_title}>{props.name}</div>
-        <div className={style.item_weight}>{`${props.weight}g`}</div>
+        <div className={style.item_weight}>{props.weight}</div>
       </div>
       <div className={style.quantity}>
         <div className={style.itemQuantity}>{props.quantity}</div>
@@ -48,7 +48,9 @@ function OrderProductItem(props) {
       </div>
       <div className={style.price}>
         <div className={style.itemPrice}>{props.price}€ HT</div>
-        <div className={style.itemPricePerKg}>{props.pricePerKg}€ HT /Kg</div>
+        <div className={style.itemPricePerKg}>
+          {props.pricePerKg.toFixed(2)}€ HT /Kg
+        </div>
       </div>
     </div>
   );

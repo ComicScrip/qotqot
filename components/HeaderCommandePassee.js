@@ -31,7 +31,9 @@ export default function HeaderCommandePassee() {
           </Link>
         </div>
         <div className={styles.order}>
-          <h1 className={styles.title}>Commande n° {orderNumberState}</h1>
+          <h1 className={styles.title}>
+            Commande n° <span>{orderNumberState}</span>
+          </h1>
           <p className={styles.date}>
             {today
               .toLocaleDateString("fr-FR", options)

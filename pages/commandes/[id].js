@@ -46,6 +46,7 @@ export default function OrderHistory() {
               orderNumber={prod.idOrder}
               name={prod.product.name}
               weight={prod.product.weight}
+              poidsUVC={prod.product.poidsUVC}
               quantity={prod.quantity}
               price={prod.product.price}
               pricePerKg={prod.product.pricePerKg}

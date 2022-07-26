@@ -90,7 +90,7 @@ const getMinifiedOrderProduct = (record) => {
     dateLivraison: record.fields["Numéro de commande"],
     statut: record.fields.Status,
     codeProduits:
-      record.fields["Code Produit QotQot (from Commande Produits API)"],
+      record.fields["Code Produit QotQot (from Commande Produits .env)"],
   };
 };
 

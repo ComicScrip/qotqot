@@ -4,16 +4,19 @@ import { CurrentUserContext } from "../contexts/currentUserContext";
 import "dayjs/locale/fr";
 import axios from "axios";
 const dayjs = require("dayjs");
+import { useRouter } from "next/router";
 
 function OrderProductItem(props) {
   const { setOrderAmount, setOrderNumberState, setOrderStatut, setOrderDate } =
     useContext(CurrentUserContext);
 
   const calculateWeight = parseInt(props.poidsUVC * props.quantity);
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(() => {
     axios
-      .get("/api/orders")
+      .get(`/api/orders/${id}`)
       .then((res) => res.data)
       .then((data) => data[0])
       .then((data) => {

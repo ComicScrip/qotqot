@@ -61,7 +61,7 @@ const Congrats = ({
                 className=" bg-[#06968A] w-[100%] cursor-pointer rounded-md p-3uppercase text-sm h-12 mt-2 text-center text-white font-bold"
                 onClick={confirmPurchase}
               >
-                poursuivre
+                Poursuivre
               </button>
             </div>
           </div>

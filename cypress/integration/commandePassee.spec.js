@@ -7,24 +7,12 @@ describe("commandePassee", () => {
   it("should access a detailed page of a passed order when clicking on a passed order", () => {
     cy.intercept("**/api/orders**", { fixture: "orderspassed.json" });
     cy.visit("/commandes");
-    cy.contains("17 mai").click();
-    cy.intercept("**/orderDetails/PRO69-0007-14-05-2022", {
+    cy.contains("26 Jul").click();
+    cy.intercept("**/orderDetails/cl62b8ee3004609jw4t8pmb1a", {
       fixture: "orderDetails.json",
     });
-    cy.url().should("include", "/commandes/PRO69-0007-14-05-2022");
-    cy.contains("Livrée le");
-    cy.contains("Liqueur de Verveine");
-  });
-
-  it("should access a detailed page of cancelled order when clicking on a cancelled order", () => {
-    cy.intercept("**/api/orders**", { fixture: "orderspassed.json" });
-    cy.visit("/commandes");
-    cy.contains("5 avr.").click();
-    cy.intercept("**/orderDetails/PRO69-0006-04-04-2022", {
-      fixture: "orderDetails.json",
-    });
-    cy.url().should("include", "/commandes/PRO69-0006-04-04-2022");
-    cy.contains("Annulée le");
-    cy.contains("Provençale de légumes");
+    cy.url().should("include", "/commandes/cl62b8ee3004609jw4t8pmb1a");
+    cy.contains("En cours");
+    cy.contains("Caviar d'artichaut");
   });
 });

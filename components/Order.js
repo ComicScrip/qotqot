@@ -2,8 +2,8 @@ import styles from "../styles/home.module.css";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
-import "dayjs/locale/fr";
 import dayjs from "dayjs";
+require("dayjs/locale/fr");
 
 export default function OrderPassed(props) {
   const {

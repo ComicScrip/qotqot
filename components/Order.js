@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
 import dayjs from "dayjs";
-require("dayjs/locale/fr");
+import "dayjs/locale/fr";
 
 export default function OrderPassed(props) {
   const {

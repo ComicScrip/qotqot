@@ -36,7 +36,9 @@ export default function Panier() {
 
   const handleClose2 = () => {
     setModalCongrats(!modalCongrats);
-    router.push("/commandes");
+    setTimeout(() => {
+      router.push("/commandes");
+    }, 2000);
   };
 
   const handleClose3 = () => {

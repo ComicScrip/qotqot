@@ -13,11 +13,14 @@ export default function Account() {
   const [billingAddress, setBillingAddress] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
-  const [contact, setContact] = useState("");
+  const [orderAddress, setOrderAddress] = useState("");
+  const [orderPostalCode, setOrderPostalCode] = useState("");
+  const [orderCity, setOrderCity] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [phone, setPhone] = useState("");
   const [mail, setMail] = useState("");
   const accountInfo = useRef([]);
-  console.log("re-render");
 
   useEffect(() => {
     axios
@@ -33,7 +36,11 @@ export default function Account() {
           setBillingAddress(info.fields["Adresse (N° et voie) - Facturation"]);
           setPostalCode(info.fields["Code Postal - Facturation"]);
           setCity(info.fields["Ville - Facturation"]);
-          setContact(info.fields["Contact pour la livraison"]);
+          setOrderAddress(info.fields["Adresse (N° et voie) - Livraison"]);
+          setOrderPostalCode(info.fields["Code Postal - Livraison"]);
+          setOrderCity(info.fields["Ville - Livraison"]);
+          setLastname(info.fields["Nom Contact pour la livraison"]);
+          setFirstname(info.fields["Prénom Contact pour la livraison"]);
           setPhone(info.fields["Téléphone (Contact Livraison)"]);
           setMail(info.fields["Mail (envoi facture)"]);
         });
@@ -48,14 +55,17 @@ export default function Account() {
     axios
       .post("/api/account-info/patch-account-info", {
         accountId,
-        companyName,
         corporateName,
         siret,
         tva,
         billingAddress,
         postalCode,
         city,
-        contact,
+        orderAddress,
+        orderPostalCode,
+        orderCity,
+        firstname,
+        lastname,
         phone,
         mail,
       })
@@ -71,14 +81,17 @@ export default function Account() {
     e.preventDefault();
     axios
       .post("/api/account-info/post-account-info", {
-        companyName,
         corporateName,
         siret,
         tva,
         billingAddress,
         postalCode,
         city,
-        contact,
+        orderAddress,
+        orderPostalCode,
+        orderCity,
+        firstname,
+        lastname,
         phone,
         mail,
       })
@@ -203,22 +216,43 @@ export default function Account() {
           <div className={styles.pAcc}>
             <h1 className={styles.titleAcc}>Adresse de livraison</h1>
             <div className={styles.fieldsAcc}>
-              <label className={styles.labelAcc && "bg-[#c6c5c5]"}>
-                Numéro et voie*
-              </label>
-              <input disabled className="text-[#444242] bg-[#c6c5c5]"></input>
+              <label className={styles.labelAcc}>Numéro et voie*</label>
+              <input
+                type="text"
+                id="billingAddress"
+                name="billingAddress"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={orderAddress || ""}
+                onChange={(e) => setOrderAddress(e.target.value)}
+              ></input>
             </div>
             <div className={styles.fieldsAcc}>
-              <label className={styles.labelAcc && "bg-[#c6c5c5]"}>
-                Code postal*
-              </label>
-              <input disabled className="text-[#444242] bg-[#c6c5c5]"></input>
+              <label className={styles.labelAcc}>Code postal*</label>
+              <input
+                type="text"
+                id="postalCode"
+                name="postalCode"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={orderPostalCode || ""}
+                onChange={(e) => setOrderPostalCode(e.target.value)}
+              ></input>
             </div>
             <div className={styles.fieldsAcc}>
-              <label className={styles.labelAcc && "bg-[#c6c5c5]"}>
-                Ville*
-              </label>
-              <input disabled className="text-[#444242] bg-[#c6c5c5]"></input>
+              <label className={styles.labelAcc}>Ville*</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                className="text-[#7F7F7F]"
+                minLength="1"
+                maxLength="30"
+                value={orderCity || ""}
+                onChange={(e) => setOrderCity(e.target.value)}
+              ></input>
             </div>
           </div>
           <div className={styles.pAcc}>
@@ -231,15 +265,21 @@ export default function Account() {
                 className="text-[#7F7F7F]"
                 minLength="1"
                 maxLength="30"
-                value={contact || ""}
-                onChange={(e) => setContact(e.target.value)}
+                value={lastname || ""}
+                onChange={(e) => setLastname(e.target.value)}
               ></input>
             </div>
             <div className={styles.fieldsAcc}>
-              <label className={styles.labelAcc && "bg-[#c6c5c5]"}>
-                Prénom*
-              </label>
-              <input disabled className="text-[#444242] bg-[#c6c5c5]"></input>
+              <label className={styles.labelAcc}>Prénom*</label>
+              <input
+                id="firstname"
+                name="firstname"
+                className="text-[#444242]"
+                minLength="1"
+                maxLength="30"
+                value={firstname || ""}
+                onChange={(e) => setFirstname(e.target.value)}
+              ></input>
             </div>
             <div className={styles.fieldsAcc}>
               <label className={styles.labelAcc}>Téléphone*</label>
@@ -266,8 +306,8 @@ export default function Account() {
               ></input>
             </div>
           </div>
-          <div className={styles.btnAcc}>
-            <button>Enregistrer</button>
+          <div>
+            <button className={styles.btnAcc}>Enregistrer</button>
           </div>
         </form>
       </div>

@@ -1,6 +1,12 @@
 .searchModuleWrapper {
   width: 100%;
-  background-color: #e5e5e5;
+  background-color: #f2f2f2;
+  padding-top: 220px;
+}
+.searchFilters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .search_input {
   cursor: pointer;
@@ -20,20 +26,23 @@
 }
 
 .text_input {
-  margin: 1rem;
-  width: 60%;
+  align-self: flex-start;
+  margin: 0.5rem;
+  width: 90%;
+  height: 48px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 100px;
   padding: 4px 12px;
   font-weight: 600;
   letter-spacing: 1px;
+  opacity: 70%;
 }
 
 .listButtons {
   display: flex;
   width: 100%;
   overflow-x: scroll;
-  background-color: #e5e5e5;
+  background-color: #f2f2f2;
 }
 .listButtons::-webkit-scrollbar {
   display: none;
@@ -44,7 +53,7 @@
 }
 .filterButtons {
   cursor: pointer;
-  padding: 0.2rem;
+  padding: 5px;
   text-align: center;
   font-size: 0.6rem;
   font-weight: 900;
@@ -52,13 +61,10 @@
   color: black;
   background-color: white;
   min-width: 7rem;
-  height: 2rem;
+  height: 40px;
   margin: 0.2rem;
 }
-.filterActive {
-  background-color: #06968a;
-  color: white;
-}
+
 .filterButtons:hover {
   color: white;
   background-color: #06968a;
@@ -79,15 +85,17 @@
   }
   .text_input {
     width: 50%;
-    margin-left: 20%;
+    align-self: center;
   }
   .listButtons {
-    justify-content: space-evenly;
-    margin-left: 20%;
-    text-align: center;
-    width: 50%;
+    justify-content: space-between;
+    width: 51%;
   }
   .filterButtons {
     width: 6rem;
+  }
+  .filterButtons:visited {
+    background-color: #06968a;
+    color: white;
   }
 }

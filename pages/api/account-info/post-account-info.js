@@ -12,11 +12,15 @@ export async function GetAccountInfo(req, res) {
     billingAddress,
     postalCode,
     city,
-    contact,
+    orderAddress,
+    orderPostalCode,
+    orderCity,
+    firstname,
+    lastname,
     phone,
     mail,
   } = req.body;
-  const user = req.currentUser.fields["Code_Client_Test"];
+  const user = req.currentUser.fields["Code Client"];
   await axios
     .post(
       `${process.env.AIRTABLE_API}/Coordonn%C3%A9es%20Clients%20Personnalisables`,
@@ -31,7 +35,11 @@ export async function GetAccountInfo(req, res) {
               ["Adresse (N° et voie) - Facturation"]: billingAddress,
               ["Code Postal - Facturation"]: postalCode,
               ["Ville - Facturation"]: city,
-              ["Contact pour la livraison"]: contact,
+              ["Adresse (N° et voie) - Livraison"]: orderAddress,
+              ["Code Postal - Livraison"]: orderPostalCode,
+              ["Ville - Livraison"]: orderCity,
+              ["Prénom Contact pour la livraison"]: firstname,
+              ["Nom Contact pour la livraison"]: lastname,
               ["Téléphone (Contact Livraison)"]: phone,
               ["Mail (envoi facture)"]: mail,
               ["Code Client"]: user,

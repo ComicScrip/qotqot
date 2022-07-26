@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import Popup from "./Popup";
 import axios from "axios";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import { runLatest } from "../utils/runLatest";
 
 function ProductItem(props) {
   const [isDetailed, setIsDetailed] = useState(false);
@@ -53,21 +54,24 @@ function ProductItem(props) {
     }
   };
 
-  // ------------- Visual Counter -------------- //
   const handleSubtractOneFromCart = () => {
     setCount(count > 0 ? count - 1 : 0);
-    axios.post("/api/customerCartItem", {
-      quantity: count > 0 ? count - 1 : 0,
-      idProduct: props.id,
-    });
+    runLatest(props.id, () =>
+      axios.post("/api/customerCartItem", {
+        quantity: count > 0 ? count - 1 : 0,
+        idProduct: props.id,
+      })
+    );
   };
 
   const handleAddOneToCart = () => {
     setCount(count + 1);
-    axios.post("/api/customerCartItem", {
-      quantity: count + 1,
-      idProduct: props.id,
-    });
+    runLatest(props.id, () =>
+      axios.post("/api/customerCartItem", {
+        quantity: count + 1,
+        idProduct: props.id,
+      })
+    );
   };
 
   return (
@@ -122,7 +126,11 @@ function ProductItem(props) {
             {props.stock}
           </div>
 
-          <div className={style.counter}>
+          <div
+            className={
+              props.stock === "En stock" ? style.counter : style.instock
+            }
+          >
             <button
               className={style.countBtn}
               onClick={handleSubtractOneFromCart}

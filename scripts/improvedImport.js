@@ -2,7 +2,7 @@ const db = require("../db");
 const { minifyProducts } = require("../Airtable");
 
 const Airtable = require("airtable");
-const base = new Airtable({ apiKey: `keyH3Q5oGVJYOHLMj` }).base(
+const base = new Airtable({ apiKey: `${process.env.AIR_TABLE_API_KEY}` }).base(
   "app5Yy06J0dhcG7Xb"
 );
 

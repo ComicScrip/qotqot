@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
 import "dayjs/locale/fr";
-const dayjs = require("dayjs");
+import dayjs from "dayjs";
 
 export default function OrderPassed(props) {
   const {
@@ -17,10 +17,8 @@ export default function OrderPassed(props) {
   function handleClick() {
     setOrderNumberState(`${props.orderNumber}`);
     setOrderStatut(`${props.statut}`);
-    dayjs(setOrderDate(`${props.dateCommande}`))
-      .locale("fr")
-      .format("DD/MM/YYYY");
-    dayjs(setDeliveryDate(`${props.dateLivraison}`))
+    dayjs(setOrderDate(props.dateCommande)).locale("fr").format("DD/MM/YYYY");
+    dayjs(setDeliveryDate(props.dateLivraison))
       .locale("fr")
       .format("DD/MM/YYYY");
     setOrderAmount(`${props.totalAmount}`);

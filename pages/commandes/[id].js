@@ -13,7 +13,6 @@ const dayjs = require("dayjs");
 
 export default function OrderHistory() {
   const {
-    orderNumberState,
     setOrderAmount,
     setOrderNumberState,
     setOrderStatut,
@@ -68,29 +67,23 @@ export default function OrderHistory() {
 
   const renderProducts = (
     <div className={style.homeBody}>
-      {orderProductList
-        .filter(
-          (order) =>
-            orderNumberState === order.idOrder ||
-            window.location.toString().includes(`${order.idOrder}`)
-        )
-        .map((prod) => (
-          <div className={style.product} key={prod.id}>
-            <OrderProductItem
-              key={prod.product.id}
-              orderNumber={prod.idOrder}
-              name={prod.product.name}
-              weight={prod.product.weight}
-              poidsUVC={prod.product.poidsUVC}
-              quantity={prod.quantity}
-              price={prod.product.price}
-              pricePerKg={prod.product.pricePerKg}
-              picture={prod.product.picture ? prod.product.picture : ""}
-              dateLivraison={prod.dateLivraison}
-              statut={prod.statut}
-            />
-          </div>
-        ))}
+      {orderProductList.map((prod) => (
+        <div className={style.product} key={prod.id}>
+          <OrderProductItem
+            key={prod.product.id}
+            orderNumber={prod.idOrder}
+            name={prod.product.name}
+            weight={prod.product.weight}
+            poidsUVC={prod.product.poidsUVC}
+            quantity={prod.quantity}
+            price={prod.product.price}
+            pricePerKg={prod.product.pricePerKg}
+            picture={prod.product.picture ? prod.product.picture : ""}
+            dateLivraison={prod.dateLivraison}
+            statut={prod.statut}
+          />
+        </div>
+      ))}
     </div>
   );
 

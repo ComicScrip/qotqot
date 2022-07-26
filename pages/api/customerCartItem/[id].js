@@ -5,7 +5,6 @@ import { findOneCartItem } from "../../../models/cart_model";
 
 export async function getOneCartItem(req, res) {
   try {
-    console.log(req.query.id);
     res.send(
       await findOneCartItem({
         idOrder: req.query.id,

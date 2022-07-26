@@ -7,9 +7,8 @@ describe("orders", () => {
   it("should display the list of orders when the api responds", () => {
     cy.intercept("**/orders**", { fixture: "orders.json" });
     cy.visit("/commandes");
-    cy.contains("17 mai 2022");
-    cy.contains("24 mars 2022");
-    cy.contains("Livrée");
+    cy.contains("26 juil. 2022");
+    cy.contains("En cours");
   });
 
   it("should display an error when the api is down", () => {

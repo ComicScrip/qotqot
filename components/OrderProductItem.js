@@ -1,37 +1,7 @@
 import style from "../styles/orderedProductItem.module.css";
-import { useContext, useEffect } from "react";
-import { CurrentUserContext } from "../contexts/currentUserContext";
-import "dayjs/locale/fr";
-import axios from "axios";
-const dayjs = require("dayjs");
-import { useRouter } from "next/router";
 
 function OrderProductItem(props) {
-  const { setOrderAmount, setOrderNumberState, setOrderStatut, setOrderDate } =
-    useContext(CurrentUserContext);
-
   const calculateWeight = parseInt(props.poidsUVC * props.quantity);
-  const router = useRouter();
-  const { id } = router.query;
-
-  useEffect(() => {
-    axios
-      .get(`/api/orders/${id}`)
-      .then((res) => res.data)
-      .then((data) => data[0])
-      .then((data) => {
-        setOrderAmount(data.totalAmount);
-        setOrderNumberState(data.orderNumber);
-        setOrderStatut(data.statut);
-        dayjs(setOrderDate(data.dateLivraison))
-          .locale("fr")
-          .format("DD/MM/YYYY");
-      })
-      .catch(() =>
-        console.log("Could not get data from the server, please try again")
-      ),
-      [];
-  });
 
   return (
     <div className={style.item_wrapper}>

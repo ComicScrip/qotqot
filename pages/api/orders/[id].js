@@ -5,7 +5,7 @@ import axios from "axios";
 
 export async function getAllProducts(req, res) {
   const { id } = req.query;
-  axios
+  await axios
     .get(
       `${process.env.AIRTABLE_API}/Commande%20Pro%202?filterByFormula=%7BNum%C3%A9ro%20de%20Commande%7D%3D%22${id}%22`,
       {

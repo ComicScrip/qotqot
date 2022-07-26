@@ -1,6 +1,5 @@
 import styles from "../styles/home.module.css";
 import { useContext } from "react";
-// import { useState, useRef } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
 import "dayjs/locale/fr";
@@ -9,8 +8,6 @@ const dayjs = require("dayjs");
 export default function OrderPassed(props) {
   const { setOrderNumberState, setOrderStatut, setOrderDate, setOrderAmount } =
     useContext(CurrentUserContext);
-
-  // const getProductsIdList = useRef("");
 
   function handleClick() {
     setOrderNumberState(`${props.orderNumber}`);

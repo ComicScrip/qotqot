@@ -48,9 +48,10 @@ export default function Home() {
                   <Order
                     key={order.id}
                     statut={order.statut}
-                    dateLivraison={order.dateLivraison}
+                    dateCommande={order.dateCommande}
                     orderNumber={order.orderNumber}
                     totalAmount={order.totalAmount}
+                    dateLivraison={order.dateLivraison}
                   />
                 ))}
             </div>
@@ -66,10 +67,11 @@ export default function Home() {
                   <Order
                     key={order.id}
                     statut={order.statut}
-                    dateLivraison={order.dateLivraison}
+                    dateCommande={order.dateCommande}
                     orderNumber={order.orderNumber}
                     totalAmount={order.totalAmount}
                     productsIdList={order.productsIdList}
+                    dateLivraison={order.dateLivraison}
                   />
                 ))}
             </div>

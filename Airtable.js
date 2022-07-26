@@ -40,11 +40,17 @@ const getMinifiedOrder = (record) => {
   return {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
-    dateLivraison: dayjs(record.fields["Date commande Rollup"][0], "DD/MM/YYYY")
+    dateCommande: dayjs(record.fields["Date commande Rollup"][0], "DD/MM/YYYY")
+      .locale("fr")
+      .format("D MMM YYYY"),
+    dateLivraison: dayjs(
+      record.fields["Date livraison Rollup"][0],
+      "DD/MM/YYYY"
+    )
       .locale("fr")
       .format("D MMM YYYY"),
     statut: record.fields.Status[0],
-    totalAmount: record.fields["Total (HT) (from Total (HT))"],
+    totalAmount: record.fields["Total (HT) (from Total (HT))"].toFixed(2),
   };
 };
 

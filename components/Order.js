@@ -6,18 +6,24 @@ import "dayjs/locale/fr";
 const dayjs = require("dayjs");
 
 export default function OrderPassed(props) {
-  const { setOrderNumberState, setOrderStatut, setOrderDate, setOrderAmount } =
-    useContext(CurrentUserContext);
+  const {
+    setOrderNumberState,
+    setOrderStatut,
+    setOrderDate,
+    setOrderAmount,
+    setDeliveryDate,
+  } = useContext(CurrentUserContext);
 
   function handleClick() {
     setOrderNumberState(`${props.orderNumber}`);
     setOrderStatut(`${props.statut}`);
-    dayjs(setOrderDate(`${props.dateLivraison}`))
+    dayjs(setOrderDate(`${props.dateCommande}`))
+      .locale("fr")
+      .format("DD/MM/YYYY");
+    dayjs(setDeliveryDate(`${props.dateLivraison}`))
       .locale("fr")
       .format("DD/MM/YYYY");
     setOrderAmount(`${props.totalAmount}`);
-    const getProductsIdList = props.productsIdList;
-    console.log(getProductsIdList);
   }
 
   return (
@@ -30,7 +36,7 @@ export default function OrderPassed(props) {
         ) : (
           <div className={styles.state}>{props.statut}</div>
         )}
-        <div className={styles.date}>{props.dateLivraison}</div>
+        <div className={styles.date}>{props.dateCommande}</div>
       </div>
     </Link>
   );

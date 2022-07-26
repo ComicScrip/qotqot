@@ -129,7 +129,7 @@ export default function Panier() {
           )}
           {error && (
             <p className="error">
-              Could not get data from the server, please try again
+              Impossible d'obtenir les données du serveur, veuillez réessayer
             </p>
           )}
           {isLoading ? <LoadingSpin /> : renderProducts}

@@ -12,6 +12,7 @@ export default function CurrentUserContextProvider({ children }) {
   const [orderNumberState, setOrderNumberState] = useState("");
   const [orderStatut, setOrderStatut] = useState("");
   const [orderDate, setOrderDate] = useState("");
+  const [deliveryDate, setDeliveryDate] = useState("");
   const [orderAmount, setOrderAmount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [modal, setModal] = useState(false);
@@ -47,7 +48,9 @@ export default function CurrentUserContextProvider({ children }) {
       .then((res) => res.data)
       .then((data) => setCartItems(data))
       .catch(() =>
-        console.log("Could not get data from the server, please try again")
+        console.log(
+          "Impossible d'obtenir les données du serveur, veuillez réessayer"
+        )
       );
   }, []);
 
@@ -89,6 +92,8 @@ export default function CurrentUserContextProvider({ children }) {
         displayMenu,
         setDisplayMenu,
         totalPrice,
+        setDeliveryDate,
+        deliveryDate,
       }}
     >
       {children}

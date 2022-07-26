@@ -15,6 +15,8 @@ describe("orders", () => {
   it("should display an error when the api is down", () => {
     cy.intercept("**/orders**", { statusCode: 500 });
     cy.visit("/commandes");
-    cy.contains("Could not get data from the server, please try again");
+    cy.contains(
+      "Impossible d'obtenir les données du serveur, veuillez réessayer"
+    );
   });
 });

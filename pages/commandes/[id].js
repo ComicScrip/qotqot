@@ -18,6 +18,7 @@ export default function OrderHistory() {
     setOrderNumberState,
     setOrderStatut,
     setOrderDate,
+    setDeliveryDate,
   } = useContext(CurrentUserContext);
   const [orderProductList, setOrderProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +34,9 @@ export default function OrderHistory() {
         .then((res) => res.data)
         .then((data) => setOrderProductList(data))
         .catch(() =>
-          setError("Could not get data from the server, please try again")
+          setError(
+            "Impossible d'obtenir les données du serveur, veuillez réessayer"
+          )
         )
         .finally(() => setIsLoading(false));
     }
@@ -48,12 +51,17 @@ export default function OrderHistory() {
         setOrderAmount(data.totalAmount);
         setOrderNumberState(data.orderNumber);
         setOrderStatut(data.statut);
-        dayjs(setOrderDate(data.dateLivraison))
+        dayjs(setOrderDate(data.dateCommande))
+          .locale("fr")
+          .format("DD/MM/YYYY");
+        dayjs(setDeliveryDate(data.dateLivraison))
           .locale("fr")
           .format("DD/MM/YYYY");
       })
       .catch(() =>
-        console.log("Could not get data from the server, please try again")
+        console.log(
+          "Impossible d'obtenir les données du serveur, veuillez réessayer"
+        )
       ),
       [];
   });
@@ -91,7 +99,7 @@ export default function OrderHistory() {
       <>
         {error && (
           <p className="error">
-            Could not get data from the server, please try again
+            Impossible d'obtenir les données du serveur, veuillez réessayer
           </p>
         )}
         {isLoading ? <LoadingSpin /> : renderProducts}

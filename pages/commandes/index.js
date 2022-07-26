@@ -9,6 +9,7 @@ import { useEffect } from "react";
 export default function Home() {
   const [ordersList, setOrdersList] = useState([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setError("");
@@ -18,21 +19,18 @@ export default function Home() {
       .then((data) => data)
       .then((data) => {
         setOrdersList(data);
-        console.log(ordersList);
       })
       .catch(() =>
-        setError("Could not get data from the server, please try again")
-      );
+        setError(
+          "Impossible d'obtenir les données du serveur, veuillez réessayer"
+        )
+      )
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
     <>
       <Layout pageTitle="commandes">
-        {error && (
-          <p className="error">
-            Could not get data from the server, please try again
-          </p>
-        )}
         <div className={styles.homeBody}>
           <div className={styles.home}>
             <Link href="/nouvelleCommande">
@@ -41,40 +39,58 @@ export default function Home() {
               </button>
             </Link>
             <h2 className={styles.title}>Commandes à venir</h2>
-            <div className={styles.displayCommande}>
-              {ordersList
-                .filter((statut) => statut.statut === "En cours")
-                .map((order) => (
-                  <Order
-                    key={order.id}
-                    statut={order.statut}
-                    dateCommande={order.dateCommande}
-                    orderNumber={order.orderNumber}
-                    totalAmount={order.totalAmount}
-                    dateLivraison={order.dateLivraison}
-                  />
-                ))}
-            </div>
+            {error && (
+              <p className="error">
+                Impossible d'obtenir les données du serveur, veuillez réessayer
+              </p>
+            )}
+            {isLoading ? (
+              <div>Chargement en cours...</div>
+            ) : (
+              <div className={styles.displayCommande}>
+                {ordersList
+                  .filter((statut) => statut.statut === "En cours")
+                  .map((order) => (
+                    <Order
+                      key={order.id}
+                      statut={order.statut}
+                      dateCommande={order.dateCommande}
+                      orderNumber={order.orderNumber}
+                      totalAmount={order.totalAmount}
+                      dateLivraison={order.dateLivraison}
+                    />
+                  ))}
+              </div>
+            )}
 
             <h2 className={styles.title}>Commandes passées</h2>
-            <div className={styles.displayCommande}>
-              {ordersList
-                .filter(
-                  (statut) =>
-                    statut.statut === "Livrée" || statut.statut === "Annulée"
-                )
-                .map((order) => (
-                  <Order
-                    key={order.id}
-                    statut={order.statut}
-                    dateCommande={order.dateCommande}
-                    orderNumber={order.orderNumber}
-                    totalAmount={order.totalAmount}
-                    productsIdList={order.productsIdList}
-                    dateLivraison={order.dateLivraison}
-                  />
-                ))}
-            </div>
+            {error && (
+              <p className="error">
+                Impossible d'obtenir les données du serveur, veuillez réessayer
+              </p>
+            )}
+            {isLoading ? (
+              <div>Chargement en cours...</div>
+            ) : (
+              <div className={styles.displayCommande}>
+                {ordersList
+                  .filter(
+                    (statut) =>
+                      statut.statut === "Livrée" || statut.statut === "Annulée"
+                  )
+                  .map((order) => (
+                    <Order
+                      key={order.id}
+                      statut={order.statut}
+                      dateCommande={order.dateCommande}
+                      orderNumber={order.orderNumber}
+                      totalAmount={order.totalAmount}
+                      productsIdList={order.productsIdList}
+                      dateLivraison={order.dateLivraison}
+                    />
+                  ))}
+              </div>
+            )}
           </div>
         </div>
       </Layout>

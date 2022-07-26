@@ -7,7 +7,4 @@ describe("getProducts", () => {
   it("should have content appear on screen", () => {
     cy.get("div");
   });
-  it("should present a picture of products", () => {
-    cy.get("img").should("be.visible");
-  });
 });

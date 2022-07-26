@@ -33,7 +33,7 @@ export default function Account() {
           setPostalCode(info.fields["Code Postal - Facturation"]);
           setCity(info.fields["Ville - Facturation"]);
           setContact(info.fields["Contact pour la livraison"]);
-          setPhone(info.fields["Téléphone (Contact Livraison)"]);
+          setPhone(info.fields["Prénom Contact pour la livraison"]);
           setMail(info.fields["Mail (envoi facture)"]);
         });
       })

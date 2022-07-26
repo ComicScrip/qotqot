@@ -25,7 +25,9 @@ async function exportOrdersToAirtable() {
       "Numéro de commande": cartItem.idOrder,
       "Commentaire Livraison": order.comment,
       "Date Livraison": order.delivery.toString(),
-      "Total (HT)": order.totalPrice,
+      "Total (HT)": parseFloat(order.totalPrice),
+      "Date commande": order.createdAt.toString(),
+      Status: order.status,
     }))
   );
 

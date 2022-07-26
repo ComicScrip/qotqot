@@ -31,7 +31,7 @@ export async function GetAccountInfo(req, res) {
               ["Adresse (N° et voie) - Facturation"]: billingAddress,
               ["Code Postal - Facturation"]: postalCode,
               ["Ville - Facturation"]: city,
-              ["Contact pour la livraison"]: contact,
+              ["Prénom Contact pour la livraison"]: contact,
               ["Téléphone (Contact Livraison)"]: phone,
               ["Mail (envoi facture)"]: mail,
               ["Code Client"]: user,

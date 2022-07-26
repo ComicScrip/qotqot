@@ -3,10 +3,8 @@ import Cart from "../../components/Cart";
 import Layout from "../../components/Layout";
 import LoadingSpin from "../../components/LoadingSpin";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
-import ProgressBar from "@ramonak/react-progress-bar";
 import ConfirmationModal from "../../components/ConfirmationModal";
 import CongratsModal from "../../components/CongratsModal";
-import Link from "next/link";
 import styles from "../../styles/product_item.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -17,10 +15,10 @@ export default function Panier() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [modal, setModal] = useState(false);
   const [modalCongrats, setModalCongrats] = useState(false);
   const [modalFranco, setModalFranco] = useState(false);
-  const { cartItems, getCartItems } = useContext(CurrentUserContext);
+  const { cartItems, getCartItems, modal, setModal } =
+    useContext(CurrentUserContext);
   const [date, setDate] = useState("");
   const [comment, setComment] = useState("");
 
@@ -49,7 +47,7 @@ export default function Panier() {
     }, 0)
     .toFixed(2);
 
-  const francoMin = 75 - totalPrice;
+  // const francoMin = 75 - totalPrice;
 
   const confirmPurchase = () => {
     setModalFranco(!modalFranco);
@@ -78,7 +76,7 @@ export default function Panier() {
   }
 
   const renderProducts = (
-    <div className="main_container">
+    <div className={styles.main_container}>
       {cartItems.map((item) => (
         <Cart
           key={item.id}
@@ -97,50 +95,12 @@ export default function Panier() {
           price={item.product.price}
         />
       ))}
-      <style jsx>{`
-  * {
-    padding: 265px 0 10px 0;
-      background-color: #E5E5E5;
-      height:100vh;
-  `}</style>
     </div>
   );
 
   return (
     <>
       <Layout pageTitle="Panier">
-        <div className={styles.arrow}>
-          <Link href="/nouvelleCommande">
-            <img src="/images/arrow.png" alt="arrow" width={20} height={20} />
-          </Link>
-        </div>
-        <div className={styles.headCmd}>
-          <div className={styles.priceTotal}>{totalPrice}€ HT</div>
-          <button
-            onClick={() => setModal(!modal)}
-            className={
-              cartItems.length === 0 ? styles.btnCartEmpty : styles.btnCart
-            }
-          >
-            Confirmer la commande
-          </button>
-        </div>
-        <div className={styles.francoText}>
-          Plus que{" "}
-          <span className={styles.franco}>
-            {francoMin >= 0 ? francoMin.toFixed(2) : 0}€
-          </span>{" "}
-          pour le franco minimum
-        </div>
-
-        <ProgressBar
-          completed={totalPrice}
-          maxCompleted={75}
-          className={styles.wrapper}
-          barContainerClassName={styles.container}
-          labelClassName={styles.label}
-        />
-
         <>
           {modal && (
             <ConfirmationModal
@@ -180,7 +140,7 @@ export default function Panier() {
           {isLoading ? (
             <LoadingSpin />
           ) : totalPrice === "0.00" ? (
-            <div className="flex justify-center items-center flex-col my-12">
+            <div className="flex justify-center items-center flex-col mt-[70%]">
               <Image
                 src={emptyCartImg}
                 alt="empty cart"

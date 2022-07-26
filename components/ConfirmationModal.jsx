@@ -1,7 +1,8 @@
 import s from "../styles/nouvelleCommande.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import dayjs from "dayjs";
+require("dayjs/locale/fr");
 
 export default function ConfirmationModal({
   modal,
@@ -13,6 +14,7 @@ export default function ConfirmationModal({
   setComment,
 }) {
   const [error] = useState("");
+  dayjs.locale("fr");
   const weekday = require("dayjs/plugin/weekday");
   dayjs.extend(weekday);
   const isToday = require("dayjs/plugin/isToday");
@@ -23,10 +25,6 @@ export default function ConfirmationModal({
   const date3 = dayjs().weekday(9).format("DD-MM-YYYY");
   const date4 = dayjs().weekday(11).format("DD-MM-YYYY");
   const date5 = dayjs().weekday(13).format("DD-MM-YYYY");
-
-  useEffect(() => {
-    setDate(date1);
-  }, []);
 
   const optionsM = [
     {
@@ -77,6 +75,7 @@ export default function ConfirmationModal({
   ];
 
   const handleChange = (event) => {
+    console.log(event.target.value);
     setDate(event.target.value);
   };
 
@@ -85,79 +84,84 @@ export default function ConfirmationModal({
       {modal && (
         <>
           <div className={s.confirmation}>
-            <div className="flex flex-col justify-center mt-32 h-fit mx-auto sm:px-52 sm:w-[60%] rounded-xl bg-white">
+            <div className="flex flex-col justify-center mt-32 h-fit mx-auto sm:px-20 sm:w-[50vw] rounded-xl bg-white">
               <div
                 onClick={handleClose}
-                className="flex justify-end p-4 cursor-pointer"
+                className="flex w-full justify-end py-4 cursor-pointer"
               >
                 <AiOutlineClose />
               </div>
-              <h1 className="sm:text-4xl bold text-center py-3 mt-3">
-                Confirmation de commande
-              </h1>
+              <div className="w-[80%] m-auto">
+                <h1 className="sm:text-4xl bold text-center py-3 mt-3">
+                  Confirmation de commande
+                </h1>
 
-              <form onSubmit={handleConfirm}>
-                <div className="flex flex-col justify-center text-left w-[90%] rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] mb-4 p-2">
-                  <label className="text-sm sm:text-base cursor-pointer ">
-                    Créneau de livraison{" "}
-                  </label>
+                <form onSubmit={handleConfirm}>
+                  <div className="flex flex-col justify-center text-left rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] mb-4 p-2">
+                    <label className="text-sm sm:text-base cursor-pointer ">
+                      Créneau de livraison{" "}
+                    </label>
 
-                  <select
-                    className="text-[#3f3f3f] bg-[#F2F2F2]"
-                    type="date"
-                    value={date}
-                    required
-                    onChange={handleChange}
-                  >
-                    {dayjs().isBefore(dayjs().weekday(1).hour(23))
-                      ? optionsM.map((option, index) => (
-                          <option key={index} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))
-                      : dayjs().isBefore(dayjs().weekday(3).hour(23))
-                      ? optionsJ.map((option, index) => (
-                          <option key={index} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))
-                      : optionsV.map((option, index) => (
-                          <option key={index} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                  </select>
-                </div>
-                <div className=" flex flex-col text-left w-[90%] rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] p-2">
-                  <label htmlFor="select-date" className="text-sm sm:text-base">
-                    Ajouter un commentaire{" "}
-                  </label>
-                  <textarea
-                    type="textarea"
-                    value={comment}
-                    className="text-sm text-black bg-[#F2F2F2]"
-                    rows="3"
-                    name="message"
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder="Mon message..."
-                  />
-                </div>
-                <div className="flex justify-center items-center text-center m-auto my-3">
-                  <button
-                    type="submit"
-                    className=" bg-[#06968A] w-[90%] cursor-pointer rounded-md p-3 uppercase text-sm h-12 mt-2 text-center text-white font-bold"
-                  >
-                    Confirmer la commande
-                  </button>
-                </div>
-              </form>
+                    <select
+                      className="text-[#3f3f3f] bg-[#F2F2F2]"
+                      type="date"
+                      value={date}
+                      required
+                      onChange={handleChange}
+                    >
+                      {dayjs().isBefore(dayjs().weekday(1).hour(23))
+                        ? optionsM.map((option, index) => (
+                            <option key={index} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))
+                        : dayjs().isBefore(dayjs().weekday(3).hour(23))
+                        ? optionsJ.map((option, index) => (
+                            <option key={index} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))
+                        : optionsV.map((option, index) => (
+                            <option key={index} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                    </select>
+                  </div>
+                  <div className=" flex flex-col text-left rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] p-2">
+                    <label
+                      htmlFor="select-date"
+                      className="text-sm sm:text-base"
+                    >
+                      Ajouter un commentaire{" "}
+                    </label>
+                    <textarea
+                      type="textarea"
+                      value={comment}
+                      className="text-sm text-black bg-[#F2F2F2]"
+                      rows="3"
+                      name="message"
+                      onChange={(e) => setComment(e.target.value)}
+                      placeholder="Mon message..."
+                    />
+                  </div>
+                  <div className="flex justify-center items-center text-center m-auto my-3">
+                    <button
+                      type="submit"
+                      className=" bg-[#06968A] w-full cursor-pointer rounded-md p-3 uppercase text-sm h-12 mt-2 text-center text-white font-bold"
+                    >
+                      Confirmer la commande
+                    </button>
+                  </div>
+                </form>
 
-              {error && (
-                <p className="error text-center text-sm text-[red]">
-                  ⛔️ Nous ne pouvons charger les données du serveur, veuillez
-                  réessayer svp.
-                </p>
-              )}
+                {error && (
+                  <p className="error text-center text-sm text-[red]">
+                    ⛔️ Nous ne pouvons charger les données du serveur, veuillez
+                    réessayer svp.
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </>

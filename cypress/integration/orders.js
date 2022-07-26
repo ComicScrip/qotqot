@@ -1,7 +1,7 @@
 describe("orders", () => {
   beforeEach(() => {
     cy.viewport("iphone-6");
-    cy.login({ email: "user@gmail.com" });
+    cy.login({ email: "wcsqotqot@gmail.com" });
   });
 
   it("should display the list of orders when the api responds", () => {

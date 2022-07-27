@@ -10,7 +10,7 @@ const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
 
 export async function handleCreateOrder(req, res) {
-  const { comment, date } = req.body;
+  const { comment, date, totalPrice } = req.body;
   const customerCartItems = await findAllCartItems({
     idClient: req.currentUser.id,
   });
@@ -21,6 +21,7 @@ export async function handleCreateOrder(req, res) {
   const orderProps = {
     comment,
     delivery: dayjs(date, "DD-MM-YYYY").toDate(),
+    totalPrice,
   };
 
   const newOrder = await createOrder(orderProps);

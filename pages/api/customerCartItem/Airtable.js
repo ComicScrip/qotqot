@@ -1,5 +1,4 @@
 const dayjs = require("dayjs");
-import "dayjs/locale/fr";
 
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
@@ -41,17 +40,11 @@ const getMinifiedOrder = (record) => {
   return {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
-    dateCommande: dayjs(record.fields["Date commande Rollup"][0], "DD/MM/YYYY")
-      .locale("fr")
-      .format("D MMM YYYY"),
-    dateLivraison: dayjs(
-      record.fields["Date livraison Rollup"][0],
-      "DD/MM/YYYY"
-    )
+    dateLivraison: dayjs(record.fields["Date commande Rollup"][0], "DD/MM/YYYY")
       .locale("fr")
       .format("D MMM YYYY"),
     statut: record.fields.Status[0],
-    totalAmount: record.fields["Total (HT) (from Total (HT))"].toFixed(2),
+    totalAmount: record.fields["Total (HT) (from Total (HT))"],
   };
 };
 
@@ -97,7 +90,7 @@ const getMinifiedOrderProduct = (record) => {
     dateLivraison: record.fields["Numéro de commande"],
     statut: record.fields.Status,
     codeProduits:
-      record.fields["Code Produit QotQot (from Commande Produits API)"],
+      record.fields["Code Produit QotQot (from Commande Produits .env)"],
   };
 };
 

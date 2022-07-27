@@ -140,12 +140,17 @@
 
 @media screen and (min-width: 700px) {
   .headCmd {
-    width: 90%;
+    width: 100%;
     justify-content: space-evenly;
   }
 
   .divTitle {
-    margin-left: 30%;
+    margin-left: 31%;
+  }
+
+  .newContainer {
+    margin-left: 6%;
+    margin-right: 3%;
   }
 
   .title {

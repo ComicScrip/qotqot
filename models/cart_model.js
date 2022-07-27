@@ -12,6 +12,18 @@ module.exports.findAllCartItems = async ({ idClient }) => {
   });
 };
 
+module.exports.findOneCartItem = async ({ idOrder }) => {
+  return await db.customerCartItem.findMany({
+    where: {
+      idOrder,
+    },
+    include: {
+      product: true,
+      order: true,
+    },
+  });
+};
+
 module.exports.setCartQuantity = async function ({
   idProduct,
   idClient,

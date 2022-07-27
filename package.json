@@ -24,7 +24,6 @@
   "dependencies": {
     "@date-io/dayjs": "^2.14.0",
     "@date-io/luxon": "^2.14.0",
-    "@date-io/moment": "^2.14.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@prisma/client": "^3.15.2",

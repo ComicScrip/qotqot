@@ -11,6 +11,42 @@ export default function Home() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  const ordersInProgressFilter = ordersList.filter(
+    (statut) => statut.statut === "En cours"
+  );
+  const ordersInProgressMap = ordersList
+    .filter((statut) => statut.statut === "En cours")
+    .map((order) => (
+      <Order
+        key={order.id}
+        statut={order.statut}
+        dateCommande={order.dateCommande}
+        orderNumber={order.orderNumber}
+        totalAmount={order.totalAmount}
+        dateLivraison={order.dateLivraison}
+      />
+    ));
+
+  const ordersPassedFilter = ordersList.filter(
+    (statut) => statut.statut === "Livrée" || statut.statut === "Annulée"
+  );
+
+  const ordersPassedMap = ordersList
+    .filter(
+      (statut) => statut.statut === "Livrée" || statut.statut === "Annulée"
+    )
+    .map((order) => (
+      <Order
+        key={order.id}
+        statut={order.statut}
+        dateCommande={order.dateCommande}
+        orderNumber={order.orderNumber}
+        totalAmount={order.totalAmount}
+        productsIdList={order.productsIdList}
+        dateLivraison={order.dateLivraison}
+      />
+    ));
+
   useEffect(() => {
     setError("");
     axios
@@ -56,20 +92,17 @@ export default function Home() {
                   </p>
                 )}
 
-                <div className={styles.displayCommande}>
-                  {ordersList
-                    .filter((statut) => statut.statut === "En cours")
-                    .map((order) => (
-                      <Order
-                        key={order.id}
-                        statut={order.statut}
-                        dateCommande={order.dateCommande}
-                        orderNumber={order.orderNumber}
-                        totalAmount={order.totalAmount}
-                        dateLivraison={order.dateLivraison}
-                      />
-                    ))}
-                </div>
+                {ordersInProgressFilter.length === 0 &&
+                ordersPassedFilter.length != 0 ? (
+                  <p className="text-center mt-10 mb-10">
+                    Il n'y a rien ici pour le moment 😔
+                  </p>
+                ) : (
+                  <div className={styles.displayCommande}>
+                    {ordersInProgressMap}
+                  </div>
+                )}
+
                 {ordersList.length === 0 ? (
                   ""
                 ) : (
@@ -82,25 +115,16 @@ export default function Home() {
                   </p>
                 )}
 
-                <div className={styles.displayCommande}>
-                  {ordersList
-                    .filter(
-                      (statut) =>
-                        statut.statut === "Livrée" ||
-                        statut.statut === "Annulée"
-                    )
-                    .map((order) => (
-                      <Order
-                        key={order.id}
-                        statut={order.statut}
-                        dateCommande={order.dateCommande}
-                        orderNumber={order.orderNumber}
-                        totalAmount={order.totalAmount}
-                        productsIdList={order.productsIdList}
-                        dateLivraison={order.dateLivraison}
-                      />
-                    ))}
-                </div>
+                {ordersPassedFilter.length === 0 &&
+                ordersInProgressFilter.length != 0 ? (
+                  <p className="text-center mt-4">
+                    Il n'y a rien ici pour le moment 😔
+                  </p>
+                ) : (
+                  <div className={styles.displayCommande}>
+                    {ordersPassedMap}
+                  </div>
+                )}
               </div>
             )}
           </div>

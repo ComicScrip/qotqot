@@ -7,6 +7,7 @@ const base = new Airtable({ apiKey: `${process.env.AIR_TABLE_API_KEY}` }).base(
 );
 
 export async function importProductsFromAT() {
+  console.log("meeeeeh");
   const records = await base("Produits Actifs").select().all();
   const products = minifyProducts(records);
   await Promise.all(

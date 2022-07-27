@@ -1,4 +1,5 @@
 const dayjs = require("dayjs");
+import "dayjs/locale/fr";
 
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);

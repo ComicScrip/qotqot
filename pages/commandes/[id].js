@@ -8,8 +8,6 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import Layout from "../../components/Layout";
 import style from "../../styles/orderedProductItem.module.css";
-import "dayjs/locale/fr";
-const dayjs = require("dayjs");
 
 export default function OrderHistory() {
   const {
@@ -50,12 +48,8 @@ export default function OrderHistory() {
         setOrderAmount(data.totalAmount);
         setOrderNumberState(data.orderNumber);
         setOrderStatut(data.statut);
-        dayjs(setOrderDate(data.dateCommande))
-          .locale("fr")
-          .format("DD/MM/YYYY");
-        dayjs(setDeliveryDate(data.dateLivraison))
-          .locale("fr")
-          .format("DD/MM/YYYY");
+        setOrderDate(data.dateCommande);
+        setDeliveryDate(data.dateLivraison);
       })
       .catch(() =>
         console.log(

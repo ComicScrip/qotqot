@@ -12,6 +12,7 @@ export default function CurrentUserContextProvider({ children }) {
   const [orderNumberState, setOrderNumberState] = useState("");
   const [orderStatut, setOrderStatut] = useState("");
   const [orderDate, setOrderDate] = useState("");
+  const [deliveryDate, setDeliveryDate] = useState("");
   const [orderAmount, setOrderAmount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [modal, setModal] = useState(false);
@@ -22,6 +23,12 @@ export default function CurrentUserContextProvider({ children }) {
     () => currentUserProfile,
     [currentUserProfile]
   );
+
+  const totalPrice = cartItems
+    .reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0)
+    .toFixed(2);
 
   const getProfile = useCallback(() => {
     axios
@@ -41,15 +48,11 @@ export default function CurrentUserContextProvider({ children }) {
       .then((res) => res.data)
       .then((data) => setCartItems(data))
       .catch(() =>
-        console.log("Could not get data from the server, please try again")
+        console.log(
+          "Impossible d'obtenir les données du serveur, veuillez réessayer"
+        )
       );
   }, []);
-
-  const totalPrice = cartItems
-    .reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0)
-    .toFixed(2);
 
   useEffect(() => {
     if (status === "authenticated") {
@@ -89,6 +92,8 @@ export default function CurrentUserContextProvider({ children }) {
         displayMenu,
         setDisplayMenu,
         totalPrice,
+        setDeliveryDate,
+        deliveryDate,
       }}
     >
       {children}

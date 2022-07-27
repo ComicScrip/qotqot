@@ -33,7 +33,9 @@ export const SearchModule = () => {
       .get(`/api/filterCategory/${queryString ? "?" : ""}${queryString}`)
       .then((res) => setSearchResult(res.data))
       .catch(() =>
-        setError("Could not get data from the server, please try again")
+        setError(
+          "Impossible d'obtenir les données du serveur, veuillez réessayer"
+        )
       );
   }, [router.query]);
   return (

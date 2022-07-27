@@ -1,5 +1,4 @@
 const dayjs = require("dayjs");
-import "dayjs/locale/fr";
 
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
@@ -33,26 +32,48 @@ const getMinifiedProduct = (record) => {
   };
 };
 
-const minifyOrdersAt = (records) => {
-  return records.map((record) => getMinifiedOrderAt(record));
+const minifyOrders = (records) => {
+  return records.map((record) => getMinifiedOrder(record));
 };
 
-const getMinifiedOrderAt = (record) => {
+const getMinifiedOrder = (record) => {
   return {
     id: record.id,
     orderNumber: record.fields["Numéro de commande"],
-    dateCommande: dayjs(record.fields["Date commande Rollup"][0], "DD/MM/YYYY")
-      .locale("fr")
-      .format("D MMM YYYY"),
-    dateLivraison: dayjs(
-      record.fields["Date livraison Rollup"][0],
-      "DD/MM/YYYY"
-    )
+    dateLivraison: dayjs(record.fields["Date commande Rollup"][0], "DD/MM/YYYY")
       .locale("fr")
       .format("D MMM YYYY"),
     statut: record.fields.Status[0],
-    totalAmount: record.fields["Total (HT) (from Total (HT))"].toFixed(2),
+    totalAmount: record.fields["Total (HT) (from Total (HT))"],
   };
+};
+
+const minifyCartItems = (records) => {
+  return records.map((record) => getMinifiedCartItems(record));
+};
+
+const getMinifiedCartItems = (record) => {
+  return {
+    id: record.id,
+    Quantity: record.fields["quantité"],
+    codeProduit: record.fields["Code Produit QotQot"],
+    ProductId: record.fields["Code_Produit"],
+    ClientId: record.fields["Code_Client"],
+    name: record.fields.Produit,
+    weight: record.fields.Conditionnement,
+    price: record.fields["Prix d'achat unitaire €HT"][0],
+    pricePerKg: record.fields["Prix d'achat kg/g/L €HT"][0],
+    totalPrice: record.fields["Montant HT"],
+    stock: record.fields.Dispo,
+    picture: record.fields["Image produits sans fond"]?.[0].url,
+    typeUVC: record.fields["UVC - Conditionnement"],
+    poidsUVC: record.fields["UVC - Poids/vol"],
+    uniteUVC: record.fields["UVC - Unité"],
+  };
+};
+
+const minifyOrderProducts = (records) => {
+  return records.map((record) => getMinifiedOrderProduct(record));
 };
 
 const getMinifiedOrderProduct = (record) => {
@@ -69,14 +90,16 @@ const getMinifiedOrderProduct = (record) => {
     dateLivraison: record.fields["Numéro de commande"],
     statut: record.fields.Status,
     codeProduits:
-      record.fields["Code Produit QotQot (from Commande Produits API)"],
+      record.fields["Code Produit QotQot (from Commande Produits .env)"],
   };
 };
 
 module.exports = {
   minifyProducts,
   getMinifiedProduct,
-  minifyOrdersAt,
-  getMinifiedOrderAt,
+  minifyOrders,
+  getMinifiedOrder,
+  minifyCartItems,
+  minifyOrderProducts,
   getMinifiedOrderProduct,
 };

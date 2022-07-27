@@ -7,7 +7,7 @@ export async function getOneOrder(req, res) {
   const { id } = req.query;
   axios
     .get(
-      `${process.env.AIRTABLE_API}/Commande%20Produits%20API?filterByFormula=%7BID%7D%3D%22${id}%22`,
+      `${process.env.AIRTABLE_API}/Commande%20Pro%202?filterByFormula=%7BCode%20Client%7D%3D%22${id}%22`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIR_TABLE_API_KEY}`,

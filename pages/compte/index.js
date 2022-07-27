@@ -56,6 +56,7 @@ export default function Account() {
       .post("/api/account-info/patch-account-info", {
         accountId,
         corporateName,
+        companyName,
         siret,
         tva,
         billingAddress,
@@ -82,6 +83,7 @@ export default function Account() {
     axios
       .post("/api/account-info/post-account-info", {
         corporateName,
+        companyName,
         siret,
         tva,
         billingAddress,
@@ -124,7 +126,7 @@ export default function Account() {
                 type="text"
                 id="companyName"
                 name="companyName"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={companyName || ""}
@@ -137,7 +139,7 @@ export default function Account() {
                 type="text"
                 id="corporateName"
                 name="corporateName"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={corporateName || ""}
@@ -150,7 +152,7 @@ export default function Account() {
                 type="text"
                 id="siret"
                 name="siret"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={siret || ""}
@@ -163,7 +165,7 @@ export default function Account() {
                 type="text"
                 id="companyName"
                 name="companyName"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={tva || ""}
@@ -179,7 +181,7 @@ export default function Account() {
                 type="text"
                 id="billingAddress"
                 name="billingAddress"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={billingAddress || ""}
@@ -192,7 +194,7 @@ export default function Account() {
                 type="text"
                 id="postalCode"
                 name="postalCode"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={postalCode || ""}
@@ -205,7 +207,7 @@ export default function Account() {
                 type="text"
                 id="city"
                 name="city"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={city || ""}
@@ -221,7 +223,7 @@ export default function Account() {
                 type="text"
                 id="billingAddress"
                 name="billingAddress"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={orderAddress || ""}
@@ -234,7 +236,7 @@ export default function Account() {
                 type="text"
                 id="postalCode"
                 name="postalCode"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={orderPostalCode || ""}
@@ -247,7 +249,7 @@ export default function Account() {
                 type="text"
                 id="city"
                 name="city"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={orderCity || ""}
@@ -262,7 +264,7 @@ export default function Account() {
               <input
                 id="contact"
                 name="contact"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={lastname || ""}
@@ -274,7 +276,7 @@ export default function Account() {
               <input
                 id="firstname"
                 name="firstname"
-                className="text-[#444242]"
+                className="text-[#444242] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={firstname || ""}
@@ -286,7 +288,7 @@ export default function Account() {
               <input
                 id="phone"
                 name="phone"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={phone || ""}
@@ -298,7 +300,7 @@ export default function Account() {
               <input
                 id="mail"
                 name="mail"
-                className="text-[#7F7F7F]"
+                className="text-[#7F7F7F] pl-2"
                 minLength="1"
                 maxLength="30"
                 value={mail || ""}

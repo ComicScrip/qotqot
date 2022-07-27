@@ -184,10 +184,19 @@
 
   .menu {
     font-size: 35px;
-    margin-right: 40%;
+    margin-right: 10%;
   }
 
   .accountDiv {
     margin: 3% 38%;
   }
-} ;
+
+  .headerContainer {
+    width: 70vw;
+    margin: auto;
+  }
+
+  .divTitle {
+    margin-left: 20%;
+  }
+}

@@ -57,7 +57,10 @@ export default function RestPasswordPage({ csrfToken }) {
     <>
       <Toaster position="bottom-center" />
       {resetEmailSent ? (
-        <div id="email-sent" className="w-full h-full m-auto ">
+        <div
+          id="email-sent"
+          className="w-full h-full m-auto sm:w-[60%] lg:w-[50%]"
+        >
           <div className="m-auto mt-16 flex flex-col justify-center items-center ">
             <div>
               <Image
@@ -76,7 +79,10 @@ export default function RestPasswordPage({ csrfToken }) {
       ) : (
         <>
           {router.query.resetPasswordToken ? (
-            <div id="login" className="w-full h-full m-auto ">
+            <div
+              id="login"
+              className="w-full h-full m-auto sm:w-[60%] lg:w-[50%]"
+            >
               <div className=" m-auto mt-16 flex flex-col justify-center items-center ">
                 <div>
                   <Image
@@ -147,7 +153,10 @@ export default function RestPasswordPage({ csrfToken }) {
               </form>
             </div>
           ) : (
-            <div id="login" className="w-full h-full m-auto ">
+            <div
+              id="login"
+              className="w-full h-full m-auto sm:w-[60%] lg:w-[50%]"
+            >
               <div className=" m-auto mt-16 flex flex-col justify-center items-center ">
                 <div>
                   <Image

@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
+import s from "../styles/home.module.css";
 
 export default function Login({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
@@ -17,7 +18,7 @@ export default function Login({ csrfToken }) {
       {currentUserProfile ? (
         window.location.replace(`/commandes/`)
       ) : (
-        <>
+        <div className={s.loginBg}>
           <div
             id="login"
             className="w-full h-full m-auto sm:w-[60%] lg:w-[50%]"
@@ -116,7 +117,7 @@ export default function Login({ csrfToken }) {
               </Link>
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );

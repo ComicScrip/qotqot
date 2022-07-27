@@ -249,7 +249,10 @@ CART */
     margin-top: 20px;
     margin-left: 25%;
   }
+
   .main_container {
-    margin-top: 0;
+    padding-top: 220px;
+    margin: 0%;
+    padding-bottom: 5%;
   }
 }

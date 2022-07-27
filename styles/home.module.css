@@ -118,7 +118,7 @@
 
   .nouvelleCommandeBtn {
     font-size: 18px;
-    width: 93%;
+    width: 96%;
     margin: 20px 0;
   }
 
@@ -129,5 +129,13 @@
     margin-top: 10%;
     margin-left: 25%;
     margin-right: 25%;
+  }
+
+  .loginBg {
+    background-image: url("../public/images/background.jpg");
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 } ;

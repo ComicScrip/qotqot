@@ -140,13 +140,17 @@
 
 @media screen and (min-width: 700px) {
   .headCmd {
-    width: 90%;
+    width: 100%;
     justify-content: space-evenly;
   }
 
   .divTitle {
-    margin-left: 25%;
-    margin-left: 25%;
+    margin-left: 31%;
+  }
+
+  .newContainer {
+    margin-left: 6%;
+    margin-right: 3%;
   }
 
   .title {
@@ -156,32 +160,29 @@
   .date {
     font-size: 19px;
   }
-  /* 
-  .header {
-    height: 258px;
-  } */
 
   .arrow {
     margin-left: -100px;
   }
 
   .francoText {
-    margin-left: 23%;
+    margin-left: 25%;
     font-size: 16px;
   }
+
   .franco {
     font-weight: 800;
   }
 
   .container {
-    margin-left: 20%;
+    margin-left: 25%;
     width: 50.5%;
     height: 10px;
   }
 
   .menu {
     font-size: 35px;
-    margin-right: 40%;
+    margin-right: 36%;
   }
 
   .accountDiv {

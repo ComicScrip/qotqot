@@ -4,7 +4,7 @@ import base from "../../../middlewares/common";
 import reqCurrentUser from "../../../middlewares/reqCurrentUser";
 
 export async function GetAccountInfo(req, res) {
-  const user = req.currentUser.fields["Code Client"];
+  const user = req.currentUser.fields["ID"];
   await axios
     .get(
       `${process.env.AIRTABLE_API}/Coordonn%C3%A9es%20Clients%20Personnalisables?filterByFormula=%7BCode%20Client%7D%3D%22${user}%22`,

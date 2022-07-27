@@ -52,5 +52,7 @@ model order {
   delivery         DateTime
   comment          String?            @db.VarChar(255)
   synchWithAT      Boolean            @default(false)
+  totalPrice       String?
+  status           String             @default("En cours")
   customerCartItem customerCartItem[]
 }

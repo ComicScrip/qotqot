@@ -18,7 +18,7 @@ export default function Panier() {
   const [isLoading, setIsLoading] = useState(true);
   const [modalCongrats, setModalCongrats] = useState(false);
   const [modalFranco, setModalFranco] = useState(false);
-  const { cartItems, getCartItems, modal, setModal } =
+  const { cartItems, getCartItems, modal, setModal, totalPrice } =
     useContext(CurrentUserContext);
   const [date, setDate] = useState("");
   const [comment, setComment] = useState("");
@@ -36,18 +36,14 @@ export default function Panier() {
 
   const handleClose2 = () => {
     setModalCongrats(!modalCongrats);
-    router.push("/nouvelleCommande");
+    setTimeout(() => {
+      router.push("/commandes");
+    }, 2000);
   };
 
   const handleClose3 = () => {
     setModalFranco(!modalFranco);
   };
-
-  const totalPrice = cartItems
-    .reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0)
-    .toFixed(2);
 
   const confirmPurchase = () => {
     setModalFranco(!modalFranco);
@@ -58,7 +54,7 @@ export default function Panier() {
 
   const handleCreateOrder = () => {
     axios
-      .post("/api/ordersProduct", { date, comment })
+      .post("/api/ordersProduct", { date, comment, totalPrice })
       .then(getCartItems)
       .catch(() => console.error("panier not working"));
   };
@@ -135,7 +131,7 @@ export default function Panier() {
           )}
           {error && (
             <p className="error">
-              Could not get data from the server, please try again
+              Impossible d'obtenir les données du serveur, veuillez réessayer
             </p>
           )}
           {isLoading ? <LoadingSpin /> : renderProducts}

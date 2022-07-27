@@ -9,8 +9,14 @@ import { useRouter } from "next/router";
 export default function HeaderPanier() {
   const router = useRouter();
 
-  const { cartItems, modal, setModal, displayMenu, setDisplayMenu } =
-    useContext(CurrentUserContext);
+  const {
+    cartItems,
+    modal,
+    setModal,
+    displayMenu,
+    setDisplayMenu,
+    totalPrice,
+  } = useContext(CurrentUserContext);
   const today = new Date();
   const options = {
     weekday: "long",
@@ -18,11 +24,6 @@ export default function HeaderPanier() {
     month: "long",
     day: "2-digit",
   };
-  const totalPrice = cartItems
-    .reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0)
-    .toFixed(2);
 
   const francoMin = 75 - totalPrice;
 

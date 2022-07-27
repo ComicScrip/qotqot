@@ -9,11 +9,12 @@ export default function HeaderCommandePassee() {
   const router = useRouter();
   const {
     orderStatut,
-    orderDate,
     orderNumberState,
     orderAmount,
     displayMenu,
     setDisplayMenu,
+    deliveryDate,
+    orderDate,
   } = useContext(CurrentUserContext);
   const today = new Date();
   const options = {
@@ -31,7 +32,9 @@ export default function HeaderCommandePassee() {
           </Link>
         </div>
         <div className={styles.order}>
-          <h1 className={styles.title}>Commande n° {orderNumberState}</h1>
+          <h1 className={styles.title}>
+            Commande n° <span>{orderNumberState}</span>
+          </h1>
           <p className={styles.date}>
             {today
               .toLocaleDateString("fr-FR", options)
@@ -79,15 +82,15 @@ export default function HeaderCommandePassee() {
         {orderStatut === "Livrée" ? (
           <button
             className={styles.livraison1}
-          >{`Livrée le ${orderDate}`}</button>
+          >{`Livrée le ${deliveryDate}`}</button>
         ) : orderStatut === "En cours" ? (
           <button className={styles.livraison2}>
-            {`Prévue pour le ${orderDate}`}
+            {`Prévue pour le ${deliveryDate}`}
           </button>
         ) : orderStatut === "Annulée" ? (
           <button
             className={styles.livraison3}
-          >{`Annulée le ${orderDate}`}</button>
+          >{`Commande du ${orderDate} annulée`}</button>
         ) : (
           ""
         )}

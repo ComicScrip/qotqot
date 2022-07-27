@@ -10,7 +10,6 @@ datasource db {
   provider             = "mysql"
   url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
-
 }
 
 model Product {
@@ -19,7 +18,7 @@ model Product {
   price                 Float?
   pricePerKg            Float?
   stock                 String?            @db.VarChar(255)
-  codeProduit           String?            @db.VarChar(255)
+  codeProduit           String?            @unique @db.VarChar(255)
   weight                String?            @db.VarChar(255)
   picture               String?            @db.Text
   makerPicture          String?            @db.Text

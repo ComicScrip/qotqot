@@ -57,13 +57,13 @@ export default function Layout({ children, pageTitle }) {
         <LoadingSpin className="flex justify-center items-center"></LoadingSpin>
       ) : (
         <>
-          <p className="flex flex-col justify-center items-center bg-[red] text-white h-full text-xl text-center">
+          <p className="flex flex-col justify-center items-center bg-[#f02424] text-white h-full text-xl text-center">
             Merci de bien vouloir vous connecter pour accéder à l'appli qotqot.{" "}
           </p>
           <div className="flex justify-center ">
             <button
               type="button"
-              className="mt-6 text-white uppercase bg-[green] p-4"
+              className="mt-6 text-md rounded-md px-20 py-4 uppercase text-white bg-[#06968A] font-bold"
               onClick={() => signIn()}
             >
               Se connecter

@@ -2,7 +2,6 @@ import s from "../styles/nouvelleCommande.module.css";
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import dayjs from "dayjs";
-require("dayjs/locale/fr");
 
 export default function ConfirmationModal({
   modal,
@@ -14,7 +13,6 @@ export default function ConfirmationModal({
   setComment,
 }) {
   const [error] = useState("");
-  dayjs.locale("fr");
   const weekday = require("dayjs/plugin/weekday");
   dayjs.extend(weekday);
   const isToday = require("dayjs/plugin/isToday");
@@ -24,7 +22,6 @@ export default function ConfirmationModal({
   const date2 = dayjs().weekday(4).format("DD-MM-YYYY");
   const date3 = dayjs().weekday(9).format("DD-MM-YYYY");
   const date4 = dayjs().weekday(11).format("DD-MM-YYYY");
-  const date5 = dayjs().weekday(13).format("DD-MM-YYYY");
 
   const optionsM = [
     {
@@ -38,10 +35,6 @@ export default function ConfirmationModal({
     {
       label: date3,
       value: date3,
-    },
-    {
-      label: date4,
-      value: date4,
     },
   ];
   const optionsJ = [
@@ -67,10 +60,6 @@ export default function ConfirmationModal({
     {
       label: date4,
       value: date4,
-    },
-    {
-      label: date5,
-      value: date5,
     },
   ];
 

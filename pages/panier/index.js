@@ -47,8 +47,6 @@ export default function Panier() {
     }, 0)
     .toFixed(2);
 
-  // const francoMin = 75 - totalPrice;
-
   const confirmPurchase = () => {
     setModalFranco(!modalFranco);
     setModalCongrats(!modalCongrats);
@@ -78,22 +76,23 @@ export default function Panier() {
   const renderProducts = (
     <div className={styles.main_container}>
       {cartItems.map((item) => (
-        <Cart
-          key={item.id}
-          id={item.id}
-          codeProduit={item.product.codeProduit}
-          name={item.product.name}
-          weight={item.product.weight}
-          totalPrice={item.product.totalPrice}
-          pricePerKg={item.product.pricePerKg}
-          stock={item.product.stock}
-          picture={item.product.picture ? item.product.picture : ""}
-          Quantity={item.quantity}
-          typeUVC={item.product.typeUVC}
-          poidsUVC={item.product.poidsUVC}
-          uniteUVC={item.product.uniteUVC}
-          price={item.product.price}
-        />
+        <div key={item.id}>
+          <Cart
+            id={item.id}
+            codeProduit={item.product.codeProduit}
+            name={item.product.name}
+            weight={item.product.weight}
+            totalPrice={item.product.totalPrice}
+            pricePerKg={item.product.pricePerKg}
+            stock={item.product.stock}
+            picture={item.product.picture ? item.product.picture : ""}
+            Quantity={item.quantity}
+            typeUVC={item.product.typeUVC}
+            poidsUVC={item.product.poidsUVC}
+            uniteUVC={item.product.uniteUVC}
+            price={item.product.price}
+          />
+        </div>
       ))}
     </div>
   );
@@ -140,7 +139,7 @@ export default function Panier() {
           {isLoading ? (
             <LoadingSpin />
           ) : totalPrice === "0.00" ? (
-            <div className="flex justify-center items-center flex-col mt-[70%]">
+            <div className="flex justify-center items-center flex-col mt-[30%]">
               <Image
                 src={emptyCartImg}
                 alt="empty cart"

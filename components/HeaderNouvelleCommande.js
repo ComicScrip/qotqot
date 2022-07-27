@@ -31,8 +31,8 @@ export default function HeaderNouvelleCommande() {
         style={{
           width: "100%",
           position: "fixed",
-          "z-index": "1",
-          "background-color": "white",
+          zIndex: "1",
+          backgroundColor: "white",
           top: "0",
         }}
       >

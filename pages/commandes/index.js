@@ -42,7 +42,13 @@ export default function Home() {
               <div className="text-center mt-4">Chargement en cours...</div>
             ) : (
               <div>
-                <h2 className={styles.title}>Commandes à venir</h2>
+                {ordersList.length === 0 ? (
+                  <p className="text-center mt-4">
+                    Vous n'avez aucune commande pour le moment 😔
+                  </p>
+                ) : (
+                  <h2 className={styles.title}>Commandes à venir</h2>
+                )}
                 {error && (
                   <p className="error">
                     Impossible d'obtenir les données du serveur, veuillez
@@ -64,8 +70,11 @@ export default function Home() {
                       />
                     ))}
                 </div>
-
-                <h2 className={styles.title}>Commandes passées</h2>
+                {ordersList.length === 0 ? (
+                  ""
+                ) : (
+                  <h2 className={styles.title}>Commandes passées</h2>
+                )}
                 {error && (
                   <p className="error">
                     Impossible d'obtenir les données du serveur, veuillez

@@ -135,7 +135,7 @@ export default function Panier() {
           {isLoading ? (
             <LoadingSpin />
           ) : totalPrice === "0.00" ? (
-            <div className="flex justify-center items-center flex-col mt-[30%]">
+            <div className="flex justify-center items-center flex-col mt-[100%] sm:mt-[30%]">
               <Image
                 src={emptyCartImg}
                 alt="empty cart"

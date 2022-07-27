@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import base from "../../../middlewares/common";
 import mailer from "../../../mailer";
-const { htmlToText } = require("html-to-text");
 
 import {
   findUserByEmail,
@@ -19,8 +18,7 @@ async function handlePost(req, res) {
     resetPasswordToken: await hashPassword(resetPasswordToken),
   });
 
-  const Mailbody = htmlToText(
-    `
+  const Mailbody = `
     <div>
       <p>Bonjour,</p>
       <p>Vous avez demandé la réinitialisation de votre mot de passe.</p>
@@ -41,20 +39,19 @@ async function handlePost(req, res) {
       </p>
       <p>Merci pour votre fidélité,</p>
       <p>L’équipe QotQot</p>
-    </div>`,
-    { wordwrap: 130 }
-  );
-
-  // const mailBody = `Bonjour, vous avez oublié votre mot de passe ? Pas de panique, vous pouvez le changer en cliquant sur ce lien : ${
-  //   process.env.NEXTAUTH_URL ||
-  //   process.env.VERCEL_URL ||
-  //   `http://localhost:3000`
-  // }/mot-de-passe-oublie?resetPasswordToken=${resetPasswordToken}&email=${email}`;
+      <br>
+      <img
+      src="https://scontent-cdg2-1.xx.fbcdn.net/v/t39.30808-6/287962759_444388427686792_1546520322188047938_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=174925&_nc_ohc=RFGrIoW6uUQAX_gePwi&_nc_ht=scontent-cdg2-1.xx&oh=00_AT9QGcWvFkbRtu_zQPjbO2dttNYLB8A9awAgvazpv3NoEA&oe=62E5A63F"
+      alt="logo_qotqot"
+      width="100px"
+      height="100px"
+    />
+    </div>`;
 
   await mailer.sendMail({
     from: process.env.MAILER_FROM,
     to: email,
-    subject: `Réinitialisez votre mot de passe`,
+    subject: `QotQot - Réinitialisez votre mot de passe`,
     text: Mailbody,
     html: Mailbody,
   });

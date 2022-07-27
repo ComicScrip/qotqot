@@ -4,6 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/dist/client/router";
+import s from "../../styles/home.module.css";
 
 export default function RestPasswordPage({ csrfToken }) {
   const router = useRouter();
@@ -54,7 +55,7 @@ export default function RestPasswordPage({ csrfToken }) {
   };
 
   return (
-    <>
+    <div className={s.loginBg}>
       <Toaster position="bottom-center" />
       {resetEmailSent ? (
         <div
@@ -213,6 +214,6 @@ export default function RestPasswordPage({ csrfToken }) {
           )}
         </>
       )}
-    </>
+    </div>
   );
 }

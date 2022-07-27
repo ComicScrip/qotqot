@@ -1,7 +1,7 @@
 import styles from "../styles/headerCommandePassee.module.css";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import { useRouter } from "next/dist/client/router";
 
@@ -11,11 +11,10 @@ export default function HeaderCommandePassee() {
     orderStatut,
     orderNumberState,
     orderAmount,
-    displayMenu,
-    setDisplayMenu,
     deliveryDate,
     orderDate,
   } = useContext(CurrentUserContext);
+  const [displayMenu, setDisplayMenu] = useState(false);
   const today = new Date();
   const options = {
     weekday: "long",

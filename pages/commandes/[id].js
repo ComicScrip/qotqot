@@ -10,7 +10,13 @@ import Layout from "../../components/Layout";
 import style from "../../styles/orderedProductItem.module.css";
 
 export default function OrderHistory() {
-  const { orderNumberState } = useContext(CurrentUserContext);
+  const {
+    setOrderAmount,
+    setOrderNumberState,
+    setOrderStatut,
+    setOrderDate,
+    setDeliveryDate,
+  } = useContext(CurrentUserContext);
   const [orderProductList, setOrderProductList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -21,42 +27,57 @@ export default function OrderHistory() {
     setError("");
     if (id) {
       axios
-        .get(`/api/orderDetails/${id}`)
+        .get(`/api/customerCartItem/${id}`)
         .then((res) => res.data)
         .then((data) => setOrderProductList(data))
         .catch(() =>
-          setError("Could not get data from the server, please try again")
+          setError(
+            "Impossible d'obtenir les données du serveur, veuillez réessayer"
+          )
         )
         .finally(() => setIsLoading(false));
     }
   }, [id]);
 
+  useEffect(() => {
+    axios
+      .get(`/api/orders/${id}`)
+      .then((res) => res.data)
+      .then((data) => data[0])
+      .then((data) => {
+        setOrderAmount(data.totalAmount);
+        setOrderNumberState(data.orderNumber);
+        setOrderStatut(data.statut);
+        setOrderDate(data.dateCommande);
+        setDeliveryDate(data.dateLivraison);
+      })
+      .catch(() =>
+        console.log(
+          "Impossible d'obtenir les données du serveur, veuillez réessayer"
+        )
+      ),
+      [];
+  });
+
   const renderProducts = (
     <div className={style.homeBody}>
-      {orderProductList
-        .filter(
-          (order) =>
-            orderNumberState === order.orderNumber ||
-            window.location.toString().includes(`${order.orderNumber}`)
-        )
-        .map((prod) => (
-          <div className={style.product} key={prod.id}>
-            <OrderProductItem
-              key={prod.id}
-              date={prod.date}
-              orderNumber={prod.orderNumber}
-              name={prod.name}
-              weight={prod.weight}
-              quantity={prod.quantity}
-              price={prod.price}
-              pricePerKg={prod.pricePerKg}
-              picture={prod.picture ? prod.picture : ""}
-              totalAmount={prod.totalAmount}
-              dateLivraison={prod.dateLivraison}
-              statut={prod.statut}
-            />
-          </div>
-        ))}
+      {orderProductList.map((prod) => (
+        <div className={style.product} key={prod.id}>
+          <OrderProductItem
+            key={prod.product.id}
+            orderNumber={prod.idOrder}
+            name={prod.product.name}
+            weight={prod.product.weight}
+            poidsUVC={prod.product.poidsUVC}
+            quantity={prod.quantity}
+            price={prod.product.price}
+            pricePerKg={prod.product.pricePerKg}
+            picture={prod.product.picture ? prod.product.picture : ""}
+            dateLivraison={prod.dateLivraison}
+            statut={prod.statut}
+          />
+        </div>
+      ))}
     </div>
   );
 
@@ -65,7 +86,7 @@ export default function OrderHistory() {
       <>
         {error && (
           <p className="error">
-            Could not get data from the server, please try again
+            Impossible d'obtenir les données du serveur, veuillez réessayer
           </p>
         )}
         {isLoading ? <LoadingSpin /> : renderProducts}

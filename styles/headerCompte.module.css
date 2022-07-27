@@ -155,7 +155,7 @@
   .header {
     margin: auto 0;
     height: 35px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
   }
 
   .divTitle {
@@ -179,10 +179,15 @@
 
   .menu {
     font-size: 40px;
-    margin-right: 40%;
+    margin-right: 36%;
   }
 
-  .logout {
-    margin: 4% 5% 0 37%;
+  .accountDiv {
+    margin: 4% 38%;
+  }
+
+  .account {
+    margin: auto;
+    margin-left: -400px;
   }
 } ;

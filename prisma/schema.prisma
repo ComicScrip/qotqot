@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
@@ -52,5 +49,7 @@ model order {
   delivery         DateTime
   comment          String?            @db.VarChar(255)
   synchWithAT      Boolean            @default(false)
+  totalPrice       String?
+  status           String             @default("En cours")
   customerCartItem customerCartItem[]
 }

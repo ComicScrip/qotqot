@@ -124,3 +124,9 @@
   font-size: 12px;
   font-weight: 300;
 }
+
+@media screen and (min-width: 700px) {
+  .item_wrapper {
+    width: 60vw;
+  }
+}

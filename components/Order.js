@@ -4,8 +4,11 @@ import { CurrentUserContext } from "../contexts/currentUserContext";
 import Link from "next/link";
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
+import moment from "moment";
 
 export default function OrderPassed(props) {
+  const time = moment(parseInt(props.dateCommande)).locale("fr").format("ll");
+  console.log(time);
   const {
     setOrderNumberState,
     setOrderStatut,
@@ -17,7 +20,8 @@ export default function OrderPassed(props) {
   function handleClick() {
     setOrderNumberState(`${props.orderNumber}`);
     setOrderStatut(`${props.statut}`);
-    dayjs(setOrderDate(props.dateCommande)).locale("fr").format("DD/MM/YYYY");
+    setOrderDate(time);
+    // dayjs(setOrderDate(props.dateCommande)).locale("fr").format("DD/MM/YYYY");
     dayjs(setDeliveryDate(props.dateLivraison))
       .locale("fr")
       .format("DD/MM/YYYY");

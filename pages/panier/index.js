@@ -74,6 +74,7 @@ export default function Panier() {
       {cartItems.map((item) => (
         <div key={item.id}>
           <Cart
+            key={item.id}
             id={item.id}
             codeProduit={item.product.codeProduit}
             name={item.product.name}
@@ -135,7 +136,7 @@ export default function Panier() {
           {isLoading ? (
             <LoadingSpin />
           ) : totalPrice === "0.00" ? (
-            <div className="flex justify-center items-center flex-col mt-[30%]">
+            <div className="flex justify-center items-center flex-col mt-[100%] sm:mt-[20%]">
               <Image
                 src={emptyCartImg}
                 alt="empty cart"

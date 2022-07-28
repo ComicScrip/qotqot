@@ -63,7 +63,7 @@ export default function Login({ csrfToken }) {
                   className="text-[#7F7F7F]"
                   required
                   minLength="8"
-                  maxLength="50"
+                  maxLength="30"
                   placeholder="jean.dupont@mail.com"
                 />
               </div>
@@ -77,7 +77,7 @@ export default function Login({ csrfToken }) {
                   className="text-[#7F7F7F]"
                   required
                   minLength="8"
-                  maxLength="15"
+                  maxLength="30"
                   placeholder="votre mot de passe"
                 />
               </div>

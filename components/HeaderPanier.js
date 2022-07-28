@@ -20,7 +20,7 @@ export default function HeaderPanier() {
     day: "2-digit",
   };
 
-  const francoMin = 75 - totalPrice;
+  const francoMin = 200 - totalPrice;
 
   return (
     <header className={styles.header}>
@@ -71,7 +71,9 @@ export default function HeaderPanier() {
       <div className={styles.headCmd}>
         <div className={styles.priceTotal}>{totalPrice}€ HT</div>
         <button
-          onClick={() => setModal(!modal)}
+          onClick={() => {
+            if (cartItems.length) setModal(!modal);
+          }}
           className={
             cartItems.length === 0 ? styles.btnCartEmpty : styles.btnCart
           }
@@ -89,7 +91,7 @@ export default function HeaderPanier() {
 
       <ProgressBar
         completed={totalPrice}
-        maxCompleted={75}
+        maxCompleted={200}
         className={styles.wrapper}
         barContainerClassName={styles.container}
         labelClassName={styles.label}

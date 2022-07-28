@@ -1,5 +1,5 @@
 import s from "../styles/nouvelleCommande.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import dayjs from "dayjs";
 
@@ -22,6 +22,10 @@ export default function ConfirmationModal({
   const date2 = dayjs().weekday(4).format("DD-MM-YYYY");
   const date3 = dayjs().weekday(9).format("DD-MM-YYYY");
   const date4 = dayjs().weekday(11).format("DD-MM-YYYY");
+
+  useEffect(() => {
+    setDate(date1);
+  }, []);
 
   const optionsM = [
     {
@@ -84,7 +88,6 @@ export default function ConfirmationModal({
                 <h1 className="sm:text-4xl bold text-center py-3 mt-3">
                   Confirmation de commande
                 </h1>
-
                 <form onSubmit={handleConfirm}>
                   <div className="flex flex-col justify-center text-left rounded-md m-auto border-gray-500 text-[#7F7F7F] bg-[#F2F2F2] mb-4 p-2">
                     <label className="text-sm sm:text-base cursor-pointer ">
@@ -143,11 +146,10 @@ export default function ConfirmationModal({
                     </button>
                   </div>
                 </form>
-
                 {error && (
                   <p className="error text-center text-sm text-[red]">
-                    ⛔️ Nous ne pouvons charger les données du serveur, veuillez
-                    réessayer svp.
+                    ⛔️ Nous ne pouvons pas charger les données du serveur,
+                    veuillez réessayer svp.
                   </p>
                 )}
               </div>

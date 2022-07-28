@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "../styles/headerNouvelleCommande.module.css";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -8,8 +8,8 @@ import { useRouter } from "next/router";
 
 export default function HeaderNouvelleCommande() {
   const router = useRouter();
-  const { displayMenu, setDisplayMenu, totalPrice } =
-    useContext(CurrentUserContext);
+  const { totalPrice } = useContext(CurrentUserContext);
+  const [displayMenu, setDisplayMenu] = useState(false);
   const today = new Date();
   const options = {
     weekday: "long",

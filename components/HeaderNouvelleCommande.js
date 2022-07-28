@@ -18,7 +18,7 @@ export default function HeaderNouvelleCommande() {
     day: "2-digit",
   };
 
-  const francoMin = 75 - totalPrice;
+  const francoMin = 200 - totalPrice;
 
   return (
     <header>
@@ -101,7 +101,7 @@ export default function HeaderNouvelleCommande() {
 
         <ProgressBar
           completed={totalPrice}
-          maxCompleted={75}
+          maxCompleted={200}
           className={styles.wrapper}
           barContainerClassName={styles.container}
           labelClassName={styles.label}

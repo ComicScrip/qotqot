@@ -10,13 +10,18 @@ const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
 
 export async function handleCreateOrder(req, res) {
-  const { comment, date, totalPrice } = req.body;
+  const { comment, date } = req.body;
   const customerCartItems = await findAllCartItems({
     idClient: req.currentUser.id,
   });
   if (customerCartItems.length === 0) {
     return res.status(422).send("Your cart is empty...");
   }
+
+  const totalPrice = customerCartItems
+    .reduce((acc, curr) => acc + curr.quantity * curr.product.price, 0)
+    .toFixed(2)
+    .toString();
 
   const orderProps = {
     comment,

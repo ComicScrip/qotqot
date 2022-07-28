@@ -54,7 +54,7 @@ const Congrats = ({
             <div className="w-[80%] m-auto">
               <h2 className="text-center text-xl p-4">Attention </h2>
               <p className="text-gray-600 text-[16px] font-base p-10 text-center">
-                Vous n'avez pas atteind le franco minimum de 75€ HT. <br />
+                Vous n'avez pas atteint le franco minimum de 200€ HT. <br />
                 Souhaitez-vous poursuivre votre commande ? <br />
                 La livraison vous sera facturée 25€ HT.
               </p>
@@ -64,7 +64,7 @@ const Congrats = ({
                   className=" bg-[#06968A] w-full cursor-pointer rounded-md p-3 uppercase text-sm h-12 mt-2 text-center text-white font-bold"
                   onClick={confirmPurchase}
                 >
-                  poursuivre
+                  Poursuivre
                 </button>
               </div>
             </div>

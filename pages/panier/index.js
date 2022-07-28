@@ -59,7 +59,7 @@ export default function Panier() {
   };
 
   async function handleConfirm() {
-    if (totalPrice >= 75) {
+    if (totalPrice >= 200) {
       setModal(!modal);
       setModalCongrats(!modalCongrats);
       handleCreateOrder();
